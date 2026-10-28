@@ -3,6 +3,8 @@
 > **Plataforma Educacional Interativa baseada na obra canônica *Introduction to Algorithms (CLRS, 3ª Edição)***  
 > Por Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest e Clifford Stein.
 
+🌐 **Acesse o curso online:** **[https://marlluscoutinho-hub.github.io/coursebook/](https://marlluscoutinho-hub.github.io/coursebook/)**
+
 ---
 
 ## 📌 Sobre o Projeto
@@ -44,6 +46,14 @@ O projeto conta com:
 
 ---
 
+## 🌐 Acesso Online
+
+O projeto está disponível e hospedado no **GitHub Pages**:
+
+👉 **[https://marlluscoutinho-hub.github.io/coursebook/](https://marlluscoutinho-hub.github.io/coursebook/)**
+
+---
+
 ## 🚀 Como Executar Localmente
 
 Como a aplicação é 100% frontend estática (Vanilla HTML5, CSS3 e ES6+):
@@ -67,14 +77,6 @@ npx serve .
 ```
 
 3. Acesse no navegador: `http://localhost:8080`
-
----
-
-## 🌐 Hospedagem no GitHub Pages
-
-O projeto já está estruturado para hospedagem imediata e gratuita no **GitHub Pages**:
-- O arquivo `index.html` e todos os assets (`styles.css`, `app.js`, `data/`) usam caminhos relativos compatíveis com domínios de subpasta (`https://<user>.github.io/<repo>/`).
-- Nenhuma etapa de build é necessária.
 
 ---
 
