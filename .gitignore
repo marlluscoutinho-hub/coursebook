@@ -1,0 +1,10 @@
+# Arquivos PDF pesados de referência (evita exceder limites do GitHub e acelera o clone)
+*.pdf
+
+# Arquivos de sistema e ambiente
+.DS_Store
+Thumbs.db
+*.log
+
+# Scripts temporários locais
+scratch/
