@@ -1,0 +1,14 @@
+{
+  "id": "clrs-algoritmos",
+  "title": "Algoritmos: Teoria e Prática",
+  "edition": "3ª Edição",
+  "authors": "Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest e Clifford Stein",
+  "tag": "ALGORITMOS & ESTRUTURAS DE DADOS",
+  "badge": "CANÔNICO",
+  "pagesCount": 1042,
+  "chaptersCount": 35,
+  "appendicesCount": 4,
+  "modulesCount": 16,
+  "dataDir": "courses/clrs-algoritmos/data/",
+  "description": "Curso interativo completo baseado na obra clássica do MIT / McGraw-Hill, cobrindo fundamentos, análise assintótica, divisão e conquista, ordenação, estruturas avançadas, programação dinâmica, algoritmos gulosos, grafos e teoria da complexidade NP."
+}

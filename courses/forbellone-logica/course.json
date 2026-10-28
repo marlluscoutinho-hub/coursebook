@@ -1,0 +1,12 @@
+{
+  "id": "forbellone-logica",
+  "title": "Lógica de Programação: A Construção de Algoritmos e Estruturas de Dados",
+  "edition": "3ª Edição",
+  "authors": "André Luiz Villar Forbellone e Henri Frederico Eberspächer",
+  "tag": "LÓGICA DE PROGRAMAÇÃO & ALGORITMOS",
+  "badge": "CANÔNICO",
+  "pagesCount": 220,
+  "status": "planned",
+  "dataDir": "courses/forbellone-logica/data/",
+  "description": "Introdução canônica e rigorosa à lógica de programação, pseudocódigo estruturado, estruturas de controle, tipos abstratos de dados e técnicas fundamentais de ordenação e busca."
+}

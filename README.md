@@ -46,6 +46,25 @@ O projeto conta com:
 
 ---
 
+## 📁 Estrutura do Repositório
+
+O projeto é estruturado para suportar múltiplos cursos em pastas isoladas por livro:
+
+```
+coursebook/
+├── index.html                  # Shell da aplicação (Home, Catálogo e Reader)
+├── styles.css                  # Design System Paper & Ink Brutalism
+├── app.js                      # Controlador de navegação, estado e progresso
+├── courses/
+│   ├── clrs-algoritmos/        # Curso 01: Algoritmos: Teoria e Prática (CLRS 3ª Ed.)
+│   │   ├── course.json         # Metadados do curso
+│   │   └── data/               # 16 Módulos completos (curriculum.js, module2..16.js)
+│   └── forbellone-logica/      # Curso 02: Lógica de Programação (Forbellone 3ª Ed.)
+│       └── course.json         # Metadados e preparação do próximo curso
+```
+
+---
+
 ## 🌐 Acesso Online
 
 O projeto está disponível e hospedado no **GitHub Pages**:
