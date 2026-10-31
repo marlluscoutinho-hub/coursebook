@@ -102,6 +102,20 @@ npx serve .
 
 ---
 
+## 🧭 Evolução do Projeto
+
+O CourseBook é material de estudo pessoal e o projeto central do meu portfólio em engenharia com IA aplicada. A visão de longo prazo é gerar cursos modulares a partir de um livro (PDF), com uso pessoal e não comercial, parafraseando a obra e sempre citando o livro. Cada etapa da refatoração fica registrada aqui, com documento próprio, tag e commits rastreáveis. O plano completo está em [docs/plano-refatoracao.md](docs/plano-refatoracao.md).
+
+| Etapa | O que mudou | Por quê | Documento | Tag |
+| :--- | :--- | :--- | :--- | :--- |
+| 0 | Estado inicial (CLRS em formato JS, motor acoplado ao conteúdo) | Ponto de retorno | [visual-debt](docs/visual-debt.md) | `v0-pre-refactor` |
+| 1 | Correção do overflow de LaTeX e página de regressão | Fórmulas vazavam do bloco da aula | [01-latex](docs/evolucao/01-latex.md) | `refactor/01-latex` |
+| 2 | Schema modular (JSON + Markdown), perfis e métricas | Contrato entre IA escritora e plataforma | em breve | — |
+
+**Padrão de commits:** `<tipo>(<escopo>): <resumo>`, com tipos `feat`, `fix`, `refactor`, `docs`, `style`, `chore`, `test` e escopos `engine`, `lesson`, `lab`, `review`, `latex`, `schema`, `course/<id>`, `readme`.
+
+---
+
 ## 📄 Licença & Créditos
 
 Projeto com finalidade estritamente educacional. Baseado na obra *Introduction to Algorithms* de Cormen, Leiserson, Rivest e Stein (MIT Press / McGraw-Hill).
