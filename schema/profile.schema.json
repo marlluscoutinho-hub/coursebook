@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "profile.schema.json",
+  "title": "Perfil pedagógico",
+  "type": "object",
+  "required": ["id"],
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "extends": { "type": "array", "items": { "type": "string" }, "description": "Aplicados em ordem; o último vence." },
+    "lesson": { "type": "array", "items": { "enum": ["intro", "text", "lab", "summary", "exercises"] }, "uniqueItems": true },
+    "module": { "type": "array", "items": { "enum": ["lessons", "review", "quiz", "exercises"] }, "uniqueItems": true }
+  }
+}

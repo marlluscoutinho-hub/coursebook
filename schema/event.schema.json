@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "event.schema.json",
+  "title": "Evento de métrica",
+  "type": "object",
+  "required": ["ts", "course", "type", "viewport"],
+  "additionalProperties": false,
+  "properties": {
+    "ts": { "type": "string", "format": "date-time" },
+    "course": { "type": "string" },
+    "module": { "type": "string" },
+    "lesson": { "type": "string" },
+    "type": { "enum": ["lesson_open", "lesson_leave", "lesson_complete", "quiz_answer"] },
+    "profile": { "type": "string" },
+    "viewport": { "type": "integer", "minimum": 1, "description": "Largura da janela em px." },
+    "seconds": { "type": "number", "minimum": 0 },
+    "correct": { "type": "boolean" }
+  }
+}

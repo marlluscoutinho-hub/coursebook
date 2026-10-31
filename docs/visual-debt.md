@@ -19,3 +19,4 @@
 | 12 | Etapa "Revisão" como primeira etapa do módulo | `app.js` (`STEP_KEYS`) | Passa a ser resumo por aula, depois do aprendizado | renomear |
 | 13 | PDFs soltos na raiz e em `courses/*/` | raiz, `courses/` | Ignorados pelo `.gitignore` e **não rastreados** (verificado). Falta definir uma pasta padrão | a decidir |
 | 14 | Fórmulas inline longas com `\text{…}` | conteúdo dos módulos | CSS não resolve; reescrever como display (ver `tests/latex.html`, caso 3) | a decidir |
+| 15 | Alvo de toque menor que 44 px (botão "Anterior" / `.btn-secondary-brutal`) | achado em `tests/layout.html` | Detectado pela checagem automática; tratar na etapa 6 (ver plano, 6.5) | a decidir |

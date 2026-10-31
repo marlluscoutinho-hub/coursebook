@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teste de layout — CourseBook</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+  <link rel="stylesheet" href="../styles.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+</head>
+<body>
+  <!--
+    Página de regressão de layout (ver docs/plano-refatoracao.md, seção 6.5).
+    Reúne os componentes que existem hoje para conferir em 360, 768 e 1280 px.
+    Critérios: sem rolagem horizontal da PÁGINA em 360 px; conteúdo largo rola
+    dentro do próprio bloco; botões com alvo de toque >= 44 px (checagem abaixo).
+    Servir com: python3 -m http.server  (abrir /tests/layout.html)
+  -->
+  <main class="reader-content-canvas" style="margin: 0 auto;">
+    <article class="study-unit-card">
+      <div class="unit-header">
+        <div class="unit-meta">AULA DE EXEMPLO • COMPONENTES</div>
+        <h2 class="unit-title">Layout de componentes</h2>
+      </div>
+
+      <div class="canonical-callout theorem"><span class="callout-tag">[ TEOREMA ]</span><p>Todo $f(n) = \Theta(g(n))$ implica $f(n) = O(g(n))$ e $f(n) = \Omega(g(n))$.</p></div>
+      <div class="canonical-callout invariant"><span class="callout-tag">[ INVARIANTE ]</span><p>No início de cada iteração, $A[1..j-1]$ está ordenado.</p></div>
+      <div class="canonical-callout analogy"><span class="callout-tag">[ ANALOGIA ]</span><p>Ordenar cartas na mão: pegue uma carta e insira na posição correta.</p></div>
+
+      <div class="clrs-pseudocode-box">
+        <div class="pseudocode-header">
+          <span class="proc-name">INSERTION-SORT(A)</span>
+          <span>[ CAPÍTULO 2.1 • LINHA MUITO LONGA PARA FORÇAR ROLAGEM INTERNA DO BLOCO DE CÓDIGO ]</span>
+        </div>
+        <div class="pseudocode-lines">
+          <div class="code-line"><span class="line-num">1</span><span class="line-content"><span class="kw">for</span> j = 2 <span class="kw">to</span> A.length   // comentário extenso que ultrapassa a largura de qualquer tela pequena do celular</span></div>
+          <div class="code-line"><span class="line-num">2</span><span class="line-content">    key = A[j]</span></div>
+        </div>
+      </div>
+
+      <h3>Controles</h3>
+      <div class="step-btn-group" style="display:flex; gap:.5rem; flex-wrap:wrap;">
+        <button class="btn-secondary-brutal" data-touch-check>Anterior</button>
+        <button class="btn-primary-brutal" data-touch-check>Concluir aula</button>
+      </div>
+      <p id="touch-report" style="font-family: monospace; font-size: .85rem;"></p>
+      <p id="overflow-report" style="font-family: monospace; font-size: .85rem;"></p>
+    </article>
+  </main>
+  <script>
+    window.addEventListener("load", function () {
+      renderMathInElement(document.body, {
+        delimiters: [{ left: "$$", right: "$$", display: true }, { left: "$", right: "$", display: false }],
+        throwOnError: false
+      });
+      // Checagens automáticas (resultado visível na página e no console)
+      var small = [].filter.call(document.querySelectorAll("[data-touch-check]"), function (b) {
+        var r = b.getBoundingClientRect();
+        return r.width < 44 || r.height < 44;
+      }).length;
+      document.getElementById("touch-report").textContent =
+        "Alvos de toque < 44px: " + small + (small ? "  [FALHA]" : "  [OK]");
+      var doc = document.documentElement;
+      var over = doc.scrollWidth > doc.clientWidth;
+      document.getElementById("overflow-report").textContent =
+        "Rolagem horizontal da página: " + (over ? "SIM [FALHA]" : "não [OK]") +
+        " (scrollWidth " + doc.scrollWidth + " / clientWidth " + doc.clientWidth + ")";
+    });
+  </script>
+</body>
+</html>

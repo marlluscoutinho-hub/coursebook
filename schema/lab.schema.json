@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "lab.schema.json",
+  "title": "Laboratório interativo",
+  "type": "object",
+  "required": ["type", "id", "title", "source", "mobile"],
+  "additionalProperties": false,
+  "properties": {
+    "type": { "const": "lab" },
+    "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "title": { "type": "string" },
+    "source": { "enum": ["catalog", "custom"] },
+    "entry": { "type": "string", "description": "JS do curso. Obrigatório se source = custom." },
+    "options": { "type": "object" },
+    "mobile": { "enum": ["full", "limited", "desktop-only"] }
+  },
+  "if": { "properties": { "source": { "const": "custom" } } },
+  "then": { "required": ["entry"] }
+}

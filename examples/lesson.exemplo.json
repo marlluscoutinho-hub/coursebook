@@ -1,0 +1,11 @@
+{
+  "id": "variaveis",
+  "title": "Variáveis e tipos",
+  "profile": "pratico",
+  "blocks": [
+    { "type": "intro", "file": "intro.md" },
+    { "type": "lab", "id": "memoria", "title": "Laboratório: variáveis na memória", "source": "catalog", "mobile": "full" },
+    { "type": "text", "file": "aprofundamento.md" },
+    { "type": "summary", "file": "resumo.md" }
+  ]
+}
