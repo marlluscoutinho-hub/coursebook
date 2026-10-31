@@ -1860,3 +1860,41 @@ body {
     display: none;
   }
 }
+
+/* ==========================================================================
+   LATEX / KATEX — contenção de fórmulas dentro do bloco da aula
+   Causa: .katex-display não tinha overflow, fórmulas inline são nowrap e
+   cartões/callouts não encolhiam abaixo do conteúdo (min-width: auto).
+   Regressão visual: tests/latex.html
+   ========================================================================== */
+.reader-content-canvas,
+.study-unit-card,
+.canonical-callout {
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* Fórmulas em display: rolam na horizontal dentro do próprio bloco */
+.katex-display {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.35em 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.katex-display > .katex {
+  max-width: none; /* mantém a fórmula íntegra; o scroll fica no container */
+}
+
+/* Fórmulas inline: não ultrapassam a linha; só quebram se não houver outra saída */
+p .katex,
+li .katex {
+  max-width: 100%;
+}
+
+@media (max-width: 640px) {
+  .katex-display {
+    font-size: 0.92em;
+  }
+}
