@@ -6,6 +6,12 @@
 (function () {
   const STORAGE_KEY = "coursebook_clrs_course_state_v1";
 
+  // Registro global de cursos (CourseBook Multi-Course Registry)
+  window.COURSES_REGISTRY = window.COURSES_REGISTRY || {};
+  if (window.CODEX_DATA && !window.COURSES_REGISTRY["clrs-algoritmos"]) {
+    window.COURSES_REGISTRY["clrs-algoritmos"] = window.CODEX_DATA;
+  }
+
   const STEP_KEYS = ["revisao", "aprendizado", "quizzes", "exercicios"];
   const STEP_LABELS = {
     revisao: "Revisão",
@@ -16,6 +22,7 @@
 
   /* Estado persistente padrão */
   const defaultState = {
+    currentCourseId: "clrs-algoritmos",
     currentView: "home", // 'home' | 'catalog' | 'reader'
     currentModuleId: 1,
     currentStep: "revisao", // 'revisao' | 'aprendizado' | 'quizzes' | 'exercicios'
@@ -33,27 +40,47 @@
     checklistState: {},
     quizAnswers: {},
     exerciseNotes: {},
-    exerciseStatus: {}
+    exerciseStatus: {},
+    courses: {}
   };
 
   let state = loadState();
 
   function loadState() {
     try {
+      const activeCourseId = localStorage.getItem("coursebook_active_course_id") || "clrs-algoritmos";
+      if (window.COURSES_REGISTRY && window.COURSES_REGISTRY[activeCourseId]) {
+        window.CODEX_DATA = window.COURSES_REGISTRY[activeCourseId];
+      }
+
       const raw =
         localStorage.getItem(STORAGE_KEY) ||
         localStorage.getItem("lurvro_clrs_course_state_v1") ||
         localStorage.getItem("codex_clrs_course_state_v1");
-      if (!raw) return JSON.parse(JSON.stringify(defaultState));
+      if (!raw) {
+        const fresh = JSON.parse(JSON.stringify(defaultState));
+        fresh.currentCourseId = activeCourseId;
+        return fresh;
+      }
       const parsed = JSON.parse(raw);
+      const courseProgress = (parsed.courses && parsed.courses[activeCourseId]) || {};
+
       return {
         ...defaultState,
         ...parsed,
+        currentCourseId: parsed.currentCourseId || activeCourseId,
         currentView: ["home", "catalog", "reader"].includes(parsed.currentView) ? parsed.currentView : "home",
-        completedSteps: {
+        currentModuleId: courseProgress.currentModuleId || parsed.currentModuleId || 1,
+        currentStep: courseProgress.currentStep || parsed.currentStep || "revisao",
+        activeUnitId: courseProgress.activeUnitId || parsed.activeUnitId || "u1-1",
+        completedSteps: courseProgress.completedSteps || parsed.completedSteps || {
           ...defaultState.completedSteps,
           ...(parsed.completedSteps || {})
-        }
+        },
+        checklistState: courseProgress.checklistState || parsed.checklistState || {},
+        quizAnswers: courseProgress.quizAnswers || parsed.quizAnswers || {},
+        exerciseNotes: courseProgress.exerciseNotes || parsed.exerciseNotes || {},
+        exerciseStatus: courseProgress.exerciseStatus || parsed.exerciseStatus || {}
       };
     } catch (e) {
       return JSON.parse(JSON.stringify(defaultState));
@@ -62,6 +89,19 @@
 
   function saveState() {
     try {
+      if (!state.courses) state.courses = {};
+      const cId = state.currentCourseId || "clrs-algoritmos";
+      state.courses[cId] = {
+        currentModuleId: state.currentModuleId,
+        currentStep: state.currentStep,
+        activeUnitId: state.activeUnitId,
+        completedSteps: state.completedSteps,
+        checklistState: state.checklistState,
+        quizAnswers: state.quizAnswers,
+        exerciseNotes: state.exerciseNotes,
+        exerciseStatus: state.exerciseStatus
+      };
+      localStorage.setItem("coursebook_active_course_id", cId);
       localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
     } catch (e) {
       /* Ignorar bloqueio de storage privado */
@@ -220,11 +260,74 @@
     return map[modId] || window.CODEX_DATA.module1;
   }
 
+  function updateTomeHeroUI() {
+    const data = window.CODEX_DATA;
+    if (!data || !data.tome) return;
+    const tome = data.tome;
+    const heroTitle = document.getElementById("tome-hero-title");
+    const heroAuthors = document.getElementById("tome-hero-authors");
+    const heroMetaRow = document.getElementById("tome-hero-meta-row");
+    const heroDesc = document.getElementById("tome-hero-desc");
+
+    if (heroTitle) heroTitle.textContent = `${tome.title} (${tome.edition})`;
+    if (heroAuthors) heroAuthors.textContent = tome.authors.toUpperCase();
+    if (heroDesc) heroDesc.textContent = tome.summary;
+    if (heroMetaRow) {
+      heroMetaRow.innerHTML = `
+        <span class="bracket-tag dark">[ VISÃO GERAL DO CURSO ]</span>
+        <span class="bracket-tag amber">[ ${data.modules.length} MÓDULOS ESTRUTURADOS ]</span>
+        <span class="bracket-tag emerald">[ ${tome.totalChapters} • ${tome.totalPages} PÁGINAS ]</span>
+      `;
+    }
+  }
+
+  window.selectCourse = function (courseId, optModuleId) {
+    saveState();
+    state.currentCourseId = courseId;
+    if (window.COURSES_REGISTRY && window.COURSES_REGISTRY[courseId]) {
+      window.CODEX_DATA = window.COURSES_REGISTRY[courseId];
+    }
+    localStorage.setItem("coursebook_active_course_id", courseId);
+
+    if (state.courses && state.courses[courseId]) {
+      const c = state.courses[courseId];
+      state.currentModuleId = optModuleId || c.currentModuleId || 1;
+      state.currentStep = c.currentStep || "revisao";
+      state.activeUnitId = c.activeUnitId || "u1-1";
+      state.completedSteps = c.completedSteps || { 1: { revisao: false, aprendizado: false, quizzes: false, exercicios: false } };
+      state.checklistState = c.checklistState || {};
+      state.quizAnswers = c.quizAnswers || {};
+      state.exerciseNotes = c.exerciseNotes || {};
+      state.exerciseStatus = c.exerciseStatus || {};
+    } else {
+      state.currentModuleId = optModuleId || 1;
+      state.currentStep = "revisao";
+      state.activeUnitId = "u1-1";
+      state.completedSteps = { 1: { revisao: false, aprendizado: false, quizzes: false, exercicios: false } };
+      state.checklistState = {};
+      state.quizAnswers = {};
+      state.exerciseNotes = {};
+      state.exerciseStatus = {};
+    }
+
+    saveState();
+    updateTomeHeroUI();
+    renderCatalogModules();
+    updateAllProgressIndicators();
+
+    if (optModuleId) {
+      window.openModuleReader(optModuleId, "revisao");
+    } else {
+      window.switchCodexView("catalog");
+    }
+  };
+
   function updateAllProgressIndicators() {
     const globalProg = getGlobalCourseProgress();
     const curMod = getCurrentModuleMeta();
     const curModProg = getModuleProgress(curMod.id);
     const unlockedCount = window.CODEX_DATA.modules.filter((m) => m.unlocked).length;
+    const totalMods = window.CODEX_DATA.modules.length;
 
     // Topbar
     const globalBar = document.getElementById("topbar-global-fill");
@@ -233,26 +336,55 @@
     if (globalBar) globalBar.style.width = `${globalProg.percentage}%`;
     if (globalPct) globalPct.textContent = `${globalProg.percentage}%`;
     if (globalLabel) {
-      globalLabel.textContent = `CURSO: ${globalProg.completedCourseSteps}/${globalProg.totalCourseSteps} ETAPAS`;
+      const tomeId = (window.CODEX_DATA.tome && window.CODEX_DATA.tome.id) || "CURSO";
+      globalLabel.textContent = `${tomeId.toUpperCase()}: ${globalProg.completedCourseSteps}/${globalProg.totalCourseSteps} ETAPAS`;
     }
 
-    // Home Course Card (Página Inicial)
+    // Home Course Card (Curso 01 - CLRS)
     const homeCourseFill = document.getElementById("home-course-fill");
     const homeCoursePctText = document.getElementById("home-course-pct-text");
     const homeMod1MiniPct = document.getElementById("home-mod1-mini-pct");
     const homeStatusTag = document.getElementById("home-course-status-tag");
-    if (homeCourseFill) homeCourseFill.style.width = `${globalProg.percentage}%`;
-    if (homeCoursePctText) {
-      homeCoursePctText.textContent = `${globalProg.percentage}% (${globalProg.completedModulesCount} de ${globalProg.totalModules} módulos • ${globalProg.completedCourseSteps} de ${globalProg.totalCourseSteps} etapas)`;
+    if (homeCourseFill && (!state.currentCourseId || state.currentCourseId === "clrs-algoritmos")) {
+      homeCourseFill.style.width = `${globalProg.percentage}%`;
+      if (homeCoursePctText) {
+        homeCoursePctText.textContent = `${globalProg.percentage}% (${globalProg.completedModulesCount} de ${globalProg.totalModules} módulos • ${globalProg.completedCourseSteps} de ${globalProg.totalCourseSteps} etapas)`;
+      }
+      if (homeMod1MiniPct) {
+        homeMod1MiniPct.textContent = `${curMod.code}: ${curModProg.completedCount}/4 seções (${curModProg.percentage}%)`;
+      }
+      if (homeStatusTag) {
+        homeStatusTag.textContent =
+          globalProg.percentage === 100
+            ? "[ CURSO CONCLUÍDO • 100% ]"
+            : `[ ${unlockedCount}/${totalMods} MÓDULOS ATIVOS ]`;
+      }
     }
-    if (homeMod1MiniPct) {
-      homeMod1MiniPct.textContent = `${curMod.code}: ${curModProg.completedCount}/4 seções (${curModProg.percentage}%)`;
-    }
-    if (homeStatusTag) {
-      homeStatusTag.textContent =
-        globalProg.percentage === 100
-          ? "[ CURSO CONCLUÍDO • 100% ]"
-          : `[ ${unlockedCount}/16 MÓDULOS ATIVOS ]`;
+
+    // Home Course Card (Curso 03 - Nilo Python)
+    const homeNiloFill = document.getElementById("home-nilo-fill");
+    const homeNiloPctText = document.getElementById("home-nilo-pct-text");
+    const homeNiloMod1MiniPct = document.getElementById("home-nilo-mod1-mini-pct");
+    const homeNiloStatusTag = document.getElementById("home-nilo-status-tag");
+    if (homeNiloFill) {
+      const niloCourse = (window.COURSES_REGISTRY && window.COURSES_REGISTRY["nilo-python"]);
+      const niloSteps = (state.courses && state.courses["nilo-python"] && state.courses["nilo-python"].completedSteps) || (state.currentCourseId === "nilo-python" ? state.completedSteps : {});
+      let niloDone = 0;
+      STEP_KEYS.forEach((k) => {
+        if (niloSteps[1] && niloSteps[1][k]) niloDone++;
+      });
+      const niloMod1Pct = Math.round((niloDone / STEP_KEYS.length) * 100);
+      const niloCoursePct = Math.round((niloDone / (12 * STEP_KEYS.length)) * 100);
+      homeNiloFill.style.width = `${Math.max(8.33, niloCoursePct)}%`;
+      if (homeNiloPctText) {
+        homeNiloPctText.textContent = `${niloCoursePct}% concluído (Módulo 01: ${niloMod1Pct}% • ${niloDone} de 4 seções)`;
+      }
+      if (homeNiloMod1MiniPct) {
+        homeNiloMod1MiniPct.textContent = `Módulo 01: ${niloDone}/4 seções (${niloMod1Pct}%)`;
+      }
+      if (homeNiloStatusTag) {
+        homeNiloStatusTag.textContent = niloDone === 4 ? "[ MÓDULO 01 CONCLUÍDO • 100% ]" : "[ MÓDULO 01 PRONTO ]";
+      }
     }
 
     // Hero Telemetry (Catalog View)
@@ -270,8 +402,8 @@
     if (heroGlobalStat) heroGlobalStat.textContent = `${globalProg.percentage}%`;
     if (heroStepsStat) heroStepsStat.textContent = `${curModProg.completedCount} / 4`;
     if (heroStepsLabel) heroStepsLabel.textContent = `Etapas do ${curMod.code}`;
-    if (heroBuiltStat) heroBuiltStat.textContent = `${String(unlockedCount).padStart(2, "0")} / 16`;
-    if (heroCompletedModsStat) heroCompletedModsStat.textContent = `${globalProg.completedModulesCount} / 16`;
+    if (heroBuiltStat) heroBuiltStat.textContent = `${String(unlockedCount).padStart(2, "0")} / ${totalMods}`;
+    if (heroCompletedModsStat) heroCompletedModsStat.textContent = `${globalProg.completedModulesCount} / ${totalMods}`;
     if (heroActiveModName) heroActiveModName.textContent = `${curMod.code}: ${curMod.title} (${curMod.chapters})`;
 
     // Sidebar Progress (Reader View)
@@ -295,6 +427,7 @@
     });
 
     if (viewName === "catalog") {
+      updateTomeHeroUI();
       renderCatalogModules();
     } else if (viewName === "reader") {
       renderReaderView();
@@ -500,7 +633,7 @@
     const sbTocTitle = document.getElementById("sidebar-toc-title");
     const sbTocList = document.getElementById("sidebar-toc-list");
 
-    if (sbCode) sbCode.textContent = `[ ${curMod.code} DE 16 ]`;
+    if (sbCode) sbCode.textContent = `[ ${curMod.code} DE ${window.CODEX_DATA.modules.length} ]`;
     if (sbCh) sbCh.textContent = curMod.chapters.toUpperCase();
     if (sbTitle) sbTitle.textContent = curMod.title;
     if (sbStepsTitle) sbStepsTitle.textContent = `Seções do ${curMod.code}`;
@@ -1627,6 +1760,7 @@
      INICIALIZAÇÃO GERAL AO CARREGAR O DOM
      ======================================================================== */
   document.addEventListener("DOMContentLoaded", function () {
+    updateTomeHeroUI();
     renderCatalogModules();
     renderReaderView();
     window.switchCodexView(state.currentView || "home");

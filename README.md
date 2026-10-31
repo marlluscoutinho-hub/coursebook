@@ -59,8 +59,11 @@ coursebook/
 │   ├── clrs-algoritmos/        # Curso 01: Algoritmos: Teoria e Prática (CLRS 3ª Ed.)
 │   │   ├── course.json         # Metadados do curso
 │   │   └── data/               # 16 Módulos completos (curriculum.js, module2..16.js)
-│   └── forbellone-logica/      # Curso 02: Lógica de Programação (Forbellone 3ª Ed.)
-│       └── course.json         # Metadados e preparação do próximo curso
+│   ├── forbellone-logica/      # Curso 02: Lógica de Programação (Forbellone 3ª Ed.)
+│   │   └── course.json         # Metadados e planejamento
+│   └── nilo-python/            # Curso 03: Introdução à Programação com Python (Nilo Menezes 2ª Ed.)
+│       ├── course.json         # Metadados do curso
+│       └── data/               # Trilha dos 12 módulos (curriculum.js, module1.js)
 ```
 
 ---

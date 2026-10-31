@@ -90,10 +90,10 @@
             </div>
 
             <div class="tome-hero-actions">
-              <button class="btn-primary-brutal" onclick="openModuleReader(1)">
+              <button class="btn-primary-brutal" onclick="selectCourse('clrs-algoritmos', 1)">
                 [ CONTINUAR ESTUDO • MÓDULO 01 → ]
               </button>
-              <button class="btn-secondary-brutal" onclick="switchCodexView('catalog')">
+              <button class="btn-secondary-brutal" onclick="selectCourse('clrs-algoritmos')">
                 [ VER VISÃO GERAL &amp; TRILHA DOS 16 MÓDULOS ]
               </button>
             </div>
@@ -123,6 +123,49 @@
             </div>
           </div>
         </article>
+
+        <!-- Card Curso #03: Introdução à Programação com Python (Nilo Ney Coutinho Menezes) -->
+        <article class="course-home-card active-course" style="border-left: 6px solid var(--accent-amber);">
+          <div class="course-home-card-main">
+            <div>
+              <div class="tome-meta-row">
+                <span class="bracket-tag dark">[ CURSO #03 ]</span>
+                <span class="bracket-tag amber">[ 12 MÓDULOS • 12 CAPÍTULOS + APÊNDICE A ]</span>
+                <span class="bracket-tag emerald" id="home-nilo-status-tag">[ MÓDULO 01 PRONTO ]</span>
+              </div>
+              <h2 class="course-home-title">Introdução à Programação com Python (2ª Edição)</h2>
+              <p class="tome-authors">
+                Nilo Ney Coutinho Menezes
+              </p>
+              <p class="course-home-desc">
+                Curso interativo completo baseado na obra de referência da Novatec, cobrindo modelo mental do interpretador REPL, variáveis, condições, repetições, coleções (listas, pilhas, filas, dicionários), strings e jogo da forca, funções e recursão, persistência de arquivos, orientação a objetos e bancos de dados SQLite com bancadas interativas em cada módulo.
+              </p>
+            </div>
+
+            <div class="course-home-progress-box">
+              <div class="course-home-progress-top">
+                <span>PROGRESSO DO CURSO</span>
+                <strong id="home-nilo-pct-text">Módulo 01 Disponível (1 de 12 módulos estruturados)</strong>
+              </div>
+              <div class="course-home-progress-track">
+                <div class="course-home-progress-fill" id="home-nilo-fill" style="width: 8.33%;"></div>
+              </div>
+              <div class="course-home-current-mod">
+                <span>Módulo ativo: <strong>Módulo 01 — O Computador, o Interpretador e os Primeiros Programas</strong></span>
+                <span id="home-nilo-mod1-mini-pct">Módulo 01: 0% concluído</span>
+              </div>
+            </div>
+
+            <div class="tome-hero-actions">
+              <button class="btn-primary-brutal" onclick="selectCourse('nilo-python', 1)">
+                [ INICIAR CURSO PYTHON • MÓDULO 01 → ]
+              </button>
+              <button class="btn-secondary-brutal" onclick="selectCourse('nilo-python')">
+                [ VER VISÃO GERAL &amp; TRILHA DOS 12 MÓDULOS ]
+              </button>
+            </div>
+          </div>
+        </article>
       </div>
     </div>
   </main>
@@ -143,18 +186,18 @@
       <section class="tome-hero-card">
         <div class="tome-hero-main">
           <div>
-            <div class="tome-meta-row">
+            <div class="tome-meta-row" id="tome-hero-meta-row">
               <span class="bracket-tag dark">[ VISÃO GERAL DO CURSO ]</span>
               <span class="bracket-tag amber">[ 16 MÓDULOS ESTRUTURADOS ]</span>
               <span class="bracket-tag emerald">[ 35 CAPÍTULOS + 4 APÊNDICES • 1.042 PÁGINAS ]</span>
             </div>
-            <h1 class="tome-title">Algoritmos: Teoria e Prática (3ª Edição)</h1>
-            <p class="tome-authors">
+            <h1 class="tome-title" id="tome-hero-title">Algoritmos: Teoria e Prática (3ª Edição)</h1>
+            <p class="tome-authors" id="tome-hero-authors">
               THOMAS H. CORMEN • CHARLES E. LEISERSON • RONALD L. RIVEST • CLIFFORD STEIN
             </p>
           </div>
 
-          <p class="tome-description">
+          <p class="tome-description" id="tome-hero-desc">
             Selecione abaixo um módulo para estudar. Cada módulo é dividido em 4 etapas (<strong>Revisão</strong>, <strong>Primeiro Contato</strong>, <strong>Quizzes</strong> e <strong>Exercícios</strong>) com acompanhamento automático de progresso.
           </p>
 
@@ -360,6 +403,11 @@
   <script src="courses/clrs-algoritmos/data/module14.js"></script>
   <script src="courses/clrs-algoritmos/data/module15.js"></script>
   <script src="courses/clrs-algoritmos/data/module16.js"></script>
+
+  <!-- Curso 03: Introdução à Programação com Python (Nilo Ney Coutinho Menezes) -->
+  <script src="courses/nilo-python/data/curriculum.js"></script>
+  <script src="courses/nilo-python/data/module1.js"></script>
+
   <script src="app.js"></script>
 </body>
 </html>
