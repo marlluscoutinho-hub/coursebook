@@ -1898,3 +1898,128 @@ li .katex {
     font-size: 0.92em;
   }
 }
+
+/* ==========================================================================
+   BACKDROP & NAVEGAÇÃO MOBILE DA GAVETA
+   ========================================================================== */
+.sidebar-backdrop {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(17, 17, 17, 0.55);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  z-index: 90;
+}
+
+.sidebar-backdrop.active {
+  display: block;
+}
+
+/* ==========================================================================
+   CATÁLOGO COMPLETO DE CALLOUTS EDITORIAIS
+   ========================================================================== */
+.canonical-callout.key-idea {
+  background-color: var(--accent-amber-bg);
+  border-color: var(--ink-primary);
+  box-shadow: 4px 4px 0px var(--accent-amber-dark);
+}
+
+.canonical-callout.definition {
+  background-color: var(--bg-paper-alt);
+  border-left: 6px solid #4B5563;
+}
+
+.canonical-callout.warning {
+  background-color: #FEF2F2;
+  border-color: var(--ink-primary);
+  box-shadow: 4px 4px 0px #DC2626;
+}
+
+.canonical-callout.note {
+  background-color: var(--bg-paper-alt);
+  border: 1px dashed var(--ink-primary);
+}
+
+.canonical-callout.code {
+  background-color: var(--bg-terminal);
+  color: var(--ink-on-dark);
+}
+
+.canonical-callout.custom-callout {
+  background-color: var(--bg-elevated);
+  border-left: 6px solid var(--accent-amber);
+}
+
+/* ==========================================================================
+   ALIASES DE LABORATÓRIO (v2) & COMPATIBILIDADE COM BANCADA
+   ========================================================================== */
+.lab-box {
+  background-color: var(--bg-terminal);
+  border: var(--border-strong);
+  box-shadow: var(--shadow-brutal);
+  margin: 2rem 0;
+  color: var(--ink-on-dark);
+}
+
+.lab-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.25rem;
+  background-color: #1A1A1A;
+  border-bottom: 1px solid #333333;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.lab-title {
+  color: var(--accent-amber);
+  letter-spacing: 0.04em;
+}
+
+.lab-body {
+  padding: 1.5rem;
+  background-color: var(--bg-paper);
+  color: var(--ink-primary);
+}
+
+.lab-controls {
+  margin-top: 1.25rem;
+  padding: 1rem;
+  background-color: var(--bg-paper-alt);
+  border: var(--border-thin);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.lab-telemetry-strip {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  background-color: var(--bg-terminal);
+  color: var(--accent-amber);
+  padding: 0.75rem 1rem;
+  border: var(--border-strong);
+  margin-top: 1rem;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+/* Acessibilidade: Alvos de Toque Mínimos de 44px em Botões */
+.btn-primary-brutal,
+.btn-secondary-brutal,
+.sidebar-back-btn,
+.mobile-menu-btn {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
