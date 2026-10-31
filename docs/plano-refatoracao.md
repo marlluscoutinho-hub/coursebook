@@ -148,11 +148,11 @@ Continua sem prazos. A ordem agora é:
 |---|---|---|---|
 | 0 | **Rede de segurança**: tag `v0-pre-refactor`, `docs/visual-debt.md`, página de teste de LaTeX, confirmar PDFs não rastreados (já confirmei: **nenhum PDF está no git**) | Ponto de retorno | — |
 | 1 | **Correção do LaTeX** (só CSS) | Resultado visível, baixo risco | 0 |
-| 2 | **Decisão de schema** em `docs/architecture.md` + JSON Schema: curso, módulo, aula (`intro`, blocos), tipos de bloco, catálogo de callouts, perfil (com composição), eventos de métricas. *Só documento.* | Contrato para tudo que vem depois | decisões da seção 10 |
+| 2 | **Decisão de schema** em `docs/architecture.md` + JSON Schema: curso, módulo, aula (`intro`, blocos), tipos de bloco, catálogo de callouts, perfil (com composição), eventos de métricas (com `viewport`), suporte `mobile` do laboratório. *Só documento.* | Contrato para tudo que vem depois | decisões da seção 10 |
 | 3 | **Revisão da skill construtora** em paralelo ao schema: escrever a versão 2 (novo schema, novo vocabulário, validação por schema, analisador de cobertura). *Pode usar o Nilo-Python como caso de teste.* | A IA passa a gerar o formato novo | 2 |
 | 4 | **Motor novo**: carregamento por `fetch`, blocos configuráveis, perfis, progresso por aula, registro de eventos (nível 1 de 6.3) | Plataforma que lê o formato novo | 2 |
 | 5 | **Adaptador do CLRS**: lê `unidades`/`revisao` antigos e entrega o modelo novo em memória; extrai as bancadas de `app.js` para o curso | CLRS segue funcionando no motor novo | 4 |
-| 6 | **Vocabulário na UI**: aula, laboratório, rascunho, catálogo de callouts com CSS para cada tipo | Interface coerente | 4 (aproveita 2) |
+| 6 | **Vocabulário e ajustes de UI**: aula, laboratório, rascunho, catálogo de callouts com CSS para cada tipo; alvos de toque, tipografia fluida e fim dos estilos inline (ver 6.5) | Interface coerente | 4 (aproveita 2) |
 | 7 | **Piloto Nilo-Python**: reescrever o módulo 1 pela skill v2 e comparar dois perfis | Primeira validação real do modelo | 3, 4 |
 | 8 | **Revisão e fluxo do módulo**: resumos por aula alimentam a revisão; ordem aprendizado → resumo → quiz → exercícios | Fluxo final | 4, 7 |
 | 9 | **Persistência nível 2** (exportar/importar) e painel simples de métricas | Dados para comparar formatos | 4 |
@@ -162,6 +162,39 @@ Continua sem prazos. A ordem agora é:
 
 > [!TIP]
 > As etapas 3 e 4 podem andar em paralelo depois da 2, porque ambas só dependem do schema. É o ponto onde dá para dividir o trabalho.
+
+### 6.5 Adaptação para mobile
+
+**O que já existe** (verificado em `styles.css` e `index.html`): meta `viewport`, três breakpoints (1024, 720 e 640 px), barra lateral que vira gaveta (`.reader-sidebar` fixa em `left: -100%`, com `.open`) e um botão `.mobile-menu-btn`. Ou seja, o projeto **não parte do zero**: tem uma base de desktop-first com adaptações pontuais.
+
+**Lacunas prováveis** (hipóteses a confirmar em dispositivo ou emulação, não conclusões):
+| Área | Risco |
+|---|---|
+| Gaveta do menu | Sem fundo escurecido (backdrop), sem fechar ao tocar fora ou ao escolher uma aula; sem controle de foco/rolagem do corpo |
+| Cabeçalho do módulo | `.module-sticky-header` é fixo e tem `padding: 1.25rem 2rem`; em tela baixa ocupa espaço demais da leitura |
+| Alvos de toque | Botões como `.unit-pill-btn` e o check de concluído podem ficar abaixo de 44 × 44 px |
+| Conteúdo largo | Pseudocódigo, tabelas e laboratórios com `overflow-x`, mas sem indicação visual de rolagem |
+| Laboratórios | Controles pensados para mouse (hover, arrastar, campos pequenos). Precisam de eventos de ponteiro, não só `click`/`mouse*` |
+| Estilos inline | `style="…"` gerados por `app.js` ignoram os breakpoints (item 11 do `visual-debt.md`) |
+| Tipografia | Corpo e fórmulas com tamanho fixo; falta escala fluida (`clamp()`) |
+
+**Decisões de arquitetura que precisam entrar no modelo:**
+1. **Mobile-first ou ajuste incremental?** Recomendo ajustar o desktop-first atual por enquanto e adotar mobile-first **no CSS novo** do motor (etapa 4), para não reescrever 2.000 linhas agora.
+2. **O laboratório declara seu suporte a telas pequenas** no schema: `"mobile": "full" | "limited" | "desktop-only"`. Se for `desktop-only`, o motor mostra um aviso e a aula continua utilizável sem ele. Isso evita esconder o problema e dá à IA escritora uma regra clara: gerar laboratórios com controles de toque.
+3. **O perfil pode variar por tela?** Exemplo: no celular, o laboratório fica depois do texto, em vez de ao lado. Proponho que a **ordem dos blocos continue sendo do perfil**, e que a **apresentação** (lado a lado, empilhado) seja decisão do CSS. Não misturar as duas.
+4. **O LaTeX no mobile** já foi tratado na etapa 1 (rolagem horizontal), mas fórmulas rolando em telas de 360 px são cansativas. O analisador da skill pode sinalizar fórmulas display muito largas para o autor quebrar com `aligned`.
+5. **Métricas**: incluir `viewport` (largura) em cada evento. Assim dá para comparar se um formato funciona pior no celular, sem custo extra.
+6. **Offline/PWA**: fora do escopo agora. Fica como pergunta futura, porque estudar no celular sem rede é um uso provável.
+
+**Como entra na ordem** (sem criar etapa solta):
+- **Etapa 0**: acrescentar ao `tests/latex.html` e a uma nova página `tests/layout.html` a verificação em 360, 768 e 1280 px, com captura de tela. A página de layout reúne os componentes (callouts, pseudocódigo, quiz, laboratório de exemplo).
+- **Etapa 2**: o schema ganha `mobile` no laboratório e `viewport` no evento de métricas.
+- **Etapa 3**: a skill v2 passa a exigir controles de toque nos laboratórios e o analisador a checar o item 4.
+- **Etapa 4**: o motor novo nasce com gaveta completa (backdrop, fechar ao tocar fora, foco), cabeçalho compacto e CSS mobile-first.
+- **Etapa 6**: alvos de toque ≥ 44 px, escala tipográfica fluida e remoção dos estilos inline do `app.js`.
+- **Nova etapa 6b**, **"Passe mobile do CLRS"**: auditar o CLRS pelo adaptador (etapa 5) em emulação e corrigir o que for global. Conteúdo específico entra na conversão (etapa 10).
+
+**Verificação mobile (critérios):** sem rolagem horizontal da página inteira em 360 px; menu abre e fecha por toque; todos os botões com alvo ≥ 44 px; laboratório de cada curso utilizável por toque; fórmulas display rolam dentro do bloco. Verificação manual em celular real, além da emulação do Chrome (`--window-size`), porque emulação não reproduz teclado virtual nem a barra de endereço.
 
 ## 7. Perguntas para você se fazer sobre o modelo modular
 
