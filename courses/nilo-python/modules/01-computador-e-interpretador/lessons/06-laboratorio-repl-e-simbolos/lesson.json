@@ -1,0 +1,27 @@
+{
+  "id": "06-laboratorio-repl-e-simbolos",
+  "title": "Bancada Interativa: Simulador do Ciclo REPL & Tabela de Símbolos",
+  "kind": "lab",
+  "pages": "Prática Integrada (pp. 34–48)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "lab",
+      "id": "repl-simulator",
+      "title": "Laboratório Interativo: Simulador REPL & Tabela de Símbolos",
+      "source": "catalog",
+      "mobile": "full"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

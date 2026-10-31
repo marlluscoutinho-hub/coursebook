@@ -1,0 +1,18 @@
+{
+  "id": "pratico",
+  "extends": [
+    "padrao"
+  ],
+  "lesson": [
+    "intro",
+    "lab",
+    "text",
+    "summary"
+  ],
+  "module": [
+    "lessons",
+    "review",
+    "quiz",
+    "exercises"
+  ]
+}

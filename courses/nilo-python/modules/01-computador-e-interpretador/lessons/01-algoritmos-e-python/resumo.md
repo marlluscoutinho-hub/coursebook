@@ -1,0 +1,4 @@
+# Resumo da Aula: A Natureza dos Algoritmos e a Escolha de Python
+
+<p>Um <strong>algoritmo</strong> é uma sequência finita, não ambígua e ordenada de instruções operacionais destinadas a resolver um problema computacional ou realizar uma transformação de dados. Nilo Menezes desmistifica a programação demonstrando que todos nós já executamos algoritmos cotidianos: ao seguir uma receita culinária, traçar itinerários em mapas ou ajustar as horas de um relógio digital.</p>
+          <p>A linguagem <strong>Python</strong> foi escolhida como veículo pedagógico central por priorizar a <em>legibilidade do código</em>, apresentar uma sintaxe próxima da linguagem natural humana, adotar tipagem dinâmica de alto nível e possuir uma filosofia pragmática de "baterias inclusas", permitindo que o iniciante se concentre no raciocínio lógico em vez de travar em minúcias burocráticas de compilação.</p>

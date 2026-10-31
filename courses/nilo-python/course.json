@@ -1,15 +1,17 @@
 {
   "id": "nilo-python",
-  "slug": "nilo-python",
-  "title": "Introdução à Programação com Python: Algoritmos e Lógica de Programação para Iniciantes",
-  "edition": "2ª Edição",
-  "authors": "Nilo Ney Coutinho Menezes",
-  "tag": "PROGRAMAÇÃO & ALGORITMOS EM PYTHON",
-  "badge": "CANÔNICO",
-  "pagesCount": 325,
-  "chaptersCount": 12,
-  "modulesCount": 12,
-  "status": "in_development",
-  "dataDir": "courses/nilo-python/data/",
-  "description": "Curso interativo canônico baseado na obra de Nilo Ney Coutinho Menezes (Novatec), cobrindo lógica computacional, variáveis, condições, repetições com while/for, coleções (listas, filas, pilhas, dicionários, tuplas), manipulação de strings, funções e recursão, arquivos, orientação a objetos e bancos de dados SQLite com bancadas interativas Vanilla JS em cada módulo."
+  "title": "Introdução à Programação com Python: Algoritmos e Lógica para Iniciantes",
+  "description": "Curso interativo modular canônico baseado na obra de Nilo Ney Coutinho Menezes (Novatec Editora, 2ª Edição), cobrindo lógica computacional, interpretador REPL, variáveis, condições, repetições, coleções e SQLite com laboratórios interativos.",
+  "book": {
+    "title": "Introdução à Programação com Python: Algoritmos e Lógica de Programação para Iniciantes",
+    "authors": "Nilo Ney Coutinho Menezes",
+    "edition": "2ª Edição",
+    "year": 2014
+  },
+  "contentPolicy": "paraphrase",
+  "profile": "pratico",
+  "modules": [
+    "01-computador-e-interpretador"
+  ],
+  "status": "in_development"
 }

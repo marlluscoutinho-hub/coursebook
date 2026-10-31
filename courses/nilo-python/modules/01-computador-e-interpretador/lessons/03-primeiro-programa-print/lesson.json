@@ -1,0 +1,20 @@
+{
+  "id": "03-primeiro-programa-print",
+  "title": "Anatomia do Primeiro Programa e Cuidados Críticos de Digitação",
+  "kind": "standard",
+  "pages": "Capítulo 2 (pp. 40–44)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

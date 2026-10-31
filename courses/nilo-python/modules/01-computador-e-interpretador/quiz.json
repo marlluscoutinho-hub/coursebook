@@ -1,0 +1,286 @@
+{
+  "title": "Quizzes Dialéticos do Módulo 01 (Capítulos 1 e 2)",
+  "subtitle": "10 questões analíticas comentadas alternativa por alternativa",
+  "questions": [
+    {
+      "id": "q1-1",
+      "type": "multiple_choice",
+      "reference": "Capítulos 1 e 2",
+      "question": "Segundo Nilo Ney Coutinho Menezes no Capítulo 1, por que a metáfora da 'receita culinária' ilustra com precisão a essência de um algoritmo de computador?",
+      "options": [
+        {
+          "text": "Porque cozinhar exige que o cozinheiro decore termos em alemão ou inglês antes de iniciar o preparo de um prato.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O autor cita sua experiência frustrante tentando traduzir uma receita em alemão para demonstrar que dicionários não bastam; o cerne da analogia não é a língua estrangeira, mas sim a necessidade de compreender o efeito prático das instruções."
+        },
+        {
+          "text": "Porque uma receita estabelece uma sequência estrita e ordenada de instruções operacionais que só geram o resultado pretendido se executadas com compreensão e na cronologia correta.",
+          "isCorrect": false,
+          "explanation": "Correta! Como enfatizado na Seção 1.4.7 do livro, receitas e programas dependem de ações encadeadas de forma não ambígua. A simples listagem de passos não auxilia quem não entende seus efeitos, e alterar a ordem (como assar a massa antes de misturar os ingredientes) invalida todo o procedimento."
+        },
+        {
+          "text": "Porque tanto receitas culinárias quanto programas de computador dependem exclusivamente de intuição artística, dispensando regras de lógica formal.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Programas de computador executam sobre arquiteturas determinísticas, exigindo absoluta precisão lógica e aderência estrita às regras gramaticais da linguagem."
+        },
+        {
+          "text": "Porque qualquer computador é capaz de corrigir automaticamente ingredientes e passos equivocados digitados pelo programador.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O computador é uma máquina obediente que executa estritamente o que foi instruído, incapaz de inferir intuitivamente correções para erros de raciocínio do autor."
+        }
+      ]
+    },
+    {
+      "id": "q1-2",
+      "type": "multiple_choice",
+      "reference": "Capítulos 1 e 2",
+      "question": "Qual é a distinção arquitetural primordial entre o modo interativo (REPL) e a execução de scripts persistidos em arquivos (.py)?",
+      "options": [
+        {
+          "text": "O modo interativo compila permanentemente o programa em código de máquina binário, enquanto scripts .py rodam apenas em servidores web remotos.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O modo interativo não produz binários nem grava arquivos em disco; sua execução reside temporariamente na memória RAM da sessão ativa."
+        },
+        {
+          "text": "O modo REPL avalia e exibe instantaneamente o resultado de cada instrução submetida pelo prompt >>>, enquanto scripts .py agrupam instruções em arquivos de texto UTF-8 para execução reproduzível.",
+          "isCorrect": false,
+          "explanation": "Correta! Conforme demonstrado nas Seções 2.2 e 2.3 da obra, o interpretador interativo opera no ciclo Read-Eval-Print Loop, permitindo validação imediata de expressões, ao passo que scripts em arquivos com extensão .py gravam o algoritmo em disco para reutilização permanente."
+        },
+        {
+          "text": "No modo interativo é proibido usar funções e operadores aritméticos, recursos que só passam a existir quando o código é salvo em disco.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Todas as operações aritméticas, funções nativas e estruturas do Python funcionam plenamente no modo interativo."
+        },
+        {
+          "text": "Arquivos .py devem ser redigidos obrigatoriamente no Microsoft Word para embutir as formatações gráficas que o interpretador exige.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Conforme adverte a Seção 2.3, processadores de texto convencionais como Word ou OpenOffice corrompem o código com metadados invisíveis; programas devem ser escritos exclusivamente como texto puro (UTF-8) em editores adequados."
+        }
+      ]
+    },
+    {
+      "id": "q1-3",
+      "type": "multiple_choice",
+      "reference": "Capítulos 1 e 2",
+      "question": "Ao executar o comando Print('Olá, Mundo!') no interpretador Python, o que ocorrerá e qual é a causa fundamental?",
+      "options": [
+        {
+          "text": "O programa imprimirá a mensagem normalmente, pois Python ignora a diferença entre letras maiúsculas e minúsculas em nomes de comandos.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Python é estritamente sensível a maiúsculas e minúsculas (case-sensitive)."
+        },
+        {
+          "text": "O interpretador interromperá a execução disparando um NameError, porque o identificador nativo é print (minúsculo), sendo Print considerado uma variável ou função não definida.",
+          "isCorrect": false,
+          "explanation": "Correta! Na Seção 2.4 (item 1), Nilo Menezes destaca que 'print e Print são completamente diferentes, causando um erro caso você digite o P maiúsculo'. Em Python, a função nativa é registrada unicamente como 'print'."
+        },
+        {
+          "text": "O programa fechará o sistema operacional sem emitir mensagens de aviso.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Erros de identificação são tratados pelo interpretador Python, que emite um relatório claro de exceção (traceback) com a linha e a natureza da falha."
+        },
+        {
+          "text": "Ocorrerá um erro de indentação (IndentationError), pois toda instrução inicial exige um recuo de 4 espaços em branco.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Instruções situadas no nível superior de um script não devem conter espaços de indentação antes do comando."
+        }
+      ]
+    },
+    {
+      "id": "q1-4",
+      "type": "multiple_choice",
+      "reference": "Capítulos 1 e 2",
+      "question": "Qual é o valor numérico e o tipo resultante produzido pela expressão 20 / 4 no interpretador Python 3?",
+      "options": [
+        {
+          "text": "5 do tipo inteiro (int), pois a divisão entre 20 e 4 é exata.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Em Python 3, o operador de divisão tradicional (/) sempre promove o resultado para ponto flutuante, independentemente de a divisão ser exata."
+        },
+        {
+          "text": "5.0 do tipo ponto flutuante (float), uma vez que o operador / realiza divisão real em Python 3.",
+          "isCorrect": false,
+          "explanation": "Correta! Conforme explicitado na Listagem 2.4 do livro (p. 42), '20/4' resulta em '5.0'. Para obter um quociente estritamente inteiro em Python utiliza-se a divisão de piso (//)."
+        },
+        {
+          "text": "0 do tipo inteiro (int), pois o operador / extrai o resto da divisão.",
+          "isCorrect": false,
+          "explanation": "Incorreta. A extração do resto da divisão é realizada pelo operador módulo (%)."
+        },
+        {
+          "text": "Uma mensagem de SyntaxError, pois números inteiros não podem ser divididos sem conversão prévia com float().",
+          "isCorrect": false,
+          "explanation": "Incorreta. Python realiza coerção automática de tipos numéricos em expressões aritméticas de divisão."
+        }
+      ]
+    },
+    {
+      "id": "q1-5",
+      "type": "multiple_choice",
+      "reference": "Capítulos 1 e 2",
+      "question": "Qual é o resultado da avaliação no interpretador Python da expressão do Exercício 2.2 do livro: 10 % 3 * 10 ** 2 + 1 - 10 * 4 / 2?",
+      "options": [
+        {
+          "text": "81.0, respeitando a precedência estrita: exponenciação primeiro, seguida por módulo, multiplicações e divisões da esquerda para a direita, e finalmente adição e subtração.",
+          "isCorrect": false,
+          "explanation": "Correta! Pela hierarquia algébrica: 10**2 = 100; em seguida 10 % 3 = 1; 1 * 100 = 100; 10 * 4 = 40; 40 / 2 = 20.0; por fim 100 + 1 = 101; 101 - 20.0 = 81.0."
+        },
+        {
+          "text": "45, calculando todos os operadores linearmente da esquerda para a direita sem considerar a prioridade algébrica.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Ignorar a precedência algébrica viola as leis matemáticas fundamentais implementadas pelo interpretador."
+        },
+        {
+          "text": "81 (número inteiro puro), pois todos os operandos originais da expressão foram digitados sem ponto decimal.",
+          "isCorrect": false,
+          "explanation": "Incorreta. A presença da operação de divisão real (/ 2) converte a parcela em ponto flutuante (20.0), propagando o tipo float para o resultado final (81.0)."
+        },
+        {
+          "text": "Zero, pois 10 % 3 anula os termos subsequentes da equação.",
+          "isCorrect": false,
+          "explanation": "Incorreta. 10 % 3 produz resto 1 (pois 10 = 3*3 + 1), não zero."
+        }
+      ]
+    },
+    {
+      "id": "q1-6",
+      "type": "multiple_choice",
+      "reference": "Capítulos 1 e 2",
+      "question": "Em Python, qual é a representação sintática canônica do operador de exponenciação (potenciação), por exemplo para calcular 2 elevado à terceira potência (2³)?",
+      "options": [
+        {
+          "text": "2 ^ 3",
+          "isCorrect": false,
+          "explanation": "Incorreta. Em Python, o símbolo de circunflexo (^) é o operador bitwise XOR (ou exclusivo binário), e não o operador de exponenciação."
+        },
+        {
+          "text": "2 ** 3 (dois asteriscos consecutivos, sem espaços intermediários)",
+          "isCorrect": false,
+          "explanation": "Correta! Na Seção 2.5 (Listagem 2.5), Nilo Menezes instrui: 'utilizaremos dois asteriscos (**) para representar a operação de exponenciação. Observe que não há qualquer espaço entre os dois asteriscos'."
+        },
+        {
+          "text": "exp(2, 3)",
+          "isCorrect": false,
+          "explanation": "Incorreta. Não existe a função embutida nativa exp() sem importar módulos matemáticos específicos como math.pow()."
+        },
+        {
+          "text": "2 * 3",
+          "isCorrect": false,
+          "explanation": "Incorreta. Um único asterisco (*) denota multiplicação escalar simples (produzindo 6)."
+        }
+      ]
+    },
+    {
+      "id": "q1-7",
+      "type": "multiple_choice",
+      "reference": "Capítulos 1 e 2",
+      "question": "O que o operador de igualdade simples (=) representa em uma linha como salário = 1500, e como ele deve ser semanticamente lido?",
+      "options": [
+        {
+          "text": "Representa uma asserção de equivalência matemática estática, comprovando que o lado esquerdo é eternamente igual ao lado direito.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Em computação, a igualdade de comparação é denotada pelo operador duplo (==). O operador simples é puramente imperativo."
+        },
+        {
+          "text": "Representa uma operação de atribuição, devendo ser lido como 'a variável salário recebe o valor 1500', associando o identificador ao dado na memória.",
+          "isCorrect": false,
+          "explanation": "Correta! Como ensina Nilo Menezes na Seção 2.6: 'usaremos o símbolo de igualdade (=) entre o nome do compartimento e o valor que queremos armazenar. Chamaremos essa operação de atribuição, onde um valor é atribuído a uma variável. Quando lermos nosso programa, as operações de atribuição serão chamadas de recebe'."
+        },
+        {
+          "text": "Representa a exclusão da variável salário da memória RAM.",
+          "isCorrect": false,
+          "explanation": "Incorreta. A deleção explícita de nomes na tabela de símbolos utiliza a palavra-chave del."
+        },
+        {
+          "text": "Representa um teste booleano que retorna True se o salário for 1500 e False caso contrário.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O teste condicional booleano de igualdade exige o operador relacional ==."
+        }
+      ]
+    },
+    {
+      "id": "q1-8",
+      "type": "multiple_choice",
+      "reference": "Capítulos 1 e 2",
+      "question": "Considere o script contendo apenas a linha: print('Curso de Python). Ao tentar executar esse arquivo, o que o interpretador reportará?",
+      "options": [
+        {
+          "text": "Imprimirá 'Curso de Python' normalmente, pois a aspa inicial é suficiente para delimitar o texto até o fim da linha.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Delimitadores de string abertos devem ser rigorosamente fechados com o mesmo caractere de abertura."
+        },
+        {
+          "text": "Disparará um SyntaxError (EOL while scanning string literal), acusando que o final da linha foi atingido antes do fechamento da aspa.",
+          "isCorrect": false,
+          "explanation": "Correta! Conforme o item 2 da Seção 2.4: 'Toda vez que abrir aspas, não se esqueça de fechá-las. Se você se esquecer, seu programa não funcionará'. O interpretador atinge o final da linha (End Of Line - EOL) procurando o fechamento da string e aborta com SyntaxError."
+        },
+        {
+          "text": "Criará uma variável de memória chamada Curso com valor indefinido.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O parser gramatical aborta a análise léxica da linha inteira antes de qualquer alocação de nomes na memória."
+        },
+        {
+          "text": "O programa entrará em um laço infinito aguardando que o usuário digite o restante do texto.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Erros gramaticais de término de literal de string provocam encerramento imediato do compilador/interpretador com mensagem de erro sintático."
+        }
+      ]
+    },
+    {
+      "id": "q1-9",
+      "type": "multiple_choice",
+      "reference": "Capítulos 1 e 2",
+      "question": "Por que, na Listagem 2.11 (cálculo de aumento salarial), o autor optou por definir as variáveis salário = 1500 e aumento = 5 em vez de escrever simplesmente print(1500 + (1500 * 5 / 100))?",
+      "options": [
+        {
+          "text": "Porque Python é incapaz de realizar multiplicações e somas diretamente dentro dos parênteses da função print().",
+          "isCorrect": false,
+          "explanation": "Incorreta. Python avalia expressões de qualquer complexidade diretamente dentro dos argumentos de funções."
+        },
+        {
+          "text": "Porque a utilização de variáveis separa os dados de entrada da fórmula de cálculo, aumentando a clareza, evitando números mágicos e facilitando a atualização futura de valores sem risco de alterar a expressão.",
+          "isCorrect": false,
+          "explanation": "Correta! Conforme argumenta Nilo Menezes na Seção 2.6: ao utilizar variáveis, damos nomes aos dados de entrada. Se o salário mudar, alteramos apenas uma linha; na fórmula com valores fixos, seríamos obrigados a alterar o número em duas posições distintas da fórmula, elevando o risco de erros."
+        },
+        {
+          "text": "Porque variáveis em Python aceleram a velocidade de execução do hardware em mais de 100 vezes em relação a valores literais.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O uso de variáveis é uma escolha pedagógica e de engenharia de software voltada à legibilidade humana e manutenibilidade; em nível de bytecode, literais simples podem ser até ligeiramente mais compactos."
+        },
+        {
+          "text": "Porque o interpretador IDLE recusa a execução de arquivos .py que contenham números literais.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Literais numéricos são elementos primitivos válidos em qualquer ponto da linguagem."
+        }
+      ]
+    },
+    {
+      "id": "q1-10",
+      "type": "multiple_choice",
+      "reference": "Capítulos 1 e 2",
+      "question": "Qual é o único mecanismo universal da linguagem Python capaz de sobrepor a ordem de precedência natural dos operadores aritméticos e alterar a cronologia de cálculo?",
+      "options": [
+        {
+          "text": "As chaves { }",
+          "isCorrect": false,
+          "explanation": "Incorreta. Em Python, chaves { } são reservadas para a definição de conjuntos (sets) e dicionários (dicts)."
+        },
+        {
+          "text": "Os colchetes [ ]",
+          "isCorrect": false,
+          "explanation": "Incorreta. Colchetes [ ] são reservados para a definição e indexação de listas e fatiamento (slices)."
+        },
+        {
+          "text": "Os parênteses ( )",
+          "isCorrect": false,
+          "explanation": "Correta! Conforme estabelecido na Seção 2.5: 'Os parênteses são utilizados em Python da mesma forma que em expressões matemáticas, ou seja, para alterar a ordem de execução de uma operação'. Expressões dentro de parênteses são sempre avaliadas prioritariamente."
+        },
+        {
+          "text": "O operador de atribuição =",
+          "isCorrect": false,
+          "explanation": "Incorreta. O operador = atua no armazenamento do resultado em uma variável na memória, não na ordem interna de cálculo dos termos da expressão."
+        }
+      ]
+    }
+  ]
+}

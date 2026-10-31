@@ -1,0 +1,20 @@
+{
+  "id": "01-algoritmos-e-python",
+  "title": "O Desafio da Programação, Algoritmos Cotidianos e a Filosofia do Python",
+  "kind": "standard",
+  "pages": "Capítulo 1 (pp. 19–26)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

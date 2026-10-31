@@ -1,0 +1,20 @@
+{
+  "id": "02-ambiente-e-interpretador",
+  "title": "A Arquitetura do Interpretador: Modo Direto (REPL) vs. Modo Script",
+  "kind": "standard",
+  "pages": "Capítulo 2 (pp. 27–40)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

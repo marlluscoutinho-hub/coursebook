@@ -560,7 +560,7 @@
             <span style="font-family:var(--font-mono);font-size:0.72rem;font-weight:700;color:${
               m.unlocked ? "var(--ink-primary)" : "var(--ink-muted)"
             };">
-              ${m.unlocked ? "[ ACESSAR BANCADA DE ESTUDO → ]" : "[ VER ESCOPO DO MÓDULO ]"}
+              ${m.unlocked ? "[ ACESSAR AULAS DO MÓDULO → ]" : "[ VER ESCOPO DO MÓDULO ]"}
             </span>
           </div>
         </div>
@@ -801,9 +801,9 @@
 
     pane.innerHTML = `
       <div class="reading-intro-banner">
-        <span class="bracket-tag amber">[ ${curMod.code} • ETAPA 02 DE 04: PRIMEIRO CONTATO & BANCADAS ALGORÍTMICAS ]</span>
+        <span class="bracket-tag amber">[ ${curMod.code} • ETAPA 02 DE 04: AULAS & LABORATÓRIOS INTERATIVOS ]</span>
         <h2>Estudo Aprofundado — ${curMod.title}</h2>
-        <p>Cobertura integral e rigorosa de <strong>${curMod.chapters}</strong> (Cormen, Leiserson, Rivest e Stein), preservando todas as definições formais, teoremas, demonstrações, pseudocódigos e bancadas interativas.</p>
+        <p>Cobertura integral e rigorosa de <strong>${curMod.chapters}</strong> (Cormen, Leiserson, Rivest e Stein), preservando todas as definições formais, teoremas, demonstrações, pseudocódigos e laboratórios interativos.</p>
       </div>
 
       ${unidades
@@ -1080,7 +1080,7 @@
       <div class="reading-intro-banner">
         <span class="bracket-tag amber">[ ${curMod.code} • ETAPA 04 DE 04: APLICAÇÃO PRÁTICA, PSEUDOCÓDIGO & DEMONSTRAÇÕES ]</span>
         <h2>Caderno de Exercícios e Problemas — ${curMod.chapters}</h2>
-        <p>Resolva os ${exercicios.length} exercícios e problemas canônicos deste módulo. Utilize a bancada de rascunho em cada atividade (suas anotações ficam salvas automaticamente no navegador) e, em seguida, abra o <strong>Guia de Resposta e Demonstração Passo a Passo</strong> para confrontar sua solução com a resolução formal.</p>
+        <p>Resolva os ${exercicios.length} exercícios e problemas canônicos deste módulo. Utilize o rascunho em cada atividade (suas anotações ficam salvas automaticamente no navegador) e, em seguida, abra o <strong>Guia de Resposta e Demonstração Passo a Passo</strong> para confrontar sua solução com a resolução formal.</p>
       </div>
 
       ${exercicios

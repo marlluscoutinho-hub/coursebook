@@ -1,0 +1,20 @@
+{
+  "id": "05-variaveis-e-memoria",
+  "title": "Conceito de Variáveis, Atribuição e Modelo Mental de Memória",
+  "kind": "standard",
+  "pages": "Capítulo 2 (pp. 44–48)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

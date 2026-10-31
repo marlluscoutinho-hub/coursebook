@@ -1,0 +1,18 @@
+{
+  "id": "01-computador-e-interpretador",
+  "code": "MÓDULO 01",
+  "title": "O Computador, o Interpretador e os Primeiros Programas",
+  "chapters": "Capítulos 1 e 2",
+  "pages": "pp. 19–48",
+  "summary": "Fundamentos da computação, arquitetura de interpretador vs compilador, ciclo REPL, primeiros programas com print(), expressões aritméticas e modelo mental de variáveis na memória.",
+  "lessons": [
+    "01-algoritmos-e-python",
+    "02-ambiente-e-interpretador",
+    "03-primeiro-programa-print",
+    "04-aritmetica-e-precedencia",
+    "05-variaveis-e-memoria",
+    "06-laboratorio-repl-e-simbolos"
+  ],
+  "quiz": "quiz.json",
+  "exercises": "exercises.json"
+}

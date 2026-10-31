@@ -1,0 +1,78 @@
+{
+  "title": "Exercícios e Problemas Canônicos do Módulo 01",
+  "subtitle": "8 atividades clássicas com solução passo a passo e rascunho integrado",
+  "exercises": [
+    {
+      "id": "ex1-1",
+      "code": "EXERCÍCIO 1",
+      "reference": "Capítulos 1 e 2",
+      "title": "Exercício 2.1 (a): Conversão de Expressão Aritmética Adição/Multiplicação",
+      "prompt": "Converta a seguinte expressão matemática da notação tradicional para que possa ser avaliada no interpretador Python, respeitando as prioridades operacionais: $10 + 20 \\times 30$. Apresente o código exato e o resultado numérico final.",
+      "placeholder": "Utilize o rascunho para anotar hipóteses e código...",
+      "solution": "\n        <p><strong>Resolução Analítica Passo a Passo:</strong></p>\n        <ol>\n          <li>Na notação matemática, o símbolo de multiplicação $\\times$ deve ser traduzido para o operador asterisco (<code>*</code>) em Python.</li>\n          <li>A expressão traduzida é: <code>10 + 20 * 30</code>.</li>\n          <li>Pelas regras de precedência estabelecidas na Seção 2.5, a multiplicação possui prioridade sobre a adição:\n            <ul>\n              <li>Primeiro avalia-se: $20 \\times 30 = 600$.</li>\n              <li>Em seguida avalia-se a adição: $10 + 600 = 610$.</li>\n            </ul>\n          </li>\n          <li>No interpretador, o comando <code>print(10 + 20 * 30)</code> exibirá o valor inteiro <strong>610</strong>.</li>\n        </ol>\n      "
+    },
+    {
+      "id": "ex1-2",
+      "code": "EXERCÍCIO 2",
+      "reference": "Capítulos 1 e 2",
+      "title": "Exercício 2.1 (b): Conversão de Potenciação e Divisão",
+      "prompt": "Converta a expressão matemática tradicional $4^2 \\div 30$ para sintaxe válida de Python. Demonstre a ordem de avaliação e indique o valor numérico com o tipo de dado resultante.",
+      "placeholder": "Utilize o rascunho para anotar hipóteses e código...",
+      "solution": "\n        <p><strong>Resolução Analítica Passo a Passo:</strong></p>\n        <ol>\n          <li>A potenciação $4^2$ é representada em Python pelo operador de dois asteriscos (<code>**</code>): <code>4 ** 2</code>.</li>\n          <li>O símbolo de divisão tradicional $\\div$ é mapeado para a barra oblíqua (<code>/</code>).</li>\n          <li>A expressão em Python é escrita como: <code>4 ** 2 / 30</code>.</li>\n          <li>Pela hierarquia de operadores:\n            <ul>\n              <li>A exponenciação tem precedência máxima: $4^2 = 16$.</li>\n              <li>A divisão é executada em seguida: $16 / 30 \\approx 0.5333333333333333$.</li>\n            </ul>\n          </li>\n          <li>Como a barra <code>/</code> realiza divisão real em Python 3, o resultado é um número de ponto flutuante (<code>float</code>) aproximadamente igual a <strong>0.5333...</strong> $\\blacksquare$</li>\n        </ol>\n      "
+    },
+    {
+      "id": "ex1-3",
+      "code": "EXERCÍCIO 3",
+      "reference": "Capítulos 1 e 2",
+      "title": "Exercício 2.1 (c): Uso de Parênteses em Expressões Compostas",
+      "prompt": "Converta a expressão matemática $(94 + 2) \\times 6 - 1$ para que seja avaliada corretamente em Python, demonstrando a árvore de derivação das operações.",
+      "placeholder": "Utilize o rascunho para anotar hipóteses e código...",
+      "solution": "\n        <p><strong>Resolução Analítica Passo a Passo:</strong></p>\n        <ol>\n          <li>Mapeamos o símbolo $\\times$ para o operador <code>*</code>, preservando rigorosamente os parênteses que alteram a ordem de avaliação: <code>(94 + 2) * 6 - 1</code>.</li>\n          <li>Derivação operacional:\n            <ul>\n              <li><strong>1º Nível (Sub-expressão entre parênteses):</strong> $94 + 2 = 96$. A expressão reduz-se a <code>96 * 6 - 1</code>.</li>\n              <li><strong>2º Nível (Multiplicação):</strong> $96 \\times 6 = 576$. A expressão reduz-se a <code>576 - 1</code>.</li>\n              <li><strong>3º Nível (Subtração):</strong> $576 - 1 = 575$.</li>\n            </ul>\n          </li>\n          <li>Resultado final exibido no console: <strong>575</strong>. $\\blacksquare$</li>\n        </ol>\n      "
+    },
+    {
+      "id": "ex1-4",
+      "code": "EXERCÍCIO 4",
+      "reference": "Capítulos 1 e 2",
+      "title": "Exercício 2.2: Avaliação Analítica de Precedência Completa",
+      "prompt": "Resolva analiticamente no papel a expressão proposta na Seção 2.5: <code>10 % 3 * 10 ** 2 + 1 - 10 * 4 / 2</code>, demonstrando passo a passo a redução de cada operador até o resultado final.",
+      "placeholder": "Utilize o rascunho para anotar hipóteses e código...",
+      "solution": "\n        <p><strong>Resolução Analítica Passo a Passo:</strong></p>\n        <ol>\n          <li>Identificamos todos os operadores presentes e suas ordens de precedência:\n            <ul>\n              <li>Prioridade 1: Exponenciação (<code>**</code>)</li>\n              <li>Prioridade 2: Módulo (<code>%</code>), Multiplicação (<code>*</code>), Divisão (<code>/</code>) com associatividade à esquerda</li>\n              <li>Prioridade 3: Adição (<code>+</code>), Subtração (<code>-</code>) com associatividade à esquerda</li>\n            </ul>\n          </li>\n          <li><strong>Etapa 1 (Exponenciação):</strong> $10 ** 2 = 100$.<br>\n              Expressão: <code>10 % 3 * 100 + 1 - 10 * 4 / 2</code>.</li>\n          <li><strong>Etapa 2 (Operadores de prioridade 2 da esquerda para a direita):</strong>\n            <ul>\n              <li>$10 \\% 3$: o quociente inteiro de 10 por 3 é 3 (resto 1). Logo, $10 \\% 3 = 1$.<br>\n                  Expressão: <code>1 * 100 + 1 - 10 * 4 / 2</code>.</li>\n              <li>$1 * 100 = 100$.<br>\n                  Expressão: <code>100 + 1 - 10 * 4 / 2</code>.</li>\n              <li>$10 * 4 = 40$.<br>\n                  Expressão: <code>100 + 1 - 40 / 2</code>.</li>\n              <li>$40 / 2 = 20.0$ (divisão em Python gera float).<br>\n                  Expressão: <code>100 + 1 - 20.0</code>.</li>\n            </ul>\n          </li>\n          <li><strong>Etapa 3 (Operadores de prioridade 3 da esquerda para a direita):</strong>\n            <ul>\n              <li>$100 + 1 = 101$.<br>\n                  Expressão: <code>101 - 20.0</code>.</li>\n              <li>$101 - 20.0 = 81.0$.</li>\n            </ul>\n          </li>\n          <li>Resultado analítico final: <strong>81.0</strong>. $\\blacksquare$</li>\n        </ol>\n      "
+    },
+    {
+      "id": "ex1-5",
+      "code": "EXERCÍCIO 5",
+      "reference": "Capítulos 1 e 2",
+      "title": "Exercício 2.3: Programa de Exibição de Nome Próprio em Tela",
+      "prompt": "Escreva um programa completo em Python que exiba seu nome completo na tela do computador, observando o uso correto de aspas, parênteses e o comando de saída.",
+      "placeholder": "Utilize o rascunho para anotar hipóteses e código...",
+      "solution": "\n        <p><strong>Implementação Canônica:</strong></p>\n        <div class=\"clrs-pseudocode-box\">\n          <div class=\"pseudocode-header\">\n            <span class=\"proc-name\">EXIBIÇÃO DE IDENTIFICAÇÃO PESSOAL</span>\n            <span>[ EXERCÍCIO 2.3 DO LIVRO ]</span>\n          </div>\n          <div class=\"pseudocode-lines\">\n            <div class=\"code-line\"><span class=\"line-num\">1</span><span class=\"line-content\"><span class=\"kw\">print</span>(<span class=\"cmt\">\"Nilo Ney Coutinho Menezes\"</span>)</span></div>\n          </div>\n        </div>\n        <p><strong>Comentários de Engenharia:</strong></p>\n        <ul>\n          <li>O nome é passado como literal de texto (string) envolvido por aspas duplas (ou simples).</li>\n          <li>A função <code>print()</code> envia a cadeia de caracteres para o console e anexa automaticamente o caractere de nova linha (<code>\\n</code>).</li>\n        </ul>\n      "
+    },
+    {
+      "id": "ex1-6",
+      "code": "EXERCÍCIO 6",
+      "reference": "Capítulos 1 e 2",
+      "title": "Exercício 2.4: Avaliação Algébrica de Expressão com Variáveis (2a × 3b)",
+      "prompt": "Escreva um programa em Python que calcule e exiba o resultado de $2a \\times 3b$, onde o valor de $a$ é igual a 3 e o valor de $b$ é igual a 5. Utilize variáveis nomeadas para armazenar as entradas.",
+      "placeholder": "Utilize o rascunho para anotar hipóteses e código...",
+      "solution": "\n        <p><strong>Implementação Canônica:</strong></p>\n        <div class=\"clrs-pseudocode-box\">\n          <div class=\"pseudocode-header\">\n            <span class=\"proc-name\">CÁLCULO POLINOMIAL COM ATRIBUIÇÃO</span>\n            <span>[ EXERCÍCIO 2.4 DO LIVRO ]</span>\n          </div>\n          <div class=\"pseudocode-lines\">\n            <div class=\"code-line\"><span class=\"line-num\">1</span><span class=\"line-content\">a = 3</span></div>\n            <div class=\"code-line\"><span class=\"line-num\">2</span><span class=\"line-content\">b = 5</span></div>\n            <div class=\"code-line\"><span class=\"line-num\">3</span><span class=\"line-content\"><span class=\"kw\">print</span>((2 * a) * (3 * b))</span></div>\n          </div>\n        </div>\n        <p><strong>Demonstração Matemática:</strong></p>\n        <ol>\n          <li>A variável <code>a</code> armazena 3 na memória: $2a = 2 \\times 3 = 6$.</li>\n          <li>A variável <code>b</code> armazena 5 na memória: $3b = 3 \\times 5 = 15$.</li>\n          <li>O produto final é avaliado: $6 \\times 15 = 90$.</li>\n          <li>A saída impressa no terminal é exatamente o inteiro <strong>90</strong>. $\\blacksquare$</li>\n        </ol>\n      "
+    },
+    {
+      "id": "ex1-7",
+      "code": "EXERCÍCIO 7",
+      "reference": "Capítulos 1 e 2",
+      "title": "Exercício 2.5: Generalização da Soma para Três Variáveis",
+      "prompt": "Modifique o primeiro programa com variáveis da obra (Listagem 2.7) de forma a calcular e exibir a soma de três variáveis numéricas distintas.",
+      "placeholder": "Utilize o rascunho para anotar hipóteses e código...",
+      "solution": "\n        <p><strong>Implementação Canônica:</strong></p>\n        <div class=\"clrs-pseudocode-box\">\n          <div class=\"pseudocode-header\">\n            <span class=\"proc-name\">SOMA DE TRÊS VARIÁVEIS NA MEMÓRIA</span>\n            <span>[ EXERCÍCIO 2.5 DO LIVRO ]</span>\n          </div>\n          <div class=\"pseudocode-lines\">\n            <div class=\"code-line\"><span class=\"line-num\">1</span><span class=\"line-content\">a = 2</span></div>\n            <div class=\"code-line\"><span class=\"line-num\">2</span><span class=\"line-content\">b = 3</span></div>\n            <div class=\"code-line\"><span class=\"line-num\">3</span><span class=\"line-content\">c = 4</span></div>\n            <div class=\"code-line\"><span class=\"line-num\">4</span><span class=\"line-content\"><span class=\"kw\">print</span>(a + b + c)</span></div>\n          </div>\n        </div>\n        <p><strong>Comentários Estruturais:</strong></p>\n        <ul>\n          <li>Três compartimentos independentes são alocados na tabela de símbolos da memória: <code>a</code> (2), <code>b</code> (3) e <code>c</code> (4).</li>\n          <li>A linha 4 avalia a soma das três referências de memória: $2 + 3 + 4 = 9$, exibindo <strong>9</strong> no console.</li>\n        </ul>\n      "
+    },
+    {
+      "id": "ex1-8",
+      "code": "EXERCÍCIO 8",
+      "reference": "Capítulos 1 e 2",
+      "title": "Exercício 2.6: Reajuste Salarial de 15% para Salário de R$ 750",
+      "prompt": "Modifique o programa da Listagem 2.11 do livro de forma que ele calcule um aumento salarial de 15% para um funcionário cujo salário atual é de R$ 750,00. Demonstre a fórmula percentual e o valor líquido final.",
+      "placeholder": "Utilize o rascunho para anotar hipóteses e código...",
+      "solution": "\n        <p><strong>Implementação Canônica:</strong></p>\n        <div class=\"clrs-pseudocode-box\">\n          <div class=\"pseudocode-header\">\n            <span class=\"proc-name\">CÁLCULO DE AUMENTO COM NOVOS PARÂMETROS</span>\n            <span>[ EXERCÍCIO 2.6 DO LIVRO ]</span>\n          </div>\n          <div class=\"pseudocode-lines\">\n            <div class=\"code-line\"><span class=\"line-num\">1</span><span class=\"line-content\">salário = 750</span></div>\n            <div class=\"code-line\"><span class=\"line-num\">2</span><span class=\"line-content\">aumento = 15</span></div>\n            <div class=\"code-line\"><span class=\"line-num\">3</span><span class=\"line-content\"><span class=\"kw\">print</span>(salário + (salário * aumento / 100))</span></div>\n          </div>\n        </div>\n        <p><strong>Dedução Numérica:</strong></p>\n        <ol>\n          <li>O valor do aumento percentual é obtido por: $\\Delta = 750 \\times \\frac{15}{100} = 750 \\times 0.15 = 112.50$.</li>\n          <li>O salário reajustado é a soma do salário original com o aumento: $750 + 112.50 = 862.50$.</li>\n          <li>O console de saída do interpretador imprimirá: <strong>862.5</strong>. $\\blacksquare$</li>\n        </ol>\n      "
+    }
+  ]
+}

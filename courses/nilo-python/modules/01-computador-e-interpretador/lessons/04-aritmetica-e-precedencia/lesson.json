@@ -1,0 +1,20 @@
+{
+  "id": "04-aritmetica-e-precedencia",
+  "title": "Operações Aritméticas e Ordem de Precedência Algébrica",
+  "kind": "standard",
+  "pages": "Capítulo 2 (pp. 42–44)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}
