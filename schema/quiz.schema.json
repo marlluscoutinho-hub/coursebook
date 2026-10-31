@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "quiz.schema.json",
+  "title": "Quizzes Dialéticos do Módulo",
+  "type": "object",
+  "required": ["questions"],
+  "additionalProperties": false,
+  "properties": {
+    "title": { "type": "string" },
+    "subtitle": { "type": "string" },
+    "questions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "question", "options"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "type": { "enum": ["multiple_choice", "true_false"] },
+          "reference": { "type": "string" },
+          "question": { "type": "string", "minLength": 5 },
+          "options": {
+            "type": "array",
+            "minItems": 2,
+            "items": {
+              "type": "object",
+              "required": ["letter", "text", "isCorrect", "explanation"],
+              "additionalProperties": false,
+              "properties": {
+                "letter": { "type": "string", "minLength": 1, "maxLength": 2 },
+                "text": { "type": "string", "minLength": 1 },
+                "isCorrect": { "type": "boolean" },
+                "explanation": { "type": "string", "minLength": 5, "description": "Explicação dialética detalhada" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

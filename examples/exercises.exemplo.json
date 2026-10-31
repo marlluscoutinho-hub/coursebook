@@ -1,0 +1,14 @@
+{
+  "title": "Exercícios e Problemas do Módulo 01",
+  "exercises": [
+    {
+      "id": "ex1-1",
+      "code": "EXERCÍCIO 01",
+      "reference": "Exercício 2.1 (p. 35)",
+      "title": "Conversão de Expressões Algébricas para Sintaxe Python",
+      "prompt": "Converta a expressão matemática $\\frac{10 + 20 \\times 30}{2}$ para uma expressão válida em Python respeitando a precedência de operadores.",
+      "placeholder": "Digite sua expressão Python no rascunho...",
+      "solution": "Em Python: `(10 + 20 * 30) / 2`. A multiplicação `*` tem precedência sobre a adição, e os parênteses garantem que o numerador seja calculado antes da divisão por 2."
+    }
+  ]
+}

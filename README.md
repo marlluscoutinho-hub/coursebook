@@ -111,6 +111,8 @@ O CourseBook é material de estudo pessoal e o projeto central do meu portfólio
 | 0 | Estado inicial (CLRS em formato JS, motor acoplado ao conteúdo) | Ponto de retorno | [visual-debt](docs/visual-debt.md) | `v0-pre-refactor` |
 | 1 | Correção do overflow de LaTeX e página de regressão | Fórmulas vazavam do bloco da aula | [01-latex](docs/evolucao/01-latex.md) | `refactor/01-latex` |
 | 2 | Schema modular (JSON + Markdown), perfis e métricas | Contrato entre IA escritora e plataforma | [02-schema](docs/evolucao/02-schema.md) | `refactor/02-schema` |
+| 3 | Skill construtora v2 e schemas completos | IA escreve novo formato com validação e análise | [03-skill-builder-v2](docs/evolucao/03-skill-builder-v2.md) | `refactor/03-skill-builder-v2` |
+| 4 | Motor novo da plataforma (Web Engine v2) | Suporte a fetch, Markdown, perfis e métricas | em breve | — |
 
 **Padrão de commits:** `<tipo>(<escopo>): <resumo>`, com tipos `feat`, `fix`, `refactor`, `docs`, `style`, `chore`, `test` e escopos `engine`, `lesson`, `lab`, `review`, `latex`, `schema`, `course/<id>`, `readme`.
 

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "module.schema.json",
+  "title": "Módulo Temático",
+  "type": "object",
+  "required": ["id", "title", "lessons"],
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "code": { "type": "string", "description": "Código do módulo (ex: MÓDULO 01)" },
+    "title": { "type": "string", "minLength": 1 },
+    "chapters": { "type": "string" },
+    "pages": { "type": "string" },
+    "summary": { "type": "string" },
+    "profile": { "type": "string", "description": "Sobrescreve perfil do curso para este módulo." },
+    "lessons": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+      "description": "Lista de IDs ou pastas das aulas do módulo, em ordem."
+    },
+    "quiz": { "type": "string", "default": "quiz.json" },
+    "exercises": { "type": "string", "default": "exercises.json" }
+  }
+}

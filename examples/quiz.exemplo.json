@@ -1,0 +1,25 @@
+{
+  "title": "Quizzes Dialéticos do Módulo 01",
+  "questions": [
+    {
+      "id": "q1-1",
+      "type": "multiple_choice",
+      "reference": "Cap. 1, p. 25",
+      "question": "Qual é a principal característica do interpretador Python em modo interativo (REPL)?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Executa diretamente o código de máquina sem compilar bytecode.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Python gera bytecode interpretado pela máquina virtual CPython."
+        },
+        {
+          "letter": "B",
+          "text": "Lê a instrução, avalia a expressão, imprime o resultado e aguarda a próxima entrada (Read-Eval-Print Loop).",
+          "isCorrect": true,
+          "explanation": "Correta! Esse é exatamente o ciclo REPL do interpretador interativo."
+        }
+      ]
+    }
+  ]
+}

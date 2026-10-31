@@ -1,0 +1,9 @@
+{
+  "id": "01-fundamentos",
+  "code": "MÓDULO 01",
+  "title": "O Computador, o Interpretador e os Primeiros Programas",
+  "chapters": "Capítulos 1 e 2",
+  "pages": "pp. 19–48",
+  "summary": "Introdução aos fundamentos da computação, arquitetura de Von Neumann e interpretador Python.",
+  "lessons": ["01-computador-e-interpretador", "02-primeiros-programas"]
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "exercises.schema.json",
+  "title": "Exercícios e Problemas Canônicos",
+  "type": "object",
+  "required": ["exercises"],
+  "additionalProperties": false,
+  "properties": {
+    "title": { "type": "string" },
+    "subtitle": { "type": "string" },
+    "exercises": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "prompt", "solution"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "code": { "type": "string" },
+          "reference": { "type": "string" },
+          "title": { "type": "string", "minLength": 1 },
+          "prompt": { "type": "string", "minLength": 5 },
+          "placeholder": { "type": "string" },
+          "solution": { "type": "string", "minLength": 5 }
+        }
+      }
+    }
+  }
+}

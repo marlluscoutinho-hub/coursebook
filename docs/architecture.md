@@ -1,6 +1,6 @@
 # Arquitetura modular do CourseBook (proposta de schema v0.1)
 
-> Etapa 2 do [plano de refatoração](plano-refatoracao.md). **Somente especificação.** Nenhum código de motor foi alterado. Os JSON Schemas estão em [`schema/`](../schema/): `course`, `lesson`, `lab`, `profile` e `event` (validados com exemplos). **Pendentes:** `module.schema.json`, `quiz.schema.json` e `exercises.schema.json`, a definir junto com a skill v2 (etapa 3).
+> Etapa 2 e 3 do [plano de refatoração](plano-refatoracao.md). **Especificação e Schemas.** Os JSON Schemas completos estão em [`schema/`](../schema/): `course`, `module`, `lesson`, `lab`, `quiz`, `exercises`, `profile` e `event` (100% validados por testes em `tests/validate-schemas.mjs`).
 
 ## 1. Princípios
 1. **Conteúdo, formato e blocos são eixos independentes.** O conteúdo diz *o que* ensinar; o **perfil** diz *em que ordem e com quais blocos*; os **blocos** são as peças reutilizáveis.
