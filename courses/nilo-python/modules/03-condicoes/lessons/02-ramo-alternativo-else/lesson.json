@@ -1,0 +1,20 @@
+{
+  "id": "02-ramo-alternativo-else",
+  "title": "A Cláusula else e Decisões Mutuamente Exclusivas",
+  "kind": "standard",
+  "pages": "Capítulo 4 (pp. 77–79)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

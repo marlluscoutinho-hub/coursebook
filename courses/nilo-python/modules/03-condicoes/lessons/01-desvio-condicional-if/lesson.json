@@ -1,0 +1,20 @@
+{
+  "id": "01-desvio-condicional-if",
+  "title": "O Desvio Condicional if e a Indentação como Sintaxe de Bloco",
+  "kind": "standard",
+  "pages": "Capítulo 4 (pp. 75–77)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

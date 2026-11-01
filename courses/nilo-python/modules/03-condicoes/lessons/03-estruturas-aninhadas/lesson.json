@@ -1,0 +1,20 @@
+{
+  "id": "03-estruturas-aninhadas",
+  "title": "Condições Aninhadas e Regras de Negócio em Múltiplos Níveis",
+  "kind": "standard",
+  "pages": "Capítulo 4 (pp. 79–81)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

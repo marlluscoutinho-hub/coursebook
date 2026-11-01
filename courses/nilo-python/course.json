@@ -12,7 +12,8 @@
   "profile": "pratico",
   "modules": [
     "01-computador-e-interpretador",
-    "02-variaveis-e-tipos"
+    "02-variaveis-e-tipos",
+    "03-condicoes"
   ],
   "status": "in_development"
 }

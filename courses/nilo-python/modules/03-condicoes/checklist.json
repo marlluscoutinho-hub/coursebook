@@ -1,0 +1,8 @@
+[
+  "Compreendo a semântica do desvio condicional simples (if) e o papel obrigatório dos dois-pontos (:).",
+  "Domino a regra sintática de indentação em Python (4 espaços) como delimitador formal de blocos de execução.",
+  "Sei estruturar decisões binárias mutuamente exclusivas com a cláusula else.",
+  "Consigo projetar e depurar decisões aninhadas (if dentro de if) mapeando condições de contorno.",
+  "Utilizo a cadeia elif para simplificar cascatas de decisões mútuas sem gerar indentação excessiva.",
+  "Sei testar rigorosamente valores limítrofes (fronteiras de faixas) em tarifações e tabelas escalonadas."
+]

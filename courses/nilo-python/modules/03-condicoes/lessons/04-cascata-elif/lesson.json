@@ -1,0 +1,20 @@
+{
+  "id": "04-cascata-elif",
+  "title": "A Cláusula elif e a Simplificação de Múltiplas Alternativas",
+  "kind": "standard",
+  "pages": "Capítulo 4 (pp. 81–83)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

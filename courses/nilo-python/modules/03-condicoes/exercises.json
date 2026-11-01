@@ -1,0 +1,78 @@
+{
+  "title": "Exercícios e Problemas Canônicos do Módulo 03",
+  "subtitle": "8 atividades clássicas com solução passo a passo e rascunho integrado",
+  "exercises": [
+    {
+      "id": "ex3-1",
+      "code": "EXERCÍCIO 1",
+      "reference": "Capítulo 4 (p. 76)",
+      "title": "Exercício 4.1: Análise de Igualdade em Desvios Condicionais Sucessivos",
+      "prompt": "Analise o programa da Listagem 4.2 do livro:\n```python\na = int(input(\"Primeiro valor: \"))\nb = int(input(\"Segundo valor: \"))\nif a > b:\n    print(\"O primeiro número é o maior!\")\nif b > a:\n    print(\"O segundo número é o maior!\")\n```\nResponda analiticamente: o que acontece se o usuário digitar dois valores rigorosamente iguais (por exemplo, `a = 10` e `b = 10`)? Explique a causa técnica e proponha uma correção estrutural.",
+      "placeholder": "Anote suas observações sobre o fluxo no rascunho...",
+      "solution": "\n        <p><strong>Resolução Analítica Passo a Passo:</strong></p>\n        <ol>\n          <li><strong>Comportamento Observado:</strong> O programa não exibe nenhuma mensagem na tela, terminando silenciosamente.</li>\n          <li><strong>Causa Técnica:</strong>\n            <ul>\n              <li>Primeira condição: <code>10 > 10</code> avalia para <code>False</code>. O primeiro <code>print</code> é ignorado.</li>\n              <li>Segunda condição: <code>10 > 10</code> também avalia para <code>False</code>. O segundo <code>print</code> é igualmente ignorado.</li>\n            </ul>\n            O programa carece de tratamento para a relação de equivalência (<code>a == b</code>).\n          </li>\n          <li><strong>Correção Estrutural com elif:</strong>\n            <pre><code>if a > b:\n    print(\"O primeiro número é o maior!\")\nelif b > a:\n    print(\"O segundo número é o maior!\")\nelse:\n    print(\"Os dois números são iguais!\")</code></pre>\n            Dessa forma, os três estados da tricotomia matemática ($a > b, b > a, a = b$) ficam 100% cobertos. $\\blacksquare$\n          </li>\n        </ol>\n      "
+    },
+    {
+      "id": "ex3-2",
+      "code": "EXERCÍCIO 2",
+      "reference": "Capítulo 4 (p. 77)",
+      "title": "Exercício 4.2: Radar Eletrônico e Penalidade por Excesso de Velocidade",
+      "prompt": "Escreva um programa que pergunte a velocidade do veículo de um usuário. Caso ultrapasse 80 km/h, exiba uma mensagem alertando que o motorista foi autuado e calcule o valor da multa, cobrando R$ 5,00 por cada km/h que exceder o limite regulamentar.",
+      "placeholder": "Estruture o programa de fiscalização no rascunho...",
+      "solution": "\n        <p><strong>Código e Análise Passo a Passo:</strong></p>\n        <pre><code>velocidade = float(input(\"Informe a velocidade aferida (km/h): \"))\n\nif velocidade > 80:\n    excesso = velocidade - 80\n    multa = excesso * 5.0\n    print(\"ATENÇÃO: Você foi autuado por excesso de velocidade!\")\n    print(f\"Velocidade excedente: {excesso:.1f} km/h acima do limite permitido.\")\n    print(f\"Valor da penalidade a pagar: R$ {multa:.2f}\")\nelse:\n    print(\"Velocidade permitida. Dirija sempre com segurança!\")</code></pre>\n        <p>Exemplo de teste: para velocidade de 95 km/h, excesso = $95 - 80 = 15\\text{ km/h}$, e multa = $15 \\times 5 = \\text{R\\$\\ } 75,00$. $\\blacksquare$</p>\n      "
+    },
+    {
+      "id": "ex3-3",
+      "code": "EXERCÍCIO 3",
+      "reference": "Capítulo 4 (p. 77)",
+      "title": "Exercício 4.3: Determinação do Maior e Menor entre Três Números",
+      "prompt": "Escreva um programa que leia três números quaisquer e imprima na saída padrão qual é o maior e qual é o menor dentre eles.",
+      "placeholder": "Esboce a lógica de comparações no rascunho...",
+      "solution": "\n        <p><strong>Lógica Analítica e Implementação:</strong></p>\n        <pre><code>a = float(input(\"Digite o primeiro número: \"))\nb = float(input(\"Digite o segundo número: \"))\nc = float(input(\"Digite o terceiro número: \"))\n\n# Assume inicialmente o primeiro número como maior e menor\nmaior = a\nmenor = a\n\n# Verificação do maior\nif b > maior:\n    maior = b\nif c > maior:\n    maior = c\n\n# Verificação do menor\nif b < menor:\n    menor = b\nif c < menor:\n    menor = c\n\nprint(f\"Maior número: {maior}\")\nprint(f\"Menor número: {menor}\")</code></pre>\n        <p>Essa abordagem com variáveis acumuladoras de extremidade evita árvores aninhadas complexas e generaliza perfeitamente para qualquer quantidade de números. $\\blacksquare$</p>\n      "
+    },
+    {
+      "id": "ex3-4",
+      "code": "EXERCÍCIO 4",
+      "reference": "Capítulo 4 (p. 77)",
+      "title": "Exercício 4.4: Cálculo de Aumento Salarial Diferenciado por Faixa",
+      "prompt": "Escreva um programa que pergunte o salário de um funcionário e calcule o valor do reajuste. Para remunerações estritamente superiores a R$ 1.250,00, calcule um aumento de 10%. Para remunerações inferiores ou iguais a R$ 1.250,00, o aumento deve ser de 15%.",
+      "placeholder": "Construa o desvio if-else no rascunho...",
+      "solution": "\n        <p><strong>Código e Análise de Faixas:</strong></p>\n        <pre><code>salario = float(input(\"Digite o salário atual (R$): \"))\n\nif salario > 1250:\n    percentual = 10\nelse:\n    percentual = 15\n\naumento = salario * (percentual / 100)\nnovo_salario = salario + aumento\n\nprint(f\"Salário base: R$ {salario:.2f}\")\nprint(f\"Índice de aumento ({percentual}%): R$ {aumento:.2f}\")\nprint(f\"Novo salário reajustado: R$ {novo_salario:.2f}\")</code></pre>\n        <p>Análise de contorno: se o salário for exatamente R$ 1.250,00, a condição <code>salario > 1250</code> é falsa, caindo corretamente no <code>else</code> e aplicando 15% (R$ 187,50 de aumento). $\\blacksquare$</p>\n      "
+    },
+    {
+      "id": "ex3-5",
+      "code": "EXERCÍCIO 5",
+      "reference": "Capítulo 4 (p. 78)",
+      "title": "Exercício 4.6: Tarifação Escalonada de Passagens Rodoviárias",
+      "prompt": "Escreva um programa que pergunte a distância que um passageiro deseja percorrer em km. Calcule o preço total da passagem cobrando R$ 0,50 por km para viagens de até 200 km, e R$ 0,45 por km para viagens mais longas.",
+      "placeholder": "Escreva o programa no rascunho...",
+      "solution": "\n        <p><strong>Código e Dedução:</strong></p>\n        <pre><code>distancia = float(input(\"Distância da viagem em km: \"))\n\nif distancia <= 200:\n    preco = distancia * 0.50\nelse:\n    preco = distancia * 0.45\n\nprint(f\"Distância percorrida: {distancia:.1f} km\")\nprint(f\"Preço total da passagem: R$ {preco:.2f}\")</code></pre>\n        <p>Exemplo 1: 180 km $\\to 180 \\times 0.50 = \\text{R\\$\\ } 90,00$.<br>\n           Exemplo 2: 300 km $\\to 300 \\times 0.45 = \\text{R\\$\\ } 135,00$. $\\blacksquare$</p>\n      "
+    },
+    {
+      "id": "ex3-6",
+      "code": "EXERCÍCIO 6",
+      "reference": "Capítulo 4 (p. 83)",
+      "title": "Exercício 4.8: Mini-Calculadora com Operações Básicas e Proteção de Divisão",
+      "prompt": "Escreva um programa que leia dois números e pergunte qual operação aritmética o usuário deseja realizar: soma (+), subtração (-), multiplicação (*) ou divisão (/). Exiba o resultado da operação solicitada e implemente proteção contra divisão por zero.",
+      "placeholder": "Estruture a cadeia elif no rascunho...",
+      "solution": "\n        <p><strong>Implementação Defensiva com elif:</strong></p>\n        <pre><code>n1 = float(input(\"Primeiro operando: \"))\nn2 = float(input(\"Segundo operando: \"))\nop = input(\"Escolha a operação (+, -, *, /): \").strip()\n\nif op == \"+\":\n    print(f\"{n1} + {n2} = {n1 + n2}\")\nelif op == \"-\":\n    print(f\"{n1} - {n2} = {n1 - n2}\")\nelif op == \"*\":\n    print(f\"{n1} * {n2} = {n1 * n2}\")\nelif op == \"/\":\n    if n2 != 0:\n        print(f\"{n1} / {n2} = {n1 / n2:.4f}\")\n    else:\n        print(\"Erro Matemático: Impossível dividir por zero!\")\nelse:\n    print(f\"Erro: Símbolo '{op}' não corresponde a uma operação válida.\")</code></pre>\n      "
+    },
+    {
+      "id": "ex3-7",
+      "code": "EXERCÍCIO 7",
+      "reference": "Capítulo 4 (p. 83)",
+      "title": "Exercício 4.9: Análise de Concessão de Empréstimo Bancário Imobiliário",
+      "prompt": "Escreva um programa para aprovar um empréstimo bancário para aquisição de moradia. O programa deve perguntar o valor do imóvel, a renda mensal do proponente e a quantidade de anos a pagar. O valor da parcela mensal não pode ser superior a 30% da renda. Calcule a prestação e informe o veredito de aprovação ou recusa.",
+      "placeholder": "Equacione a prestação e o teto salarial no rascunho...",
+      "solution": "\n        <p><strong>Resolução Analítica Passo a Passo:</strong></p>\n        <ol>\n          <li>Número total de parcelas: $\\text{meses} = \\text{anos} \\times 12$.</li>\n          <li>Valor de cada parcela: $\\text{prestação} = \\frac{\\text{imóvel}}{\\text{meses}}$.</li>\n          <li>Margem consignável: $\\text{teto} = \\text{salário} \\times 0{,}30$.</li>\n        </ol>\n        <pre><code>valor_casa = float(input(\"Valor do imóvel (R$): \"))\nsalario = float(input(\"Salário do proponente (R$): \"))\nanos = int(input(\"Quantidade de anos para pagar: \"))\n\nmeses = anos * 12\nprestacao = valor_casa / meses\nteto = salario * 0.30\n\nprint(f\"\\nValor da parcela: R$ {prestacao:.2f}\")\nprint(f\"Teto máximo permitido (30% da renda): R$ {teto:.2f}\")\n\nif prestacao <= teto:\n    print(\"Resultado: Empréstimo APROVADO!\")\nelse:\n    print(\"Resultado: Empréstimo NEGADO (prestação excede 30% da renda).\")</code></pre>\n      "
+    },
+    {
+      "id": "ex3-8",
+      "code": "EXERCÍCIO 8",
+      "reference": "Capítulo 4 (pp. 83–84)",
+      "title": "Exercício 4.10: Sistema de Cobrança de Energia Elétrica por Matriz Tarifária",
+      "prompt": "Escreva um programa que calcule o preço a pagar pelo fornecimento de energia elétrica. Pergunte a quantidade de kWh consumidos e o tipo de instalação (R para Residencial, C para Comercial e I para Industrial). Aplique as regras de faturamento:\n- Residencial: até 500 kWh $\\to$ R$ 0,40; acima de 500 kWh $\\to$ R$ 0,65.\n- Comercial: até 1.000 kWh $\\to$ R$ 0,55; acima de 1.000 kWh $\\to$ R$ 0,60.\n- Industrial: até 5.000 kWh $\\to$ R$ 0,55; acima de 5.000 kWh $\\to$ R$ 0,60.",
+      "placeholder": "Modele as decisões com elif e validação no rascunho...",
+      "solution": "\n        <p><strong>Código Estruturado com elif e Validação:</strong></p>\n        <pre><code>kwh = float(input(\"Consumo em kWh: \"))\ntipo = input(\"Tipo de instalação (R, C ou I): \").strip().upper()\n\npreco = 0\nerro = False\n\nif tipo == \"R\":\n    if kwh <= 500:\n        preco = 0.40\n    else:\n        preco = 0.65\nelif tipo == \"C\":\n    if kwh <= 1000:\n        preco = 0.55\n    else:\n        preco = 0.60\nelif tipo == \"I\":\n    if kwh <= 5000:\n        preco = 0.55\n    else:\n        preco = 0.60\nelse:\n    erro = True\n    print(f\"Tipo de instalação '{tipo}' inválido!\")\n\nif not erro:\n    total = kwh * preco\n    print(f\"Instalação: {tipo} | Tarifa unitária: R$ {preco:.2f}/kWh\")\n    print(f\"Total da fatura de energia: R$ {total:.2f}\")</code></pre>\n        <p>Exemplo: Instalação 'R' consumindo 450 kWh $\\to 450 \\times 0.40 = \\text{R\\$\\ } 180,00$. $\\blacksquare$</p>\n      "
+    }
+  ]
+}

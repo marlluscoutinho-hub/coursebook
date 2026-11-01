@@ -1,0 +1,27 @@
+{
+  "id": "05-laboratorio-arvore-de-decisao",
+  "title": "Laboratório Interativo: Árvore de Decisão & Fluxo Condicional",
+  "kind": "lab",
+  "pages": "Prática Integrada (pp. 75–84)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "lab",
+      "id": "decision-flow",
+      "title": "Laboratório Interativo: Árvore de Decisão & Fluxo Condicional",
+      "source": "catalog",
+      "mobile": "full"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

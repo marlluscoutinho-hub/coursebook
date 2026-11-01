@@ -1,0 +1,1 @@
+Bem-vindo ao laboratório tátil do Módulo 03! Aqui você pode experimentar diretamente o comportamento das árvores de decisão em Python. Manipule os controles deslizantes de velocidade, salário, distância e tipos de tarifa elétrica para observar em tempo real quais ramos são ativados e quais são descartados pelo interpretador.

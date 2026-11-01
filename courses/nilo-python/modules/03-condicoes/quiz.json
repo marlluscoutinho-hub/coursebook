@@ -1,0 +1,326 @@
+{
+  "title": "Quizzes Dialéticos do Módulo 03 (Capítulo 4)",
+  "subtitle": "10 questões analíticas comentadas alternativa por alternativa",
+  "questions": [
+    {
+      "id": "q3-1",
+      "type": "multiple_choice",
+      "reference": "Capítulo 4 (pp. 75–77)",
+      "question": "Qual é a função sintática obrigatória do caractere de dois-pontos (:) ao final de uma linha de comando if em Python?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Indicar ao interpretador que a condição terminou e que a linha seguinte iniciará um novo bloco de comandos subordinado.",
+          "isCorrect": true,
+          "explanation": "Correta! Na gramática formal do Python, os dois-pontos funcionam como o delimitador de cabeçalho obrigatório que anuncia a abertura de um bloco indentado subsequente."
+        },
+        {
+          "letter": "B",
+          "text": "Separar a variável de entrada do tipo de dado que ela deve assumir.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O tipo de dado em Python é inferido dinamicamente e os dois-pontos no if não realizam anotação de tipos."
+        },
+        {
+          "letter": "C",
+          "text": "Forçar a CPU a pausar a execução e aguardar um comando do teclado.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Pausas para leitura do teclado são realizadas pela função input(), não por símbolos de pontuação sintática."
+        },
+        {
+          "letter": "D",
+          "text": "O caractere é puramente opcional e pode ser omitido sem qualquer consequência no Python 3.",
+          "isCorrect": false,
+          "explanation": "Incorreta. A ausência dos dois-pontos após a condição gera imediatamente SyntaxError: invalid syntax."
+        }
+      ]
+    },
+    {
+      "id": "q3-2",
+      "type": "multiple_choice",
+      "reference": "Capítulo 4 (pp. 75–77)",
+      "question": "Em Python, como o interpretador determina onde termina o bloco de instruções subordinado a uma estrutura condicional if?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Pela palavra-chave END IF ou pelo fechamento de uma chave '}'.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Python não utiliza delimitadores lexicais como chaves ou palavras reservadas 'end' (típicas de Pascal e SQL)."
+        },
+        {
+          "letter": "B",
+          "text": "Pela primeira linha de código que retornar ao nível de recuo (indentação) anterior.",
+          "isCorrect": true,
+          "explanation": "Correta! Em Python, o recuo à esquerda (indentação significativa) governa a hierarquia de escopo. O bloco termina formalmente assim que surge uma linha com indentação menor."
+        },
+        {
+          "letter": "C",
+          "text": "Pelo ponto-e-vírgula colocado no final da última instrução.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Linhas em Python não exigem ponto-e-vírgula e seu uso não delimita blocos de execução."
+        },
+        {
+          "letter": "D",
+          "text": "O bloco tem sempre exatamente três linhas por definição da linguagem.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Um bloco indentado pode conter qualquer número de linhas (de 1 a milhares)."
+        }
+      ]
+    },
+    {
+      "id": "q3-3",
+      "type": "multiple_choice",
+      "reference": "Capítulo 4 (pp. 76–77)",
+      "question": "Considere o algoritmo do radar com limite de 80 km/h: `if velocidade > 80: print('Multado')`. O que acontece se o velocímetro registrar exatamente 80.0 km/h?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "O motorista é multado, pois 80 é igual ao limite estabelecido.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O operador utilizado foi o estritamente maior (>), portanto 80.0 > 80 avalia para False."
+        },
+        {
+          "letter": "B",
+          "text": "O programa não exibe a mensagem de multa, pois a condição 80.0 > 80 é falsa.",
+          "isCorrect": true,
+          "explanation": "Correta! Na análise de condições de contorno, o operador relacional > exige grandeza estritamente superior. Para multar no limite de 80 inclusive, seria necessário o operador >=."
+        },
+        {
+          "letter": "C",
+          "text": "O interpretador dispara uma exceção ZeroDivisionError.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Não há qualquer operação de divisão na instrução condicional."
+        },
+        {
+          "letter": "D",
+          "text": "O interpretador arredonda 80 para 81 automaticamente antes de testar.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O Python realiza comparações com fidelidade matemática estrita, sem arredondamentos arbitrários."
+        }
+      ]
+    },
+    {
+      "id": "q3-4",
+      "type": "multiple_choice",
+      "reference": "Capítulo 4 (pp. 77–79)",
+      "question": "Por que a construção `if condição: ... else: ...` é preferível a dois blocos `if` sucessivos para representar decisões dicotômicas (ex.: par ou ímpar)?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Porque o if-else garante exclusão mútua e exaustividade, avaliando apenas um teste na CPU e prevenindo lacunas de valores limítrofes.",
+          "isCorrect": true,
+          "explanation": "Correta! O par if-else é matematicamente completo: se a condição for falsa, o else é inevitavelmente executado com apenas um teste relacional, ao passo que dois ifs independentes forçam duas avaliações redundantes e abrem margem para esquecimento de casos de igualdade."
+        },
+        {
+          "letter": "B",
+          "text": "Porque o comando if isolado foi descontinuado a partir do Python 3.10.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O comando if simples continua sendo um dos blocos basilares da linguagem."
+        },
+        {
+          "letter": "C",
+          "text": "Porque a cláusula else permite executar ambos os blocos simultaneamente em threads paralelas.",
+          "isCorrect": false,
+          "explanation": "Incorreta. As cláusulas if e else são estritamente alternativas, nunca concorrentes."
+        },
+        {
+          "letter": "D",
+          "text": "Porque usar dois if independentes consome toda a memória RAM da máquina.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O consumo de memória de estruturas de controle é insignificante; a questão é puramente de clareza semântica e eficiência lógica."
+        }
+      ]
+    },
+    {
+      "id": "q3-5",
+      "type": "multiple_choice",
+      "reference": "Capítulo 4 (pp. 77–79)",
+      "question": "Um programador escreveu a seguinte linha: `else salario <= 1250:`. Qual será a reação do interpretador Python?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "O programa executa normalmente e aplica a condição secundária.",
+          "isCorrect": false,
+          "explanation": "Incorreta. A cláusula else nunca aceita predicados ou condições lógicas."
+        },
+        {
+          "letter": "B",
+          "text": "O interpretador dispara SyntaxError: invalid syntax imediatamente.",
+          "isCorrect": true,
+          "explanation": "Correta! A sintaxe oficial do comando é exclusivamente 'else:'. Se houver necessidade de testar uma nova condição após um if, a palavra-chave correta é 'elif salario <= 1250:'."
+        },
+        {
+          "letter": "C",
+          "text": "O interpretador converte o else em um laço while em segundo plano.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Estruturas condicionais nunca se convertem em repetições."
+        },
+        {
+          "letter": "D",
+          "text": "O salário é multiplicado por zero.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Trata-se de um erro puramente gramatical de análise sintática."
+        }
+      ]
+    },
+    {
+      "id": "q3-6",
+      "type": "multiple_choice",
+      "reference": "Capítulo 4 (pp. 79–81)",
+      "question": "Qual é a principal desvantagem de projetar regras de negócio utilizando dezenas de estruturas `if` aninhadas com múltiplos níveis de indentação?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "O código sofre do efeito 'pirâmide da perdição' (arrow anti-pattern), tornando a leitura confusa, o alinhamento visual frágil e a manutenção propensa a bugs.",
+          "isCorrect": true,
+          "explanation": "Correta! Conforme Nilo Menezes destaca no início da Seção 4.4, aninhar muitos níveis de if/else empurra as linhas para a margem direita da tela, dificultando o rastreamento mental de quais elses pertencem a quais ifs."
+        },
+        {
+          "letter": "B",
+          "text": "O Python 3 restringe o aninhamento a no máximo um único nível.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O interpretador suporta tecnicamente dezenas de níveis aninhados, mas isso viola as boas práticas de legibilidade."
+        },
+        {
+          "letter": "C",
+          "text": "A CPU queima seus registradores internos devido ao excesso de espaços em branco.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Espaços em branco são tokens léxicos descartados após o parsing e não sobrecarregam hardware."
+        },
+        {
+          "letter": "D",
+          "text": "O interpretador passa a inverter o valor de True para False.",
+          "isCorrect": false,
+          "explanation": "Incorreta. A álgebra booleana permanece inalterada em qualquer profundidade."
+        }
+      ]
+    },
+    {
+      "id": "q3-7",
+      "type": "multiple_choice",
+      "reference": "Capítulo 4 (pp. 81–83)",
+      "question": "Como a introdução da palavra-chave elif soluciona o problema de estruturas aninhadas profundas?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Ela achata a estrutura de decisão, mantendo todas as alternativas mútuas no mesmo nível vertical de recuo.",
+          "isCorrect": true,
+          "explanation": "Correta! O 'elif' funde a semântica de 'else: if:' em uma instrução linear no mesmo recuo do 'if' original, preservando a legibilidade limpa do algoritmo."
+        },
+        {
+          "letter": "B",
+          "text": "Ela compila o programa diretamente em linguagem Assembly sem interpretar.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O comando elif é apenas açúcar sintático gramatical processado pelo mesmo interpretador."
+        },
+        {
+          "letter": "C",
+          "text": "Ela obriga todas as alternativas a serem executadas simultaneamente.",
+          "isCorrect": false,
+          "explanation": "Incorreta. As alternativas continuam sendo rigorosamente mutuamente exclusivas."
+        },
+        {
+          "letter": "D",
+          "text": "Ela substitui as variáveis por ponteiros de memória em C.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Não há manipulação de ponteiros manuais em código Python de alto nível."
+        }
+      ]
+    },
+    {
+      "id": "q3-8",
+      "type": "multiple_choice",
+      "reference": "Capítulo 4 (pp. 81–83)",
+      "question": "Seja uma cadeia com múltiplas cláusulas `if cond1: ... elif cond2: ... elif cond3: ... else: ...`. O que ocorre no momento em que `cond2` é avaliada como verdadeira?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "O bloco de cond2 é executado e, em seguida, cond3 também é testada obrigatoriamente.",
+          "isCorrect": false,
+          "explanation": "Incorreta. A cadeia elif encerra assim que uma das condições é satisfeita."
+        },
+        {
+          "letter": "B",
+          "text": "O bloco subordinado a cond2 é executado e o interpretador salta imediatamente para após o término de toda a estrutura condicional.",
+          "isCorrect": true,
+          "explanation": "Correta! Em uma cadeia elif, a primeira condição verdadeira 'vence': seu bloco de comandos é processado e todos os elifs e elses posteriores são sumariamente ignorados."
+        },
+        {
+          "letter": "C",
+          "text": "O programa é reiniciado do início.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Não há retorno de fluxo; a execução segue em frente."
+        },
+        {
+          "letter": "D",
+          "text": "O interpretador executa o bloco cond2 e em seguida executa o bloco else.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O bloco else só é acionado se absolutamente todas as condições anteriores falharem."
+        }
+      ]
+    },
+    {
+      "id": "q3-9",
+      "type": "multiple_choice",
+      "reference": "Capítulo 4 (pp. 82–84)",
+      "question": "Em um sistema de menu ou calculadora de operações básicas (+, -, *, /) implementado com `elif`, qual é o papel essencial do bloco `else` posicionado no final da cadeia?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Redefinir as variáveis de entrada para o valor zero.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O bloco else não tem poder intrínseco de alterar variáveis a menos que instruído no código."
+        },
+        {
+          "letter": "B",
+          "text": "Atuar como tratamento defensivo de exceção de domínio, capturando qualquer entrada inválida ou opção não prevista digitada pelo usuário.",
+          "isCorrect": true,
+          "explanation": "Correta! O else final serve como cláusula de proteção (fallback/default case): se o usuário digitar uma opção inexistente (ex.: '%'), o else emite um alerta informando que a operação é desconhecida."
+        },
+        {
+          "letter": "C",
+          "text": "Executar a operação mais frequente para otimizar o processador.",
+          "isCorrect": false,
+          "explanation": "Incorreta. A otimização de frequência é feita posicionando o caso mais comum no primeiro if, não no else."
+        },
+        {
+          "letter": "D",
+          "text": "Fechar a janela do sistema operacional.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O comando não interage com o gerenciador de janelas do SO."
+        }
+      ]
+    },
+    {
+      "id": "q3-10",
+      "type": "multiple_choice",
+      "reference": "Capítulo 4 (pp. 83–84)",
+      "question": "Considere o problema das tarifas elétricas (Exercício 4.10) com tipos 'R', 'C' e 'I'. Se o usuário digitar 'r' minúsculo e o código contiver `if tipo == 'R':`, qual será o resultado se não for feito tratamento prévio de caixa?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "O Python tratará 'r' e 'R' como idênticos automaticamente, já que strings ignoram maiúsculas.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Python é estritamente sensível a maiúsculas (case-sensitive): o caractere 'r' (código ASCII 114) é diferente de 'R' (código ASCII 82)."
+        },
+        {
+          "letter": "B",
+          "text": "A condição resultará em False, fazendo com que a entrada caia no ramo de instalação inválida (else), a menos que se utilize o método upper() ou a comparação composta `tipo == 'R' or tipo == 'r'`.",
+          "isCorrect": true,
+          "explanation": "Correta! Devido ao case sensitivity das strings em Python, a comparação de igualdade falha. O programador defensivo deve normalizar o texto com `.upper()` ou aceitar ambas as grafias na condição booleana."
+        },
+        {
+          "letter": "C",
+          "text": "O computador trava em tela azul de erro de sistema.",
+          "isCorrect": false,
+          "explanation": "Incorreta. A falha de comparação apenas resulta no valor booleano False em tempo de execução."
+        },
+        {
+          "letter": "D",
+          "text": "A conta de luz é emitida com valor negativo.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Nenhum cálculo de energia é realizado se a validação do tipo falhar."
+        }
+      ]
+    }
+  ]
+}

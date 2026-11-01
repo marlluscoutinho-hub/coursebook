@@ -1,0 +1,17 @@
+{
+  "id": "03-condicoes",
+  "code": "MÓDULO 03",
+  "title": "Estruturas Condicionais e Tomada de Decisão",
+  "chapters": "Capítulo 4",
+  "pages": "pp. 75–84",
+  "summary": "Desvios de fluxo com a instrução if, indentação sintática em blocos de código, cláusula else para alternativas mutuamente exclusivas, aninhamento estruturado de decisões e simplificação elegante com a cascata elif para tarifações escalonadas e regras de negócio.",
+  "lessons": [
+    "01-desvio-condicional-if",
+    "02-ramo-alternativo-else",
+    "03-estruturas-aninhadas",
+    "04-cascata-elif",
+    "05-laboratorio-arvore-de-decisao"
+  ],
+  "quiz": "quiz.json",
+  "exercises": "exercises.json"
+}

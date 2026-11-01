@@ -1,0 +1,1 @@
+Muitas decisões do mundo real não são opcionais: se o sinal não está verde, ele está vermelho; se a compra não for aprovada, ela é recusada. Quando temos dois caminhos exaustivos e mutuamente exclusivos, depender de dois `if` independentes é ineficiente e propenso a erros. Nesta aula, você aprenderá a estruturar bifurcações completas utilizando o par canônico `if` e `else`.
