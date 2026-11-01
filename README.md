@@ -52,18 +52,27 @@ O projeto é estruturado para suportar múltiplos cursos em pastas isoladas por 
 
 ```
 coursebook/
-├── index.html                  # Shell da aplicação (Home, Catálogo e Reader)
+├── index.html                  # Shell da aplicação (Home, Catálogo, Leitor e Configurações)
 ├── styles.css                  # Design System Paper & Ink Brutalism
-├── app.js                      # Controlador de navegação, estado e progresso
+├── app.js                      # Motor interativo com carregador modular (fetch v2) e eventos
+├── labs/                       # Catálogo modular de laboratórios interativos (repl-simulator, etc.)
+├── schema/                     # Schemas JSON canônicos oficiais (course, module, lesson, lab, quiz...)
 ├── courses/
 │   ├── clrs-algoritmos/        # Curso 01: Algoritmos: Teoria e Prática (CLRS 3ª Ed.)
 │   │   ├── course.json         # Metadados do curso
-│   │   └── data/               # 16 Módulos completos (curriculum.js, module2..16.js)
+│   │   └── data/               # Módulos legados suportados via adaptador de compatibilidade
 │   ├── forbellone-logica/      # Curso 02: Lógica de Programação (Forbellone 3ª Ed.)
-│   │   └── course.json         # Metadados e planejamento
+│   │   └── course.json         # Metadados e planejamento curricular
 │   └── nilo-python/            # Curso 03: Introdução à Programação com Python (Nilo Menezes 2ª Ed.)
-│       ├── course.json         # Metadados do curso
-│       └── data/               # Trilha dos 12 módulos (curriculum.js, module1.js)
+│       ├── course.json         # Metadados do curso e citação formal do livro
+│       ├── curriculum.json     # Trilha curricular completa dos 12 módulos
+│       └── modules/            # Módulos 100% em JSON + Markdown (zero JS de conteúdo)
+│           └── 01-computador-e-interpretador/
+│               ├── module.json
+│               ├── quiz.json
+│               ├── exercises.json
+│               ├── checklist.json
+│               └── lessons/
 ```
 
 ---
@@ -86,7 +95,7 @@ git clone git@github.com:marlluscoutinho-hub/coursebook.git
 cd coursebook
 ```
 
-2. Abra diretamente o arquivo `index.html` em qualquer navegador moderno, ou execute um servidor HTTP simples:
+2. Execute um servidor HTTP local simples (necessário para o carregamento modular via `fetch`):
 ```bash
 # Com Python 3:
 python3 -m http.server 8080
@@ -113,7 +122,9 @@ O CourseBook é material de estudo pessoal e o projeto central do meu portfólio
 | 2 | Schema modular (JSON + Markdown), perfis e métricas | Contrato entre IA escritora e plataforma | [02-schema](docs/evolucao/02-schema.md) | `refactor/02-schema` |
 | 3 | Skill construtora v2 e schemas completos | IA escreve novo formato com validação e análise | [03-skill-builder-v2](docs/evolucao/03-skill-builder-v2.md) | `refactor/03-skill-builder-v2` |
 | 4-5 | Web Engine v2 e desacoplamento do CLRS | Suporte a Markdown, telemetria, gaveta mobile e bancadas extraídas | [04-05-engine-v2](docs/evolucao/04-05-engine-v2-e-adaptador-clrs.md) | `refactor/04-05-engine-v2` |
+| 6-7 | Vocabulário canônico, alvos de toque mobile e piloto Nilo | Aulas, laboratórios e rascunho; 1ª validação do formato JSON+MD | [06-07-vocabulario](docs/evolucao/06-07-vocabulario-e-piloto-nilo.md) | `refactor/06-07-nilo-piloto` |
 | 8 | Limpeza de artefatos, fluxo canônico e persistência | Eliminação de colchetes e termos legados; exportação/restauração JSON de backup | [08-limpeza-artefatos](docs/evolucao/08-limpeza-de-artefatos-e-persistencia.md) | `refactor/08-limpeza-e-persistencia` |
+| 9 | Motor modular v2 e extinção de dados legados do Nilo | Carregador `loadModularCourse` nativo e catálogo `labs/repl-simulator.js` | [09-motor-modular](docs/evolucao/09-motor-modular-e-extincao-data-legado.md) | `refactor/09-motor-modular` |
 
 **Padrão de commits:** `<tipo>(<escopo>): <resumo>`, com tipos `feat`, `fix`, `refactor`, `docs`, `style`, `chore`, `test` e escopos `engine`, `lesson`, `lab`, `review`, `latex`, `schema`, `course/<id>`, `readme`.
 

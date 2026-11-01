@@ -142,21 +142,21 @@ Você disse que quer pensar um plano de persistência. Opções, da mais simples
 
 ### 6.4 Ordem sugerida
 
-Continua sem prazos. A ordem agora é:
+Continua sem prazos. Status atual da evolução:
 
-| # | Etapa | O que entrega | Depende de |
-|---|---|---|---|
-| 0 | **Rede de segurança**: tag `v0-pre-refactor`, `docs/visual-debt.md`, página de teste de LaTeX, confirmar PDFs não rastreados (já confirmei: **nenhum PDF está no git**) | Ponto de retorno | — |
-| 1 | **Correção do LaTeX** (só CSS) | Resultado visível, baixo risco | 0 |
-| 2 | **Decisão de schema** em `docs/architecture.md` + JSON Schema: curso, módulo, aula (`intro`, blocos), tipos de bloco, catálogo de callouts, perfil (com composição), eventos de métricas (com `viewport`), suporte `mobile` do laboratório. *Só documento.* | Contrato para tudo que vem depois | decisões da seção 10 |
-| 3 | **Revisão da skill construtora** em paralelo ao schema: escrever a versão 2 (novo schema, novo vocabulário, validação por schema, analisador de cobertura). *Pode usar o Nilo-Python como caso de teste.* | A IA passa a gerar o formato novo | 2 |
-| 4 | **Motor novo**: carregamento por `fetch`, blocos configuráveis, perfis, progresso por aula, registro de eventos (nível 1 de 6.3) | Plataforma que lê o formato novo | 2 |
-| 5 | **Adaptador do CLRS**: lê `unidades`/`revisao` antigos e entrega o modelo novo em memória; extrai as bancadas de `app.js` para o curso | CLRS segue funcionando no motor novo | 4 |
-| 6 | **Vocabulário e ajustes de UI**: aula, laboratório, rascunho, catálogo de callouts com CSS para cada tipo; alvos de toque, tipografia fluida e fim dos estilos inline (ver 6.5) | Interface coerente | 4 (aproveita 2) |
-| 7 | **Piloto Nilo-Python**: reescrever o módulo 1 pela skill v2 e comparar dois perfis | Primeira validação real do modelo | 3, 4 |
-| 8 | **Revisão e fluxo do módulo**: resumos por aula alimentam a revisão; ordem aprendizado → resumo → quiz → exercícios | Fluxo final | 4, 7 |
-| 9 | **Persistência nível 2** (exportar/importar) e painel simples de métricas | Dados para comparar formatos | 4 |
-| 10 | **Planejamento da conversão do CLRS** (projeto à parte, módulo a módulo) e **limpeza dos artefatos visuais** | Fim da dívida herdada | 5, 7 |
+| # | Etapa | O que entrega | Status | Documento / Artefato |
+|---|---|---|---|---|
+| 0 | **Rede de segurança**: tag `v0-pre-refactor`, `docs/visual-debt.md`, página de teste de LaTeX | Ponto de retorno | **Concluída** | [visual-debt.md](visual-debt.md), `v0-pre-refactor` |
+| 1 | **Correção do LaTeX** (CSS de overflow-x, inline anywhere) | Fórmulas sem overflow em 360 px | **Concluída** | [01-latex.md](evolucao/01-latex.md) |
+| 2 | **Decisão de schema** em `docs/architecture.md` + JSON Schema v2 | Contrato oficial entre IA e motor | **Concluída** | [02-schema.md](evolucao/02-schema.md), [`schema/`](../schema/) |
+| 3 | **Revisão da skill construtora** (CourseBook Builder v2 e `course_tool.py`) | CLI de extração, scaffold, validação e análise | **Concluída** | [03-skill-builder-v2.md](evolucao/03-skill-builder-v2.md) |
+| 4 | **Motor novo**: carregamento assíncrono modular por `fetch`, eventos e viewport | Plataforma modular nativa | **Concluída** | [04-05-engine-v2.md](evolucao/04-05-engine-v2-e-adaptador-clrs.md) |
+| 5 | **Adaptador do CLRS**: compatibilidade retroativa em memória e labs desacoplados | CLRS funciona sem quebras | **Concluída** | [04-05-engine-v2.md](evolucao/04-05-engine-v2-e-adaptador-clrs.md) |
+| 6 | **Vocabulário e ajustes de UI**: Aulas, Laboratórios, Rascunho, menu mobile e alvos $\ge 44\text{px}$ | Interface brutalista limpa | **Concluída** | [06-07-vocabulario.md](evolucao/06-07-vocabulario-e-piloto-nilo.md) |
+| 7 | **Piloto Nilo-Python**: módulo 01 canônico em JSON+Markdown puro e lab REPL | Validação prática do formato | **Concluída** | [06-07-vocabulario.md](evolucao/06-07-vocabulario-e-piloto-nilo.md) |
+| 8 | **Revisão e fluxo do módulo**: ordem Aulas ➔ Revisão ➔ Quizzes ➔ Exercícios | Fluxo canônico e resumos | **Concluída** | [08-limpeza-artefatos.md](evolucao/08-limpeza-de-artefatos-e-persistencia.md) |
+| 9 | **Persistência nível 2** e motor modular v2 (extinção de `courses/nilo-python/data/`) | Backup JSON e zero JS em cursos | **Concluída** | [09-motor-modular.md](evolucao/09-motor-modular-e-extincao-data-legado.md) |
+| 10 | **Planejamento da conversão do CLRS** (módulo a módulo) e catálogo de labs | Blueprint da migração do CLRS | **Concluída** | [conversao-clrs.md](conversao-clrs.md) |
 
 **Por que não mover o LaTeX para depois?** Ele é independente de tudo e vale como primeiro documento de evolução no README (antes/depois). **Por que o schema antes do motor?** Motor e skill dependem dele, e é a decisão mais cara de desfazer. **Por que o piloto antes de converter o CLRS?** Você disse que converter o CLRS deve ser mais fácil por já estar planejado. Isso é verdade para o conteúdo, mas só é seguro depois que o modelo provou funcionar em escala pequena.
 
