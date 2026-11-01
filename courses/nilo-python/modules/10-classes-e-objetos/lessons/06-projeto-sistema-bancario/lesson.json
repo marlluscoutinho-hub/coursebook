@@ -1,0 +1,20 @@
+{
+  "id": "06-projeto-sistema-bancario",
+  "title": "Projeto Canônico: Agregação de Classes e o Sistema Bancário",
+  "kind": "standard",
+  "pages": "Capítulo 10 (pp. 221–235)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

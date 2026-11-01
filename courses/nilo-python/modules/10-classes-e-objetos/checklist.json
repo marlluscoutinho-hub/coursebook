@@ -1,0 +1,45 @@
+{
+  "moduleId": "10-classes-e-objetos",
+  "items": [
+    {
+      "id": "c01",
+      "text": "Compreender a diferença entre classe (molde) e objeto/instância na memória heap",
+      "checked": false
+    },
+    {
+      "id": "c02",
+      "text": "Escrever construtores com __init__ e referenciar atributos de instância via self",
+      "checked": false
+    },
+    {
+      "id": "c03",
+      "text": "Encapsular regras de negócio e validações em métodos de instância",
+      "checked": false
+    },
+    {
+      "id": "c04",
+      "text": "Implementar herança criando subclasses como ContaEspecial herdando de Conta",
+      "checked": false
+    },
+    {
+      "id": "c05",
+      "text": "Aplicar polimorfismo sobrescrevendo métodos como pode_sacar() e extrato()",
+      "checked": false
+    },
+    {
+      "id": "c06",
+      "text": "Construir o projeto bancário canônico agregando Cliente, Conta e Banco",
+      "checked": false
+    },
+    {
+      "id": "c07",
+      "text": "Implementar métodos mágicos (dunder) como __len__, __getitem__ e __str__",
+      "checked": false
+    },
+    {
+      "id": "c08",
+      "text": "Operar o simulador bancário orientado a objetos no laboratório interativo",
+      "checked": false
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "05-polimorfismo-sobrescrita",
+  "title": "Polimorfismo, Sobrescrita de Métodos e Princípio de Substituição",
+  "kind": "standard",
+  "pages": "Capítulo 10 (pp. 228–230)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

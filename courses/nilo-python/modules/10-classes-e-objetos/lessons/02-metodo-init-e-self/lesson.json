@@ -1,0 +1,20 @@
+{
+  "id": "02-metodo-init-e-self",
+  "title": "O Construtor __init__ e a Semântica do Parâmetro Self",
+  "kind": "standard",
+  "pages": "Capítulo 10 (pp. 217–221)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

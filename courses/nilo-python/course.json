@@ -19,7 +19,8 @@
     "06-dicionarios-e-tuplas",
     "07-strings-e-jogo-da-forca",
     "08-funcoes-e-recursao",
-    "09-arquivos-e-diretorios"
+    "09-arquivos-e-diretorios",
+    "10-classes-e-objetos"
   ],
   "status": "in_development"
 }

@@ -1,0 +1,20 @@
+{
+  "id": "03-encapsulamento-e-estado",
+  "title": "Encapsulamento de Regras de Negócio e Métodos Mutadores",
+  "kind": "standard",
+  "pages": "Capítulo 10 (pp. 219–225)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

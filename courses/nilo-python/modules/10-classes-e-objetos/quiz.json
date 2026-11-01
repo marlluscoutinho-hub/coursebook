@@ -1,0 +1,304 @@
+{
+  "questions": [
+    {
+      "id": "q01",
+      "question": "Qual é a distinção conceitual e física correta entre uma 'Classe' e um 'Objeto' na Programação Orientada a Objetos em Python?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "A classe é uma variável que armazena dados em disco, enquanto o objeto é um arquivo de texto aberto.",
+          "isCorrect": false,
+          "explanation": "Classes e objetos residem na memória do programa em execução e representam estruturas de tipos e instâncias, não arquivos em disco."
+        },
+        {
+          "letter": "B",
+          "text": "A classe é o molde, planta conceitual ou definição do novo tipo de dado, enquanto o objeto é uma instância concreta desse tipo alocada fisicamente na memória heap.",
+          "isCorrect": true,
+          "explanation": "Correto! A classe especifica os atributos e métodos compartilhados. O objeto (ou instância) é criado a partir desse molde e possui seus próprios dados individuais independentes."
+        },
+        {
+          "letter": "C",
+          "text": "Classes só podem conter números inteiros, enquanto objetos aceitam apenas strings.",
+          "isCorrect": false,
+          "explanation": "Tanto classes quanto objetos aceitam quaisquer tipos de dados do Python."
+        },
+        {
+          "letter": "D",
+          "text": "Classe e objeto são termos estritamente sinônimos na documentação oficial do CPython.",
+          "isCorrect": false,
+          "explanation": "São conceitos distintos: a classe é o tipo (`type`), enquanto o objeto é a instância instanciada a partir dela."
+        }
+      ]
+    },
+    {
+      "id": "q02",
+      "question": "Qual é a função exata do método especial `__init__` dentro de uma classe em Python?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Destruir o objeto e limpar a memória quando o programa termina.",
+          "isCorrect": false,
+          "explanation": "Quem destrói o objeto na coleta de lixo é o método `__del__`, não o `__init__`."
+        },
+        {
+          "letter": "B",
+          "text": "Atuar como método construtor/inicializador, sendo executado automaticamente no instante em que uma nova instância da classe é criada para inicializar seus atributos com valores padrão.",
+          "isCorrect": true,
+          "explanation": "Correto! O método `__init__` recebe os argumentos passados na instanciação `Classe(arg1, arg2)` e inicializa o estado interno da instância antes de devolvê-la ao chamador."
+        },
+        {
+          "letter": "C",
+          "text": "Compilar o código Python em linguagem de máquina binária.",
+          "isCorrect": false,
+          "explanation": "A compilação de bytecode é realizada pelo compilador do CPython, não pelo `__init__`."
+        },
+        {
+          "letter": "D",
+          "text": "Impedir que outros programadores adicionem métodos à classe.",
+          "isCorrect": false,
+          "explanation": "`__init__` não possui nenhuma função de bloqueio de acesso ou metaprogramação."
+        }
+      ]
+    },
+    {
+      "id": "q03",
+      "question": "Por que o primeiro parâmetro de qualquer método de instância em Python deve ser nomeado convencionalmente como `self`?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Porque `self` é a palavra reservada que impede que a função seja chamada recursivamente.",
+          "isCorrect": false,
+          "explanation": "`self` não é palavra reservada da linguagem (é apenas um identificador convencional) e não interfere em recursão."
+        },
+        {
+          "letter": "B",
+          "text": "Porque o Python repassa automaticamente a referência do próprio objeto concreto chamador como o primeiro argumento ao invocar qualquer método de instância.",
+          "isCorrect": true,
+          "explanation": "Correto! A chamada `tv.muda_canal()` é traduzida internamente pelo interpretador para `Televisao.muda_canal(tv)`. O parâmetro `self` recebe a referência dessa instância para poder acessar e modificar seus atributos específicos."
+        },
+        {
+          "letter": "C",
+          "text": "Porque o interpretador exige que todos os métodos sejam estáticos.",
+          "isCorrect": false,
+          "explanation": "Métodos estáticos usam o decorador `@staticmethod` e justamente não recebem `self`."
+        },
+        {
+          "letter": "D",
+          "text": "Para permitir que o método retorne múltiplos valores ao mesmo tempo.",
+          "isCorrect": false,
+          "explanation": "O retorno múltiplo é suportado por qualquer função através de tuplas, independente de `self`."
+        }
+      ]
+    },
+    {
+      "id": "q04",
+      "question": "O que ocorre quando escrevemos `canal = 5` dentro do método `__init__` em vez de `self.canal = 5`?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "O atributo `canal` é criado normalmente na instância, pois `self.` é sempre opcional.",
+          "isCorrect": false,
+          "explanation": "No Python, o acesso a atributos de instância exige obrigatoriamente a notação de ponto explícita `self.`."
+        },
+        {
+          "letter": "B",
+          "text": "`canal` é criada como uma variável local efêmera do método `__init__` e é destruída assim que o método termina, fazendo com que o objeto não possua o atributo `canal`.",
+          "isCorrect": true,
+          "explanation": "Correto! Sem `self.`, o interpretador cria apenas uma variável local na pilha de execução do método. Tentar acessar `obj.canal` posteriormente disparará `AttributeError`."
+        },
+        {
+          "letter": "C",
+          "text": "A variável `canal` vira uma constante global acessível por todo o sistema operacional.",
+          "isCorrect": false,
+          "explanation": "Variáveis declaradas em funções ou métodos têm escopo estritamente local."
+        },
+        {
+          "letter": "D",
+          "text": "Gera um erro de sintaxe imediato durante a compilação do script.",
+          "isCorrect": false,
+          "explanation": "A sintaxe é perfeitamente válida como variável local, mas introduz um erro de lógica (*bug*)."
+        }
+      ]
+    },
+    {
+      "id": "q05",
+      "question": "Por que o princípio de encapsulamento prescreve que o saldo bancário seja alterado exclusivamente por métodos como `.saque(valor)` e `.deposito(valor)` em vez de permitir `conta.saldo -= 100` diretamente?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Porque o Python bloqueia com `PermissionError` qualquer acesso direto a atributos de números reais.",
+          "isCorrect": false,
+          "explanation": "Por padrão, atributos em Python são públicos e podem ser acessados diretamente caso o desenvolvedor não siga as boas práticas."
+        },
+        {
+          "letter": "B",
+          "text": "Porque os métodos validam regras de negócio (como verificar se há saldo/limite suficiente e se o valor é positivo) e gravam o histórico de operações de forma segura e atômica.",
+          "isCorrect": true,
+          "explanation": "Correto! A alteração direta permite corromper o estado do objeto (ex: atribuir saldos negativos indevidos ou valores inválidos). O método encapsula as invariantes e regras de integridade do negócio."
+        },
+        {
+          "letter": "C",
+          "text": "Porque métodos aumentam o consumo de memória RAM do objeto.",
+          "isCorrect": false,
+          "explanation": "Métodos são compartilhados na definição da classe e não aumentam o tamanho da instância na RAM."
+        },
+        {
+          "letter": "D",
+          "text": "Para forçar a conversão do saldo em dólares americanos.",
+          "isCorrect": false,
+          "explanation": "Não há conversão de moeda nos métodos canônicos."
+        }
+      ]
+    },
+    {
+      "id": "q06",
+      "question": "Como a relação de herança entre a superclasse `Conta` e a subclasse `ContaEspecial` é declarada na sintaxe do Python?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "`class ContaEspecial extends Conta:`",
+          "isCorrect": false,
+          "explanation": "A palavra-chave `extends` é usada em Java e TypeScript, não em Python."
+        },
+        {
+          "letter": "B",
+          "text": "`class ContaEspecial(Conta):`",
+          "isCorrect": true,
+          "explanation": "Correto! Em Python, a herança é declarada passando o nome da superclasse entre parênteses logo após o nome da subclasse."
+        },
+        {
+          "letter": "C",
+          "text": "`class ContaEspecial inherits Conta:`",
+          "isCorrect": false,
+          "explanation": "`inherits` não é palavra reservada da sintaxe do Python."
+        },
+        {
+          "letter": "D",
+          "text": "`class ContaEspecial: Conta`",
+          "isCorrect": false,
+          "explanation": "Dois pontos duplos ou anotações de tipo não configuram herança de classes."
+        }
+      ]
+    },
+    {
+      "id": "q07",
+      "question": "Qual é a finalidade da instrução `super().__init__(clientes, numero, saldo)` dentro do construtor de `ContaEspecial`?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Apagar a conta da memória para criar uma nova conta do zero.",
+          "isCorrect": false,
+          "explanation": "`super()` não deleta o objeto; ele invoca o método da classe base."
+        },
+        {
+          "letter": "B",
+          "text": "Chamar o construtor da superclasse `Conta` para inicializar os atributos herdados comuns (`clientes`, `numero`, `saldo`, `operacoes`), evitando duplicar código na subclasse.",
+          "isCorrect": true,
+          "explanation": "Correto! `super()` obtém o proxy da superclasse na cadeia de herança (MRO) e executa seu método inicializador, reaproveitando integralmente a lógica da classe base."
+        },
+        {
+          "letter": "C",
+          "text": "Conectar a conta diretamente ao servidor do Banco Central.",
+          "isCorrect": false,
+          "explanation": "Não há comunicação externa de rede em `super()`."
+        },
+        {
+          "letter": "D",
+          "text": "Impedir que a subclasse possua atributos adicionais como `limite`.",
+          "isCorrect": false,
+          "explanation": "A subclasse pode declarar livremente seus próprios atributos especializados logo após o `super()`."
+        }
+      ]
+    },
+    {
+      "id": "q08",
+      "question": "Como o conceito de Polimorfismo é aplicado no método de saque de `ContaEspecial` conforme refatorado no Exercício 10.12?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "`ContaEspecial` redefine apenas o método predicado `pode_sacar()`, permitindo que o método universal `saque()` herdado decida dinamicamente pela autorização considerando `saldo + limite`.",
+          "isCorrect": true,
+          "explanation": "Correto! Graças ao polimorfismo, `ContaEspecial` sobrescreve apenas a regra de verificação `pode_sacar(valor)`. Quando o método `saque()` herdado é invocado, o Python resolve dinamicamente para a checagem com limite sem precisar reescrever o código de saque."
+        },
+        {
+          "letter": "B",
+          "text": "`ContaEspecial` proíbe saques e permite apenas depósitos.",
+          "isCorrect": false,
+          "explanation": "`ContaEspecial` expande o poder de saque através do limite de crédito."
+        },
+        {
+          "letter": "C",
+          "text": "O método de saque precisa verificar com `if type(self) == ContaEspecial:` para saber se aplica limite.",
+          "isCorrect": false,
+          "explanation": "A verificação explícita de tipos com `if type` é um antipadrão que anula o benefício do polimorfismo."
+        },
+        {
+          "letter": "D",
+          "text": "O polimorfismo exige que o método tenha nomes diferentes em cada classe (`saque_comum()` vs `saque_especial()`).",
+          "isCorrect": false,
+          "explanation": "O polimorfismo baseia-se exatamente em manter o mesmo nome de método (`saque`) com comportamentos especializados."
+        }
+      ]
+    },
+    {
+      "id": "q09",
+      "question": "Na classe `ListaÚnica` de Nilo Menezes (Listagem 10.13), qual método mágico foi implementado para permitir que o usuário consulte a quantidade de elementos escrevendo `len(lu)` em vez de `lu.tamanho()`?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "`def __size__(self):`",
+          "isCorrect": false,
+          "explanation": "Não existe método mágico `__size__` para a função `len()` em Python."
+        },
+        {
+          "letter": "B",
+          "text": "`def __len__(self):`",
+          "isCorrect": true,
+          "explanation": "Correto! O protocolo de sequência do Python estabelece que a função embutida `len(obj)` invoca internamente o método especial `obj.__len__()`."
+        },
+        {
+          "letter": "C",
+          "text": "`def __count__(self):`",
+          "isCorrect": false,
+          "explanation": "`__count__` não é o dunder method associado a `len()`."
+        },
+        {
+          "letter": "D",
+          "text": "`def __iter__(self):`",
+          "isCorrect": false,
+          "explanation": "`__iter__` é o método mágico responsável por permitir que o objeto seja iterado em um laço `for`."
+        }
+      ]
+    },
+    {
+      "id": "q10",
+      "question": "Qual método mágico é responsável por permitir o acesso a elementos por colchetes, como em `lu[0]` na classe `ListaÚnica`?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "`def __getitem__(self, p):`",
+          "isCorrect": true,
+          "explanation": "Correto! O método especial `__getitem__(self, chave)` é acionado sempre que a sintaxe de indexação por colchetes `objeto[indice]` é executada."
+        },
+        {
+          "letter": "B",
+          "text": "`def __index__(self, p):`",
+          "isCorrect": false,
+          "explanation": "`__index__` converte o próprio objeto em um inteiro, não intercepta a indexação por colchetes."
+        },
+        {
+          "letter": "C",
+          "text": "`def __setitem__(self, p, valor):`",
+          "isCorrect": false,
+          "explanation": "`__setitem__` é usado para atribuição em colchetes (`objeto[indice] = valor`), enquanto a leitura usa `__getitem__`."
+        },
+        {
+          "letter": "D",
+          "text": "`def __slice__(self):`",
+          "isCorrect": false,
+          "explanation": "Em versões modernas de Python, fatiamentos também são repassados diretamente como objetos `slice` para `__getitem__`."
+        }
+      ]
+    }
+  ]
+}

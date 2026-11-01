@@ -1,0 +1,27 @@
+{
+  "id": "07-laboratorio-simulador-bancario-poo",
+  "title": "Laboratório Interativo: Simulador Bancário POO & Métodos Mágicos",
+  "kind": "lab",
+  "pages": "Prática Integrada (pp. 216–259)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "lab",
+      "id": "oop-bank-lab",
+      "title": "Laboratório Interativo: Simulador Bancário Orientado a Objetos (POO)",
+      "source": "catalog",
+      "mobile": "full"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

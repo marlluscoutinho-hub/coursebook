@@ -1,0 +1,19 @@
+{
+  "id": "10-classes-e-objetos",
+  "code": "MÓDULO 10",
+  "title": "Programação Orientada a Objetos: Classes, Herança e Polimorfismo",
+  "chapters": "Capítulo 10 (pp. 216–259)",
+  "pages": "pp. 216–259",
+  "summary": "Modelagem orientada a objetos, declaração de classes com class, o método construtor __init__ e a semântica do self, encapsulamento de estado e métodos mutadores, herança de classes (Conta e ContaEspecial) com super(), polimorfismo e substituição sem perda de funcionalidade, agregação de objetos no projeto Banco, e métodos mágicos (dunder methods: __len__, __getitem__, __iter__, __str__).",
+  "lessons": [
+    "01-classes-e-instancias",
+    "02-metodo-init-e-self",
+    "03-encapsulamento-e-estado",
+    "04-heranca-e-super",
+    "05-polimorfismo-sobrescrita",
+    "06-projeto-sistema-bancario",
+    "07-laboratorio-simulador-bancario-poo"
+  ],
+  "quiz": "quiz.json",
+  "exercises": "exercises.json"
+}

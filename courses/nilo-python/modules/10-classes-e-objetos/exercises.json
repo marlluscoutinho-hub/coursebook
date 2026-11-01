@@ -1,0 +1,76 @@
+{
+  "exercises": [
+    {
+      "id": "ex-10-1",
+      "code": "EXERCÍCIO 10.1",
+      "reference": "Nilo Menezes, Capítulo 10, p. 218",
+      "title": "Modelagem de Atributos e Independência de Instâncias",
+      "prompt": "Adicione os atributos `tamanho` (em polegadas) e `marca` ao construtor da classe `Televisão`. Crie dois objetos `Televisão` com marcas e tamanhos diferentes (ex: Sony 55 polegadas e LG 42 polegadas) e imprima seus atributos para confirmar a independência física de cada instância na memória.",
+      "placeholder": "class Televisao:\n    def __init__(self, marca, tamanho):\n        # Inicialize os atributos da televisão\n        pass\n\n# Instancie e imprima duas televisões diferentes\n",
+      "solution": "class Televisao:\n    def __init__(self, marca, tamanho):\n        self.ligada = False\n        self.canal = 2\n        self.marca = marca\n        self.tamanho = tamanho\n\ntv_sala = Televisao(\"Sony\", 55)\ntv_quarto = Televisao(\"LG\", 42)\n\nprint(f\"TV Sala  : {tv_sala.marca} de {tv_sala.tamanho}\\\" - Canal {tv_sala.canal}\")\nprint(f\"TV Quarto: {tv_quarto.marca} de {tv_quarto.tamanho}\\\" - Canal {tv_quarto.canal}\")\n# Cada instância possui seus próprios atributos independentes na memória."
+    },
+    {
+      "id": "ex-10-2",
+      "code": "EXERCÍCIO 10.2",
+      "reference": "Nilo Menezes, Capítulo 10, p. 219",
+      "title": "Encapsulamento e Invariante de Canal Mínimo",
+      "prompt": "Modifique o construtor da classe `Televisão` para receber os parâmetros `min_canal` e `max_canal`. Ajuste o método `muda_canal_para_baixo()` para que o canal não seja reduzido caso já tenha atingido o canal mínimo.",
+      "placeholder": "class Televisao:\n    def __init__(self, min_canal=2, max_canal=14):\n        # Configure os limites de canal\n        pass\n    def muda_canal_para_baixo(self):\n        # Decremente respeitando o mínimo\n        pass\n",
+      "solution": "class Televisao:\n    def __init__(self, min_canal=2, max_canal=14):\n        self.ligada = False\n        self.cmin = min_canal\n        self.cmax = max_canal\n        self.canal = min_canal\n\n    def muda_canal_para_baixo(self):\n        if self.canal - 1 >= self.cmin:\n            self.canal -= 1\n        else:\n            print(f\"Limite inferior atingido! Canal mínimo é {self.cmin}.\")\n\ntv = Televisao(min_canal=2, max_canal=14)\ntv.muda_canal_para_baixo()  # Não deve diminuir abaixo de 2\nprint(f\"Canal atual: {tv.canal}\")  # 2"
+    },
+    {
+      "id": "ex-10-3",
+      "code": "EXERCÍCIO 10.3",
+      "reference": "Nilo Menezes, Capítulo 10, p. 219",
+      "title": "Encapsulamento e Invariante de Canal Máximo",
+      "prompt": "Modifique a classe `Televisão` do exercício anterior adicionando a regra no método `muda_canal_para_cima()` para que o canal não seja aumentado além do canal máximo permitido (`cmax`).",
+      "placeholder": "class Televisao:\n    # Implemente muda_canal_para_cima respeitando cmax\n    pass\n",
+      "solution": "class Televisao:\n    def __init__(self, min_canal=2, max_canal=14):\n        self.ligada = False\n        self.cmin = min_canal\n        self.cmax = max_canal\n        self.canal = min_canal\n\n    def muda_canal_para_cima(self):\n        if self.canal + 1 <= self.cmax:\n            self.canal += 1\n        else:\n            print(f\"Limite superior atingido! Canal máximo é {self.cmax}.\")\n\ntv = Televisao(min_canal=2, max_canal=5)\ntv.canal = 5\ntv.muda_canal_para_cima()  # Não deve ultrapassar 5\nprint(f\"Canal atual: {tv.canal}\")  # 5"
+    },
+    {
+      "id": "ex-10-6",
+      "code": "EXERCÍCIO 10.6",
+      "reference": "Nilo Menezes, Capítulo 10, p. 222",
+      "title": "Agregação da Classe Cliente na Classe Conta",
+      "prompt": "Crie uma classe chamada `Cliente` contendo os atributos `nome` e `telefone`. Em seguida, instancie um objeto `Cliente` e passe-o como titular no construtor da classe `Conta`. No método `resumo()`, exiba o nome e o telefone do cliente titular.",
+      "placeholder": "class Cliente:\n    # Implemente o cliente com nome e telefone\n    pass\n\nclass Conta:\n    # Implemente a conta que recebe um cliente\n    pass\n",
+      "solution": "class Cliente:\n    def __init__(self, nome, telefone):\n        self.nome = nome\n        self.telefone = telefone\n\nclass Conta:\n    def __init__(self, cliente, numero, saldo=0.0):\n        self.cliente = cliente\n        self.numero = numero\n        self.saldo = saldo\n\n    def resumo(self):\n        print(f\"CC Nº {self.numero} | Titular: {self.cliente.nome} (Tel: {self.cliente.telefone}) | Saldo: R$ {self.saldo:.2f}\")\n\ncli = Cliente(\"João Silva\", \"(11) 98888-1234\")\nconta = Conta(cli, 1001, 1500.0)\nconta.resumo()"
+    },
+    {
+      "id": "ex-10-8",
+      "code": "EXERCÍCIO 10.8",
+      "reference": "Nilo Menezes, Capítulo 10, p. 224",
+      "title": "Conta Conjunta com Múltiplos Titulares",
+      "prompt": "Altere a classe `Conta` de forma que o atributo `clientes` seja uma lista de instâncias da classe `Cliente`, permitindo modelar contas conjuntas com múltiplos titulares. Atualize o método `resumo()` para imprimir os dados de todos os titulares da conta.",
+      "placeholder": "class Conta:\n    def __init__(self, clientes, numero, saldo=0.0):\n        # Assegure que clientes seja tratado como lista\n        pass\n",
+      "solution": "class Cliente:\n    def __init__(self, nome, telefone):\n        self.nome = nome\n        self.telefone = telefone\n\nclass Conta:\n    def __init__(self, clientes, numero, saldo=0.0):\n        self.clientes = clientes if isinstance(clientes, list) else [clientes]\n        self.numero = numero\n        self.saldo = saldo\n\n    def resumo(self):\n        titulares = \", \".join(f\"{c.nome} ({c.telefone})\" for c in self.clientes)\n        print(f\"CC Nº {self.numero} | Titulares: {titulares} | Saldo: R$ {self.saldo:.2f}\")\n\nc1 = Cliente(\"Carlos Souza\", \"9999-1111\")\nc2 = Cliente(\"Ana Souza\", \"9999-2222\")\nconta_conjunta = Conta([c1, c2], 2002, 5000.0)\nconta_conjunta.resumo()"
+    },
+    {
+      "id": "ex-10-10",
+      "code": "EXERCÍCIO 10.10",
+      "reference": "Nilo Menezes, Capítulo 10, p. 229",
+      "title": "Retorno Booleano de Sucesso no Saque",
+      "prompt": "Modifique o método `saque()` das classes `Conta` e `ContaEspecial` para que a operação retorne `True` se o saque tiver sido efetuado com sucesso e `False` caso não haja saldo (ou saldo + limite) suficiente.",
+      "placeholder": "class Conta:\n    def saque(self, valor):\n        # Retorne True se efetuado, False se negado\n        pass\n",
+      "solution": "class Conta:\n    def __init__(self, titular, numero, saldo=0.0):\n        self.titular = titular\n        self.numero = numero\n        self.saldo = saldo\n\n    def pode_sacar(self, valor):\n        return self.saldo >= valor\n\n    def saque(self, valor):\n        if self.pode_sacar(valor):\n            self.saldo -= valor\n            return True\n        return False\n\nclass ContaEspecial(Conta):\n    def __init__(self, titular, numero, saldo=0.0, limite=1000.0):\n        super().__init__(titular, numero, saldo)\n        self.limite = limite\n\n    def pode_sacar(self, valor):\n        return (self.saldo + self.limite) >= valor\n\nc_comum = Conta(\"Marcos\", 1, 100)\nprint(c_comum.saque(150))  # False (Saldo insuficiente)\n\nc_esp = ContaEspecial(\"Lia\", 2, 100, 500)\nprint(c_esp.saque(150))    # True (Aprovado pelo limite de crédito)"
+    },
+    {
+      "id": "ex-10-11",
+      "code": "EXERCÍCIO 10.11",
+      "reference": "Nilo Menezes, Capítulo 10, p. 229",
+      "title": "Extrato Especial com Detalhamento de Limite de Crédito",
+      "prompt": "Sobrescreva o método `extrato()` na subclasse `ContaEspecial` para que, além do histórico de lançamentos e do saldo contábil atual, ele imprima o valor do limite de crédito aprovado e o total líquido disponível para novos saques (`saldo + limite`).",
+      "placeholder": "class ContaEspecial(Conta):\n    def extrato(self):\n        # Imprima saldo, limite e total disponível para saque\n        pass\n",
+      "solution": "class ContaEspecial(Conta):\n    def extrato(self):\n        print(f\"Extrato ContaEspecial Nº {self.numero}\")\n        print(\"-\" * 32)\n        for op, val in self.operacoes:\n            print(f\"{op:12s}: R$ {val:8.2f}\")\n        print(\"-\" * 32)\n        print(f\"Saldo atual    : R$ {self.saldo:8.2f}\")\n        print(f\"Limite cheque  : R$ {self.limite:8.2f}\")\n        print(f\"Total p/ saque : R$ {(self.saldo + self.limite):8.2f}\\n\")"
+    },
+    {
+      "id": "ex-10-12",
+      "code": "EXERCÍCIO 10.12",
+      "reference": "Nilo Menezes, Capítulo 10, p. 230",
+      "title": "Refatoração Polimórfica com Método Predicado `pode_sacar()`",
+      "prompt": "Refatore a classe `Conta` de forma que o método universal `saque(valor)` delegue a autorização da transação a um novo método `pode_sacar(valor)`. Na classe derivada `ContaEspecial`, sobrescreva apenas o método `pode_sacar(valor)`, demonstrando que o método `saque()` pode ser herdado sem alteração graças ao polimorfismo.",
+      "placeholder": "class Conta:\n    def pode_sacar(self, valor):\n        return self.saldo >= valor\n    def saque(self, valor):\n        # Use pode_sacar e execute o saque\n        pass\n\nclass ContaEspecial(Conta):\n    # Sobrescreva apenas pode_sacar\n    pass\n",
+      "solution": "class Conta:\n    def __init__(self, titular, numero, saldo=0.0):\n        self.titular = titular\n        self.numero = numero\n        self.saldo = saldo\n        self.operacoes = []\n\n    def pode_sacar(self, valor):\n        return self.saldo >= valor\n\n    def saque(self, valor):\n        if self.pode_sacar(valor):\n            self.saldo -= valor\n            self.operacoes.append([\"SAQUE\", valor])\n            return True\n        return False\n\nclass ContaEspecial(Conta):\n    def __init__(self, titular, numero, saldo=0.0, limite=500.0):\n        super().__init__(titular, numero, saldo)\n        self.limite = limite\n\n    def pode_sacar(self, valor):\n        return (self.saldo + self.limite) >= valor\n\n# ContaEspecial NÃO redefine saque(), mas herda e funciona polimorficamente!\nce = ContaEspecial(\"Paulo\", 303, saldo=100.0, limite=400.0)\nprint(ce.saque(350.0))  # True! (Saldo passa a ser -250.0)\nprint(ce.saldo)         # -250.0"
+    }
+  ]
+}
