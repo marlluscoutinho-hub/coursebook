@@ -1,0 +1,20 @@
+{
+  "id": "04-validacao-e-formatacao",
+  "title": "Validação de Tipos Léxicos, Operador Ternário e Controle com Continue",
+  "kind": "standard",
+  "pages": "Capítulo 7 (pp. 147–159)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

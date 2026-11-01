@@ -1,0 +1,45 @@
+{
+  "moduleId": "07-strings-e-jogo-da-forca",
+  "items": [
+    {
+      "id": "c01",
+      "text": "Compreender a imutabilidade das strings em Python e como alterá-las via list() e join()",
+      "checked": false
+    },
+    {
+      "id": "c02",
+      "text": "Dominar fatiamento com início, fim e passo (índices positivos e negativos)",
+      "checked": false
+    },
+    {
+      "id": "c03",
+      "text": "Aplicar métodos de busca e contagem: find(), rfind(), index(), count(), startswith(), endswith()",
+      "checked": false
+    },
+    {
+      "id": "c04",
+      "text": "Utilizar métodos de transformação de texto: upper(), lower(), split(), splitlines(), replace(), strip()",
+      "checked": false
+    },
+    {
+      "id": "c05",
+      "text": "Validar tipos de conteúdo em strings com isalnum(), isalpha() e isdigit()",
+      "checked": false
+    },
+    {
+      "id": "c06",
+      "text": "Empregar o operador ternário inline (x if cond else y) e o controle continue",
+      "checked": false
+    },
+    {
+      "id": "c07",
+      "text": "Compreender a máquina de estados e laço principal do Jogo da Forca canônico",
+      "checked": false
+    },
+    {
+      "id": "c08",
+      "text": "Operar o simulador interativo de forca e a régua de fatiamento no laboratório",
+      "checked": false
+    }
+  ]
+}

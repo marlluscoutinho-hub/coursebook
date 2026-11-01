@@ -1,0 +1,20 @@
+{
+  "id": "03-transformacao-e-limpeza",
+  "title": "Transformação, Sanitização e Divisão de Strings",
+  "kind": "standard",
+  "pages": "Capítulo 7 (pp. 145–147)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

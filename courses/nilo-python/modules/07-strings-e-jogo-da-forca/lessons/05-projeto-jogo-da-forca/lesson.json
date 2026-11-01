@@ -1,0 +1,20 @@
+{
+  "id": "05-projeto-jogo-da-forca",
+  "title": "Projeto Canônico: Arquitetura e Engenharia do Jogo da Forca",
+  "kind": "standard",
+  "pages": "Capítulo 7 (pp. 156–160)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

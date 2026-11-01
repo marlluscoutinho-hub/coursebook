@@ -16,7 +16,8 @@
     "03-condicoes",
     "04-repeticoes",
     "05-listas-filas-e-pilhas",
-    "06-dicionarios-e-tuplas"
+    "06-dicionarios-e-tuplas",
+    "07-strings-e-jogo-da-forca"
   ],
   "status": "in_development"
 }

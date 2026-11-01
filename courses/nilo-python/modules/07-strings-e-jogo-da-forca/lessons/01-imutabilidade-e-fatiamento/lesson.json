@@ -1,0 +1,20 @@
+{
+  "id": "01-imutabilidade-e-fatiamento",
+  "title": "A Natureza Imutável das Strings e a Conversão Bidirecional",
+  "kind": "standard",
+  "pages": "Capítulo 7 (pp. 137–138)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

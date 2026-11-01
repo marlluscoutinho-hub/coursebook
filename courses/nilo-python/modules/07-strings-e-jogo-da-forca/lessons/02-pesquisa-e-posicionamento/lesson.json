@@ -1,0 +1,20 @@
+{
+  "id": "02-pesquisa-e-posicionamento",
+  "title": "Pesquisa, Contagem e Posicionamento de Substrings",
+  "kind": "standard",
+  "pages": "Capítulo 7 (pp. 138–145)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

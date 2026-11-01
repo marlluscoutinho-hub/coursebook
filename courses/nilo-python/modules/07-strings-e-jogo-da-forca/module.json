@@ -1,0 +1,18 @@
+{
+  "id": "07-strings-e-jogo-da-forca",
+  "code": "MÓDULO 07",
+  "title": "Processamento de Strings e o Jogo da Forca",
+  "chapters": "Capítulo 7 (pp. 137–160)",
+  "pages": "pp. 137–160",
+  "summary": "Imutabilidade de strings, conversão bidirecional com list() e join(), fatiamento com índices positivos e negativos, métodos de pesquisa (find, rfind, count, startswith, endswith), transformação e limpeza (split, replace, strip), validação léxica, operadores ternários inline, controle com continue e o projeto clássico do Jogo da Forca.",
+  "lessons": [
+    "01-imutabilidade-e-fatiamento",
+    "02-pesquisa-e-posicionamento",
+    "03-transformacao-e-limpeza",
+    "04-validacao-e-formatacao",
+    "05-projeto-jogo-da-forca",
+    "06-laboratorio-jogo-da-forca"
+  ],
+  "quiz": "quiz.json",
+  "exercises": "exercises.json"
+}

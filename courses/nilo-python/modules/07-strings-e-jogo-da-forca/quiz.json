@@ -1,0 +1,304 @@
+{
+  "questions": [
+    {
+      "id": "q01",
+      "question": "O que ocorre quando o interpretador Python executa a instrução `S = 'Alô mundo'; S[0] = 'a'`?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "A string é modificada com sucesso para `'alô mundo'`, pois strings compartilham a mesma mecânica de atribuição de listas.",
+          "isCorrect": false,
+          "explanation": "Strings em Python são imutáveis. Ao contrário das listas, seus elementos internos não podem ser alterados pontualmente."
+        },
+        {
+          "letter": "B",
+          "text": "Dispara um erro `TypeError: 'str' object does not support item assignment`, pois o tipo `str` é estritamente imutável na memória.",
+          "isCorrect": true,
+          "explanation": "Correto! Na arquitetura do Python, strings são sequências imutáveis. Qualquer tentativa de atribuição direta a um índice ou fatia lança `TypeError`."
+        },
+        {
+          "letter": "C",
+          "text": "O caractere `'a'` é adicionado ao final da string, resultando em `'Alô mundoa'`.",
+          "isCorrect": false,
+          "explanation": "Atribuição a índice não adiciona elementos ao final; se fosse permitido, seria uma substituição do caractere da posição 0."
+        },
+        {
+          "letter": "D",
+          "text": "Dispara um `IndexError: string index out of range`.",
+          "isCorrect": false,
+          "explanation": "O índice 0 é perfeitamente válido na string `'Alô mundo'`. O erro não é de faixa de índice, mas de tipo (`TypeError`)."
+        }
+      ]
+    },
+    {
+      "id": "q02",
+      "question": "Qual é a técnica canônica recomendada por Nilo Menezes (Listagem 7.2) para alterar um único caractere em uma string imutável?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Utilizar a função `setitem(S, 0, 'a')` do módulo `string`.",
+          "isCorrect": false,
+          "explanation": "Não existe essa função no módulo `string`, e o objeto `str` em si não permite alteração direta via nenhum método embutido."
+        },
+        {
+          "letter": "B",
+          "text": "Converter a string em lista com `L = list(S)`, modificar o elemento desejado com `L[0] = 'a'` e reconstruir a string com `S = ''.join(L)`.",
+          "isCorrect": true,
+          "explanation": "Correto! A função `list()` cria uma lista de caracteres individuais mutáveis. Após a alteração do elemento no índice, `\"\".join(L)` une a lista novamente em uma nova string contígua."
+        },
+        {
+          "letter": "C",
+          "text": "Fazer a conversão direta com `S = str(tuple(S))`.",
+          "isCorrect": false,
+          "explanation": "Tuplas também são imutáveis e `str(tupla)` geraria uma string literal com parênteses e vírgulas, como `\"('a', 'l', 'ô')\"`."
+        },
+        {
+          "letter": "D",
+          "text": "Reiniciar o interpretador com a flag `--mutable-strings`.",
+          "isCorrect": false,
+          "explanation": "Essa flag não existe; a imutabilidade de strings é uma regra fundamental e invariável do núcleo do Python (CPython)."
+        }
+      ]
+    },
+    {
+      "id": "q03",
+      "question": "Dada a string `S = 'PYTHON'`, o que a expressão de fatiamento `S[::-1]` retorna e qual é o significado do valor `-1`?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Retorna `'P'`, pois `-1` seleciona apenas o primeiro caractere em contagem reversa.",
+          "isCorrect": false,
+          "explanation": "O primeiro caractere a partir da direita em `S[-1]` é `'N'`, e `S[::-1]` é uma fatia com passo, não um único índice."
+        },
+        {
+          "letter": "B",
+          "text": "Retorna `'NOHTYP'`, pois o terceiro parâmetro do fatiamento define o passo (*step*), e um passo negativo percorre a sequência de trás para frente.",
+          "isCorrect": true,
+          "explanation": "Correto! Na sintaxe `[inicio:fim:passo]`, omitir o início e o fim faz com que a fatia percorra a sequência inteira. Um passo negativo `-1` inverte o sentido de iteração, gerando a string invertida."
+        },
+        {
+          "letter": "C",
+          "text": "Gera um erro de sintaxe `ValueError: slice step cannot be negative`.",
+          "isCorrect": false,
+          "explanation": "Passos negativos são completamente válidos e idiomáticos em fatiamento de sequências no Python."
+        },
+        {
+          "letter": "D",
+          "text": "Retorna uma lista vazia `[]`.",
+          "isCorrect": false,
+          "explanation": "Fatiar uma string sempre produz uma nova string (`str`), nunca uma lista."
+        }
+      ]
+    },
+    {
+      "id": "q04",
+      "question": "Qual é a diferença crucial de comportamento entre os métodos de busca `S.find('termo')` e `S.index('termo')` quando o termo procurado não existe na string?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "`find()` retorna `False`, enquanto `index()` retorna `0`.",
+          "isCorrect": false,
+          "explanation": "Nenhum dos dois retorna booleanos ou 0 em caso de ausência; `0` indicaria que o termo foi encontrado no primeiro caractere."
+        },
+        {
+          "letter": "B",
+          "text": "`find()` retorna `-1`, enquanto `index()` lança uma exceção do tipo `ValueError`.",
+          "isCorrect": true,
+          "explanation": "Correto! `find()` segue a convenção de retornar `-1` quando o termo não é encontrado (ideal para testes condicionais simples `if s.find(x) != -1:`). Já `index()` levanta `ValueError: substring not found` caso o termo inexista."
+        },
+        {
+          "letter": "C",
+          "text": "`find()` busca apenas do fim para o início, enquanto `index()` busca do início para o fim.",
+          "isCorrect": false,
+          "explanation": "Ambos buscam da esquerda para a direita (do início para o fim). Para buscar em ordem inversa, existem `rfind()` e `rindex()`."
+        },
+        {
+          "letter": "D",
+          "text": "Ambos possuem exatamente o mesmo comportamento e valor de retorno.",
+          "isCorrect": false,
+          "explanation": "O tratamento de falha na busca é o divisor de águas entre esses dois métodos na biblioteca padrão."
+        }
+      ]
+    },
+    {
+      "id": "q05",
+      "question": "Se executarmos `nome = 'João da Silva'; print(nome.startswith('joão'))`, qual será o valor impresso e por quê?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "`True`, pois Python ignora a diferença entre maiúsculas e minúsculas em métodos de string.",
+          "isCorrect": false,
+          "explanation": "Strings em Python são estritamente sensíveis à caixa (*case-sensitive*). `'J'` e `'j'` são códigos Unicode distintos."
+        },
+        {
+          "letter": "B",
+          "text": "`False`, pois o método `startswith()` é sensível à caixa e `'J'` é diferente de `'j'`.",
+          "isCorrect": true,
+          "explanation": "Correto! `nome` começa com `'J'` maiúsculo, enquanto o teste busca `'j'` minúsculo. Para fazer a verificação insensível, deve-se usar `nome.lower().startswith('joão')`."
+        },
+        {
+          "letter": "C",
+          "text": "Dispara um erro `TypeError`, pois `startswith()` só aceita listas de prefixos.",
+          "isCorrect": false,
+          "explanation": "`startswith()` aceita strings individuais como parâmetro padrão (e opcionalmente tuplas de strings)."
+        },
+        {
+          "letter": "D",
+          "text": "`None`, pois o método apenas verifica sem produzir retorno.",
+          "isCorrect": false,
+          "explanation": "`startswith()` sempre retorna um booleano (`True` ou `False`)."
+        }
+      ]
+    },
+    {
+      "id": "q06",
+      "question": "Qual é a diferença entre chamar `S.split()` (sem parâmetros) e `S.split(' ')` em uma string contendo múltiplos espaços e tabulações?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Não há nenhuma diferença, ambos produzem exatamente a mesma lista.",
+          "isCorrect": false,
+          "explanation": "Há uma diferença profunda no tratamento de múltiplos espaços adjacentes e caracteres de controle."
+        },
+        {
+          "letter": "B",
+          "text": "`S.split(' ')` divide estritamente por cada espaço simples individual, gerando strings vazias `''` para espaços consecutivos, enquanto `S.split()` agrupa múltiplos espaços, tabs e quebras de linha como um único separador e descarta elementos vazios.",
+          "isCorrect": true,
+          "explanation": "Correto! `split()` sem parâmetros trata qualquer sequência de caracteres em branco (`\\s+`) como um único delimitador e elimina espaços nas bordas. Já `split(' ')` divide literalmente em cada caractere de espaço, gerando strings vazias intermediárias."
+        },
+        {
+          "letter": "C",
+          "text": "`S.split()` lança um `TypeError` exigindo obrigatoriamente um delimitador explícito.",
+          "isCorrect": false,
+          "explanation": "`S.split()` com separador nulo (default `None`) é um dos métodos mais utilizados do Python."
+        },
+        {
+          "letter": "D",
+          "text": "`S.split()` quebra caractere por caractere, equivalente a `list(S)`.",
+          "isCorrect": false,
+          "explanation": "Para quebrar em caracteres individuais usa-se `list(S)`, não `S.split()`."
+        }
+      ]
+    },
+    {
+      "id": "q07",
+      "question": "No Jogo da Forca da Listagem 7.45, a instrução `senha += letra if letra in acertos else '.'` é um exemplo de qual recurso da linguagem Python?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Expressão condicional ternária inline (PEP 308), que avalia e retorna um valor dependendo de uma condição em uma única instrução.",
+          "isCorrect": true,
+          "explanation": "Correto! A expressão `valor_true if condicao else valor_false` substitui blocos de 4 linhas de `if/else`, condensando a decisão diretamente na atribuição da máscara da forca."
+        },
+        {
+          "letter": "B",
+          "text": "Compreensão de lista (*list comprehension*) com filtro booleano.",
+          "isCorrect": false,
+          "explanation": "Não é uma list comprehension, pois não utiliza colchetes `[...]` nem a cláusula `for ... in`."
+        },
+        {
+          "letter": "C",
+          "text": "Uma chamada recursiva lambda para mascaramento de senhas criptográficas.",
+          "isCorrect": false,
+          "explanation": "Não há função lambda nem criptografia envolvida; é pura lógica condicional de string."
+        },
+        {
+          "letter": "D",
+          "text": "Tratamento de exceções com cláusula `else` após um bloco `try`.",
+          "isCorrect": false,
+          "explanation": "A sintaxe não envolve bloco `try/except`."
+        }
+      ]
+    },
+    {
+      "id": "q08",
+      "question": "No loop de leitura do Jogo da Forca, qual é o efeito prático da instrução `continue` quando o jogador digita uma letra que já havia sido tentada?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Finaliza o jogo imediatamente com derrota do jogador.",
+          "isCorrect": false,
+          "explanation": "Quem encerra o laço e finaliza o jogo é a instrução `break`, não `continue`."
+        },
+        {
+          "letter": "B",
+          "text": "Interrompe a iteração corrente, ignorando as instruções subsequentes (evitando descontar erros) e reinicia o ciclo do `while` para solicitar um novo palpite.",
+          "isCorrect": true,
+          "explanation": "Correto! O comando `continue` descarta o restante do corpo do loop e volta diretamente para a avaliação da condição do laço, permitindo que o jogador digite outra letra sem penalidade."
+        },
+        {
+          "letter": "C",
+          "text": "Reinicia o computador e apaga o histórico de pontuações.",
+          "isCorrect": false,
+          "explanation": "`continue` é apenas uma instrução de controle de fluxo de laços no interpretador."
+        },
+        {
+          "letter": "D",
+          "text": "Executa o laço de repetição de trás para frente.",
+          "isCorrect": false,
+          "explanation": "`continue` avança o laço para a próxima iteração natural, sem inverter o fluxo."
+        }
+      ]
+    },
+    {
+      "id": "q09",
+      "question": "Considere as expressões `s1 = '123'; s2 = '-123'; s3 = '12.3'`. O que o método `.isdigit()` retorna para cada uma dessas três variáveis?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "`True`, `True`, `True`, pois todas representam valores numéricos.",
+          "isCorrect": false,
+          "explanation": "`.isdigit()` verifica rigorosamente se todos os caracteres da string são dígitos entre 0 e 9. Sinais negativos e pontos decimais não são dígitos."
+        },
+        {
+          "letter": "B",
+          "text": "`True`, `False`, `False`, pois o sinal `-` e o ponto `.` não são dígitos decimais.",
+          "isCorrect": true,
+          "explanation": "Correto! `s1.isdigit()` é `True`. Em `s2`, o caractere `'-'` impede o retorno positivo. Em `s3`, o caractere `'.'` também não é dígito decimal. Portanto, apenas `s1` é puramente composta por dígitos."
+        },
+        {
+          "letter": "C",
+          "text": "`False`, `False`, `False`, pois são todas do tipo `str` e não do tipo primitivo `int`.",
+          "isCorrect": false,
+          "explanation": "`.isdigit()` é justamente um método do tipo `str` projetado para inspecionar strings de texto."
+        },
+        {
+          "letter": "D",
+          "text": "`True`, `True`, `False`.",
+          "isCorrect": false,
+          "explanation": "Sinais aritméticos como `-` e `+` fazem `isdigit()` retornar `False`."
+        }
+      ]
+    },
+    {
+      "id": "q10",
+      "question": "O que a instrução `'tigre, tigre, tigre'.replace('tigre', 'gato', 2)` retorna e qual é o propósito do terceiro argumento?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Retorna `'gato, gato, gato'`, pois o terceiro argumento define o tamanho mínimo da palavra.",
+          "isCorrect": false,
+          "explanation": "O terceiro argumento não é filtro de tamanho, mas sim o limite máximo de substituições a realizar."
+        },
+        {
+          "letter": "B",
+          "text": "Retorna `'gato, gato, tigre'`, pois o número 2 limita a substituição às duas primeiras ocorrências encontradas.",
+          "isCorrect": true,
+          "explanation": "Correto! Na sintaxe `.replace(antigo, novo, [contagem])`, o terceiro parâmetro estabelece a quantidade máxima de trocas. As primeiras duas instâncias de `'tigre'` viram `'gato'`, e a terceira permanece inalterada."
+        },
+        {
+          "letter": "C",
+          "text": "Retorna uma lista de strings com 2 elementos `['gato', 'gato']`.",
+          "isCorrect": false,
+          "explanation": "O método `.replace()` sempre retorna uma nova string (`str`), nunca uma lista."
+        },
+        {
+          "letter": "D",
+          "text": "Gera um erro de sintaxe, pois `replace` aceita no máximo 2 argumentos.",
+          "isCorrect": false,
+          "explanation": "O terceiro argumento `count` é opcional e perfeitamente suportado na assinatura do método."
+        }
+      ]
+    }
+  ]
+}

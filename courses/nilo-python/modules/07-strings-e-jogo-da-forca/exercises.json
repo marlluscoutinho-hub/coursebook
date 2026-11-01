@@ -1,0 +1,76 @@
+{
+  "exercises": [
+    {
+      "id": "ex-7-1",
+      "code": "EXERCÍCIO 7.1",
+      "reference": "Nilo Menezes, Capítulo 7, p. 142",
+      "title": "Pesquisa de Substring e Posição de Início",
+      "prompt": "Escreva um programa que leia duas strings. Verifique se a segunda ocorre dentro da primeira e imprima a posição de início utilizando o método `.find()`. Se não for encontrada, exiba uma mensagem informando a ausência.",
+      "placeholder": "s1 = input(\"1ª string: \")\ns2 = input(\"2ª string: \")\n# Verifique se s2 ocorre em s1 e informe a posição\n",
+      "solution": "s1 = input(\"1ª string: \")\ns2 = input(\"2ª string: \")\n\nposicao = s1.find(s2)\nif posicao != -1:\n    print(f\"{s2} encontrado na posição {posicao} de {s1}\")\nelse:\n    print(f\"{s2} não foi encontrado em {s1}\")"
+    },
+    {
+      "id": "ex-7-2",
+      "code": "EXERCÍCIO 7.2",
+      "reference": "Nilo Menezes, Capítulo 7, p. 142",
+      "title": "Interseção de Caracteres entre Duas Strings",
+      "prompt": "Escreva um programa que leia duas strings e gere uma terceira com os caracteres comuns a ambas as strings lidas (sem caracteres duplicados na string resultante). Exemplo: 1ª string: 'AAACTBF', 2ª string: 'CBT' -> Resultado: 'CBT'.",
+      "placeholder": "s1 = input(\"1ª string: \")\ns2 = input(\"2ª string: \")\ns3 = \"\"\n# Construa s3 com os caracteres que aparecem em ambas as strings\n",
+      "solution": "s1 = input(\"1ª string: \")\ns2 = input(\"2ª string: \")\ns3 = \"\"\n\nfor letra in s1:\n    if letra in s2 and letra not in s3:\n        s3 += letra\n\nprint(f\"Caracteres comuns: {s3}\")"
+    },
+    {
+      "id": "ex-7-3",
+      "code": "EXERCÍCIO 7.3",
+      "reference": "Nilo Menezes, Capítulo 7, p. 143",
+      "title": "Diferença Simétrica de Caracteres",
+      "prompt": "Escreva um programa que leia duas strings e gere uma terceira apenas com os caracteres que aparecem em apenas uma delas (exclusivos da primeira ou exclusivos da segunda, sem repetições). Exemplo: 'CTA' e 'ABC' -> Resultado: 'BT'.",
+      "placeholder": "s1 = input(\"1ª string: \")\ns2 = input(\"2ª string: \")\ns3 = \"\"\n# Itere e adicione caracteres exclusivos de s1 ou de s2\n",
+      "solution": "s1 = input(\"1ª string: \")\ns2 = input(\"2ª string: \")\ns3 = \"\"\n\nfor letra in s1:\n    if letra not in s2 and letra not in s3:\n        s3 += letra\n\nfor letra in s2:\n    if letra not in s1 and letra not in s3:\n        s3 += letra\n\nprint(f\"Caracteres que aparecem em apenas uma das strings: {s3}\")"
+    },
+    {
+      "id": "ex-7-4",
+      "code": "EXERCÍCIO 7.4",
+      "reference": "Nilo Menezes, Capítulo 7, p. 143",
+      "title": "Contagem de Ocorrências com `.count()`",
+      "prompt": "Escreva um programa que leia uma string e imprima quantas vezes cada caractere aparece nessa string, utilizando o método `.count()` ou um dicionário de frequências, exibindo cada caractere apenas uma única vez.",
+      "placeholder": "texto = input(\"Digite uma string: \")\n# Imprima cada caractere e sua contagem total\n",
+      "solution": "texto = input(\"Digite uma string: \")\nvistos = []\n\nfor c in texto:\n    if c not in vistos:\n        vistos.append(c)\n        print(f\"{c}: {texto.count(c)}x\")"
+    },
+    {
+      "id": "ex-7-5",
+      "code": "EXERCÍCIO 7.5",
+      "reference": "Nilo Menezes, Capítulo 7, p. 143",
+      "title": "Remoção de Caracteres de uma String a partir de Outra",
+      "prompt": "Escreva um programa que leia duas strings e gere uma terceira na qual todos os caracteres da segunda tenham sido retirados da primeira. Exemplo: 1ª string: 'AATTGGAA', 2ª string: 'TG' -> 3ª string: 'AAAA'.",
+      "placeholder": "s1 = input(\"1ª string: \")\ns2 = input(\"2ª string: \")\ns3 = \"\"\n# Remova de s1 os caracteres contidos em s2\n",
+      "solution": "s1 = input(\"1ª string: \")\ns2 = input(\"2ª string: \")\ns3 = \"\"\n\nfor letra in s1:\n    if letra not in s2:\n        s3 += letra\n\nprint(f\"Resultado após remoção: {s3}\")"
+    },
+    {
+      "id": "ex-7-6",
+      "code": "EXERCÍCIO 7.6",
+      "reference": "Nilo Menezes, Capítulo 7, p. 143",
+      "title": "Substituição Múltipla Paralela de Caracteres",
+      "prompt": "Escreva um programa que leia três strings. Imprima o resultado da substituição na primeira dos caracteres da segunda pelos respectivos caracteres da terceira (de mesmo índice). Exemplo: 1ª string: 'AATTCGAA', 2ª string: 'TG', 3ª string: 'AC' -> Resultado: 'AAAACCAA'.",
+      "placeholder": "s1 = input(\"1ª string: \")\ns2 = input(\"2ª string (caracteres a substituir): \")\ns3 = input(\"3ª string (caracteres substitutos): \")\n# Realize as substituições mapeando os caracteres de s2 para s3\n",
+      "solution": "s1 = input(\"1ª string: \")\ns2 = input(\"2ª string: \")\ns3 = input(\"3ª string: \")\n\nresultado = \"\"\nfor char in s1:\n    if char in s2:\n        indice = s2.find(char)\n        resultado += s3[indice]\n    else:\n        resultado += char\n\nprint(f\"String resultante: {resultado}\")"
+    },
+    {
+      "id": "ex-7-7",
+      "code": "EXERCÍCIO 7.7",
+      "reference": "Nilo Menezes, Capítulo 7, p. 159",
+      "title": "Jogo da Forca: Revelação da Palavra Secreta em Caso de Derrota",
+      "prompt": "Modifique o programa canônico do Jogo da Forca para que, caso o jogador perca ao atingir 6 erros, o programa exiba claramente qual era a palavra secreta antes de encerrar.",
+      "placeholder": "palavra = \"python\"\nerros = 0\n# Simule o encerramento revelando a palavra secreta ao atingir 6 erros\n",
+      "solution": "palavra = \"python\"\ndigitadas = []\nacertos = []\nerros = 0\n\nwhile True:\n    senha = \"\"\n    for letra in palavra:\n        senha += letra if letra in acertos else \".\"\n    \n    if senha == palavra:\n        print(f\"Parabéns! Você acertou a palavra secreta: {palavra}\")\n        break\n        \n    tentativa = input(f\"Palavra ({senha}) - Digite uma letra: \").lower().strip()\n    if tentativa in digitadas:\n        print(\"Letra já tentada!\")\n        continue\n    \n    digitadas.append(tentativa)\n    if tentativa in palavra:\n        acertos.append(tentativa)\n    else:\n        erros += 1\n        print(f\"Erros: {erros}/6\")\n        \n    if erros >= 6:\n        print(\"\\nEnforcado!\")\n        print(f\"A palavra secreta era: '{palavra}'\")\n        break"
+    },
+    {
+      "id": "ex-7-8",
+      "code": "EXERCÍCIO 7.8",
+      "reference": "Nilo Menezes, Capítulo 7, p. 159",
+      "title": "Jogo da Forca com Seleção Determinística por Hash Modular",
+      "prompt": "Modifique o Jogo da Forca para utilizar uma lista pré-definida de palavras secretas. No início da partida, solicite um número inteiro ao usuário e calcule o índice da palavra secreta pela fórmula canônica do livro: `indice = (numero * 776) % len(lista_de_palavras)`.",
+      "placeholder": "palavras = [\"maca\", \"banana\", \"laranja\", \"morango\", \"uva\"]\nnumero = int(input(\"Digite um número para sortear a palavra: \"))\n# Calcule o índice pela fórmula e selecione a palavra\n",
+      "solution": "palavras = [\"maca\", \"banana\", \"laranja\", \"morango\", \"uva\", \"melancia\", \"pessego\"]\nnumero = int(input(\"Digite um número inteiro qualquer: \"))\n\nindice = (numero * 776) % len(palavras)\npalavra_secreta = palavras[indice]\n\nprint(f\"Palavra sorteada (índice {indice}): {palavra_secreta}\")\nprint(f\"Tamanho da palavra: {len(palavra_secreta)} letras.\")"
+    }
+  ]
+}

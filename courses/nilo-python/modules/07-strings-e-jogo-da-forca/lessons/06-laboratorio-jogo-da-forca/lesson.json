@@ -1,0 +1,27 @@
+{
+  "id": "06-laboratorio-jogo-da-forca",
+  "title": "Laboratório Interativo: Simulador da Forca & Bancada de Strings",
+  "kind": "lab",
+  "pages": "Prática Integrada (pp. 137–160)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "lab",
+      "id": "hangman-lab",
+      "title": "Laboratório Interativo: Strings, Fatiamento & Jogo da Forca",
+      "source": "catalog",
+      "mobile": "full"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}
