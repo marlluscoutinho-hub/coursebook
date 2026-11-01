@@ -1,0 +1,27 @@
+{
+  "id": "07-laboratorio-pilha-de-chamadas",
+  "title": "Laboratório Interativo: Depurador de Pilha de Chamadas & Sandbox Lambda",
+  "kind": "lab",
+  "pages": "Prática Integrada (pp. 161–187)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "lab",
+      "id": "call-stack-lab",
+      "title": "Laboratório Interativo: Pilha de Chamadas & Árvore Recursiva",
+      "source": "catalog",
+      "mobile": "full"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

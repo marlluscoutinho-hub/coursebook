@@ -1,0 +1,20 @@
+{
+  "id": "03-recursao-e-pilha",
+  "title": "Recursão Matemática, Pilha de Chamadas e Caso Base",
+  "kind": "standard",
+  "pages": "Capítulo 8 (pp. 169–173)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

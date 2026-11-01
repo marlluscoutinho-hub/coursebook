@@ -1,0 +1,76 @@
+{
+  "exercises": [
+    {
+      "id": "ex-8-1",
+      "code": "EXERCÍCIO 8.1",
+      "reference": "Nilo Menezes, Capítulo 8, p. 163",
+      "title": "Função para Retornar o Máximo de Dois Números",
+      "prompt": "Escreva uma função chamada `maximo(a, b)` que receba dois números como parâmetros e retorne o maior deles. Se forem iguais, retorne qualquer um dos dois. Teste com `maximo(5, 6) == 6`, `maximo(2, 1) == 2` e `maximo(7, 7) == 7`.",
+      "placeholder": "def maximo(a, b):\n    # Retorne o maior número\n    pass\n\n# Testes:\nprint(maximo(5, 6))\n",
+      "solution": "def maximo(a, b):\n    if a > b:\n        return a\n    else:\n        return b\n\n# Testes de validação:\nprint(maximo(5, 6))  # 6\nprint(maximo(2, 1))  # 2\nprint(maximo(7, 7))  # 7"
+    },
+    {
+      "id": "ex-8-2",
+      "code": "EXERCÍCIO 8.2",
+      "reference": "Nilo Menezes, Capítulo 8, p. 163",
+      "title": "Função Predicado de Divisibilidade (Múltiplo)",
+      "prompt": "Escreva uma função chamada `multiplo(a, b)` que receba dois números inteiros e retorne `True` se o primeiro número for múltiplo do segundo, e `False` em caso contrário. Teste com `multiplo(8, 4) == True`, `multiplo(7, 3) == False` e `multiplo(5, 5) == True`.",
+      "placeholder": "def multiplo(a, b):\n    # Retorne True se a for múltiplo de b\n    pass\n\nprint(multiplo(8, 4))\n",
+      "solution": "def multiplo(a, b):\n    return a % b == 0\n\n# Testes de validação:\nprint(multiplo(8, 4))  # True\nprint(multiplo(7, 3))  # False\nprint(multiplo(5, 5))  # True"
+    },
+    {
+      "id": "ex-8-3",
+      "code": "EXERCÍCIO 8.3",
+      "reference": "Nilo Menezes, Capítulo 8, p. 164",
+      "title": "Cálculo da Área do Quadrado",
+      "prompt": "Escreva uma função que receba o lado de um quadrado e retorne sua área ($A = \\text{lado}^2$). Teste com `lado = 4` (área esperada: 16) e `lado = 9` (área esperada: 81).",
+      "placeholder": "def area_quadrado(lado):\n    # Retorne a área do quadrado\n    pass\n\nprint(area_quadrado(4))\n",
+      "solution": "def area_quadrado(lado):\n    return lado ** 2\n\nprint(f\"Área (lado 4): {area_quadrado(4)}\")  # 16\nprint(f\"Área (lado 9): {area_quadrado(9)}\")  # 81"
+    },
+    {
+      "id": "ex-8-4",
+      "code": "EXERCÍCIO 8.4",
+      "reference": "Nilo Menezes, Capítulo 8, p. 164",
+      "title": "Cálculo da Área do Triângulo",
+      "prompt": "Escreva uma função que receba a base e a altura de um triângulo e retorne sua área ($A = \\frac{\\text{base} \\times \\text{altura}}{2}$). Teste com `base = 6` e `altura = 9` (área esperada: 27.0).",
+      "placeholder": "def area_triangulo(base, altura):\n    # Retorne a área do triângulo\n    pass\n\nprint(area_triangulo(6, 9))\n",
+      "solution": "def area_triangulo(base, altura):\n    return (base * altura) / 2\n\nprint(f\"Área do triângulo: {area_triangulo(6, 9)}\")  # 27.0\nprint(f\"Área do triangulo: {area_triangulo(5, 8)}\")  # 20.0"
+    },
+    {
+      "id": "ex-8-7",
+      "code": "EXERCÍCIO 8.7",
+      "reference": "Nilo Menezes, Capítulo 8, p. 172",
+      "title": "Maior Divisor Comum (M.D.C.) Recursivo de Euclides",
+      "prompt": "Defina uma função recursiva `mdc(a, b)` que calcule o maior divisor comum entre dois números inteiros positivos $a$ e $b$ (com $a > b$) utilizando o algoritmo de Euclides:\n$$\\text{mdc}(a, b) = \\begin{cases} a, & \\text{se } b = 0 \\\\ \\text{mdc}(b, a \\% b), & \\text{se } b > 0 \\end{cases}$$\nTeste com `mdc(24, 9) == 3` e `mdc(48, 18) == 6`.",
+      "placeholder": "def mdc(a, b):\n    # Implemente a recursão de Euclides\n    pass\n\nprint(mdc(24, 9))\n",
+      "solution": "def mdc(a, b):\n    if b == 0:\n        return a\n    else:\n        return mdc(b, a % b)\n\nprint(f\"MDC(24, 9) = {mdc(24, 9)}\")    # 3\nprint(f\"MDC(48, 18) = {mdc(48, 18)}\")  # 6\nprint(f\"MDC(100, 25) = {mdc(100, 25)}\") # 25"
+    },
+    {
+      "id": "ex-8-8",
+      "code": "EXERCÍCIO 8.8",
+      "reference": "Nilo Menezes, Capítulo 8, p. 172",
+      "title": "Menor Múltiplo Comum (M.M.C.) com Base no M.D.C.",
+      "prompt": "Usando a função `mdc(a, b)` do exercício anterior, defina a função `mmc(a, b)` para calcular o menor múltiplo comum entre dois números utilizando a fórmula matemática:\n$$\\text{mmc}(a, b) = \\frac{|a \\times b|}{\\text{mdc}(a, b)}$$\nTeste com `mmc(12, 18) == 36` e `mmc(5, 7) == 35`.",
+      "placeholder": "def mdc(a, b):\n    if b == 0: return a\n    return mdc(b, a % b)\n\ndef mmc(a, b):\n    # Calcule o mmc a partir do mdc\n    pass\n\nprint(mmc(12, 18))\n",
+      "solution": "def mdc(a, b):\n    if b == 0:\n        return a\n    return mdc(b, a % b)\n\ndef mmc(a, b):\n    return abs(a * b) // mdc(a, b)\n\nprint(f\"MMC(12, 18) = {mmc(12, 18)}\")  # 36\nprint(f\"MMC(5, 7) = {mmc(5, 7)}\")      # 35"
+    },
+    {
+      "id": "ex-8-10",
+      "code": "EXERCÍCIO 8.10",
+      "reference": "Nilo Menezes, Capítulo 8, p. 173",
+      "title": "Sequência de Fibonacci Iterativa em Tempo Linear $O(N)$",
+      "prompt": "Reescreva a função para o cálculo do enésimo termo da sequência de Fibonacci sem utilizar recursão, empregando um laço `while` ou `for` com troca de variáveis. Compare a velocidade instantânea desta solução com a versão recursiva para `n = 35`.",
+      "placeholder": "def fibonacci_iterativo(n):\n    # Calcule o n-ésimo termo com um laço sem recursão\n    pass\n\nprint(fibonacci_iterativo(8))\n",
+      "solution": "def fibonacci_iterativo(n):\n    if n <= 1:\n        return n\n    a, b = 0, 1\n    for _ in range(2, n + 1):\n        a, b = b, a + b\n    return b\n\nprint(f\"Fibonacci(8) = {fibonacci_iterativo(8)}\")    # 21\nprint(f\"Fibonacci(35) = {fibonacci_iterativo(35)}\")  # 9227465 (Execução instantânea O(n))"
+    },
+    {
+      "id": "ex-8-11",
+      "code": "EXERCÍCIO 8.11",
+      "reference": "Nilo Menezes, Capítulo 8, p. 174",
+      "title": "Validação de Comprimento de Strings",
+      "prompt": "Escreva uma função para validar o comprimento de uma variável string. Essa função deve receber como parâmetros a string a ser validada, o número mínimo e o número máximo de caracteres permitidos. Retorne `True` se o tamanho da string estiver dentro da faixa (inclusive) e `False` em caso contrário.",
+      "placeholder": "def valida_string(texto, minimo, maximo):\n    # Retorne se o tamanho está entre mínimo e máximo\n    pass\n\nprint(valida_string(\"Python\", 1, 10))\n",
+      "solution": "def valida_string(texto, minimo, maximo):\n    tamanho = len(texto)\n    return minimo <= tamanho <= maximo\n\n# Testes:\nprint(valida_string(\"Python\", 1, 10))   # True (tam 6)\nprint(valida_string(\"A\", 2, 5))         # False (tam 1)\nprint(valida_string(\"Algoritmo\", 3, 9)) # True (tam 9)"
+    }
+  ]
+}

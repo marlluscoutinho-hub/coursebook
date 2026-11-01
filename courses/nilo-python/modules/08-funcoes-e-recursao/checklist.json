@@ -1,0 +1,45 @@
+{
+  "moduleId": "08-funcoes-e-recursao",
+  "items": [
+    {
+      "id": "c01",
+      "text": "Declarar funções com def, parâmetros posicionais e retorno com return",
+      "checked": false
+    },
+    {
+      "id": "c02",
+      "text": "Diferenciar variáveis locais e globais e compreender a instrução global",
+      "checked": false
+    },
+    {
+      "id": "c03",
+      "text": "Construir algoritmos recursivos identificando caso base e caso recursivo",
+      "checked": false
+    },
+    {
+      "id": "c04",
+      "text": "Rastrear o crescimento e desempilhamento da pilha de chamadas (call stack)",
+      "checked": false
+    },
+    {
+      "id": "c05",
+      "text": "Definir e utilizar parâmetros padrão opcionais e argumentos nomeados",
+      "checked": false
+    },
+    {
+      "id": "c06",
+      "text": "Manipular número arbitrário de argumentos com empacotamento *args e **kwargs",
+      "checked": false
+    },
+    {
+      "id": "c07",
+      "text": "Passar funções como parâmetros e sintetizar funções anônimas lambda",
+      "checked": false
+    },
+    {
+      "id": "c08",
+      "text": "Explorar a bancada interativa visualizando stack frames em tempo real",
+      "checked": false
+    }
+  ]
+}

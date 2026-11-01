@@ -1,0 +1,304 @@
+{
+  "questions": [
+    {
+      "id": "q01",
+      "question": "Por que a boa prática de engenharia de software preconizada por Nilo Menezes recomenda que funções utilizem `return` para entregar resultados em vez de imprimir com `print()` dentro da própria função?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "O comando `print()` consome a memória RAM do computador e trava o sistema operacional após dez execuções.",
+          "isCorrect": false,
+          "explanation": "`print()` apenas direciona strings para a saída padrão (stdout) e não causa travamento de memória."
+        },
+        {
+          "letter": "B",
+          "text": "O uso de `return` separa o cálculo da apresentação, permitindo que o resultado seja reutilizado em outras expressões, gravado em arquivos, testado automaticamente ou redirecionado.",
+          "isCorrect": true,
+          "explanation": "Correto! Funções puras que retornam valores são modulares e desacopladas da interface com o usuário. O chamador decide se quer imprimir, armazenar em banco de dados ou repassar o dado para outro cálculo."
+        },
+        {
+          "letter": "C",
+          "text": "Funções que utilizam `print()` não podem ter parâmetros numéricos.",
+          "isCorrect": false,
+          "explanation": "Parâmetros podem ter qualquer tipo independente de haver `print()` ou `return`."
+        },
+        {
+          "letter": "D",
+          "text": "A linguagem Python proíbe nativamente o uso de `print()` no interior de blocos iniciados por `def`.",
+          "isCorrect": false,
+          "explanation": "`print()` pode ser executado perfeitamente dentro de funções; a questão é puramente de arquitetura e boas práticas de design."
+        }
+      ]
+    },
+    {
+      "id": "q02",
+      "question": "O que uma função em Python retorna para a variável chamadora quando seu corpo termina de ser executado sem encontrar nenhuma instrução `return`?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "O número inteiro `0`.",
+          "isCorrect": false,
+          "explanation": "O Python não retorna 0 automaticamente (ao contrário da convenção de saída da função `main` em C)."
+        },
+        {
+          "letter": "B",
+          "text": "Uma string vazia `''`.",
+          "isCorrect": false,
+          "explanation": "Strings não são o retorno padrão de funções sem retorno explícito."
+        },
+        {
+          "letter": "C",
+          "text": "O objeto especial `None` (do tipo `NoneType`), representando a ausência de valor.",
+          "isCorrect": true,
+          "explanation": "Correto! Em Python, toda função que atinge o fim de seu bloco sem executar um `return` produz implicitamente o valor `None`."
+        },
+        {
+          "letter": "D",
+          "text": "Lança uma exceção fatal `NoReturnStatementError`.",
+          "isCorrect": false,
+          "explanation": "Não existe essa exceção em Python; funções que apenas executam efeitos colaterais sem retorno são totalmente válidas."
+        }
+      ]
+    },
+    {
+      "id": "q03",
+      "question": "Considere o código:\n```python\nx = 5\ndef altera():\n    x = 100\naltera()\nprint(x)\n```\nQual será o valor impresso e por quê?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Será impresso `100`, pois a variável `x` modificada dentro da função substitui o valor global.",
+          "isCorrect": false,
+          "explanation": "Sem a instrução `global x`, a atribuição `x = 100` cria apenas uma nova variável local dentro do frame da função `altera`."
+        },
+        {
+          "letter": "B",
+          "text": "Será impresso `5`, pois a atribuição `x = 100` dentro de `altera()` cria uma variável local que sombreia a global sem alterar o valor original do programa principal.",
+          "isCorrect": true,
+          "explanation": "Correto! O escopo local da função isola suas variáveis. A variável global `x = 5` permanece inalterada fora da função."
+        },
+        {
+          "letter": "C",
+          "text": "Dispara um erro `NameError: name 'x' is ambiguous`.",
+          "isCorrect": false,
+          "explanation": "A resolução de escopos do Python (LEGB) prioriza variáveis locais sobre globais sem ambiguidade."
+        },
+        {
+          "letter": "D",
+          "text": "Será impresso `None`.",
+          "isCorrect": false,
+          "explanation": "O `print(x)` acessa a variável global `x` que vale 5."
+        }
+      ]
+    },
+    {
+      "id": "q04",
+      "question": "Qual é a causa do erro `UnboundLocalError: local variable 'contador' referenced before assignment` ao executar a função `def inc(): contador += 1` quando já existe uma variável `contador = 0` no escopo global?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "O interpretador não aceita o operador `+=` dentro de sub-rotinas.",
+          "isCorrect": false,
+          "explanation": "O operador `+=` é perfeitamente válido em qualquer contexto do Python."
+        },
+        {
+          "letter": "B",
+          "text": "A presença da atribuição faz com que o compilador considere `contador` uma variável local da função; ao tentar ler seu valor antes da inicialização local para somar 1, o erro é disparado.",
+          "isCorrect": true,
+          "explanation": "Correto! Como há uma atribuição no corpo da função (`contador += 1` equivale a `contador = contador + 1`), o Python define que `contador` é estritamente local. A tentativa de ler o valor antes de atribuí-lo gera `UnboundLocalError`. Para alterar a global, seria necessário declarar `global contador`."
+        },
+        {
+          "letter": "C",
+          "text": "A variável global foi apagada automaticamente da memória.",
+          "isCorrect": false,
+          "explanation": "A variável global continua existindo no namespace de módulo."
+        },
+        {
+          "letter": "D",
+          "text": "O nome `contador` é uma palavra reservada do Python.",
+          "isCorrect": false,
+          "explanation": "`contador` é apenas um identificador comum de variável."
+        }
+      ]
+    },
+    {
+      "id": "q05",
+      "question": "Por que todo algoritmo recursivo necessita obrigatoriamente de uma condição de parada denominada 'Caso Base'?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Para converter os números decimais em números inteiros antes do retorno.",
+          "isCorrect": false,
+          "explanation": "O caso base lida com a condição de término da indução matemática, não com coerção de tipos."
+        },
+        {
+          "letter": "B",
+          "text": "Sem o caso base, a função chamaria a si mesma infinitamente, acumulando frames na pilha até esgotar a memória e disparar `RecursionError`.",
+          "isCorrect": true,
+          "explanation": "Correto! O caso base define a resposta para a entrada mais simples e elementar (ex: $0! = 1$ ou $\\text{fib}(0) = 0$). Sem ele, o empilhamento sucessivo de frames causa estouro de pilha (*stack overflow*)."
+        },
+        {
+          "letter": "C",
+          "text": "Porque o compilador do Python não suporta mais de duas chamadas recursivas consecutivas.",
+          "isCorrect": false,
+          "explanation": "Python suporta centenas de chamadas recursivas consecutivas (o limite padrão de profundidade é tipicamente 1000)."
+        },
+        {
+          "letter": "D",
+          "text": "Para permitir que funções lambda sejam invocadas no lugar de funções `def`.",
+          "isCorrect": false,
+          "explanation": "Não há relação entre caso base recursivo e funções lambda."
+        }
+      ]
+    },
+    {
+      "id": "q06",
+      "question": "Qual das seguintes assinaturas de função causará um erro de sintaxe imediato (`SyntaxError: non-default argument follows default argument`) no Python?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "`def conecta(host, porta=8080, timeout=30):`",
+          "isCorrect": false,
+          "explanation": "Assinatura válida: o parâmetro obrigatório `host` vem primeiro, seguido pelos opcionais `porta` e `timeout`."
+        },
+        {
+          "letter": "B",
+          "text": "`def conecta(timeout=30, host, porta):`",
+          "isCorrect": true,
+          "explanation": "Correto! Na gramática do Python, parâmetros opcionais com valor padrão nunca podem preceder parâmetros obrigatórios sem valor padrão. Todos os parâmetros posicionais obrigatórios devem vir primeiro."
+        },
+        {
+          "letter": "C",
+          "text": "`def conecta(host='localhost', porta=8080):`",
+          "isCorrect": false,
+          "explanation": "Assinatura válida: todos os parâmetros possuem valores padrão."
+        },
+        {
+          "letter": "D",
+          "text": "`def conecta(host, porta):`",
+          "isCorrect": false,
+          "explanation": "Assinatura válida: ambos são parâmetros posicionais obrigatórios."
+        }
+      ]
+    },
+    {
+      "id": "q07",
+      "question": "Qual é a grave consequência de declarar uma função com um objeto mutável como valor padrão, como em `def adiciona(item, lista=[]): lista.append(item); return lista`?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "A lista é destruída a cada chamada e os elementos adicionados são perdidos.",
+          "isCorrect": false,
+          "explanation": "Ocorre justamente o inverso: a lista sobrevive entre chamadas subsequentes acumulando dados."
+        },
+        {
+          "letter": "B",
+          "text": "A mesma instância da lista criada na definição da função é reutilizada em todas as chamadas futuras que omitirem o parâmetro, acumulando dados de invocações anteriores.",
+          "isCorrect": true,
+          "explanation": "Correto! Valores padrão são avaliados uma única vez quando a função é compilada. Objetos mutáveis (como listas ou dicionários) mantêm seu estado na memória entre chamadas. A solução idiomática é usar `lista=None` e criar `lista = []` dentro da função."
+        },
+        {
+          "letter": "C",
+          "text": "Gera um erro de sintaxe e o interpretador se recusa a iniciar.",
+          "isCorrect": false,
+          "explanation": "A sintaxe é válida e compila, mas introduz um comportamento anômalo e difícil de depurar (*bug lógico*)."
+        },
+        {
+          "letter": "D",
+          "text": "A lista é automaticamente convertida em tupla imutável pelo interpretador.",
+          "isCorrect": false,
+          "explanation": "O Python não converte listas padrão em tuplas de forma implícita."
+        }
+      ]
+    },
+    {
+      "id": "q08",
+      "question": "Em uma função definida com `def processa(*args, **kwargs):`, quais são os tipos de dados respectivos que as variáveis `args` e `kwargs` possuem internamente?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "`args` é uma lista (`list`) e `kwargs` é uma tupla (`tuple`).",
+          "isCorrect": false,
+          "explanation": "`args` é empacotado como tupla e `kwargs` como dicionário."
+        },
+        {
+          "letter": "B",
+          "text": "`args` é uma tupla (`tuple`) de argumentos posicionais e `kwargs` é um dicionário (`dict`) de argumentos nomeados.",
+          "isCorrect": true,
+          "explanation": "Correto! O operador de asterisco simples `*` empacota argumentos posicionais em uma tupla imutável (`tuple`), enquanto o duplo asterisco `**` empacota parâmetros nomeados em um dicionário associativo (`dict`)."
+        },
+        {
+          "letter": "C",
+          "text": "Ambos são conjuntos do tipo `set`.",
+          "isCorrect": false,
+          "explanation": "Conjuntos não preservam chaves-valores nem ordem de argumentos posicionais."
+        },
+        {
+          "letter": "D",
+          "text": "Ambos são do tipo string (`str`).",
+          "isCorrect": false,
+          "explanation": "Eles empacotam os objetos nativos passados pelo chamador, preservando seus tipos originais."
+        }
+      ]
+    },
+    {
+      "id": "q09",
+      "question": "Qual é a diferença fundamental entre passar `foper` e passar `foper(a, b)` como argumento para outra função `def executa(foper):`?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Nenhuma diferença; o interpretador entende ambos como a mesma instrução.",
+          "isCorrect": false,
+          "explanation": "Há uma distinção radical entre o objeto função e o resultado de sua avaliação."
+        },
+        {
+          "letter": "B",
+          "text": "Passar `foper` transfere a referência do próprio objeto função para ser chamado posteriormente, enquanto `foper(a, b)` executa a função imediatamente e passa apenas o seu valor de retorno.",
+          "isCorrect": true,
+          "explanation": "Correto! Em Python, funções são cidadãs de primeira classe. Sem parênteses, passamos o ponteiro/objeto da função. Com parênteses, a função é disparada na hora e quem é passado como argumento é o resultado retornado por ela."
+        },
+        {
+          "letter": "C",
+          "text": "Passar `foper` sem parênteses dispara um `SyntaxError`.",
+          "isCorrect": false,
+          "explanation": "Passar funções como objetos é a base da programação funcional e de funções de ordem superior no Python."
+        },
+        {
+          "letter": "D",
+          "text": "`foper` executa em background de forma assíncrona.",
+          "isCorrect": false,
+          "explanation": "A avaliação é puramente síncrona."
+        }
+      ]
+    },
+    {
+      "id": "q10",
+      "question": "Qual das seguintes expressões em Python define corretamente uma função lambda anônima que recebe dois números e retorna a soma de seus quadrados?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "`lambda a, b: return a**2 + b**2`",
+          "isCorrect": false,
+          "explanation": "Funções lambda não aceitam a palavra-chave `return`; o retorno da expressão calculada é implícito e automático."
+        },
+        {
+          "letter": "B",
+          "text": "`lambda a, b: a**2 + b**2`",
+          "isCorrect": true,
+          "explanation": "Correto! A sintaxe de expressões lambda é `lambda <parâmetros>: <expressão>`. A expressão é avaliada e seu valor é retornado automaticamente sem instrução `return`."
+        },
+        {
+          "letter": "C",
+          "text": "`def lambda(a, b): a**2 + b**2`",
+          "isCorrect": false,
+          "explanation": "Não se mistura `def` com `lambda`."
+        },
+        {
+          "letter": "D",
+          "text": "`lambda(a, b) -> a**2 + b**2`",
+          "isCorrect": false,
+          "explanation": "A sintaxe de lambda em Python utiliza dois-pontos `:` e não setas `->`."
+        }
+      ]
+    }
+  ]
+}

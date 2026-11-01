@@ -1,0 +1,19 @@
+{
+  "id": "08-funcoes-e-recursao",
+  "code": "MÓDULO 08",
+  "title": "Modularização: Funções, Escopo e Recursão",
+  "chapters": "Capítulo 8 (pp. 161–187)",
+  "pages": "pp. 161–187",
+  "summary": "Declaração de sub-rotinas com def e retorno com return, escopos de variáveis e palavra-chave global, recursão matemática, caso base e rastreamento da pilha de chamadas (call stack), parâmetros opcionais e nomeados, empacotamento com *args e **kwargs, funções de primeira classe e expressões lambda.",
+  "lessons": [
+    "01-def-e-retorno",
+    "02-escopo-local-global",
+    "03-recursao-e-pilha",
+    "04-parametros-opcionais",
+    "05-args-kwargs-empacotamento",
+    "06-funcoes-lambda",
+    "07-laboratorio-pilha-de-chamadas"
+  ],
+  "quiz": "quiz.json",
+  "exercises": "exercises.json"
+}

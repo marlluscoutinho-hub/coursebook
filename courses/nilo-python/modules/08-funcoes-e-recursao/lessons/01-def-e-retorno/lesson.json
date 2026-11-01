@@ -1,0 +1,20 @@
+{
+  "id": "01-def-e-retorno",
+  "title": "Declaração de Funções, Parâmetros e a Instrução Return",
+  "kind": "standard",
+  "pages": "Capítulo 8 (pp. 161–164)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

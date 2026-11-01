@@ -1,0 +1,20 @@
+{
+  "id": "05-args-kwargs-empacotamento",
+  "title": "Parâmetros Arbitrários: Empacotamento com *args e **kwargs",
+  "kind": "standard",
+  "pages": "Capítulo 8 (pp. 177–181)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

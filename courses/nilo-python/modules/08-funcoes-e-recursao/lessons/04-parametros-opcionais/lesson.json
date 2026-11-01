@@ -1,0 +1,20 @@
+{
+  "id": "04-parametros-opcionais",
+  "title": "Parâmetros Opcionais, Argumentos Nomeados e Validação",
+  "kind": "standard",
+  "pages": "Capítulo 8 (pp. 174–177)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

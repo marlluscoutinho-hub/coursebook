@@ -1,0 +1,20 @@
+{
+  "id": "02-escopo-local-global",
+  "title": "Escopo de Variáveis, Ciclo de Vida e a Instrução Global",
+  "kind": "standard",
+  "pages": "Capítulo 8 (pp. 165–168)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

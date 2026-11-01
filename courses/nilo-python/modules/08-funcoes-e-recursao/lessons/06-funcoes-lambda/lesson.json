@@ -1,0 +1,20 @@
+{
+  "id": "06-funcoes-lambda",
+  "title": "Funções de Primeira Classe e Expressões Lambda Anônimas",
+  "kind": "standard",
+  "pages": "Capítulo 8 (pp. 178–184)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}
