@@ -1,5 +1,5 @@
 /* ==========================================================================
-   CODEX — MÓDULO 06: LIMITES INFERIORES, ORDENAÇÃO EM TEMPO LINEAR E ESTATÍSTICAS DE ORDEM
+   coursebook — MÓDULO 06: LIMITES INFERIORES, ORDENAÇÃO EM TEMPO LINEAR E ESTATÍSTICAS DE ORDEM
    Capítulos 8 e 9 (pp. 166–195)
    Obra: Algoritmos: Teoria e Prática (3ª Edição) — Cormen, Leiserson, Rivest e Stein
    ========================================================================== */
@@ -644,7 +644,7 @@ do grupo│    ↑         ↑         ↑  │   │   ↑   │   │   ↑   
   ];
 
   /* ========================================================================
-     BANCADAS INTERATIVAS DO MÓDULO 06 (initWorkbenches)
+     LABORATÓRIOS INTERATIVOS DO MÓDULO 06 (initWorkbenches)
      ======================================================================== */
   function initWorkbenches() {
     const mount = document.getElementById("workbench-mod6-mount");
@@ -653,7 +653,7 @@ do grupo│    ↑         ↑         ↑  │   │   ↑   │   │   ↑   
     mount.innerHTML = `
       <div class="workbench-box" style="margin-top:1.75rem;">
         <div class="workbench-header">
-          <span class="workbench-title">[ BANCADA INTERATIVA #06 • SIMULADOR DE COUNTING-SORT ESTÁVEL & PODA DE RANDOMIZED-SELECT ]</span>
+          <span class="workbench-title">Laboratório Interativo #06 • SIMULADOR DE COUNTING-SORT ESTÁVEL & PODA DE RANDOMIZED-SELECT</span>
           <span class="bracket-tag dark">CAP. 8 + CAP. 9</span>
         </div>
         <div class="workbench-body">
@@ -1813,8 +1813,8 @@ FIND-MEDIAN-IN-FIRST(A, B, n, low, high)
     }
   ];
 
-  if (typeof window !== "undefined" && typeof window.registerCodexModule === "function") {
-    window.registerCodexModule(6, {
+  if (typeof window !== "undefined" && (typeof window.registerCourseModule === "function" || typeof window.registerCodexModule === "function")) {
+    (window.registerCourseModule || window.registerCodexModule)(6, {
       revisao,
       unidades,
       initWorkbenches,

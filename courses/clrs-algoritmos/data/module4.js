@@ -4,7 +4,7 @@
    ========================================================================== */
 
 (function () {
-  if (!window.registerCodexModule) return;
+  if (!window.registerCourseModule && !window.registerCodexModule) return;
 
   const module4Content = {
     /* ======================================================================
@@ -503,7 +503,7 @@
     ],
 
     /* ======================================================================
-       BANCADAS INTERATIVAS DO MÓDULO 04 (initWorkbenches)
+       LABORATÓRIOS INTERATIVOS DO MÓDULO 04 (initWorkbenches)
        1. Laboratório RANDOMIZE-IN-PLACE (Passo a Passo + Invariante) & Monte Carlo HIRE-ASSISTANT (Empírico vs H_n)
        2. Simulador de Contratação On-line (Limiar k = n/e) & Paradoxo do Aniversário
        ====================================================================== */
@@ -514,7 +514,7 @@
       mount.innerHTML = `
         <div class="workbench-container" style="margin-top:1.75rem;">
           <div class="workbench-header">
-            <span class="workbench-title">[ BANCADA INTERATIVA 04 • SIMULADOR CLRS: RANDOMIZE-IN-PLACE, HIRE-ASSISTANT & ON-LINE 1/e ]</span>
+            <span class="workbench-title">Laboratório Interativo 04 • SIMULADOR CLRS: RANDOMIZE-IN-PLACE, HIRE-ASSISTANT & ON-LINE 1/e</span>
             <span class="bracket-tag emerald">[ CAPÍTULO 5 • INTERATIVO ]</span>
           </div>
           <div class="workbench-body" style="display:flex;flex-direction:column;gap:1.5rem;">
@@ -1436,5 +1436,5 @@
     ]
   };
 
-  window.registerCodexModule(4, module4Content);
+  (window.registerCourseModule || window.registerCodexModule)(4, module4Content);
 })();

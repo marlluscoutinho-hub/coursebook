@@ -1,5 +1,5 @@
 /* ==========================================================================
-   CODEX — MÓDULO 09: PROGRAMAÇÃO DINÂMICA, ALGORITMOS GULOSOS E ANÁLISE AMORTIZADA
+   coursebook — MÓDULO 09: PROGRAMAÇÃO DINÂMICA, ALGORITMOS GULOSOS E ANÁLISE AMORTIZADA
    Capítulos 15, 16 e 17 (pp. 300–397)
    Obra: Algoritmos: Teoria e Prática (3ª Edição) — Cormen, Leiserson, Rivest e Stein
    ========================================================================== */
@@ -715,7 +715,7 @@ GREEDY-ACTIVITY-SELECTOR(s, f)
       <div class="workbench-container" style="margin: 2rem 0;">
         <div class="workbench-header">
           <span class="workbench-badge">[ LABORATÓRIO INTERATIVO • CAPÍTULOS 15, 16 E 17 ]</span>
-          <h3 class="workbench-title">Bancada Dupla: (1) Programação Dinâmica (Corte de Hastes & LCS) e (2) Análise Amortizada (Tabela Dinâmica & Contador Binário)</h3>
+          <h3 class="workbench-title">Laboratório Duplo: (1) Programação Dinâmica (Corte de Hastes & LCS) e (2) Análise Amortizada (Tabela Dinâmica & Contador Binário)</h3>
           <p class="workbench-desc">
             Explore interativamente o preenchimento das tabelas <em>bottom-up</em> de Programação Dinâmica com reconstrução da solução ótima e acompanhe passo a passo o custo real $c_i$, a variação do potencial $\\Delta\\Phi_i$ e o custo amortizado constante $\\hat{c}_i$ na Análise Amortizada.
           </p>
@@ -1860,8 +1860,8 @@ GREEDY-ACTIVITY-SELECTOR(s, f)
     }
   ];
 
-  if (typeof window !== "undefined" && typeof window.registerCodexModule === "function") {
-    window.registerCodexModule(9, {
+  if (typeof window !== "undefined" && (typeof window.registerCourseModule === "function" || typeof window.registerCodexModule === "function")) {
+    (window.registerCourseModule || window.registerCodexModule)(9, {
       revisao,
       unidades,
       initWorkbenches,

@@ -1,5 +1,5 @@
 /* ==========================================================================
-   CODEX — MÓDULO 13: ALGORITMOS MULTITHREAD, OPERAÇÕES COM MATRIZES E PROGRAMAÇÃO LINEAR
+   coursebook — MÓDULO 13: ALGORITMOS MULTITHREAD, OPERAÇÕES COM MATRIZES E PROGRAMAÇÃO LINEAR
    Capítulos 27, 28 e 29 + Apêndice D (pp. 624–725 e pp. 978–990)
    Obra: Algoritmos: Teoria e Prática (3ª Edição) — Cormen, Leiserson, Rivest e Stein
    ========================================================================== */
@@ -770,7 +770,7 @@
     mount.innerHTML = `
       <div class="workbench-box" style="margin-top:1.5rem;">
         <div class="workbench-header">
-          <span class="workbench-title">[ BANCADA INTERATIVA DUPLA • MÓDULO 13: SIMPLEX & MULTITHREADING (CAPS. 27–29) ]</span>
+          <span class="workbench-title">Laboratório Interativo DUPLA • MÓDULO 13: SIMPLEX & MULTITHREADING (CAPS. 27–29)</span>
           <span class="bracket-tag amber">SIMPLEX • DUALIDADE • MULTITHREAD • LUP</span>
         </div>
         <div class="workbench-body">
@@ -1890,8 +1890,8 @@
     }
   ];
 
-  if (typeof window !== "undefined" && typeof window.registerCodexModule === "function") {
-    window.registerCodexModule(13, {
+  if (typeof window !== "undefined" && (typeof window.registerCourseModule === "function" || typeof window.registerCodexModule === "function")) {
+    (window.registerCourseModule || window.registerCodexModule)(13, {
       revisao,
       unidades,
       initWorkbenches,

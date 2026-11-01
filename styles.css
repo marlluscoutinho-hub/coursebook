@@ -1,7 +1,6 @@
 /* ==========================================================================
-   CODEX — Plataforma Educacional de Livros Canônicos Interativos
-   Design System: "Tome & Terminal" / "Academic Algorithmic"
-   Obra Ativa: Algoritmos: Teoria e Prática (3ª Edição) — Cormen et al. (CLRS)
+   coursebook — Plataforma Educacional de Livros Canônicos Interativos
+   Design System: Paper & Ink Brutalism / Academic Algorithmic
    ========================================================================== */
 
 :root {
@@ -82,8 +81,10 @@ body {
 }
 
 /* ==========================================================================
-   TOP BAR GLOBAL (CODEX HEADER)
+   TOP BAR GLOBAL (COURSEBOOK HEADER)
    ========================================================================== */
+.topbar,
+.coursebook-topbar,
 .codex-topbar {
   position: sticky;
   top: 0;
@@ -116,6 +117,8 @@ body {
   box-shadow: var(--shadow-brutal-sm);
 }
 
+.brand,
+.coursebook-brand,
 .codex-brand {
   display: flex;
   align-items: center;
@@ -354,7 +357,8 @@ body {
   color: var(--ink-on-dark-muted);
 }
 
-/* Hero Card do Curso (CLRS) */
+/* Hero Card do Curso */
+.course-hero-card,
 .tome-hero-card {
   background-color: var(--bg-card);
   border: var(--border-strong);
@@ -365,6 +369,7 @@ body {
   overflow: hidden;
 }
 
+.course-hero-main,
 .tome-hero-main {
   padding: 2.25rem;
   border-right: var(--border-strong);
@@ -374,6 +379,7 @@ body {
   gap: 1.5rem;
 }
 
+.course-meta-row,
 .tome-meta-row {
   display: flex;
   flex-wrap: wrap;
@@ -381,6 +387,7 @@ body {
   gap: 0.6rem;
 }
 
+.badge-pill,
 .bracket-tag {
   font-family: var(--font-mono);
   font-size: 0.73rem;
@@ -392,23 +399,27 @@ body {
   letter-spacing: 0.03em;
 }
 
+.badge-pill.amber,
 .bracket-tag.amber {
   background-color: var(--accent-amber-bg);
   color: var(--accent-amber-dark);
   border-color: var(--accent-amber-dark);
 }
 
+.badge-pill.emerald,
 .bracket-tag.emerald {
   background-color: var(--accent-emerald-bg);
   color: var(--accent-emerald-dark);
   border-color: var(--accent-emerald-dark);
 }
 
+.badge-pill.dark,
 .bracket-tag.dark {
   background-color: var(--bg-terminal);
   color: var(--ink-on-dark);
 }
 
+.course-title,
 .tome-title {
   font-family: var(--font-serif);
   font-size: 2.45rem;
@@ -418,6 +429,7 @@ body {
   margin-top: 0.35rem;
 }
 
+.course-authors,
 .tome-authors {
   font-family: var(--font-mono);
   font-size: 0.85rem;
@@ -425,6 +437,7 @@ body {
   margin-top: 0.4rem;
 }
 
+.course-description,
 .tome-description {
   font-size: 1rem;
   color: var(--ink-secondary);
@@ -432,6 +445,7 @@ body {
   line-height: 1.65;
 }
 
+.course-hero-actions,
 .tome-hero-actions {
   display: flex;
   flex-wrap: wrap;
@@ -478,7 +492,8 @@ body {
   transform: translate(-1px, -1px);
 }
 
-/* Painel Direito do Hero: Telemetria & Status do Tomo */
+/* Painel Direito do Hero: Telemetria & Status do Curso */
+.course-hero-telemetry,
 .tome-hero-telemetry {
   background-color: var(--bg-terminal);
   color: var(--ink-on-dark);
@@ -760,7 +775,7 @@ body {
 }
 
 /* ==========================================================================
-   VIEW 2: AMBIENTE DE LEITURA ATIVA & BANCADA (CHAPTER READER)
+   VIEW 2: AMBIENTE DE LEITURA ATIVA & LABORATÓRIO (CHAPTER READER)
    ========================================================================== */
 .reader-layout {
   display: grid;
@@ -1288,7 +1303,9 @@ body {
   margin-bottom: 0 !important;
 }
 
-/* Blocos de Pseudocódigo no Padrão CLRS */
+/* Blocos de Código e Pseudocódigo Canônico */
+.code-box,
+.canonical-code-box,
 .clrs-pseudocode-box {
   background-color: var(--bg-terminal);
   color: var(--ink-on-dark);
@@ -1400,7 +1417,9 @@ body {
   padding: 0;
 }
 
-/* Normalização de Compatibilidade para Bancadas Interativas */
+/* Normalização de Compatibilidade para Laboratórios Interativos */
+.lab-box,
+.coursebook-lab,
 .codex-workbench {
   background-color: var(--bg-paper-alt) !important;
   border: var(--border-strong) !important;
@@ -1449,7 +1468,7 @@ body {
 }
 
 /* ==========================================================================
-   BANCADAS ALGORÍTMICAS INTERATIVAS (SIMULADORES)
+   LABORATÓRIOS ALGORÍTMICOS INTERATIVOS (SIMULADORES)
    ========================================================================== */
 .workbench-box {
   background-color: var(--bg-paper-alt);
@@ -1954,8 +1973,18 @@ li .katex {
   border-left: 6px solid var(--accent-amber);
 }
 
+.canonical-callout.lemma {
+  background-color: var(--accent-emerald-bg);
+  border-left: 6px solid var(--accent-emerald-dark);
+}
+
+.canonical-callout.important {
+  background-color: var(--accent-amber-bg);
+  border-left: 6px solid var(--accent-amber-dark);
+}
+
 /* ==========================================================================
-   ALIASES DE LABORATÓRIO (v2) & COMPATIBILIDADE COM BANCADA
+   ALIASES DE LABORATÓRIO (v2) & COMPATIBILIDADE RETROATIVA
    ========================================================================== */
 .lab-box {
   background-color: var(--bg-terminal);

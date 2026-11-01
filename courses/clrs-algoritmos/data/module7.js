@@ -704,7 +704,7 @@
         <div class="workbench-container" style="margin: 2rem 0; border: 2px solid var(--ink-primary); background: var(--bg-secondary); padding: 1.25rem;">
           <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.75rem; margin-bottom:1rem; border-bottom:2px solid var(--ink-primary); padding-bottom:0.75rem;">
             <div>
-              <span style="font-family:var(--font-mono); font-size:0.75rem; font-weight:700; color:var(--accent-amber);">[ WORKBENCH INTERATIVO • MÓDULO 07 ]</span>
+              <span style="font-family:var(--font-mono); font-size:0.75rem; font-weight:700; color:var(--accent-amber);">Laboratório Interativo • MÓDULO 07</span>
               <h4 style="margin:0.25rem 0 0 0; font-size:1.1rem;">Laboratório Duplo: Tabelas de Espalhamento (Cap. 11) &amp; Listas com Sentinela / Lista Livre (Cap. 10)</h4>
             </div>
             <div style="display:flex; gap:0.5rem;">
@@ -1932,10 +1932,10 @@
     ]
   };
 
-  if (typeof window !== "undefined" && typeof window.registerCodexModule === "function") {
-    window.registerCodexModule(7, module7Content);
+  if (typeof window !== "undefined" && (typeof window.registerCourseModule === "function" || typeof window.registerCodexModule === "function")) {
+    (window.registerCourseModule || window.registerCodexModule)(7, module7Content);
   } else if (typeof window !== "undefined") {
-    window.PendingCodexModules = window.PendingCodexModules || {};
-    window.PendingCodexModules[7] = module7Content;
+    window.PendingCourseModules = window.PendingCourseModules || {}; window.PendingCodexModules = window.PendingCourseModules;
+    window.PendingCourseModules[7] = module7Content;
   }
 })();

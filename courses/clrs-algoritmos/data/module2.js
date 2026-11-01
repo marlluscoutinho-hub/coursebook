@@ -1,5 +1,5 @@
 /* ==========================================================================
-   CODEX — MÓDULO 02: CRESCIMENTO DE FUNÇÕES, NOTAÇÃO ASSINTÓTICA E SOMATÓRIOS
+   coursebook — MÓDULO 02: CRESCIMENTO DE FUNÇÕES, NOTAÇÃO ASSINTÓTICA E SOMATÓRIOS
    Capítulo 3 (pp. 47–65) + Apêndice A (pp. 920–930)
    Obra: Algoritmos: Teoria e Prática (3ª Edição) — Cormen, Leiserson, Rivest e Stein
    ========================================================================== */
@@ -467,7 +467,7 @@
   ];
 
   /* ========================================================================
-     BANCADAS INTERATIVAS DO MÓDULO 02 (initWorkbenches)
+     LABORATÓRIOS INTERATIVOS DO MÓDULO 02 (initWorkbenches)
      ======================================================================== */
   function initWorkbenches() {
     const mount = document.getElementById("workbench-mod2-mount");
@@ -476,7 +476,7 @@
     mount.innerHTML = `
       <div class="workbench-box" style="margin-top:1.75rem;">
         <div class="workbench-header">
-          <span class="workbench-title">[ BANCADA INTERATIVA #02 • EXPLORADOR DE SANDUÍCHE ASSINTÓTICO Θ(g(n)) & ESCALA DE FUNÇÕES/SOMATÓRIOS ]</span>
+          <span class="workbench-title">Laboratório Interativo #02 • EXPLORADOR DE SANDUÍCHE ASSINTÓTICO Θ(g(n)) & ESCALA DE FUNÇÕES/SOMATÓRIOS</span>
           <span class="bracket-tag dark">CAP. 3 + APÊNDICE A</span>
         </div>
         <div class="workbench-body">
@@ -1419,8 +1419,8 @@
     }
   ];
 
-  if (typeof window !== "undefined" && typeof window.registerCodexModule === "function") {
-    window.registerCodexModule(2, {
+  if (typeof window !== "undefined" && (typeof window.registerCourseModule === "function" || typeof window.registerCodexModule === "function")) {
+    (window.registerCourseModule || window.registerCodexModule)(2, {
       revisao,
       unidades,
       initWorkbenches,

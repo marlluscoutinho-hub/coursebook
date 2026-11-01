@@ -24,19 +24,22 @@
   <!-- ========================================================================
        CABEÇALHO GLOBAL — coursebook
        ======================================================================== -->
-  <header class="codex-topbar">
+  <header class="topbar coursebook-topbar">
     <div class="topbar-left">
       <button class="mobile-menu-btn" id="mobile-sidebar-btn" onclick="toggleMobileSidebar()" aria-label="Alternar barra lateral">
-        [ ☰ MENU ]
+        ☰ Menu
       </button>
-      <a class="codex-brand" onclick="switchCodexView('home')" title="Ir para a página inicial do coursebook">
+      <a class="brand coursebook-brand" onclick="switchView('home')" title="Ir para a página inicial do coursebook">
         <span class="brand-badge">coursebook</span>
       </a>
     </div>
 
-    <div class="topbar-right">
-      <div class="global-progress-pill" title="Progresso Geral do Curso Algoritmos (CLRS)">
-        <span class="global-progress-label" id="topbar-global-label">PROGRESSO GERAL: 0/64 ETAPAS</span>
+    <div class="topbar-right" style="display:flex;align-items:center;gap:0.75rem;">
+      <button class="wb-btn" onclick="openBackupModal()" style="font-size:0.75rem;" title="Exportar ou restaurar progresso de estudo">
+        💾 Backup
+      </button>
+      <div class="global-progress-pill" title="Progresso Geral do Curso">
+        <span class="global-progress-label" id="topbar-global-label">0/64 ETAPAS CONCLUÍDAS</span>
         <div class="global-progress-track">
           <div class="global-progress-fill" id="topbar-global-fill"></div>
         </div>
@@ -51,7 +54,7 @@
   <main id="view-home" class="view-container active">
     <div class="catalog-wrapper">
       <div class="home-header-block">
-        <span class="bracket-tag dark">[ BIBLIOTECA DE CURSOS INTERATIVOS ]</span>
+        <span class="bracket-tag dark">Biblioteca de Cursos Interativos</span>
         <h1 class="home-main-title">Seus Cursos em Estudo</h1>
         <p class="home-subtitle">
           Estude livros técnicos e científicos de forma ativa, profunda e estruturada módulo a módulo.
@@ -63,13 +66,13 @@
         <article class="course-home-card active-course">
           <div class="course-home-card-main">
             <div>
-              <div class="tome-meta-row">
-                <span class="bracket-tag dark">[ CURSO #01 ]</span>
-                <span class="bracket-tag amber">[ 16 MÓDULOS • 35 CAPÍTULOS + 4 APÊNDICES ]</span>
-                <span class="bracket-tag emerald" id="home-course-status-tag">[ EM ANDAMENTO ]</span>
+              <div class="course-meta-row">
+                <span class="bracket-tag dark">Curso 01</span>
+                <span class="bracket-tag amber">16 Módulos • 35 Capítulos + 4 Apêndices</span>
+                <span class="bracket-tag emerald" id="home-course-status-tag">Em Andamento</span>
               </div>
               <h2 class="course-home-title">Algoritmos: Teoria e Prática (3ª Edição)</h2>
-              <p class="tome-authors">
+              <p class="course-authors">
                 Thomas H. Cormen • Charles E. Leiserson • Ronald L. Rivest • Clifford Stein
               </p>
               <p class="course-home-desc">
@@ -79,7 +82,7 @@
 
             <div class="course-home-progress-box">
               <div class="course-home-progress-top">
-                <span>PROGRESSO DO CURSO</span>
+                <span>Progresso do Curso</span>
                 <strong id="home-course-pct-text">0% concluído (0 de 16 módulos • 0 de 64 etapas)</strong>
               </div>
               <div class="course-home-progress-track">
@@ -91,12 +94,12 @@
               </div>
             </div>
 
-            <div class="tome-hero-actions">
+            <div class="course-hero-actions">
               <button class="btn-primary-brutal" onclick="selectCourse('clrs-algoritmos', 1)">
-                [ CONTINUAR ESTUDO • MÓDULO 01 → ]
+                Continuar Estudo • Módulo 01 →
               </button>
               <button class="btn-secondary-brutal" onclick="selectCourse('clrs-algoritmos')">
-                [ VER VISÃO GERAL &amp; TRILHA DOS 16 MÓDULOS ]
+                Ver Visão Geral &amp; Trilha dos 16 Módulos
               </button>
             </div>
           </div>
@@ -106,13 +109,13 @@
         <article class="course-home-card upcoming-course">
           <div class="course-home-card-main">
             <div>
-              <div class="tome-meta-row">
-                <span class="bracket-tag dark">[ CURSO #02 ]</span>
-                <span class="bracket-tag amber">[ EM PLANEJAMENTO ]</span>
-                <span class="bracket-tag">[ FORBELLONE &amp; EBERSPÄCHER ]</span>
+              <div class="course-meta-row">
+                <span class="bracket-tag dark">Curso 02</span>
+                <span class="bracket-tag amber">Em Planejamento</span>
+                <span class="bracket-tag">Forbellone &amp; Eberspächer</span>
               </div>
               <h2 class="course-home-title">Lógica de Programação: A Construção de Algoritmos (3ª Ed.)</h2>
-              <p class="tome-authors">
+              <p class="course-authors">
                 André Luiz Villar Forbellone • Henri Frederico Eberspächer
               </p>
               <p class="course-home-desc">
@@ -121,7 +124,7 @@
             </div>
 
             <div style="margin-top:1.25rem;">
-              <span class="bracket-tag emerald" style="font-size:0.75rem;">[ LIVRO ANEXADO • 220 PÁGINAS • PRONTO PARA INICIAR ]</span>
+              <span class="bracket-tag emerald" style="font-size:0.75rem;">Livro Anexado • 220 Páginas • Pronto para Iniciar</span>
             </div>
           </div>
         </article>
@@ -130,13 +133,13 @@
         <article class="course-home-card active-course" style="border-left: 6px solid var(--accent-amber);">
           <div class="course-home-card-main">
             <div>
-              <div class="tome-meta-row">
-                <span class="bracket-tag dark">[ CURSO #03 ]</span>
-                <span class="bracket-tag amber">[ 12 MÓDULOS • 12 CAPÍTULOS + APÊNDICE A ]</span>
-                <span class="bracket-tag emerald" id="home-nilo-status-tag">[ MÓDULO 01 PRONTO ]</span>
+              <div class="course-meta-row">
+                <span class="bracket-tag dark">Curso 03</span>
+                <span class="bracket-tag amber">12 Módulos • 12 Capítulos + Apêndice A</span>
+                <span class="bracket-tag emerald" id="home-nilo-status-tag">Módulo 01 Pronto</span>
               </div>
               <h2 class="course-home-title">Introdução à Programação com Python (2ª Edição)</h2>
-              <p class="tome-authors">
+              <p class="course-authors">
                 Nilo Ney Coutinho Menezes
               </p>
               <p class="course-home-desc">
@@ -146,7 +149,7 @@
 
             <div class="course-home-progress-box">
               <div class="course-home-progress-top">
-                <span>PROGRESSO DO CURSO</span>
+                <span>Progresso do Curso</span>
                 <strong id="home-nilo-pct-text">Módulo 01 Disponível (1 de 12 módulos estruturados)</strong>
               </div>
               <div class="course-home-progress-track">
@@ -158,12 +161,12 @@
               </div>
             </div>
 
-            <div class="tome-hero-actions">
+            <div class="course-hero-actions">
               <button class="btn-primary-brutal" onclick="selectCourse('nilo-python', 1)">
-                [ INICIAR CURSO PYTHON • MÓDULO 01 → ]
+                Iniciar Curso Python • Módulo 01 →
               </button>
               <button class="btn-secondary-brutal" onclick="selectCourse('nilo-python')">
-                [ VER VISÃO GERAL &amp; TRILHA DOS 12 MÓDULOS ]
+                Ver Visão Geral &amp; Trilha dos 12 Módulos
               </button>
             </div>
           </div>
@@ -179,41 +182,41 @@
     <div class="catalog-wrapper">
 
       <div style="margin-bottom:1.25rem;">
-        <button class="btn-secondary-brutal" onclick="switchCodexView('home')">
-          [ ← VOLTAR PARA A PÁGINA INICIAL DE CURSOS ]
+        <button class="btn-secondary-brutal" onclick="switchView('home')">
+          ← Voltar para a Página Inicial de Cursos
         </button>
       </div>
 
       <!-- Resumo do Curso e Progresso -->
-      <section class="tome-hero-card">
-        <div class="tome-hero-main">
+      <section class="course-hero-card">
+        <div class="course-hero-main">
           <div>
-            <div class="tome-meta-row" id="tome-hero-meta-row">
-              <span class="bracket-tag dark">[ VISÃO GERAL DO CURSO ]</span>
-              <span class="bracket-tag amber">[ 16 MÓDULOS ESTRUTURADOS ]</span>
-              <span class="bracket-tag emerald">[ 35 CAPÍTULOS + 4 APÊNDICES • 1.042 PÁGINAS ]</span>
+            <div class="course-meta-row" id="course-hero-meta-row">
+              <span class="bracket-tag dark">Visão Geral do Curso</span>
+              <span class="bracket-tag amber">16 Módulos Estruturados</span>
+              <span class="bracket-tag emerald">35 Capítulos + 4 Apêndices • 1.042 Páginas</span>
             </div>
-            <h1 class="tome-title" id="tome-hero-title">Algoritmos: Teoria e Prática (3ª Edição)</h1>
-            <p class="tome-authors" id="tome-hero-authors">
+            <h1 class="course-title" id="course-hero-title">Algoritmos: Teoria e Prática (3ª Edição)</h1>
+            <p class="course-authors" id="course-hero-authors">
               THOMAS H. CORMEN • CHARLES E. LEISERSON • RONALD L. RIVEST • CLIFFORD STEIN
             </p>
           </div>
 
-          <p class="tome-description" id="tome-hero-desc">
-            Selecione abaixo um módulo para estudar. Cada módulo é dividido em 4 etapas (<strong>Revisão</strong>, <strong>Primeiro Contato</strong>, <strong>Quizzes</strong> e <strong>Exercícios</strong>) com acompanhamento automático de progresso.
+          <p class="course-description" id="course-hero-desc">
+            Selecione abaixo um módulo para estudar. Cada módulo é dividido em 4 etapas (<strong>Aulas &amp; Laboratórios</strong>, <strong>Revisão</strong>, <strong>Quizzes</strong> e <strong>Exercícios</strong>) com acompanhamento automático de progresso.
           </p>
 
-          <div class="tome-hero-actions">
+          <div class="course-hero-actions">
             <button class="btn-primary-brutal" onclick="openModuleReader(1)">
-              [ ACESSAR MÓDULO 01 → ]
+              Acessar Módulo 01 →
             </button>
           </div>
         </div>
 
-        <aside class="tome-hero-telemetry">
+        <aside class="course-hero-telemetry">
           <div class="telemetry-header">
-            <span>[ PROGRESSO DO CURSO ]</span>
-            <span>SALVO NO NAVEGADOR</span>
+            <span>Progresso do Curso</span>
+            <span>Salvo no Navegador</span>
           </div>
 
           <div class="telemetry-grid">
@@ -236,7 +239,7 @@
           </div>
 
           <div class="telemetry-active-box">
-            <div class="telemetry-active-title">[ MÓDULO ATUALMENTE EM ESTUDO ]</div>
+            <div class="telemetry-active-title">Módulo Atualmente em Estudo</div>
             <div class="telemetry-active-name" id="hero-active-mod-name">
               Módulo 01: O Papel dos Algoritmos e a Partida no Projeto e Análise (Cap. 1 e 2)
             </div>
@@ -259,13 +262,13 @@
         </div>
 
         <div class="curriculum-filter-group">
-          <button class="filter-chip active" data-block="all" onclick="setBlockFilter('all')">[ TODOS (16) ]</button>
-          <button class="filter-chip" data-block="bloco-1" onclick="setBlockFilter('bloco-1')">[ BLOCO I: FUNDAMENTOS ]</button>
-          <button class="filter-chip" data-block="bloco-2" onclick="setBlockFilter('bloco-2')">[ BLOCO II: ORDENAÇÃO ]</button>
-          <button class="filter-chip" data-block="bloco-3" onclick="setBlockFilter('bloco-3')">[ BLOCO III: ESTRUTURAS ]</button>
-          <button class="filter-chip" data-block="bloco-4" onclick="setBlockFilter('bloco-4')">[ BLOCO IV: AVANÇADOS ]</button>
-          <button class="filter-chip" data-block="bloco-5" onclick="setBlockFilter('bloco-5')">[ BLOCO V: GRAFOS ]</button>
-          <button class="filter-chip" data-block="bloco-6" onclick="setBlockFilter('bloco-6')">[ BLOCO VI: TÓPICOS &amp; NP ]</button>
+          <button class="filter-chip active" data-block="all" onclick="setBlockFilter('all')">Todos (16)</button>
+          <button class="filter-chip" data-block="bloco-1" onclick="setBlockFilter('bloco-1')">Bloco I: Fundamentos</button>
+          <button class="filter-chip" data-block="bloco-2" onclick="setBlockFilter('bloco-2')">Bloco II: Ordenação</button>
+          <button class="filter-chip" data-block="bloco-3" onclick="setBlockFilter('bloco-3')">Bloco III: Estruturas</button>
+          <button class="filter-chip" data-block="bloco-4" onclick="setBlockFilter('bloco-4')">Bloco IV: Avançados</button>
+          <button class="filter-chip" data-block="bloco-5" onclick="setBlockFilter('bloco-5')">Bloco V: Grafos</button>
+          <button class="filter-chip" data-block="bloco-6" onclick="setBlockFilter('bloco-6')">Bloco VI: Tópicos &amp; NP</button>
           <input
             type="search"
             class="search-input-brutal"
@@ -293,11 +296,11 @@
       <!-- Barra Lateral Esquerda (Contém todas as informações do módulo, progresso, seções e botão de voltar) -->
       <aside class="reader-sidebar" id="reader-sidebar">
         <div class="sidebar-module-status">
-          <button class="sidebar-back-btn" onclick="switchCodexView('catalog')">
+          <button class="sidebar-back-btn" onclick="switchView('catalog')">
             ← Voltar para a Visão Geral
           </button>
           <div class="sidebar-status-Header">
-            <span id="sidebar-mod-code">[ MÓDULO 01 DE 16 ]</span>
+            <span id="sidebar-mod-code">Módulo 01 de 16</span>
             <span id="sidebar-mod-chapters">CAP. 1 &amp; 2 (PP. 15–46)</span>
           </div>
           <div class="sidebar-module-name" id="sidebar-mod-title">
@@ -308,23 +311,23 @@
           </div>
           <div class="sidebar-progress-caption">
             <span id="sidebar-mod-pct">0% CONCLUÍDO</span>
-            <span id="sidebar-mod-count">0 DE 4 SEÇÕES</span>
+            <span id="sidebar-mod-count">0 de 4 etapas</span>
           </div>
         </div>
 
-        <!-- Navegação das 4 Seções Pedagógicas -->
+        <!-- Navegação das 4 Etapas Pedagógicas -->
         <div class="sidebar-section">
-          <div class="sidebar-section-title" id="sidebar-steps-title">Seções do Módulo 01</div>
+          <div class="sidebar-section-title" id="sidebar-steps-title">Etapas do Módulo</div>
           <ul class="sidebar-steps-list">
             <li>
-              <button class="sidebar-step-btn active" data-step="revisao" onclick="selectModuleStep('revisao')">
-                <span>01. Revisão</span>
+              <button class="sidebar-step-btn active" data-step="aprendizado" onclick="selectModuleStep('aprendizado')">
+                <span>01. Aulas</span>
                 <span class="step-check">○</span>
               </button>
             </li>
             <li>
-              <button class="sidebar-step-btn" data-step="aprendizado" onclick="selectModuleStep('aprendizado')">
-                <span>02. Primeiro Contato</span>
+              <button class="sidebar-step-btn" data-step="revisao" onclick="selectModuleStep('revisao')">
+                <span>02. Revisão</span>
                 <span class="step-check">○</span>
               </button>
             </li>
@@ -343,7 +346,7 @@
           </ul>
         </div>
 
-        <!-- Índice Dinâmico de Unidades de Leitura do Módulo Ativo -->
+        <!-- Índice Dinâmico de Aulas do Módulo Ativo -->
         <div class="sidebar-section">
           <div class="sidebar-section-title" id="sidebar-toc-title">Aulas deste Módulo</div>
           <ul class="sidebar-toc-list" id="sidebar-toc-list"></ul>
@@ -356,11 +359,11 @@
         </div>
       </aside>
 
-      <!-- Área Principal de Leitura (100% focada no conteúdo da seção, sem cabeçalhos volumosos) -->
+      <!-- Área Principal de Leitura (100% focada no conteúdo da etapa, sem cabeçalhos volumosos) -->
       <section class="reader-main">
         <div class="reader-content-canvas">
-          <div id="pane-revisao" class="section-pane active"></div>
-          <div id="pane-aprendizado" class="section-pane"></div>
+          <div id="pane-aprendizado" class="section-pane active"></div>
+          <div id="pane-revisao" class="section-pane"></div>
           <div id="pane-quizzes" class="section-pane"></div>
           <div id="pane-exercicios" class="section-pane"></div>
         </div>
@@ -373,20 +376,57 @@
        MODAL PARA VISUALIZAÇÃO DE ESCOPO DE MÓDULOS
        ======================================================================== -->
   <div
-    id="codex-modal-overlay"
+    id="coursebook-modal-overlay"
+    class="coursebook-modal-overlay"
     style="display:none;position:fixed;inset:0;background:rgba(17,17,17,0.72);z-index:200;align-items:center;justify-content:center;padding:1.5rem;"
-    onclick="if(event.target===this) closeCodexModal()"
+    onclick="if(event.target===this) closeModal()"
   >
     <div style="background:var(--bg-card);border:var(--border-strong);box-shadow:var(--shadow-brutal);max-width:600px;width:100%;padding:1.75rem;">
       <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:var(--border-strong);padding-bottom:0.75rem;margin-bottom:1rem;">
         <strong id="modal-mod-title" style="font-family:var(--font-mono);font-size:0.9rem;"></strong>
-        <button class="wb-btn" onclick="closeCodexModal()">[ ✕ FECHAR ]</button>
+        <button class="wb-btn" onclick="closeModal()">✕ Fechar</button>
       </div>
       <div id="modal-mod-desc" style="font-size:0.95rem;line-height:1.6;color:var(--ink-secondary);"></div>
       <div style="margin-top:1.25rem;text-align:right;">
-        <button class="btn-primary-brutal" onclick="closeCodexModal(); openModuleReader(1);">
-          [ IR PARA O MÓDULO ATIVO ]
+        <button class="btn-primary-brutal" onclick="closeModal(); openModuleReader(1);">
+          Ir para o Módulo Ativo →
         </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Backup e Restauração de Dados Pessoais -->
+  <div
+    id="backup-modal-overlay"
+    style="display:none;position:fixed;inset:0;background:rgba(17,17,17,0.72);z-index:210;align-items:center;justify-content:center;padding:1.5rem;"
+    onclick="if(event.target===this) closeBackupModal()"
+  >
+    <div style="background:var(--bg-card);border:var(--border-strong);box-shadow:var(--shadow-brutal);max-width:540px;width:100%;padding:1.75rem;">
+      <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:var(--border-strong);padding-bottom:0.75rem;margin-bottom:1rem;">
+        <strong style="font-family:var(--font-mono);font-size:0.95rem;">💾 Backup &amp; Restauração do Progresso</strong>
+        <button class="wb-btn" onclick="closeBackupModal()">✕ Fechar</button>
+      </div>
+      <p style="font-size:0.88rem;color:var(--ink-secondary);line-height:1.6;margin-bottom:1.25rem;">
+        Seus dados de estudo (progresso dos módulos, notas dos exercícios, respostas dos quizzes e telemetria) ficam salvos localmente no seu navegador. Você pode exportar um arquivo JSON para backup ou restaurar seus dados em outro computador.
+      </p>
+
+      <div style="display:flex;flex-direction:column;gap:1rem;">
+        <div style="padding:1rem;background:var(--bg-paper);border:var(--border-thin);">
+          <strong style="display:block;font-size:0.85rem;margin-bottom:0.35rem;">Exportar Backup</strong>
+          <p style="font-size:0.8rem;color:var(--ink-secondary);margin-bottom:0.75rem;">Gera um arquivo JSON contendo todo o estado dos cursos e métricas locais.</p>
+          <button class="btn-primary-brutal" onclick="coursebookExportData()">
+            Baixar Backup JSON
+          </button>
+        </div>
+
+        <div style="padding:1rem;background:var(--bg-paper);border:var(--border-thin);">
+          <strong style="display:block;font-size:0.85rem;margin-bottom:0.35rem;">Restaurar de um Arquivo</strong>
+          <p style="font-size:0.8rem;color:var(--ink-secondary);margin-bottom:0.75rem;">Carrega um backup previamente exportado substituindo o progresso atual.</p>
+          <input type="file" id="backup-file-input" accept=".json" style="font-size:0.8rem;margin-bottom:0.6rem;display:block;" />
+          <button class="btn-secondary-brutal" onclick="triggerRestoreFromFile()">
+            Restaurar Progresso
+          </button>
+        </div>
       </div>
     </div>
   </div>

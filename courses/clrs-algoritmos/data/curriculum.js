@@ -1,22 +1,26 @@
 /* ==========================================================================
-   CODEX — Dados Estruturais da Trilha (16 Módulos) & Conteúdo Integral do Módulo 1
+   coursebook — Dados Estruturais da Trilha (16 Módulos) & Conteúdo Integral do Módulo 1
    Obra: Algoritmos: Teoria e Prática (3ª Edição) — Thomas H. Cormen,
          Charles E. Leiserson, Ronald L. Rivest e Clifford Stein (CLRS)
    ========================================================================== */
 
-window.CODEX_DATA = {
-  tome: {
-    id: "TOMO #01",
-    isbn: "978-85-352-3699-6",
-    title: "Algoritmos: Teoria e Prática",
-    edition: "3ª Edição Integral (Tradução da 3ª Edição Norte-Americana — MIT Press / Campus Elsevier)",
-    authors: "Thomas H. Cormen • Charles E. Leiserson • Ronald L. Rivest • Clifford Stein",
-    totalPages: 1042,
-    totalModules: 16,
-    totalChapters: "35 Capítulos + 4 Apêndices (A–D)",
-    summary:
-      "Edição interativa integral da obra de referência mundial em Ciência da Computação. Cada módulo preserva rigorosamente as demonstrações por invariante de laço e indução, os pseudocódigos originais dos autores, as análises de pior caso e caso esperado no modelo RAM e todos os problemas clássicos do livro."
-  },
+const CLRS_METADATA = {
+  id: "clrs-algoritmos",
+  code: "CURSO #01",
+  isbn: "978-85-352-3699-6",
+  title: "Algoritmos: Teoria e Prática",
+  edition: "3ª Edição Integral (Tradução da 3ª Edição Norte-Americana — MIT Press / Campus Elsevier)",
+  authors: "Thomas H. Cormen • Charles E. Leiserson • Ronald L. Rivest • Clifford Stein",
+  totalPages: 1042,
+  totalModules: 16,
+  totalChapters: "35 Capítulos + 4 Apêndices (A–D)",
+  summary:
+    "Edição interativa integral da obra de referência mundial em Ciência da Computação. Cada módulo preserva rigorosamente as demonstrações por invariante de laço e indução, os pseudocódigos originais dos autores, as análises de pior caso e caso esperado no modelo RAM e todos os problemas clássicos do livro."
+};
+
+window.COURSEBOOK_DATA = {
+  course: CLRS_METADATA,
+  tome: CLRS_METADATA,
 
   blocks: [
     {
@@ -1707,15 +1711,18 @@ window.CODEX_DATA = {
   }
 };
 
-window.CODEX_DATA.modulesContent = {
-  1: window.CODEX_DATA.module1
+window.COURSEBOOK_DATA.modulesContent = {
+  1: window.COURSEBOOK_DATA.module1
 };
 
-window.registerCodexModule = function (moduleId, content) {
-  window.CODEX_DATA.modulesContent[moduleId] = content;
-  const modMeta = window.CODEX_DATA.modules.find((m) => m.id === moduleId);
+window.registerCourseModule = function (moduleId, content) {
+  window.COURSEBOOK_DATA.modulesContent[moduleId] = content;
+  const modMeta = window.COURSEBOOK_DATA.modules.find((m) => m.id === moduleId);
   if (modMeta) {
     modMeta.unlocked = true;
   }
 };
+
+window.CODEX_DATA = window.COURSEBOOK_DATA;
+window.registerCodexModule = window.registerCourseModule;
 

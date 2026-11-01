@@ -318,14 +318,16 @@
     }
   };
 
-  // Se o curso ativo for 'nilo-python', sincronizar com window.CODEX_DATA
+  // Se o curso ativo for 'nilo-python', sincronizar com window.COURSEBOOK_DATA
   if (typeof window !== "undefined") {
     const activeCourseId =
       typeof window.localStorage !== "undefined" && window.localStorage.getItem
         ? window.localStorage.getItem("coursebook_active_course_id")
         : null;
-    if (activeCourseId === "nilo-python" || !window.CODEX_DATA) {
-      window.CODEX_DATA = NILO_CURRICULUM;
+    if (activeCourseId === "nilo-python" || !window.COURSEBOOK_DATA) {
+      window.COURSEBOOK_DATA = NILO_CURRICULUM;
+      window.CODEX_DATA = window.COURSEBOOK_DATA;
+      window.registerCourseModule = window.registerNiloModule;
       window.registerCodexModule = window.registerNiloModule;
     }
   }

@@ -1,5 +1,5 @@
 /**
- * COURSEBOOK — BANCADAS INTERATIVAS DO MÓDULO 01 (CLRS)
+ * COURSEBOOK — LABORATÓRIOS INTERATIVOS DO MÓDULO 01 (CLRS)
  * 1. Simulador de Escala e Problema 1-1 (Computador A vs. Computador B)
  * 2. Simulador Passo a Passo de Insertion-Sort(A) com Invariante de Laço
  * 3. Intercalação Merge(A, p, q, r) com Sentinelas de Infinito
@@ -15,16 +15,16 @@
   }
 
   /* ========================================================================
-     BANCADA INTERATIVA #1: DUELO COMPUTADOR A vs. B & TABELA DO PROBLEMA 1-1
+     LABORATÓRIO INTERATIVO #1: DUELO COMPUTADOR A vs. B & TABELA DO PROBLEMA 1-1
      ======================================================================== */
   function initScaleWorkbench() {
     const mount = document.getElementById("workbench-scale-mount");
     if (!mount) return;
 
     mount.innerHTML = `
-      <div class="workbench-box">
-        <div class="workbench-header">
-          <span class="workbench-title">[ BANCADA INTERATIVA #01 • SIMULADOR DE ESCALA & PROBLEMA 1-1 (CAP. 1.2) ]</span>
+      <div class="workbench-box lab-box">
+        <div class="workbench-header lab-header">
+          <span class="workbench-title lab-title">Laboratório Interativo 01 • Simulador de Escala &amp; Problema 1-1 (Cap. 1.2)</span>
           <span class="bracket-tag dark">c₁n² vs. c₂n lg n</span>
         </div>
         <div class="workbench-body">
@@ -48,7 +48,7 @@
 
           <details style="margin-top:1rem;background:var(--bg-card);border:var(--border-thin);padding:0.85rem 1rem;">
             <summary style="font-family:var(--font-mono);font-size:0.78rem;font-weight:700;cursor:pointer;">
-              [ + EXPANDIR TABELA COMPLETA RESOLVIDA DO PROBLEMA 1-1 (p. 23): MAIOR TAMANHO n RESOLVÍVEL EM TEMPO t ]
+              + Expandir Tabela Completa Resolvida do Problema 1-1 (p. 23): Maior Tamanho n Resolvível em Tempo t
             </summary>
             <p style="font-size:0.84rem;color:var(--ink-secondary);margin:0.65rem 0;">
               Para cada função $f(n)$ em microssegundos ($10^{-6}\\text{ s}$), a tabela exibe o maior tamanho de problema $n$ que pode ser resolvido em cada intervalo de tempo:
@@ -203,7 +203,7 @@
   };
 
   /* ========================================================================
-     BANCADA INTERATIVA #2: SIMULADOR PASSO A PASSO DE INSERTION-SORT(A)
+     LABORATÓRIO INTERATIVO #2: SIMULADOR PASSO A PASSO DE INSERTION-SORT(A)
      ======================================================================== */
   let insTrace = [];
   let insStepIdx = 0;
@@ -327,18 +327,18 @@
     if (!mount) return;
 
     mount.innerHTML = `
-      <div class="workbench-box">
-        <div class="workbench-header">
-          <span class="workbench-title">[ BANCADA INTERATIVA #02 • SIMULADOR PASSO A PASSO DE INSERTION-SORT(A) ]</span>
-          <span class="bracket-tag amber">FIGURA 2.2 & EXERCÍCIO 2.1-1</span>
+      <div class="workbench-box lab-box">
+        <div class="workbench-header lab-header">
+          <span class="workbench-title lab-title">Laboratório Interativo 02 • Simulador Passo a Passo de Insertion-Sort(A)</span>
+          <span class="bracket-tag amber">FIGURA 2.2 &amp; EXERCÍCIO 2.1-1</span>
         </div>
         <div class="workbench-body">
           <div class="workbench-controls">
             <div class="Preset-group">
-              <button class="wb-btn" onclick="loadInsertionPreset([5, 2, 4, 6, 1, 3])">[ Fig. 2.2: ⟨5, 2, 4, 6, 1, 3⟩ ]</button>
-              <button class="wb-btn" onclick="loadInsertionPreset([31, 41, 59, 26, 41, 58])">[ Ex. 2.1-1: ⟨31, 41, 59, 26, 41, 58⟩ ]</button>
-              <button class="wb-btn" onclick="loadInsertionPreset([6, 5, 4, 3, 2, 1])">[ Pior Caso Θ(n²) ]</button>
-              <button class="wb-btn" onclick="loadInsertionPreset([1, 2, 3, 4, 5, 6])">[ Melhor Caso Θ(n) ]</button>
+              <button class="wb-btn" onclick="loadInsertionPreset([5, 2, 4, 6, 1, 3])">Fig. 2.2: ⟨5, 2, 4, 6, 1, 3⟩</button>
+              <button class="wb-btn" onclick="loadInsertionPreset([31, 41, 59, 26, 41, 58])">Ex. 2.1-1: ⟨31, 41, 59, 26, 41, 58⟩</button>
+              <button class="wb-btn" onclick="loadInsertionPreset([6, 5, 4, 3, 2, 1])">Pior Caso Θ(n²)</button>
+              <button class="wb-btn" onclick="loadInsertionPreset([1, 2, 3, 4, 5, 6])">Melhor Caso Θ(n)</button>
             </div>
             <div class="step-btn-group">
               <button class="wb-btn" id="ins-prev-btn" onclick="stepInsertion(-1)">◀ Anterior</button>
@@ -477,7 +477,7 @@
   }
 
   /* ========================================================================
-     BANCADA INTERATIVA #3: SIMULADOR DE MERGE(A, p, q, r) COM SENTINELAS ∞
+     LABORATÓRIO INTERATIVO #3: SIMULADOR DE MERGE(A, p, q, r) COM SENTINELAS ∞
      ======================================================================== */
   let mergeTrace = [];
   let mergeStepIdx = 0;
@@ -553,16 +553,16 @@
     if (!mount) return;
 
     mount.innerHTML = `
-      <div class="workbench-box">
-        <div class="workbench-header">
-          <span class="workbench-title">[ BANCADA INTERATIVA #03 • INTERCALAÇÃO MERGE(A, p, q, r) COM SENTINELAS ∞ ]</span>
-          <span class="bracket-tag emerald">FIGURA 2.3 & EXERCÍCIO 2.3-1</span>
+      <div class="workbench-box lab-box">
+        <div class="workbench-header lab-header">
+          <span class="workbench-title lab-title">Laboratório Interativo 03 • Intercalação Merge(A, p, q, r) com Sentinelas ∞</span>
+          <span class="bracket-tag emerald">FIGURA 2.3 &amp; EXERCÍCIO 2.3-1</span>
         </div>
         <div class="workbench-body">
           <div class="workbench-controls">
             <div class="Preset-group">
-              <button class="wb-btn" onclick="loadMergePreset([2, 4, 5, 7], [1, 2, 3, 6])">[ Fig. 2.3: L=⟨2,4,5,7,∞⟩ e R=⟨1,2,3,6,∞⟩ ]</button>
-              <button class="wb-btn" onclick="loadMergePreset([3, 26, 41, 52], [9, 38, 49, 57])">[ Ex. 2.3-1 Final: L=⟨3,26,41,52,∞⟩ e R=⟨9,38,49,57,∞⟩ ]</button>
+              <button class="wb-btn" onclick="loadMergePreset([2, 4, 5, 7], [1, 2, 3, 6])">Fig. 2.3: L=⟨2,4,5,7,∞⟩ e R=⟨1,2,3,6,∞⟩</button>
+              <button class="wb-btn" onclick="loadMergePreset([3, 26, 41, 52], [9, 38, 49, 57])">Ex. 2.3-1 Final: L=⟨3,26,41,52,∞⟩ e R=⟨9,38,49,57,∞⟩</button>
             </div>
             <div class="step-btn-group">
               <button class="wb-btn" id="mrg-prev-btn" onclick="stepMerge(-1)">◀ Anterior</button>
@@ -654,8 +654,10 @@
 
   // Anexa ao module1 do CLRS
   function attachToModule1() {
-    if (window.CODEX_DATA && window.CODEX_DATA.module1) {
-      window.CODEX_DATA.module1.initWorkbenches = initModule1Workbenches;
+    const data = window.COURSEBOOK_DATA || window.CODEX_DATA;
+    if (data && data.module1) {
+      data.module1.initWorkbenches = initModule1Workbenches;
+      data.module1.initLabs = initModule1Workbenches;
     } else {
       setTimeout(attachToModule1, 50);
     }

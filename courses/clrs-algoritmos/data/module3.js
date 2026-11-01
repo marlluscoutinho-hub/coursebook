@@ -612,7 +612,7 @@
     ],
 
     /* ======================================================================
-       BANCADAS INTERATIVAS DO MÓDULO 3 (INJETADAS EM #workbench-mod3-mount)
+       LABORATÓRIOS INTERATIVOS DO MÓDULO 3 (INJETADAS EM #workbench-mod3-mount)
        1. Analisador Interativo do Teorema Mestre & Árvore de Recursão
        2. Simulador Passo a Passo de Subarranjo Máximo (Divisão e Conquista)
        ====================================================================== */
@@ -621,10 +621,10 @@
       if (!mount) return;
 
       mount.innerHTML = `
-        <!-- BANCADA 01: ANALISADOR DO TEOREMA MESTRE E ÁRVORE DE RECURSÃO -->
+        <!-- LABORATÓRIO 01: ANALISADOR DO TEOREMA MESTRE E ÁRVORE DE RECURSÃO -->
         <div class="workbench-box" style="margin-top:1.75rem;">
           <div class="workbench-header">
-            <span class="workbench-title">[ BANCADA INTERATIVA #01 • ANALISADOR DO TEOREMA MESTRE & ÁRVORE DE RECURSÃO ]</span>
+            <span class="workbench-title">Laboratório Interativo #01 • ANALISADOR DO TEOREMA MESTRE & ÁRVORE DE RECURSÃO</span>
             <span class="bracket-tag dark">T(n) = aT(n/b) + Θ(n^k lg^p n)</span>
           </div>
           <div class="workbench-body">
@@ -673,10 +673,10 @@
           </div>
         </div>
 
-        <!-- BANCADA 02: SIMULADOR PASSO A PASSO DE SUBARRANJO MÁXIMO -->
+        <!-- LABORATÓRIO 02: SIMULADOR PASSO A PASSO DE SUBARRANJO MÁXIMO -->
         <div class="workbench-box" style="margin-top:1.75rem;">
           <div class="workbench-header">
-            <span class="workbench-title">[ BANCADA INTERATIVA #02 • SIMULADOR DE SUBARRANJO MÁXIMO (SEÇÃO 4.1) ]</span>
+            <span class="workbench-title">Laboratório Interativo #02 • SIMULADOR DE SUBARRANJO MÁXIMO (SEÇÃO 4.1)</span>
             <span class="bracket-tag emerald">DIVISÃO E CONQUISTA vs. KADANE</span>
           </div>
           <div class="workbench-body">
@@ -693,7 +693,7 @@
         </div>
       `;
 
-      /* Lógica da Bancada 01: Analisador do Teorema Mestre */
+      /* Lógica do Laboratório 01: Analisador do Teorema Mestre */
       const presetEl = document.getElementById("mod3-mt-preset");
       const aEl = document.getElementById("mod3-mt-a");
       const bEl = document.getElementById("mod3-mt-b");
@@ -852,7 +852,7 @@
       });
       updateMasterAnalysis();
 
-      /* Lógica da Bancada 02: Simulador de Subarranjo Máximo */
+      /* Lógica do Laboratório 02: Simulador de Subarranjo Máximo */
       const subInput = document.getElementById("mod3-sub-input");
       const subRunBtn = document.getElementById("mod3-sub-run-btn");
       const subResetBtn = document.getElementById("mod3-sub-reset-btn");
@@ -1747,7 +1747,7 @@
     ]
   };
 
-  if (typeof window !== "undefined" && typeof window.registerCodexModule === "function") {
-    window.registerCodexModule(3, module3Content);
+  if (typeof window !== "undefined" && (typeof window.registerCourseModule === "function" || typeof window.registerCodexModule === "function")) {
+    (window.registerCourseModule || window.registerCodexModule)(3, module3Content);
   }
 })();

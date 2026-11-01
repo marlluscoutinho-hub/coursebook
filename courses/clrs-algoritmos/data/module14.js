@@ -1,5 +1,5 @@
 /**
- * Codex Curricularium — Módulo 14
+ * CourseBook — Módulo 14
  * Polinômios, Transformada Rápida de Fourier (FFT) e Teoria dos Números
  * Capítulos 30 e 31 do CLRS (pp. 726–795)
  * Algoritmos: Teoria e Prática, 3ª Edição — Cormen, Leiserson, Rivest e Stein
@@ -790,7 +790,7 @@
     mount.innerHTML = `
       <div class="workbench-box" style="margin-top:1.5rem;">
         <div class="workbench-header">
-          <span class="workbench-title">[ BANCADA INTERATIVA DUPLA • MÓDULO 14: FFT & CRIPTOSSISTEMA RSA (CAPS. 30–31) ]</span>
+          <span class="workbench-title">Laboratório Interativo DUPLA • MÓDULO 14: FFT & CRIPTOSSISTEMA RSA (CAPS. 30–31)</span>
           <span class="bracket-tag amber">FFT • CÍRCULO COMPLEXO • EUCLIDES ESTENDIDO • RSA</span>
         </div>
         <div class="workbench-body">
@@ -2297,10 +2297,10 @@
   ];
 
 /* ========================================================================
-     REGISTRO DO MÓDULO 14 NO CODEX CURRICULARIUM
+     REGISTRO DO MÓDULO 14 NO COURSEBOOK
      ======================================================================== */
-  if (typeof window !== "undefined" && typeof window.registerCodexModule === "function") {
-    window.registerCodexModule(14, {
+  if (typeof window !== "undefined" && (typeof window.registerCourseModule === "function" || typeof window.registerCodexModule === "function")) {
+    (window.registerCourseModule || window.registerCodexModule)(14, {
       revisao,
       unidades,
       initWorkbenches,

@@ -1,23 +1,27 @@
 /* ==========================================================================
-   coursebook — Motor Interativo da Aplicação Web (Início + Visão Geral + Bancada)
-   Persistência em localStorage, Progresso por Módulo e Geral, Simuladores CLRS
+   coursebook — Motor Interativo da Aplicação Web (Início + Catálogo + Leitor)
+   Persistência em localStorage, Progresso por Módulo e Geral, Laboratórios
    ========================================================================== */
 
 (function () {
-  const STORAGE_KEY = "coursebook_clrs_course_state_v1";
+  const STORAGE_KEY = "coursebook_course_state_v1";
 
   // Registro global de cursos (CourseBook Multi-Course Registry)
   window.COURSES_REGISTRY = window.COURSES_REGISTRY || {};
-  if (window.CODEX_DATA && !window.COURSES_REGISTRY["clrs-algoritmos"]) {
+  if (window.COURSEBOOK_DATA && !window.COURSES_REGISTRY["clrs-algoritmos"]) {
+    window.COURSES_REGISTRY["clrs-algoritmos"] = window.COURSEBOOK_DATA;
+  } else if (window.CODEX_DATA && !window.COURSES_REGISTRY["clrs-algoritmos"]) {
     window.COURSES_REGISTRY["clrs-algoritmos"] = window.CODEX_DATA;
   }
+  window.COURSEBOOK_DATA = window.COURSEBOOK_DATA || window.CODEX_DATA;
+  window.CODEX_DATA = window.COURSEBOOK_DATA;
 
-  const STEP_KEYS = ["revisao", "aprendizado", "quizzes", "exercicios"];
+  const STEP_KEYS = ["aprendizado", "revisao", "quizzes", "exercicios"];
   const STEP_LABELS = {
-    revisao: "Revisão",
-    aprendizado: "Primeiro Contato",
-    quizzes: "Quizzes",
-    exercicios: "Exercícios"
+    aprendizado: "Aulas & Aprofundamento",
+    revisao: "Revisão do Módulo",
+    quizzes: "Quizzes Dialéticos",
+    exercicios: "Exercícios Práticos"
   };
 
   /* Estado persistente padrão */
@@ -25,7 +29,7 @@
     currentCourseId: "clrs-algoritmos",
     currentView: "home", // 'home' | 'catalog' | 'reader'
     currentModuleId: 1,
-    currentStep: "revisao", // 'revisao' | 'aprendizado' | 'quizzes' | 'exercicios'
+    currentStep: "aprendizado", // 'revisao' | 'aprendizado' | 'quizzes' | 'exercicios'
     activeUnitId: "u1-1",
     blockFilter: "all",
     searchQuery: "",
@@ -50,7 +54,8 @@
     try {
       const activeCourseId = localStorage.getItem("coursebook_active_course_id") || "clrs-algoritmos";
       if (window.COURSES_REGISTRY && window.COURSES_REGISTRY[activeCourseId]) {
-        window.CODEX_DATA = window.COURSES_REGISTRY[activeCourseId];
+        window.COURSEBOOK_DATA = window.COURSES_REGISTRY[activeCourseId];
+        window.CODEX_DATA = window.COURSEBOOK_DATA;
       }
 
       const raw =
@@ -71,7 +76,7 @@
         currentCourseId: parsed.currentCourseId || activeCourseId,
         currentView: ["home", "catalog", "reader"].includes(parsed.currentView) ? parsed.currentView : "home",
         currentModuleId: courseProgress.currentModuleId || parsed.currentModuleId || 1,
-        currentStep: courseProgress.currentStep || parsed.currentStep || "revisao",
+        currentStep: courseProgress.currentStep || parsed.currentStep || "aprendizado",
         activeUnitId: courseProgress.activeUnitId || parsed.activeUnitId || "u1-1",
         completedSteps: courseProgress.completedSteps || parsed.completedSteps || {
           ...defaultState.completedSteps,
@@ -226,12 +231,13 @@
   }
 
   function getGlobalCourseProgress() {
-    const totalModules = window.CODEX_DATA.modules.length; // 16
+    const data = window.COURSEBOOK_DATA || window.CODEX_DATA;
+    const totalModules = data.modules.length; // 16
     const totalCourseSteps = totalModules * STEP_KEYS.length; // 64
     let completedCourseSteps = 0;
     let completedModulesCount = 0;
 
-    window.CODEX_DATA.modules.forEach((m) => {
+    data.modules.forEach((m) => {
       const p = getModuleProgress(m.id);
       completedCourseSteps += p.completedCount;
       if (p.completedCount === STEP_KEYS.length) {
@@ -250,42 +256,47 @@
   }
 
   function getCurrentModuleMeta() {
+    const data = window.COURSEBOOK_DATA || window.CODEX_DATA;
     const modId = state.currentModuleId || 1;
-    return window.CODEX_DATA.modules.find((m) => m.id === modId) || window.CODEX_DATA.modules[0];
+    return data.modules.find((m) => m.id === modId) || data.modules[0];
   }
 
   function getCurrentModuleContent() {
+    const data = window.COURSEBOOK_DATA || window.CODEX_DATA;
     const modId = state.currentModuleId || 1;
-    const map = window.CODEX_DATA.modulesContent || { 1: window.CODEX_DATA.module1 };
-    return map[modId] || window.CODEX_DATA.module1;
+    const map = data.modulesContent || { 1: data.module1 };
+    return map[modId] || data.module1;
   }
 
-  function updateTomeHeroUI() {
-    const data = window.CODEX_DATA;
-    if (!data || !data.tome) return;
-    const tome = data.tome;
-    const heroTitle = document.getElementById("tome-hero-title");
-    const heroAuthors = document.getElementById("tome-hero-authors");
-    const heroMetaRow = document.getElementById("tome-hero-meta-row");
-    const heroDesc = document.getElementById("tome-hero-desc");
+  function updateCourseHeroUI() {
+    const data = window.COURSEBOOK_DATA || window.CODEX_DATA;
+    if (!data) return;
+    const courseMeta = data.course || data.tome;
+    if (!courseMeta) return;
+    const heroTitle = document.getElementById("course-hero-title") || document.getElementById("tome-hero-title");
+    const heroAuthors = document.getElementById("course-hero-authors") || document.getElementById("tome-hero-authors");
+    const heroMetaRow = document.getElementById("course-hero-meta-row") || document.getElementById("tome-hero-meta-row");
+    const heroDesc = document.getElementById("course-hero-desc") || document.getElementById("tome-hero-desc");
 
-    if (heroTitle) heroTitle.textContent = `${tome.title} (${tome.edition})`;
-    if (heroAuthors) heroAuthors.textContent = tome.authors.toUpperCase();
-    if (heroDesc) heroDesc.textContent = tome.summary;
+    if (heroTitle) heroTitle.textContent = `${courseMeta.title} (${courseMeta.edition})`;
+    if (heroAuthors) heroAuthors.textContent = (courseMeta.authors || "").toUpperCase();
+    if (heroDesc) heroDesc.textContent = courseMeta.summary || courseMeta.description || "";
     if (heroMetaRow) {
       heroMetaRow.innerHTML = `
-        <span class="bracket-tag dark">[ VISÃO GERAL DO CURSO ]</span>
-        <span class="bracket-tag amber">[ ${data.modules.length} MÓDULOS ESTRUTURADOS ]</span>
-        <span class="bracket-tag emerald">[ ${tome.totalChapters} • ${tome.totalPages} PÁGINAS ]</span>
+        <span class="bracket-tag dark">Visão Geral do Curso</span>
+        <span class="bracket-tag amber">${data.modules ? data.modules.length : 0} Módulos Estruturados</span>
+        <span class="bracket-tag emerald">${courseMeta.totalChapters || ""} • ${courseMeta.totalPages || ""} Páginas</span>
       `;
     }
   }
+  const updateTomeHeroUI = updateCourseHeroUI;
 
   window.selectCourse = function (courseId, optModuleId) {
     saveState();
     state.currentCourseId = courseId;
     if (window.COURSES_REGISTRY && window.COURSES_REGISTRY[courseId]) {
-      window.CODEX_DATA = window.COURSES_REGISTRY[courseId];
+      window.COURSEBOOK_DATA = window.COURSES_REGISTRY[courseId];
+      window.CODEX_DATA = window.COURSEBOOK_DATA;
     }
     localStorage.setItem("coursebook_active_course_id", courseId);
 
@@ -301,7 +312,7 @@
       state.exerciseStatus = c.exerciseStatus || {};
     } else {
       state.currentModuleId = optModuleId || 1;
-      state.currentStep = "revisao";
+      state.currentStep = "aprendizado";
       state.activeUnitId = "u1-1";
       state.completedSteps = { 1: { revisao: false, aprendizado: false, quizzes: false, exercicios: false } };
       state.checklistState = {};
@@ -311,14 +322,14 @@
     }
 
     saveState();
-    updateTomeHeroUI();
+    updateCourseHeroUI();
     renderCatalogModules();
     updateAllProgressIndicators();
 
     if (optModuleId) {
-      window.openModuleReader(optModuleId, "revisao");
+      window.openModuleReader(optModuleId, "aprendizado");
     } else {
-      window.switchCodexView("catalog");
+      window.switchView("catalog");
     }
   };
 
@@ -326,8 +337,9 @@
     const globalProg = getGlobalCourseProgress();
     const curMod = getCurrentModuleMeta();
     const curModProg = getModuleProgress(curMod.id);
-    const unlockedCount = window.CODEX_DATA.modules.filter((m) => m.unlocked).length;
-    const totalMods = window.CODEX_DATA.modules.length;
+    const curCourseData = window.COURSEBOOK_DATA || window.CODEX_DATA;
+    const unlockedCount = curCourseData.modules.filter((m) => m.unlocked).length;
+    const totalMods = curCourseData.modules.length;
 
     // Topbar
     const globalBar = document.getElementById("topbar-global-fill");
@@ -336,8 +348,7 @@
     if (globalBar) globalBar.style.width = `${globalProg.percentage}%`;
     if (globalPct) globalPct.textContent = `${globalProg.percentage}%`;
     if (globalLabel) {
-      const tomeId = (window.CODEX_DATA.tome && window.CODEX_DATA.tome.id) || "CURSO";
-      globalLabel.textContent = `${tomeId.toUpperCase()}: ${globalProg.completedCourseSteps}/${globalProg.totalCourseSteps} ETAPAS`;
+      globalLabel.textContent = `${globalProg.completedCourseSteps}/${globalProg.totalCourseSteps} ETAPAS CONCLUÍDAS`;
     }
 
     // Home Course Card (Curso 01 - CLRS)
@@ -351,13 +362,13 @@
         homeCoursePctText.textContent = `${globalProg.percentage}% (${globalProg.completedModulesCount} de ${globalProg.totalModules} módulos • ${globalProg.completedCourseSteps} de ${globalProg.totalCourseSteps} etapas)`;
       }
       if (homeMod1MiniPct) {
-        homeMod1MiniPct.textContent = `${curMod.code}: ${curModProg.completedCount}/4 seções (${curModProg.percentage}%)`;
+        homeMod1MiniPct.textContent = `${curMod.code}: ${curModProg.completedCount}/4 etapas (${curModProg.percentage}%)`;
       }
       if (homeStatusTag) {
         homeStatusTag.textContent =
           globalProg.percentage === 100
-            ? "[ CURSO CONCLUÍDO • 100% ]"
-            : `[ ${unlockedCount}/${totalMods} MÓDULOS ATIVOS ]`;
+            ? "Curso Concluído • 100%"
+            : `${unlockedCount}/${totalMods} Módulos Ativos`;
       }
     }
 
@@ -377,13 +388,13 @@
       const niloCoursePct = Math.round((niloDone / (12 * STEP_KEYS.length)) * 100);
       homeNiloFill.style.width = `${Math.max(8.33, niloCoursePct)}%`;
       if (homeNiloPctText) {
-        homeNiloPctText.textContent = `${niloCoursePct}% concluído (Módulo 01: ${niloMod1Pct}% • ${niloDone} de 4 seções)`;
+        homeNiloPctText.textContent = `${niloCoursePct}% concluído (Módulo 01: ${niloMod1Pct}% • ${niloDone} de 4 etapas)`;
       }
       if (homeNiloMod1MiniPct) {
-        homeNiloMod1MiniPct.textContent = `Módulo 01: ${niloDone}/4 seções (${niloMod1Pct}%)`;
+        homeNiloMod1MiniPct.textContent = `Módulo 01: ${niloDone}/4 etapas (${niloMod1Pct}%)`;
       }
       if (homeNiloStatusTag) {
-        homeNiloStatusTag.textContent = niloDone === 4 ? "[ MÓDULO 01 CONCLUÍDO • 100% ]" : "[ MÓDULO 01 PRONTO ]";
+        homeNiloStatusTag.textContent = niloDone === 4 ? "Módulo 01 Concluído • 100%" : "Módulo 01 Pronto";
       }
     }
 
@@ -412,13 +423,13 @@
     const sbCount = document.getElementById("sidebar-mod-count");
     if (sbFill) sbFill.style.width = `${curModProg.percentage}%`;
     if (sbPct) sbPct.textContent = `${curModProg.percentage}% CONCLUÍDO`;
-    if (sbCount) sbCount.textContent = `${curModProg.completedCount} DE 4 SEÇÕES`;
+    if (sbCount) sbCount.textContent = `${curModProg.completedCount} de 4 etapas`;
   }
 
   /* ========================================================================
-     NAVEGAÇÃO ENTRE TELAS (INÍCIO / VISÃO GERAL / BANCADA DO MÓDULO)
+     NAVEGAÇÃO ENTRE TELAS (INÍCIO / CATÁLOGO / LEITOR DO MÓDULO)
      ======================================================================== */
-  window.switchCodexView = function (viewName) {
+  window.switchView = function (viewName) {
     state.currentView = viewName;
     saveState();
 
@@ -427,7 +438,7 @@
     });
 
     if (viewName === "catalog") {
-      updateTomeHeroUI();
+      updateCourseHeroUI();
       renderCatalogModules();
     } else if (viewName === "reader") {
       renderReaderView();
@@ -435,25 +446,27 @@
     updateAllProgressIndicators();
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+  window.switchCodexView = window.switchView;
 
   window.openModuleReader = function (moduleId, stepKey) {
-    const mod = window.CODEX_DATA.modules.find((m) => m.id === moduleId);
+    const curCourseData = window.COURSEBOOK_DATA || window.CODEX_DATA;
+    const mod = curCourseData.modules.find((m) => m.id === moduleId);
     if (!mod) return;
     if (!mod.unlocked) {
       showLockedModuleModal(mod);
       return;
     }
     state.currentModuleId = moduleId;
-    state.currentStep = stepKey || "revisao";
+    state.currentStep = stepKey || "aprendizado";
     saveState();
-    window.switchCodexView("reader");
+    window.switchView("reader");
   };
 
   function showLockedModuleModal(mod) {
-    const modal = document.getElementById("codex-modal-overlay");
+    const modal = document.getElementById("coursebook-modal-overlay") || document.getElementById("codex-modal-overlay") || document.querySelector(".coursebook-modal-overlay");
     const titleEl = document.getElementById("modal-mod-title");
     const descEl = document.getElementById("modal-mod-desc");
-    if (titleEl) titleEl.textContent = `[ ${mod.code} • ${mod.title} ]`;
+    if (titleEl) titleEl.textContent = `${mod.code} • ${mod.title}`;
     if (descEl) {
       descEl.innerHTML = `
         <p style="margin-bottom:0.75rem;"><strong>Capítulos cobertos:</strong> ${mod.chapters}</p>
@@ -463,10 +476,11 @@
     if (modal) modal.style.display = "flex";
   }
 
-  window.closeCodexModal = function () {
-    const modal = document.getElementById("codex-modal-overlay");
+  window.closeModal = function () {
+    const modal = document.getElementById("coursebook-modal-overlay") || document.getElementById("codex-modal-overlay") || document.querySelector(".coursebook-modal-overlay");
     if (modal) modal.style.display = "none";
   };
+  window.closeCodexModal = window.closeModal;
 
   /* ========================================================================
      RENDERIZAÇÃO DA TELA DE VISÃO GERAL (TRILHA DOS 16 MÓDULOS E FILTROS)
@@ -479,11 +493,12 @@
     const activeBlock = state.blockFilter || "all";
 
     let html = "";
+    const curCourseData = window.COURSEBOOK_DATA || window.CODEX_DATA;
 
-    window.CODEX_DATA.blocks.forEach((block) => {
+    curCourseData.blocks.forEach((block) => {
       if (activeBlock !== "all" && activeBlock !== block.id) return;
 
-      const blockModules = window.CODEX_DATA.modules.filter((m) => {
+      const blockModules = curCourseData.modules.filter((m) => {
         if (m.blockId !== block.id) return false;
         if (!query) return true;
         const haystack = `${m.code} ${m.title} ${m.chapters} ${m.objective} ${m.concepts.join(" ")}`.toLowerCase();
@@ -496,7 +511,7 @@
         <section class="curriculum-block">
           <div class="block-header">
             <div>
-              <span class="bracket-tag dark" style="margin-right:0.5rem;">[ ${block.code} ]</span>
+              <span class="bracket-tag dark" style="margin-right:0.5rem;">${block.code}</span>
               <span class="block-title">${block.title}</span>
             </div>
             <span class="block-subtitle">${block.subtitle}</span>
@@ -524,11 +539,11 @@
     const modSteps = state.completedSteps[m.id] || {};
     const statusBadge = m.unlocked
       ? prog.percentage === 100
-        ? `<span class="bracket-tag emerald">[ CONCLUÍDO • 100% ]</span>`
+        ? `<span class="bracket-tag emerald">Concluído • 100%</span>`
         : prog.completedCount > 0
-        ? `<span class="bracket-tag amber">[ EM ESTUDO • ${prog.percentage}% ]</span>`
-        : `<span class="bracket-tag amber">[ DISPONÍVEL ]</span>`
-      : `<span class="bracket-tag">[ EM CONSTRUÇÃO ]</span>`;
+        ? `<span class="bracket-tag amber">Em Estudo • ${prog.percentage}%</span>`
+        : `<span class="bracket-tag amber">Disponível</span>`
+      : `<span class="bracket-tag">Em Construção</span>`;
 
     const stepSegments = STEP_KEYS.map(
       (k) => `<div class="mini-step-segment ${modSteps[k] ? "done" : ""}" title="${STEP_LABELS[k]}"></div>`
@@ -538,7 +553,7 @@
       <article class="module-card ${m.unlocked ? "unlocked" : "locked"}" onclick="openModuleReader(${m.id})">
         <div>
           <div class="module-card-top">
-            <span class="bracket-tag dark">[ ${m.code} ]</span>
+            <span class="bracket-tag dark">${m.code}</span>
             ${statusBadge}
           </div>
           <h3 class="module-card-title">${m.title}</h3>
@@ -560,7 +575,7 @@
             <span style="font-family:var(--font-mono);font-size:0.72rem;font-weight:700;color:${
               m.unlocked ? "var(--ink-primary)" : "var(--ink-muted)"
             };">
-              ${m.unlocked ? "[ ACESSAR AULAS DO MÓDULO → ]" : "[ VER ESCOPO DO MÓDULO ]"}
+              ${m.unlocked ? "Acessar Aulas do Módulo →" : "Ver Escopo do Módulo"}
             </span>
           </div>
         </div>
@@ -634,10 +649,10 @@
     const sbTocTitle = document.getElementById("sidebar-toc-title");
     const sbTocList = document.getElementById("sidebar-toc-list");
 
-    if (sbCode) sbCode.textContent = `[ ${curMod.code} DE ${window.CODEX_DATA.modules.length} ]`;
+    if (sbCode) sbCode.textContent = `${curMod.code} de ${(window.COURSEBOOK_DATA || window.CODEX_DATA).modules.length}`;
     if (sbCh) sbCh.textContent = curMod.chapters.toUpperCase();
     if (sbTitle) sbTitle.textContent = curMod.title;
-    if (sbStepsTitle) sbStepsTitle.textContent = `Seções do ${curMod.code}`;
+    if (sbStepsTitle) sbStepsTitle.textContent = `Etapas do ${curMod.code}`;
     if (sbQuizzesLbl && curContent.quizzes) {
       sbQuizzesLbl.textContent = `03. Quizzes (${curContent.quizzes.length})`;
     }
@@ -645,7 +660,7 @@
       sbExerciciosLbl.textContent = `04. Exercícios (${curContent.exercicios.length})`;
     }
     if (sbTocTitle) {
-      sbTocTitle.textContent = `Unidades (${curMod.code})`;
+      sbTocTitle.textContent = `Aulas (${curMod.code})`;
     }
     if (sbTocList && curContent.unidades) {
       sbTocList.innerHTML = curContent.unidades
@@ -696,7 +711,7 @@
     const list = document.getElementById("sidebar-compact-modules");
     if (!list) return;
     const curModId = state.currentModuleId || 1;
-    list.innerHTML = window.CODEX_DATA.modules
+    list.innerHTML = (window.COURSEBOOK_DATA || window.CODEX_DATA).modules
       .map((m) => {
         const p = getModuleProgress(m.id);
         return `
@@ -710,7 +725,7 @@
   }
 
   /* ------------------------------------------------------------------------
-     SEÇÃO 1: REVISÃO
+     ETAPA 2: REVISÃO DO MÓDULO & SÍNTESE
      ------------------------------------------------------------------------ */
   function renderRevisaoPane() {
     const pane = document.getElementById("pane-revisao");
@@ -722,7 +737,7 @@
 
     pane.innerHTML = `
       <div class="reading-intro-banner">
-        <span class="bracket-tag amber">[ ${curMod.code} • ETAPA 01 DE 04: REVISÃO E NIVELAMENTO ]</span>
+        <span class="bracket-tag amber">${curMod.code} • Etapa 02 de 04: Revisão &amp; Síntese Conceitual</span>
         <h2>${rev.subtitle}</h2>
         <p>${rev.intro}</p>
       </div>
@@ -742,8 +757,8 @@
         .join("")}
 
       <div class="canonical-callout theorem">
-        <span class="callout-tag">[ CHECKLIST DE PRONTIDÃO • ${curMod.code} (${curMod.chapters}) ]</span>
-        <p style="margin-bottom:0.85rem;">Marque cada ponto abaixo conforme confirma sua compreensão antes de iniciar o Primeiro Contato:</p>
+        <span class="callout-tag">Checklist de Prontidão • ${curMod.code} (${curMod.chapters})</span>
+        <p style="margin-bottom:0.85rem;">Marque cada ponto abaixo conforme confirma sua compreensão antes de avançar para os Quizzes:</p>
         <div style="display:flex;flex-direction:column;gap:0.55rem;">
           ${rev.checklist
             .map((item, idx) => {
@@ -763,18 +778,18 @@
       <div class="section-completion-footer">
         <div>
           <span class="bracket-tag ${isCompleted ? "emerald" : "amber"}">
-            ${isCompleted ? "[ ✓ SEÇÃO DE REVISÃO CONCLUÍDA ]" : "[ ETAPA ATUAL: REVISÃO ]"}
+            ${isCompleted ? "✓ Etapa de Revisão Concluída" : "Etapa Atual: Revisão"}
           </span>
           <p style="font-size:0.88rem;color:var(--ink-secondary);margin-top:0.35rem;">
-            Ao concluir esta revisão, você avança 25% na barra de progresso do ${curMod.code}.
+            Após revisar os resumos conceituais de todas as aulas deste módulo, avance para os Quizzes Dialéticos comentados.
           </p>
         </div>
         <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
           <button class="btn-secondary-brutal" onclick="toggleStepCompleted('revisao', false)">
-            ${isCompleted ? "[ DESMARCAR CONCLUSÃO ]" : "[ MARCAR COMO CONCLUÍDA ]"}
+            ${isCompleted ? "Desmarcar Conclusão" : "Marcar como Concluída"}
           </button>
           <button class="btn-primary-brutal" onclick="toggleStepCompleted('revisao', true)">
-            [ CONCLUIR REVISÃO E IR PARA APRENDIZADO → ]
+            Concluir Revisão e Ir para os Quizzes →
           </button>
         </div>
       </div>
@@ -789,55 +804,69 @@
   };
 
   /* ------------------------------------------------------------------------
-     SEÇÃO 2: PRIMEIRO CONTATO (APRENDIZADO + BANCADAS INTERATIVAS)
+     ETAPA 1: AULAS & APROFUNDAMENTO (COM LABORATÓRIOS INTERATIVOS)
      ------------------------------------------------------------------------ */
   function renderAprendizadoPane() {
     const pane = document.getElementById("pane-aprendizado");
     if (!pane) return;
     const curMod = getCurrentModuleMeta();
     const curContent = getCurrentModuleContent();
+    const curCourseData = window.COURSEBOOK_DATA || window.CODEX_DATA;
+    const courseAuthors = (curCourseData && (curCourseData.course?.authors || curCourseData.tome?.authors)) || "";
+    const authorsText = courseAuthors ? ` (${courseAuthors})` : "";
     const unidades = curContent.unidades || [];
     const isCompleted = !!(state.completedSteps[curMod.id] && state.completedSteps[curMod.id].aprendizado);
 
     pane.innerHTML = `
       <div class="reading-intro-banner">
-        <span class="bracket-tag amber">[ ${curMod.code} • ETAPA 02 DE 04: AULAS & LABORATÓRIOS INTERATIVOS ]</span>
+        <span class="bracket-tag amber">${curMod.code} • Etapa 01 de 04: Aulas &amp; Laboratórios Interativos</span>
         <h2>Estudo Aprofundado — ${curMod.title}</h2>
-        <p>Cobertura integral e rigorosa de <strong>${curMod.chapters}</strong> (Cormen, Leiserson, Rivest e Stein), preservando todas as definições formais, teoremas, demonstrações, pseudocódigos e laboratórios interativos.</p>
+        <p>Cobertura integral e rigorosa de <strong>${curMod.chapters}</strong>${authorsText}, preservando todas as definições formais, teoremas, demonstrações, pseudocódigos e laboratórios interativos.</p>
       </div>
 
       ${unidades
         .map(
-          (u) => `
+          (u, idx) => {
+            const pillar = (curContent.revisao && curContent.revisao.pillars && curContent.revisao.pillars[idx]) || null;
+            const resumoSnippet = pillar && pillar.body ? `
+              <div class="canonical-callout key-idea" style="margin-top:1.25rem;">
+                <span class="callout-tag">Síntese da Aula • Ideias Principais</span>
+                <div style="font-size:0.92rem;line-height:1.6;color:var(--ink-secondary);">${pillar.body}</div>
+              </div>
+            ` : "";
+
+            return `
         <article class="study-unit-card" id="unit-card-${u.id}">
           <div class="unit-header">
             <div class="unit-meta">
-              <span class="bracket-tag dark">[ ${u.code} ]</span>
-              <span class="bracket-tag amber">[ LIVRO: ${u.pages} ]</span>
+              <span class="bracket-tag dark">${u.code}</span>
+              <span class="bracket-tag amber">Livro: ${u.pages}</span>
             </div>
             <h2 class="unit-title">${u.title}</h2>
           </div>
-          <div class="prose-block">${renderMarkdown(u.content)}</div>
+          ${resumoSnippet}
+          <div class="prose-block" style="margin-top:1.5rem;">${renderMarkdown(u.content)}</div>
         </article>
-      `
+      `;
+          }
         )
         .join("")}
 
       <div class="section-completion-footer">
         <div>
           <span class="bracket-tag ${isCompleted ? "emerald" : "amber"}">
-            ${isCompleted ? "[ ✓ APRENDIZADO CONCLUÍDO ]" : "[ ETAPA ATUAL: PRIMEIRO CONTATO (APRENDIZADO) ]"}
+            ${isCompleted ? "✓ Aulas Concluídas" : "Etapa Atual: Aulas &amp; Laboratórios"}
           </span>
           <p style="font-size:0.88rem;color:var(--ink-secondary);margin-top:0.35rem;">
-            Após explorar os blocos de leitura e os simuladores interativos deste módulo, avance para os Quizzes comentados.
+            Após explorar a teoria e os laboratórios interativos desta etapa, avance para a Revisão do módulo.
           </p>
         </div>
         <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
           <button class="btn-secondary-brutal" onclick="toggleStepCompleted('aprendizado', false)">
-            ${isCompleted ? "[ DESMARCAR CONCLUSÃO ]" : "[ MARCAR COMO CONCLUÍDA ]"}
+            ${isCompleted ? "Desmarcar Conclusão" : "Marcar como Concluída"}
           </button>
           <button class="btn-primary-brutal" onclick="toggleStepCompleted('aprendizado', true)">
-            [ CONCLUIR APRENDIZADO E IR PARA QUIZZES → ]
+            Concluir Aulas e Ir para a Revisão →
           </button>
         </div>
       </div>
@@ -871,7 +900,8 @@
     }
 
     let parsed = rawText.replace(/:::([a-zA-Z0-9_-]+)(?:[ \t]+([^\n\r]+))?\n([\s\S]*?)\n:::/g, function (match, tag, title, body) {
-      const header = title ? `<span class="callout-tag">[ ${title.trim()} ]</span>` : `<span class="callout-tag">[ ${tag.toUpperCase()} ]</span>`;
+      const cleanTitle = title ? title.replace(/^\[\s*|\s*\]$/g, "").trim() : tag.toUpperCase();
+      const header = `<span class="callout-tag">${cleanTitle}</span>`;
       return `<div class="canonical-callout ${tag}">${header}\n${body}\n</div>`;
     });
 
@@ -955,7 +985,7 @@
 
     pane.innerHTML = `
       <div class="reading-intro-banner">
-        <span class="bracket-tag amber">[ ${curMod.code} • ETAPA 03 DE 04: VERIFICAÇÃO CONCEITUAL & GABARITO DIALÉTICO ]</span>
+        <span class="bracket-tag amber">${curMod.code} • Etapa 03 de 04: Verificação Conceitual &amp; Gabarito Dialético</span>
         <h2>Quizzes Comentados — ${curMod.chapters}</h2>
         <p>Responda às ${quizzes.length} questões de Múltipla Escolha e Verdadeiro/Falso. Ao selecionar uma alternativa, o <strong>Gabarito Comentado</strong> é exibido imediatamente, explicando por que a resposta certa é verdadeira e refutando formalmente cada alternativa incorreta com referência às páginas do livro.</p>
       </div>
@@ -967,7 +997,7 @@
             ${answeredCount} de ${quizzes.length} questões respondidas • ${correctCount} acertos (${pctScore}%)
           </div>
         </div>
-        <button class="btn-secondary-brutal" onclick="resetModuleQuizzes()">[ ↺ REINICIAR RESPOSTAS DESTE MÓDULO ]</button>
+        <button class="btn-secondary-brutal" onclick="resetModuleQuizzes()">↺ Reiniciar Respostas deste Módulo</button>
       </div>
 
       ${quizzes
@@ -978,8 +1008,8 @@
           return `
             <article class="quiz-card" id="quiz-card-${q.id}">
               <div class="quiz-card-header">
-                <span class="bracket-tag dark">[ QUESTÃO ${String(idx + 1).padStart(2, "0")} • ${q.type.toUpperCase()} ]</span>
-                <span class="bracket-tag amber">[ REF: ${q.reference} ]</span>
+                <span class="bracket-tag dark">Questão ${String(idx + 1).padStart(2, "0")} • ${q.type.toUpperCase()}</span>
+                <span class="bracket-tag amber">Ref: ${q.reference}</span>
               </div>
               <div class="quiz-question-text">${q.question}</div>
               <div class="quiz-options-list">
@@ -1002,14 +1032,14 @@
 
               <div class="quiz-commentary-box ${isAnswered ? "visible" : ""}">
                 <div style="font-family:var(--font-mono);font-size:0.76rem;font-weight:700;text-transform:uppercase;margin-bottom:0.65rem;color:var(--ink-primary);">
-                  [ GABARITO COMENTADO ALTERNATIVA POR ALTERNATIVA — ${q.reference} ]
+                  Gabarito Comentado Alternativa por Alternativa — ${q.reference}
                 </div>
                 ${q.options
                   .map(
                     (opt) => `
                   <div class="commentary-Option-item">
                     <strong style="color:${opt.isCorrect ? "var(--accent-emerald-dark)" : "var(--accent-crimson)"};font-family:var(--font-mono);">
-                      [${opt.letter}] ${opt.isCorrect ? "✓ CORRETA:" : "✗ INCORRETA:"}
+                      (${opt.letter}) ${opt.isCorrect ? "✓ Correta:" : "✗ Incorreta:"}
                     </strong>
                     <span> ${opt.explanation}</span>
                   </div>
@@ -1025,7 +1055,7 @@
       <div class="section-completion-footer">
         <div>
           <span class="bracket-tag ${isCompleted ? "emerald" : "amber"}">
-            ${isCompleted ? "[ ✓ QUIZZES CONCLUÍDOS ]" : "[ ETAPA ATUAL: QUIZZES ]"}
+            ${isCompleted ? "✓ Quizzes Concluídos" : "Etapa Atual: Quizzes"}
           </span>
           <p style="font-size:0.88rem;color:var(--ink-secondary);margin-top:0.35rem;">
             Conclua a verificação conceitual para avançar para a última etapa do ${curMod.code}: Exercícios e Demonstrações.
@@ -1033,10 +1063,10 @@
         </div>
         <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
           <button class="btn-secondary-brutal" onclick="toggleStepCompleted('quizzes', false)">
-            ${isCompleted ? "[ DESMARCAR CONCLUSÃO ]" : "[ MARCAR COMO CONCLUÍDA ]"}
+            ${isCompleted ? "Desmarcar Conclusão" : "Marcar como Concluída"}
           </button>
           <button class="btn-primary-brutal" onclick="toggleStepCompleted('quizzes', true)">
-            [ CONCLUIR QUIZZES E IR PARA EXERCÍCIOS → ]
+            Concluir Quizzes e Ir para os Exercícios →
           </button>
         </div>
       </div>
@@ -1074,11 +1104,11 @@
     const curContent = getCurrentModuleContent();
     const exercicios = curContent.exercicios || [];
     const isCompleted = !!(state.completedSteps[curMod.id] && state.completedSteps[curMod.id].exercicios);
-    const nextMod = window.CODEX_DATA.modules.find((m) => m.id === curMod.id + 1);
+    const nextMod = (window.COURSEBOOK_DATA || window.CODEX_DATA).modules.find((m) => m.id === curMod.id + 1);
 
     pane.innerHTML = `
       <div class="reading-intro-banner">
-        <span class="bracket-tag amber">[ ${curMod.code} • ETAPA 04 DE 04: APLICAÇÃO PRÁTICA, PSEUDOCÓDIGO & DEMONSTRAÇÕES ]</span>
+        <span class="bracket-tag amber">${curMod.code} • Etapa 04 de 04: Aplicação Prática &amp; Demonstrações</span>
         <h2>Caderno de Exercícios e Problemas — ${curMod.chapters}</h2>
         <p>Resolva os ${exercicios.length} exercícios e problemas canônicos deste módulo. Utilize o rascunho em cada atividade (suas anotações ficam salvas automaticamente no navegador) e, em seguida, abra o <strong>Guia de Resposta e Demonstração Passo a Passo</strong> para confrontar sua solução com a resolução formal.</p>
       </div>
@@ -1091,15 +1121,15 @@
           return `
             <article class="exercise-card" id="ex-card-${ex.id}">
               <div class="unit-meta">
-                <span class="bracket-tag dark">[ ${ex.code} ]</span>
-                <span class="bracket-tag amber">[ FONTE: ${ex.reference} ]</span>
+                <span class="bracket-tag dark">${ex.code}</span>
+                <span class="bracket-tag amber">Fonte: ${ex.reference}</span>
               </div>
               <h3 class="unit-title" style="margin-top:0.5rem;">${ex.title}</h3>
               <div class="exercise-prompt prose-block">${ex.prompt}</div>
 
               <div class="exercise-workspace">
                 <label style="display:block;font-family:var(--font-mono);font-size:0.73rem;font-weight:700;margin-bottom:0.4rem;">
-                  [ SUA RESOLUÇÃO / RASCUNHO DE PSEUDOCÓDIGO E PROVA (SALVO AUTOMATICAMENTE) ]:
+                  Sua Resolução / Rascunho (Salvo Automaticamente):
                 </label>
                 <textarea
                   class="exercise-textarea"
@@ -1122,13 +1152,13 @@
                   </button>
                 </div>
                 <button class="btn-secondary-brutal" onclick="toggleSolutionGuide('${ex.id}')">
-                  [ VER / OCULTAR GUIA DE RESPOSTA COMPLETO ]
+                  Ver / Ocultar Guia de Resposta Completo
                 </button>
               </div>
 
               <div class="solution-guide-panel prose-block" id="sol-guide-${ex.id}">
                 <div style="font-family:var(--font-mono);font-size:0.76rem;font-weight:700;color:var(--accent-emerald-dark);margin-bottom:0.75rem;border-bottom:1px solid var(--ink-primary);padding-bottom:0.4rem;">
-                  [ GUIA DE RESPOSTA E DEMONSTRAÇÃO PASSO A PASSO • ${ex.reference} ]
+                  Guia de Resposta e Demonstração Passo a Passo • ${ex.reference}
                 </div>
                 ${ex.solution}
               </div>
@@ -1140,23 +1170,23 @@
       <div class="section-completion-footer">
         <div>
           <span class="bracket-tag ${isCompleted ? "emerald" : "amber"}">
-            ${isCompleted ? `[ ✓ ${curMod.code} CONCLUÍDO ]` : `[ ETAPA FINAL DO ${curMod.code}: EXERCÍCIOS ]`}
+            ${isCompleted ? `✓ ${curMod.code} Concluído` : `Etapa Atual: Exercícios`}
           </span>
           <p style="font-size:0.88rem;color:var(--ink-secondary);margin-top:0.35rem;">
             Marque esta etapa como concluída para finalizar o ${curMod.code}!
           </p>
         </div>
         <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
-          <button class="btn-secondary-brutal" onclick="switchCodexView('catalog')">
-            [ ← VOLTAR À VISÃO GERAL ]
+          <button class="btn-secondary-brutal" onclick="switchView('catalog')">
+            ← Voltar à Visão Geral
           </button>
           <button class="btn-primary-brutal" onclick="toggleStepCompleted('exercicios', false)">
-            ${isCompleted ? "[ ✓ EXERCÍCIOS CONCLUÍDOS ]" : `[ ★ CONCLUIR EXERCÍCIOS (${curMod.code}) ]`}
+            ${isCompleted ? "✓ Exercícios Concluídos" : `★ Concluir Exercícios (${curMod.code})`}
           </button>
           ${
             nextMod && nextMod.unlocked
-              ? `<button class="btn-primary-brutal" onclick="openModuleReader(${nextMod.id}, 'revisao')">
-                  [ IR PARA ${nextMod.code} → ]
+              ? `<button class="btn-primary-brutal" onclick="openModuleReader(${nextMod.id}, 'aprendizado')">
+                  Ir para ${nextMod.code} →
                 </button>`
               : ""
           }
@@ -1203,12 +1233,89 @@
   };
 
   /* ========================================================================
+     SISTEMA DE BACKUP & RESTAURAÇÃO DE DADOS (coursebook)
+     ======================================================================== */
+  window.openBackupModal = function () {
+    const modal = document.getElementById("backup-modal-overlay");
+    if (modal) modal.style.display = "flex";
+  };
+
+  window.closeBackupModal = function () {
+    const modal = document.getElementById("backup-modal-overlay");
+    if (modal) modal.style.display = "none";
+  };
+
+  window.coursebookExportData = function () {
+    try {
+      const payload = {
+        exportedAt: new Date().toISOString(),
+        version: "coursebook-backup-v1",
+        activeCourseId: localStorage.getItem("coursebook_active_course_id") || "clrs-algoritmos",
+        state: state,
+        events: window.coursebookGetMetrics()
+      };
+      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      const dateStr = new Date().toISOString().slice(0, 10);
+      a.href = url;
+      a.download = `coursebook-backup-${dateStr}.json`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    } catch (e) {
+      alert("Erro ao exportar backup: " + e.message);
+    }
+  };
+
+  window.triggerRestoreFromFile = function () {
+    const input = document.getElementById("backup-file-input");
+    if (!input || !input.files || !input.files[0]) {
+      alert("Por favor, selecione um arquivo JSON de backup antes de restaurar.");
+      return;
+    }
+    const file = input.files[0];
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      try {
+        const data = JSON.parse(e.target.result);
+        if (!data || !data.state) {
+          throw new Error("Formato de backup inválido: objeto de estado ausente.");
+        }
+        state = { ...defaultState, ...data.state };
+        saveState();
+        if (data.events && Array.isArray(data.events)) {
+          localStorage.setItem(EVENTS_STORAGE_KEY, JSON.stringify(data.events));
+        }
+        if (data.activeCourseId) {
+          localStorage.setItem("coursebook_active_course_id", data.activeCourseId);
+          state.currentCourseId = data.activeCourseId;
+          if (window.COURSES_REGISTRY && window.COURSES_REGISTRY[data.activeCourseId]) {
+            window.COURSEBOOK_DATA = window.COURSES_REGISTRY[data.activeCourseId];
+            window.CODEX_DATA = window.COURSEBOOK_DATA;
+          }
+        }
+        window.closeBackupModal();
+        updateCourseHeroUI();
+        renderCatalogModules();
+        renderReaderView();
+        updateAllProgressIndicators();
+        alert("Progresso e histórico de estudo restaurados com sucesso!");
+      } catch (err) {
+        alert("Falha na restauração do backup: " + err.message);
+      }
+    };
+    reader.readAsText(file);
+  };
+
+  /* ========================================================================
      INICIALIZAÇÃO GERAL AO CARREGAR O DOM
      ======================================================================== */
   document.addEventListener("DOMContentLoaded", function () {
-    updateTomeHeroUI();
+    updateCourseHeroUI();
     renderCatalogModules();
     renderReaderView();
-    window.switchCodexView(state.currentView || "home");
+    window.switchView(state.currentView || "home");
   });
 })();

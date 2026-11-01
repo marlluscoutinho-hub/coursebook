@@ -629,7 +629,7 @@
     ],
 
     /* ======================================================================
-       BANCADA INTERATIVA DUPLA (#workbench-mod5-mount):
+       LABORATÓRIO INTERATIVO DUPLO (#workbench-mod5-mount):
        (1) SIMULADOR DE HEAP BINÁRIO (BUILD-MAX-HEAP & MAX-HEAPIFY)
        (2) SIMULADOR PASSO A PASSO DO INVARIANTE DE PARTITION (4 REGIÕES)
        ====================================================================== */
@@ -640,7 +640,7 @@
       mount.innerHTML = `
         <div class="workbench-box" style="margin-top:1.75rem;">
           <div class="workbench-header">
-            <span class="workbench-title">[ BANCADA INTERATIVA DUPLA #05 • HEAPS BINÁRIOS (CAP. 6) &amp; INVARIANTE DE PARTITION (CAP. 7) ]</span>
+            <span class="workbench-title">Laboratório Interativo DUPLA #05 • HEAPS BINÁRIOS (CAP. 6) &amp; INVARIANTE DE PARTITION (CAP. 7)</span>
             <span class="bracket-tag emerald">SIMULADOR PASSO A PASSO</span>
           </div>
           <div class="workbench-body">
@@ -1739,7 +1739,7 @@
     ]
   };
 
-  if (typeof window !== "undefined" && typeof window.registerCodexModule === "function") {
-    window.registerCodexModule(5, module5Content);
+  if (typeof window !== "undefined" && (typeof window.registerCourseModule === "function" || typeof window.registerCodexModule === "function")) {
+    (window.registerCourseModule || window.registerCodexModule)(5, module5Content);
   }
 })();

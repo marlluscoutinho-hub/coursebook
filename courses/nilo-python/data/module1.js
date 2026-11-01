@@ -3,10 +3,11 @@
  * Obra: Introdução à Programação com Python (2ª Edição) — Nilo Ney Coutinho Menezes
  * Capítulos 1 e 2: O Computador, o Interpretador e os Primeiros Programas (pp. 19–48)
  *
- * Arquitetura Canônica de 3 Seções:
- * 1. Aulas & Bancada Interativa (com Unidades de Aprofundamento e Blocos de Revisão por Unidade)
- * 2. Quizzes Dialéticos (10 questões comentadas alternativa por alternativa)
- * 3. Exercícios Práticos Canônicos (8 problemas com resolução analítica passo a passo)
+ * Arquitetura Canônica de 4 Etapas:
+ * 1. Aulas & Aprofundamento (com Laboratório Interativo e Introdução Contextual)
+ * 2. Revisão do Módulo (Síntese e fixação de conceitos)
+ * 3. Quizzes Dialéticos (10 questões comentadas alternativa por alternativa)
+ * 4. Exercícios Práticos Canônicos (8 problemas com resolução analítica passo a passo)
  */
 
 (function () {
@@ -332,20 +333,20 @@
     {
       id: "u1-6",
       code: "1.6",
-      title: "Bancada Interativa: Simulador do Ciclo REPL & Tabela de Símbolos",
+      title: "Laboratório Interativo: Simulador do Ciclo REPL & Tabela de Símbolos",
       reading: "Prática Integrada (pp. 34–48)",
       content: `
         <h3>1. Experimentação Tátil do Ambiente de Execução</h3>
-        <p>Para consolidar os modelos mentais do Módulo 01, utilize a bancada interativa abaixo. Nela você poderá experimentar o comportamento do interpretador Python em tempo real: carregar programas canônicos do livro de Nilo Menezes, inspecionar o processo de avaliação das expressões, visualizar a tabela de variáveis alocadas na memória e acompanhar a saída gerada no terminal virtual.</p>
+        <p>Para consolidar os modelos mentais do Módulo 01, utilize o laboratório interativo abaixo. Nela você poderá experimentar o comportamento do interpretador Python em tempo real: carregar programas canônicos do livro de Nilo Menezes, inspecionar o processo de avaliação das expressões, visualizar a tabela de variáveis alocadas na memória e acompanhar a saída gerada no terminal virtual.</p>
 
-        <!-- Ponto de Montagem Obrigatório da Bancada Interativa -->
+        <!-- Ponto de Montagem Obrigatório do Laboratório Interativo -->
         <div id="workbench-mod1-mount"></div>
       `
     }
   ];
 
   // ========================================================================
-  // BANCADA INTERATIVA: SIMULADOR REPL & MEMÓRIA VIRTUAL (Vanilla JS)
+  // LABORATÓRIO INTERATIVO: SIMULADOR REPL & MEMÓRIA VIRTUAL (Vanilla JS)
   // ========================================================================
   function initWorkbenches() {
     const mount = document.getElementById("workbench-mod1-mount");
@@ -353,9 +354,9 @@
     mount.dataset.initialized = "true";
 
     mount.innerHTML = `
-      <div class="workbench-box" style="margin-top:1.5rem;">
-        <div class="workbench-header">
-          <span class="workbench-title">[ BANCADA INTERATIVA • SIMULADOR DO CICLO REPL &amp; MEMÓRIA VIRTUAL ]</span>
+      <div class="workbench-box lab-box" style="margin-top:1.5rem;">
+        <div class="workbench-header lab-header">
+          <span class="workbench-title lab-title">Laboratório Interativo • Simulador do Ciclo REPL &amp; Memória Virtual</span>
           <span class="bracket-tag amber">STEP-BY-STEP • VANILLA JS</span>
         </div>
         <div class="workbench-body">
@@ -444,7 +445,7 @@
     const terminalView = document.getElementById("wb1-terminal-view");
     const logEl = document.getElementById("wb1-log");
 
-    // Estado da Bancada
+    // Estado do Laboratório
     let memory = {};
     let lines = [];
     let currentLineIndex = 0;
@@ -1137,12 +1138,16 @@
     revisao,
     unidades,
     initWorkbenches,
+    initLabs: initWorkbenches,
     quizzes,
     exercicios
   };
 
-  // Registra no sistema geral de módulos do ecossistema CourseBook
+  // Registra no ecossistema CourseBook
   if (typeof window !== "undefined") {
+    if (typeof window.registerCourseModule === "function") {
+      window.registerCourseModule(MODULE_ID, moduleContent);
+    }
     if (typeof window.registerNiloModule === "function") {
       window.registerNiloModule(MODULE_ID, moduleContent);
     }

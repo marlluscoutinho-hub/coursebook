@@ -1,5 +1,5 @@
 /* ==========================================================================
-   CODEX — MÓDULO 16: INTRATABILIDADE COMPUTACIONAL: PROBLEMAS NP-COMPLETOS E ALGORITMOS DE APROXIMAÇÃO
+   coursebook — MÓDULO 16: INTRATABILIDADE COMPUTACIONAL: PROBLEMAS NP-COMPLETOS E ALGORITMOS DE APROXIMAÇÃO
    Capítulos 34 e 35 (pp. 846–928)
    Obra: Algoritmos: Teoria e Prática (3ª Edição) — Cormen, Leiserson, Rivest e Stein
    ========================================================================== */
@@ -746,7 +746,7 @@ const revisao = {
     mount.innerHTML = `
       <div class="workbench-box" style="margin-top:1.5rem;">
         <div class="workbench-header">
-          <span class="workbench-title">[ BANCADA INTERATIVA DUPLA • MÓDULO 16: ALGORITMOS DE APROXIMAÇÃO (CAP. 35) ]</span>
+          <span class="workbench-title">Laboratório Interativo DUPLA • MÓDULO 16: ALGORITMOS DE APROXIMAÇÃO (CAP. 35)</span>
           <span class="bracket-tag amber">VERTEX-COVER • FPTAS SUBSET-SUM • PODA TRIM</span>
         </div>
         <div class="workbench-body">
@@ -2204,8 +2204,8 @@ const exercicios = [
     }
   ];
 
-  if (typeof window !== "undefined" && typeof window.registerCodexModule === "function") {
-    window.registerCodexModule(16, {
+  if (typeof window !== "undefined" && (typeof window.registerCourseModule === "function" || typeof window.registerCodexModule === "function")) {
+    (window.registerCourseModule || window.registerCodexModule)(16, {
       revisao,
       unidades,
       initWorkbenches,

@@ -211,7 +211,7 @@
 
         <p><strong>Aplicação Canônica — Caminho Crítico em Redes PERT/CPM:</strong> Como um DAG permite pesos negativos, podemos encontrar o <strong>caminho mais longo</strong> em um DAG em tempo $\\Theta(V + E)$ simplesmente invertendo os sinais de todos os pesos ($w'(u, v) = -w(u, v)$) ou substituindo a operação $\\min$ por $\\max$ no relaxamento. Essa técnica é o coração do método do <em>Caminho Crítico</em> (Seção 24.2, p. 538), que determina as etapas indispensáveis cujo atraso compromete a data final de um projeto complexo.</p>
 
-        <!-- CONTAINER DA BANCADA INTERATIVA DUPLA DO MÓDULO 12 -->
+        <!-- CONTAINER DA LABORATÓRIO INTERATIVO DUPLO DO MÓDULO 12 -->
         <div id="workbench-mod12-mount"></div>
       `
     },
@@ -732,7 +732,7 @@
 
 
   /* ========================================================================
-     BANCADA INTERATIVA DUPLA DO MÓDULO 12:
+     LABORATÓRIO INTERATIVO DUPLO DO MÓDULO 12:
      (1) SIMULADOR COMPARATIVO DE CAMINHOS MÍNIMOS: DIJKSTRA vs. BELLMAN-FORD
      (2) SIMULADOR DE FLUXO MÁXIMO: EDMONDS-KARP, REDE RESIDUAL & CORTE MÍNIMO
      ======================================================================== */
@@ -743,7 +743,7 @@
     mount.innerHTML = `
       <div class="workbench-box" style="margin-top:1.5rem;">
         <div class="workbench-header">
-          <span class="workbench-title">[ BANCADA INTERATIVA DUPLA • MÓDULO 12: CAMINHOS MÍNIMOS (CAP. 24–25) & FLUXO MÁXIMO (CAP. 26) ]</span>
+          <span class="workbench-title">Laboratório Interativo DUPLA • MÓDULO 12: CAMINHOS MÍNIMOS (CAP. 24–25) & FLUXO MÁXIMO (CAP. 26)</span>
           <span class="bracket-tag emerald">DIJKSTRA • BELLMAN-FORD • EDMONDS-KARP • CORTE MÍNIMO</span>
         </div>
         <div class="workbench-body">
@@ -2043,8 +2043,8 @@
     }
   ];
 
-  if (typeof window.registerCodexModule === "function") {
-    window.registerCodexModule(12, {
+  if ((typeof window.registerCourseModule === "function" || typeof window.registerCodexModule === "function")) {
+    (window.registerCourseModule || window.registerCodexModule)(12, {
       revisao,
       unidades,
       initWorkbenches,

@@ -5,7 +5,7 @@
    ========================================================================== */
 
 (function () {
-  if (typeof window === "undefined" || typeof window.registerCodexModule !== "function") {
+  if (typeof window === "undefined" || (!window.registerCourseModule && !window.registerCodexModule)) {
     return;
   }
 
@@ -794,7 +794,7 @@
   ];
 
   /* ========================================================================
-     BANCADAS INTERATIVAS DO MÓDULO 10
+     LABORATÓRIOS INTERATIVOS DO MÓDULO 10
      (1) Floresta de Conjuntos Disjuntos (MAKE-SET, UNION por Posto, FIND-SET com Compressão de Caminho)
      (2) Árvore B (B-TREE-SPLIT-CHILD & B-TREE-INSERT) & Decomposição em Árvore vEB (high, low, index)
      ======================================================================== */
@@ -805,7 +805,7 @@
     mount.innerHTML = `
       <div class="workbench-box" style="margin-top:1.75rem;">
         <div class="workbench-header">
-          <span class="workbench-title">[ BANCADA INTERATIVA #10A • FLORESTA DE CONJUNTOS DISJUNTOS: UNIÃO POR POSTO &amp; COMPRESSÃO DE CAMINHO (CAP. 21.3) ]</span>
+          <span class="workbench-title">Laboratório Interativo #10A • FLORESTA DE CONJUNTOS DISJUNTOS: UNIÃO POR POSTO &amp; COMPRESSÃO DE CAMINHO (CAP. 21.3)</span>
           <span class="bracket-tag dark">O(m α(n)) • α(n) ≤ 4</span>
         </div>
         <div class="workbench-body">
@@ -833,7 +833,7 @@
 
       <div class="workbench-box" style="margin-top:1.5rem;">
         <div class="workbench-header">
-          <span class="workbench-title">[ BANCADA INTERATIVA #10B • ÁRVORE B (B-TREE-SPLIT-CHILD &amp; INSERT) E DECOMPOSIÇÃO vEB (CAP. 18 &amp; 20) ]</span>
+          <span class="workbench-title">Laboratório Interativo #10B • ÁRVORE B (B-TREE-SPLIT-CHILD &amp; INSERT) E DECOMPOSIÇÃO vEB (CAP. 18 &amp; 20)</span>
           <span class="bracket-tag amber">h ≤ log_t((n+1)/2) • O(lg lg u)</span>
         </div>
         <div class="workbench-body">
@@ -879,7 +879,7 @@
       </div>
     `;
 
-    /* --- Lógica da Bancada #10A: Floresta de Conjuntos Disjuntos --- */
+    /* --- Lógica do Laboratório #10A: Floresta de Conjuntos Disjuntos --- */
     const dsuNodes = ["a", "b", "c", "d", "e", "f", "g", "h"];
     let dsuParent = {};
     let dsuRank = {};
@@ -1073,7 +1073,7 @@
     initDsuSelectors();
     window.mod10DsuReset();
 
-    /* --- Lógica da Bancada #10B: Árvore B (t = 2) & Árvore vEB --- */
+    /* --- Lógica do Laboratório #10B: Árvore B (t = 2) & Árvore vEB --- */
     const presetEx1821 = ["F", "S", "Q", "K", "C", "L", "H", "T", "V", "W", "M", "R", "N", "P", "A", "B", "X", "Y", "D", "Z", "E"];
     let presetIdx = 0;
     const T_DEG = 2; // Grau mínimo t = 2 (máx 3 chaves por nó)
@@ -1943,7 +1943,7 @@ Nível 2 (Folhas):  [A] [C,D,E] [H]  [L] [N,P]    [R,S] [V] [X,Y,Z]</pre>
     }
   ];
 
-  window.registerCodexModule(10, {
+  (window.registerCourseModule || window.registerCodexModule)(10, {
     revisao,
     unidades,
     initWorkbenches,

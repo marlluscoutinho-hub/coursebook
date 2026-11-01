@@ -1,5 +1,5 @@
 /* ==========================================================================
-   CODEX — MÓDULO 15: CORRESPONDÊNCIA DE CADEIAS E GEOMETRIA COMPUTACIONAL
+   coursebook — MÓDULO 15: CORRESPONDÊNCIA DE CADEIAS E GEOMETRIA COMPUTACIONAL
    Capítulos 32 e 33 (pp. 796–851)
    Obra: Algoritmos: Teoria e Prática (3ª Edição) — Cormen, Leiserson, Rivest e Stein
    ========================================================================== */
@@ -93,7 +93,7 @@
     mount.innerHTML = `
       <div class="workbench-box" style="margin-top:1.5rem;">
         <div class="workbench-header">
-          <span class="workbench-title">[ BANCADA INTERATIVA DUPLA • MÓDULO 15: KMP & GEOMETRIA COMPUTACIONAL (CAPS. 32–33) ]</span>
+          <span class="workbench-title">Laboratório Interativo DUPLA • MÓDULO 15: KMP & GEOMETRIA COMPUTACIONAL (CAPS. 32–33)</span>
           <span class="bracket-tag emerald">KMP • TABELA π • GRAHAM-SCAN • INTERSEÇÃO</span>
         </div>
         <div class="workbench-body">
@@ -1405,8 +1405,8 @@
 ];
 
 
-  if (typeof window !== "undefined" && typeof window.registerCodexModule === "function") {
-    window.registerCodexModule(15, {
+  if (typeof window !== "undefined" && (typeof window.registerCourseModule === "function" || typeof window.registerCodexModule === "function")) {
+    (window.registerCourseModule || window.registerCodexModule)(15, {
       revisao,
       unidades,
       initWorkbenches,

@@ -168,7 +168,7 @@
           </table>
         </div>
 
-        <p>Abaixo, explore a <strong>Bancada Interativa Dupla do Módulo 11</strong>: no Modo 1, execute passo a passo a <strong>Busca em Largura (<code>BFS</code>)</strong> e a <strong>Busca em Profundidade (<code>DFS</code>)</strong> inspecionando a fila FIFO $Q$, as cores <code>BRANCO / CINZA / PRETO</code>, os carimbos de tempo $u.d / u.f$, a expressão de parênteses do Teorema 22.7 e a classificação de todas as arestas; no Modo 2, compare lado a lado o <strong>Algoritmo de Kruskal (<code>MST-KRUSKAL</code>)</strong> e o <strong>Algoritmo de Prim (<code>MST-PRIM</code>)</strong> construindo a Árvore Geradora Mínima passo a passo!</p>
+        <p>Abaixo, explore a <strong>Laboratório Interativo Duplo do Módulo 11</strong>: no Modo 1, execute passo a passo a <strong>Busca em Largura (<code>BFS</code>)</strong> e a <strong>Busca em Profundidade (<code>DFS</code>)</strong> inspecionando a fila FIFO $Q$, as cores <code>BRANCO / CINZA / PRETO</code>, os carimbos de tempo $u.d / u.f$, a expressão de parênteses do Teorema 22.7 e a classificação de todas as arestas; no Modo 2, compare lado a lado o <strong>Algoritmo de Kruskal (<code>MST-KRUSKAL</code>)</strong> e o <strong>Algoritmo de Prim (<code>MST-PRIM</code>)</strong> construindo a Árvore Geradora Mínima passo a passo!</p>
 
         <div id="workbench-mod11-mount"></div>
       `
@@ -656,7 +656,7 @@
   ];
 
   /* ========================================================================
-     BANCADA INTERATIVA DUPLA DO MÓDULO 11:
+     LABORATÓRIO INTERATIVO DUPLO DO MÓDULO 11:
      (1) SIMULADOR PASSO A PASSO DE BFS & DFS (CORES, u.d/u.f, PARÊNTESES E ARESTAS)
      (2) SIMULADOR COMPARATIVO DE MST: KRUSKAL (UNION-FIND) vs. PRIM (FILA Q)
      ======================================================================== */
@@ -667,7 +667,7 @@
     mount.innerHTML = `
       <div class="workbench-box" style="margin-top:1.5rem;">
         <div class="workbench-header">
-          <span class="workbench-title">[ BANCADA INTERATIVA DUPLA • MÓDULO 11: BUSCAS EM GRAFOS (CAP. 22) & MST (CAP. 23) ]</span>
+          <span class="workbench-title">Laboratório Interativo DUPLA • MÓDULO 11: BUSCAS EM GRAFOS (CAP. 22) & MST (CAP. 23)</span>
           <span class="bracket-tag emerald">BFS • DFS • KRUSKAL • PRIM</span>
         </div>
         <div class="workbench-body">
@@ -1997,8 +1997,8 @@
     }
   ];
 
-  if (typeof window.registerCodexModule === "function") {
-    window.registerCodexModule(11, {
+  if ((typeof window.registerCourseModule === "function" || typeof window.registerCodexModule === "function")) {
+    (window.registerCourseModule || window.registerCodexModule)(11, {
       revisao,
       unidades,
       initWorkbenches,

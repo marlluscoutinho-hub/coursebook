@@ -814,7 +814,7 @@
           <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem;">
             <div>
               <span style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; color: #38bdf8; text-transform: uppercase;">
-                [ WORKBENCH INTERATIVO • CAPÍTULOS 12, 13 E 14 ]
+                Laboratório Interativo • CAPÍTULOS 12, 13 E 14
               </span>
               <h4 style="margin: 0.25rem 0 0 0; font-size: 1.2rem; color: #f8fafc;">
                 Laboratório Duplo: Rotações / RB-INSERT-FIXUP + Árvores de Estatísticas de Ordem e Intervalos
@@ -1741,7 +1741,7 @@
     ]
   };
 
-  if (typeof window !== "undefined" && typeof window.registerCodexModule === "function") {
-    window.registerCodexModule(8, module8Content);
+  if (typeof window !== "undefined" && (typeof window.registerCourseModule === "function" || typeof window.registerCodexModule === "function")) {
+    (window.registerCourseModule || window.registerCodexModule)(8, module8Content);
   }
 })();
