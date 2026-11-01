@@ -1,0 +1,20 @@
+{
+  "id": "06-dml-update-delete-transacoes",
+  "title": "DML: Modificações com UPDATE, DELETE e Controle Transacional (COMMIT e ROLLBACK)",
+  "kind": "standard",
+  "pages": "Capítulo 11 (pp. 285–296)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

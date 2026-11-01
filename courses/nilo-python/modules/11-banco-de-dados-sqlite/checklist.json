@@ -1,0 +1,55 @@
+{
+  "moduleId": "11-banco-de-dados-sqlite",
+  "items": [
+    {
+      "id": "c01",
+      "text": "Compreender as limitações de arquivos texto sequenciais frente a bancos de dados relacionais e propriedades ACID",
+      "checked": false
+    },
+    {
+      "id": "c02",
+      "text": "Conectar a bancos SQLite (:memory: ou arquivo .db) e gerenciar o ciclo de vida de conexões e cursores",
+      "checked": false
+    },
+    {
+      "id": "c03",
+      "text": "Criar esquemas de tabelas com DDL CREATE TABLE, definindo tipos SQLite e chaves primárias autoincrementais",
+      "checked": false
+    },
+    {
+      "id": "c04",
+      "text": "Inserir dados com segurança absoluta utilizando marcadores de parâmetro ? e prevenindo ataques de SQL Injection",
+      "checked": false
+    },
+    {
+      "id": "c05",
+      "text": "Realizar consultas estruturadas com SELECT, aplicando filtros WHERE, comparações lógicas, LIKE e ordenação ORDER BY",
+      "checked": false
+    },
+    {
+      "id": "c06",
+      "text": "Recuperar registros em Python por iteração direta no cursor ou métodos fetchone() e fetchall()",
+      "checked": false
+    },
+    {
+      "id": "c07",
+      "text": "Atualizar (UPDATE) e excluir (DELETE) registros com cautela sob cláusulas WHERE e inspecionar cursor.rowcount",
+      "checked": false
+    },
+    {
+      "id": "c08",
+      "text": "Gerenciar transações atômicas garantindo persistência com conn.commit() e recuperação de falhas com conn.rollback()",
+      "checked": false
+    },
+    {
+      "id": "c09",
+      "text": "Modelar relacionamentos entre tabelas via chaves estrangeiras e realizar junções relacionais com INNER JOIN",
+      "checked": false
+    },
+    {
+      "id": "c10",
+      "text": "Sumarizar dados agregados utilizando GROUP BY, COUNT(), SUM(), AVG() e filtrando grupos com HAVING",
+      "checked": false
+    }
+  ]
+}

@@ -20,7 +20,8 @@
     "07-strings-e-jogo-da-forca",
     "08-funcoes-e-recursao",
     "09-arquivos-e-diretorios",
-    "10-classes-e-objetos"
+    "10-classes-e-objetos",
+    "11-banco-de-dados-sqlite"
   ],
   "status": "in_development"
 }

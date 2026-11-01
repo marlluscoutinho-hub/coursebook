@@ -1,0 +1,20 @@
+{
+  "id": "11-banco-de-dados-sqlite",
+  "code": "MÓDULO 11",
+  "title": "Bancos de Dados Relacionais: SQLite3, SQL e Transações",
+  "chapters": "Capítulo 11 (pp. 260–313)",
+  "pages": "pp. 260–313",
+  "summary": "Arquitetura de bancos relacionais versus arquivos sequenciais, módulo sqlite3 da biblioteca padrão, conexões e cursores, DDL com CREATE TABLE, tipos do SQLite e chaves primárias, DML com INSERT parametrizado seguro com marcadores ? contra SQL Injection, consultas com SELECT, WHERE, LIKE e ORDER BY, métodos fetchone e fetchall, modificações com UPDATE e DELETE, integridade transacional atômica com commit() e rollback(), e consultas avançadas multitable com INNER JOIN, chaves estrangeiras e GROUP BY.",
+  "lessons": [
+    "01-bancos-relacionais-vs-arquivos",
+    "02-modulo-sqlite3-conexoes",
+    "03-ddl-create-table",
+    "04-dml-insert-e-seguranca",
+    "05-dml-select-e-filtros",
+    "06-dml-update-delete-transacoes",
+    "07-joins-e-agrupamentos",
+    "08-laboratorio-sqlite-interativo"
+  ],
+  "quiz": "quiz.json",
+  "exercises": "exercises.json"
+}

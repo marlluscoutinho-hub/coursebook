@@ -1,0 +1,20 @@
+{
+  "id": "02-modulo-sqlite3-conexoes",
+  "title": "O Módulo sqlite3: Conexões, Cursores e Ciclo de Vida",
+  "kind": "standard",
+  "pages": "Capítulo 11 (pp. 263–266)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

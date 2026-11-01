@@ -1,0 +1,304 @@
+{
+  "questions": [
+    {
+      "id": "q01",
+      "question": "Por que sistemas de gerenciamento de bancos de dados relacionais (como o SQLite3) são amplamente preferíveis a arquivos de texto (.txt ou .csv) em sistemas que exigem persistência confiável?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Porque arquivos de texto não podem armazenar strings maiores que 256 caracteres no Linux.",
+          "isCorrect": false,
+          "explanation": "Arquivos de texto não possuem essa limitação arbitrária; o problema reside na complexidade de acesso e na falta de garantias transacionais."
+        },
+        {
+          "letter": "B",
+          "text": "Porque bancos relacionais oferecem suporte nativo a índices, consultas declarativas otimizadas, concorrência segura e garantias ACID (Atomicidade, Consistência, Isolamento e Durabilidade), evitando corrupção por panes parciais.",
+          "isCorrect": true,
+          "explanation": "Correto! O modelo relacional com ACID garante integridade mesmo em falhas elétricas, busca com indexação eficiente e impede que modificações parciais destruam a integridade dos dados."
+        },
+        {
+          "letter": "C",
+          "text": "Porque o SQLite é compilado em Java e executa código diretamente na máquina virtual JVM sem usar disco rígido.",
+          "isCorrect": false,
+          "explanation": "O SQLite é escrito em linguagem C e grava os dados em arquivos binários de disco ou diretamente em memória RAM."
+        },
+        {
+          "letter": "D",
+          "text": "Porque arquivos de texto só podem ser abertos por usuários com privilégios de administrador (root).",
+          "isCorrect": false,
+          "explanation": "Qualquer usuário com permissão de leitura e escrita pode manipular arquivos de texto comuns."
+        }
+      ]
+    },
+    {
+      "id": "q02",
+      "question": "Na biblioteca padrão `sqlite3` do Python (PEP 249 - DB-API 2.0), qual é a distinção correta entre o objeto `Connection` e o objeto `Cursor`?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "O Connection é o ponteiro de iteração de registros na tela e o Cursor representa o arquivo binário gravado no disco rígido.",
+          "isCorrect": false,
+          "explanation": "É exatamente o inverso: a Conexão gerencia a ponte física com o arquivo ou memória e o Cursor atua como ponteiro de navegação e despachante."
+        },
+        {
+          "letter": "B",
+          "text": "A Connection gerencia o canal físico com a base e o controle transacional global (commit e rollback), enquanto o Cursor é o despachante de instruções SQL e o ponteiro iterador sobre o conjunto de registros retornados.",
+          "isCorrect": true,
+          "explanation": "Correto! A conexão controla o canal físico e a persistência atômica, enquanto o cursor executa consultas e mantém o estado de navegação linha a linha."
+        },
+        {
+          "letter": "C",
+          "text": "O objeto Cursor só é necessário quando o banco de dados for instalado em um servidor remoto na nuvem.",
+          "isCorrect": false,
+          "explanation": "O Cursor é obrigatório mesmo em bancos locais SQLite de arquivo único ou em memória."
+        },
+        {
+          "letter": "D",
+          "text": "Não há nenhuma distinção prática; ambos são nomes alternativos para a mesma instância em Python.",
+          "isCorrect": false,
+          "explanation": "São classes distintas com responsabilidades bem definidas na especificação oficial DB-API 2.0."
+        }
+      ]
+    },
+    {
+      "id": "q03",
+      "question": "Ao criar o esquema de uma tabela com o comando DDL `CREATE TABLE`, por que adicionar a cláusula `IF NOT EXISTS` é uma boa prática fundamental?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Porque sem ela o SQLite apaga todos os registros salvos toda vez que o script é reexecutado.",
+          "isCorrect": false,
+          "explanation": "Sem a cláusula, o SQLite não apaga registros: ele lança uma exceção `sqlite3.OperationalError` afirmando que a tabela já existe."
+        },
+        {
+          "letter": "B",
+          "text": "Torna o script idempotente: se a tabela já existir na base, o SQLite ignora a criação sem lançar exceções de erro, permitindo que o script seja executado repetidamente com segurança.",
+          "isCorrect": true,
+          "explanation": "Correto! Idempotência significa que a operação pode ser repetida sem efeitos colaterais adversos nem falhas operacionais."
+        },
+        {
+          "letter": "C",
+          "text": "Garante que nenhuma chave primária seja gerada de forma duplicada durante a inserção de dados.",
+          "isCorrect": false,
+          "explanation": "Quem garante a unicidade da chave primária é a restrição `PRIMARY KEY`, não a cláusula `IF NOT EXISTS` da criação da tabela."
+        },
+        {
+          "letter": "D",
+          "text": "Converte automaticamente o banco de dados em um cluster distribuído na nuvem.",
+          "isCorrect": false,
+          "explanation": "A cláusula apenas previne erro de criação de tabela já existente no arquivo local."
+        }
+      ]
+    },
+    {
+      "id": "q04",
+      "question": "Qual das seguintes alternativas descreve com exatidão a vulnerabilidade de Injeção de SQL (SQL Injection) e o mecanismo canônico para neutralizá-la em Python?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Ocorre quando o arquivo `.db` é copiado por pen drive; neutraliza-se criptografando a pasta com senha do Windows.",
+          "isCorrect": false,
+          "explanation": "SQL Injection é um ataque lógico na camada de interpretação sintática de comandos, não roubo físico de mídias."
+        },
+        {
+          "letter": "B",
+          "text": "Ocorre quando strings do usuário são concatenadas ou interpoladas diretamente no SQL (ex.: f-strings), permitindo que comandos maliciosos alterem a árvore sintática; a defesa canônica consiste no uso de consultas preparadas com marcadores '?' e tupla de parâmetros.",
+          "isCorrect": true,
+          "explanation": "Correto! Com marcadores `?`, o SQLite compila a estrutura do comando antes de receber os valores, tratando a entrada do usuário estritamente como dado literal imune a injeções."
+        },
+        {
+          "letter": "C",
+          "text": "Ocorre quando o comando SELECT usa mais de 5 colunas; resolve-se dividindo em tabelas menores.",
+          "isCorrect": false,
+          "explanation": "A quantidade de colunas não possui qualquer relação com injeção de SQL."
+        },
+        {
+          "letter": "D",
+          "text": "Ocorre sempre que usamos números float; resolve-se convertendo todos os números para texto com str().",
+          "isCorrect": false,
+          "explanation": "A tipagem de números não previne nem causa injeções de código SQL."
+        }
+      ]
+    },
+    {
+      "id": "q05",
+      "question": "Se um programador executar a instrução SQL `UPDATE precos SET preco = 99.90;` esquecendo de especificar a cláusula `WHERE`, qual será a consequência?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "O SQLite emitirá um aviso e solicitará que o usuário confirme a alteração digitando 'SIM' no terminal.",
+          "isCorrect": false,
+          "explanation": "Bancos de dados relacionais são sistemas automatizados e não emitem prompts interativos de confirmação em linha de comando."
+        },
+        {
+          "letter": "B",
+          "text": "Apenas o primeiro registro cadastrado na tabela sofrerá a alteração de preço.",
+          "isCorrect": false,
+          "explanation": "Sem `WHERE`, o comando afeta toda a extensão da tabela, não apenas a primeira linha."
+        },
+        {
+          "letter": "C",
+          "text": "Todas as linhas existentes na tabela 'precos' terão seu campo preco atualizado para 99.90 indiscriminadamente.",
+          "isCorrect": true,
+          "explanation": "Correto! O comando UPDATE aplica a atribuição a todos os registros que atendem ao predicado. Na ausência do WHERE, todos os registros atendem ao critério!"
+        },
+        {
+          "letter": "D",
+          "text": "O SQLite gerará um erro de sintaxe imediato e abortará a execução do script Python.",
+          "isCorrect": false,
+          "explanation": "O comando é sintaticamente válido segundo o padrão ANSI SQL, embora seja desastroso se executado por engano."
+        }
+      ]
+    },
+    {
+      "id": "q06",
+      "question": "Qual é a principal vantagem de consumir resultados de um SELECT iterando diretamente sobre o cursor (`for linha in cursor:`) em vez de invocar `cursor.fetchall()`?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "A iteração no cursor consome memória O(1) proporcional a um registro por vez (streaming), evitando o esgotamento da memória RAM em consultas sobre milhões de linhas.",
+          "isCorrect": true,
+          "explanation": "Correto! O cursor funciona como um gerador sob demanda. O `fetchall()` carrega todas as tuplas de uma vez em uma lista na memória RAM."
+        },
+        {
+          "letter": "B",
+          "text": "A iteração direta impede que outros usuários leiam a tabela durante o loop.",
+          "isCorrect": false,
+          "explanation": "A concorrência de leitura em SQLite é mantida pelo motor, não pelo estilo do loop no Python."
+        },
+        {
+          "letter": "C",
+          "text": "O cursor converte automaticamente todas as strings para letras maiúsculas.",
+          "isCorrect": false,
+          "explanation": "Os dados mantêm a formatação original com que foram salvos."
+        },
+        {
+          "letter": "D",
+          "text": "A iteração direta é a única forma permitida pela especificação PEP 8 para fechar conexões.",
+          "isCorrect": false,
+          "explanation": "A iteração é apenas um método de recuperação de dados; o fechamento da conexão requer `conexao.close()`."
+        }
+      ]
+    },
+    {
+      "id": "q07",
+      "question": "Qual é o efeito de executar `conexao.rollback()` em um bloco `except` durante o tratamento de uma transação com múltiplas operações de escrita no SQLite?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Exclui o arquivo binário do banco de dados do sistema operacional.",
+          "isCorrect": false,
+          "explanation": "O arquivo físico não é deletado; apenas as alterações não confirmadas são desfeitas."
+        },
+        {
+          "letter": "B",
+          "text": "Aborta a transação atual e descarta todas as instruções de escrita (INSERT, UPDATE, DELETE) executadas desde o último commit, restaurando o banco ao estado consistente prévio.",
+          "isCorrect": true,
+          "explanation": "Correto! O rollback cumpre o princípio da Atomicidade: se uma etapa falha no meio de uma transação comercial, todas as modificações parciais são revertidas sem deixar vestígios."
+        },
+        {
+          "letter": "C",
+          "text": "Reinicia o computador do usuário para liberar portas de rede presas.",
+          "isCorrect": false,
+          "explanation": "O rollback é estritamente uma operação transacional de descarte de buffer de log no SQLite."
+        },
+        {
+          "letter": "D",
+          "text": "Salva as alterações de forma permanente no disco com prioridade máxima.",
+          "isCorrect": false,
+          "explanation": "Quem salva permanentemente é o `conexao.commit()`, enquanto o `rollback()` cancela as alterações."
+        }
+      ]
+    },
+    {
+      "id": "q08",
+      "question": "Qual é a utilidade prática de definir `conexao.row_factory = sqlite3.Row` no início de um script Python?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Permite que os registros retornados pelo cursor sejam acessados tanto por índice numérico quanto pelo nome exato das colunas (ex.: linha['nome']), tornando o código mais legível e resiliente.",
+          "isCorrect": true,
+          "explanation": "Correto! Com `sqlite3.Row`, o registro se comporta como uma tupla acessível por chaves de dicionário, eliminando dependências rígidas da ordem numérica de colunas."
+        },
+        {
+          "letter": "B",
+          "text": "Acelera a velocidade da CPU em até dez vezes durante cálculos matemáticos complexos.",
+          "isCorrect": false,
+          "explanation": "O `row_factory` altera a estrutura de retorno das linhas em Python, sem acelerar a CPU da máquina."
+        },
+        {
+          "letter": "C",
+          "text": "Transforma todas as tabelas do banco em arquivos de planilha eletrônica Excel (.xlsx).",
+          "isCorrect": false,
+          "explanation": "Não há conversão de formatos de arquivo envolvida."
+        },
+        {
+          "letter": "D",
+          "text": "Desativa as travas de arquivo para que múltiplos scripts escrevam simultaneamente sem controle.",
+          "isCorrect": false,
+          "explanation": "O `row_factory` afeta apenas a instanciação dos objetos de linha em Python no lado do cliente."
+        }
+      ]
+    },
+    {
+      "id": "q09",
+      "question": "Em um relacionamento entre as tabelas `cidades` e `clientes`, qual é a finalidade de uma Chave Estrangeira (`FOREIGN KEY (cidade_id) REFERENCES cidades(id)`)?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Permitir que o banco de dados envie e-mails automáticos para clientes no exterior.",
+          "isCorrect": false,
+          "explanation": "'Estrangeira' refere-se ao fato de apontar para a chave primária de outra tabela, não a localização geográfica de pessoas."
+        },
+        {
+          "letter": "B",
+          "text": "Estabelecer uma regra de integridade referencial que vincula cada cliente a uma cidade existente válida, impedindo registros órfãos e viabilizando junções com INNER JOIN.",
+          "isCorrect": true,
+          "explanation": "Correto! A chave estrangeira assegura que um cliente só possa ser associado a um `cidade_id` que realmente exista na tabela `cidades`."
+        },
+        {
+          "letter": "C",
+          "text": "Obrigar que o nome da cidade seja criptografado com chave pública RSA de 2048 bits.",
+          "isCorrect": false,
+          "explanation": "Chaves estrangeiras cuidam de integridade relacional, não de criptografia assimétrica de texto."
+        },
+        {
+          "letter": "D",
+          "text": "Impedir que mais de um cliente resida na mesma cidade.",
+          "isCorrect": false,
+          "explanation": "A relação é de 1 para N (uma cidade pode ter muitos clientes cadastrados)."
+        }
+      ]
+    },
+    {
+      "id": "q10",
+      "question": "Ao construir consultas analíticas agrupadas utilizando `GROUP BY`, qual é a distinção fundamental entre as cláusulas `WHERE` e `HAVING`?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "WHERE é usado apenas em tabelas de clientes e HAVING é exclusivo para tabelas de produtos.",
+          "isCorrect": false,
+          "explanation": "Ambas as cláusulas podem ser utilizadas em quaisquer tabelas de qualquer domínio."
+        },
+        {
+          "letter": "B",
+          "text": "O WHERE filtra linhas individuais antes que o agrupamento ou funções agregadas sejam calculadas, enquanto o HAVING filtra os grupos já consolidados após a agregação.",
+          "isCorrect": true,
+          "explanation": "Correto! Exemplo: `WHERE preco > 10` filtra itens antes da soma, enquanto `HAVING COUNT(*) > 5` filtra apenas os grupos que resultaram em mais de 5 ocorrências."
+        },
+        {
+          "letter": "C",
+          "text": "HAVING e WHERE são estritamente sinônimos e podem ser intercambiados livremente no início do SELECT.",
+          "isCorrect": false,
+          "explanation": "Não são sinônimos. Tentar usar funções agregadas (como `WHERE COUNT(*) > 2`) é um erro de sintaxe clássico em SQL."
+        },
+        {
+          "letter": "D",
+          "text": "A cláusula HAVING só é permitida quando a consulta ordenar os registros em ordem decrescente (DESC).",
+          "isCorrect": false,
+          "explanation": "A ordenação com ORDER BY é independente da filtragem de grupos com HAVING."
+        }
+      ]
+    }
+  ]
+}

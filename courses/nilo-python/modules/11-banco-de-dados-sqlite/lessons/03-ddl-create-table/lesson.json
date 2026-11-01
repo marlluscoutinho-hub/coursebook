@@ -1,0 +1,20 @@
+{
+  "id": "03-ddl-create-table",
+  "title": "Linguagem de Definição de Dados (DDL): CREATE TABLE e Tipos do SQLite",
+  "kind": "standard",
+  "pages": "Capítulo 11 (pp. 266–268)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

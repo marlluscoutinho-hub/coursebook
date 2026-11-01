@@ -1,0 +1,27 @@
+{
+  "id": "08-laboratorio-sqlite-interativo",
+  "title": "Laboratório Interativo: Simulador Relacional SQLite, DDL, DML e Transações",
+  "kind": "lab",
+  "pages": "Prática Integrada (pp. 260–313)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "lab",
+      "id": "sqlite-virtual-lab",
+      "title": "Laboratório Interativo: Simulador Relacional SQLite",
+      "source": "catalog",
+      "mobile": "full"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

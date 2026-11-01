@@ -1,0 +1,20 @@
+{
+  "id": "05-dml-select-e-filtros",
+  "title": "DML: Consultas com SELECT, Filtros WHERE e Recuperação de Registros",
+  "kind": "standard",
+  "pages": "Capítulo 11 (pp. 272–285)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

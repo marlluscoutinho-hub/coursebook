@@ -1,0 +1,20 @@
+{
+  "id": "01-bancos-relacionais-vs-arquivos",
+  "title": "Arquitetura de Dados: Bancos Relacionais vs. Arquivos Planos",
+  "kind": "standard",
+  "pages": "Capítulo 11 (pp. 260–263)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

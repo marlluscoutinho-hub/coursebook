@@ -1,0 +1,20 @@
+{
+  "id": "04-dml-insert-e-seguranca",
+  "title": "DML: INSERT INTO, Parâmetros Seguros '?' e Prevenção de SQL Injection",
+  "kind": "standard",
+  "pages": "Capítulo 11 (pp. 268–272)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

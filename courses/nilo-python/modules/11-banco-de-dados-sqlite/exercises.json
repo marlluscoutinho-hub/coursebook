@@ -1,0 +1,76 @@
+{
+  "exercises": [
+    {
+      "id": "ex-11-1",
+      "code": "EXERCÍCIO 11.1",
+      "reference": "Nilo Menezes, Capítulo 11, p. 268",
+      "title": "Criação de Tabela DDL com Chave Primária",
+      "prompt": "Faça um programa em Python que crie um banco de dados SQLite chamado `precos.db` (ou `:memory:`) e defina uma tabela chamada `precos` contendo os campos: `id` (inteiro, chave primária autoincremental), `produto` (texto não nulo) e `preco` (numérico real não nulo). Assegure que o script seja idempotente usando `IF NOT EXISTS`.",
+      "placeholder": "import sqlite3\n\n# Conecte ao banco e crie a tabela precos\n",
+      "solution": "import sqlite3\n\nconexao = sqlite3.connect(\":memory:\")\ncursor = conexao.cursor()\n\ncursor.execute(\"\"\"\n    CREATE TABLE IF NOT EXISTS precos (\n        id INTEGER PRIMARY KEY AUTOINCREMENT,\n        produto TEXT NOT NULL,\n        preco REAL NOT NULL\n    )\n\"\"\")\n\nconexao.commit()\nprint(\"Tabela 'precos' criada com sucesso no SQLite!\")\nconexao.close()"
+    },
+    {
+      "id": "ex-11-2",
+      "code": "EXERCÍCIO 11.2",
+      "reference": "Nilo Menezes, Capítulo 11, p. 272",
+      "title": "Inserção em Lote Segura com executemany e Marcadores '?'",
+      "prompt": "Escreva um programa que insira uma lista com pelo menos 4 produtos e respectivos preços na tabela `precos` criada no exercício anterior. Utilize obrigatoriamente o método `cursor.executemany()` com marcadores de parâmetro `?` para garantir proteção total contra SQL Injection e imprima o valor de `cursor.rowcount`.",
+      "placeholder": "import sqlite3\n\n# Insira múltiplos produtos usando executemany com '?'\n",
+      "solution": "import sqlite3\n\nconexao = sqlite3.connect(\":memory:\")\ncursor = conexao.cursor()\ncursor.execute(\"CREATE TABLE precos (id INTEGER PRIMARY KEY AUTOINCREMENT, produto TEXT, preco REAL)\")\n\nprodutos = [\n    (\"Livro Introdução ao Python\", 74.00),\n    (\"Caderno Universitário\", 18.50),\n    (\"Caneta Esferográfica Azul\", 3.50),\n    (\"Mochila para Notebook\", 159.90)\n]\n\ncursor.executemany(\n    \"INSERT INTO precos (produto, preco) VALUES (?, ?)\",\n    produtos\n)\n\nconexao.commit()\nprint(f\"Linhas inseridas com sucesso: {cursor.rowcount}\")\nconexao.close()"
+    },
+    {
+      "id": "ex-11-3",
+      "code": "EXERCÍCIO 11.3",
+      "reference": "Nilo Menezes, Capítulo 11, p. 280",
+      "title": "Consulta SELECT com Filtro de Faixa BETWEEN Parametrizado",
+      "prompt": "Escreva um programa que receba dois valores numéricos representando uma faixa de preço (mínimo e máximo) e execute uma consulta SQL na tabela `precos` buscando todos os produtos cujo preço esteja dentro desse intervalo (`BETWEEN ? AND ?`). Imprima os produtos formatados em colunas alinhadas.",
+      "placeholder": "import sqlite3\n\n# Consulte produtos em uma faixa de preço com BETWEEN\n",
+      "solution": "import sqlite3\n\nconexao = sqlite3.connect(\":memory:\")\ncursor = conexao.cursor()\ncursor.execute(\"CREATE TABLE precos (id INTEGER PRIMARY KEY AUTOINCREMENT, produto TEXT, preco REAL)\")\ncursor.executemany(\"INSERT INTO precos (produto, preco) VALUES (?, ?)\", [\n    (\"Lápis\", 2.00),\n    (\"Caderno\", 18.50),\n    (\"Livro Python\", 74.00),\n    (\"Calculadora\", 45.00)\n])\nconexao.commit()\n\npreco_min = 10.0\npreco_max = 50.0\n\ncursor.execute(\n    \"SELECT produto, preco FROM precos WHERE preco BETWEEN ? AND ? ORDER BY preco\",\n    (preco_min, preco_max)\n)\n\nprint(f\"Produtos entre R$ {preco_min:.2f} e R$ {preco_max:.2f}:\")\nfor produto, preco in cursor:\n    print(f\"- {produto:25} : R$ {preco:.2f}\")\n\nconexao.close()"
+    },
+    {
+      "id": "ex-11-4",
+      "code": "EXERCÍCIO 11.4",
+      "reference": "Nilo Menezes, Capítulo 11, p. 285",
+      "title": "Busca Textual com Curingas LIKE e Ordenação ORDER BY",
+      "prompt": "Escreva um programa que pesquise na tabela `precos` todos os itens cujo nome contenha um termo de busca parcial (ex.: 'caderno' ou 'livro'). O programa deve utilizar o operador `LIKE ?` parametrizado com curingas `%` e ordenar o resultado em ordem decrescente de preço (`ORDER BY preco DESC`).",
+      "placeholder": "import sqlite3\n\n# Pesquise produtos com LIKE e ordene de forma decrescente\n",
+      "solution": "import sqlite3\n\nconexao = sqlite3.connect(\":memory:\")\ncursor = conexao.cursor()\ncursor.execute(\"CREATE TABLE precos (id INTEGER PRIMARY KEY AUTOINCREMENT, produto TEXT, preco REAL)\")\ncursor.executemany(\"INSERT INTO precos (produto, preco) VALUES (?, ?)\", [\n    (\"Caderno Capa Dura\", 22.00),\n    (\"Livro Python Nilo\", 74.00),\n    (\"Caderno Espiral Pequeno\", 12.50),\n    (\"Caneta Gel\", 5.00)\n])\nconexao.commit()\n\ntermo = \"caderno\"\ncursor.execute(\n    \"SELECT produto, preco FROM precos WHERE produto LIKE ? ORDER BY preco DESC\",\n    (f\"%{termo}%\",)\n)\n\nfor linha in cursor.fetchall():\n    print(f\"{linha[0]:30} | R$ {linha[1]:.2f}\")\n\nconexao.close()"
+    },
+    {
+      "id": "ex-11-5",
+      "code": "EXERCÍCIO 11.5",
+      "reference": "Nilo Menezes, Capítulo 11, p. 293",
+      "title": "Atualização com UPDATE, Cálculo Matemático e cursor.rowcount",
+      "prompt": "Escreva um programa que aplique um reajuste inflacionário de 10% no preço de todos os produtos cujo preço atual seja estritamente inferior a R$ 50,00 (`UPDATE precos SET preco = preco * 1.10 WHERE preco < ?`). Imprima a quantidade de registros reajustados através de `cursor.rowcount` e confirme a transação com `commit()`.",
+      "placeholder": "import sqlite3\n\n# Atualize os preços com UPDATE e verifique rowcount\n",
+      "solution": "import sqlite3\n\nconexao = sqlite3.connect(\":memory:\")\ncursor = conexao.cursor()\ncursor.execute(\"CREATE TABLE precos (id INTEGER PRIMARY KEY AUTOINCREMENT, produto TEXT, preco REAL)\")\ncursor.executemany(\"INSERT INTO precos (produto, preco) VALUES (?, ?)\", [\n    (\"Caneta\", 5.00),\n    (\"Caderno\", 20.00),\n    (\"Livro Avançado\", 120.00)\n])\nconexao.commit()\n\ncursor.execute(\"UPDATE precos SET preco = preco * 1.10 WHERE preco < ?\", (50.0,))\nlinhas_afetadas = cursor.rowcount\nconexao.commit()\n\nprint(f\"Total de produtos reajustados: {linhas_afetadas}\")\nconexao.close()"
+    },
+    {
+      "id": "ex-11-6",
+      "code": "EXERCÍCIO 11.6",
+      "reference": "Nilo Menezes, Capítulo 11, p. 296",
+      "title": "Exclusão com DELETE e Segurança Transacional com ROLLBACK",
+      "prompt": "Escreva um programa que simule a exclusão de um produto pelo seu `id`. Envolva a operação em uma transação com bloco `try/except`: se o `id` não existir ou ocorrer alguma falha, invoque `conexao.rollback()` garantindo que nenhum dado seja alterado incorretamente.",
+      "placeholder": "import sqlite3\n\n# Implemente exclusão atômica com try, commit e rollback\n",
+      "solution": "import sqlite3\n\nconexao = sqlite3.connect(\":memory:\")\ncursor = conexao.cursor()\ncursor.execute(\"CREATE TABLE precos (id INTEGER PRIMARY KEY AUTOINCREMENT, produto TEXT, preco REAL)\")\ncursor.execute(\"INSERT INTO precos (produto, preco) VALUES ('Item Teste', 10.0)\")\nconexao.commit()\n\nid_para_excluir = 999  # ID inexistente para simular validação de integridade\n\ntry:\n    cursor.execute(\"DELETE FROM precos WHERE id = ?\", (id_para_excluir,))\n    if cursor.rowcount == 0:\n        raise ValueError(f\"Produto com ID {id_para_excluir} não foi localizado no banco.\")\n    conexao.commit()\n    print(\"Produto excluído com sucesso.\")\nexcept Exception as erro:\n    conexao.rollback()\n    print(f\"Transação revertida: {erro}\")\nfinally:\n    conexao.close()"
+    },
+    {
+      "id": "ex-11-7",
+      "code": "EXERCÍCIO 11.7",
+      "reference": "Nilo Menezes, Capítulo 11, p. 305",
+      "title": "Junção Relacional com Chave Estrangeira e INNER JOIN",
+      "prompt": "Crie as tabelas `cidades` e `clientes`, estabelecendo o relacionamento de chave estrangeira (`FOREIGN KEY (cidade_id) REFERENCES cidades(id)`). Insira ao menos duas cidades e três clientes. Em seguida, execute uma consulta com `INNER JOIN` trazendo o nome do cliente, o telefone e o nome de sua cidade.",
+      "placeholder": "import sqlite3\n\n# Crie as tabelas relacionais e execute a consulta com INNER JOIN\n",
+      "solution": "import sqlite3\n\nconexao = sqlite3.connect(\":memory:\")\ncursor = conexao.cursor()\ncursor.execute(\"PRAGMA foreign_keys = ON;\")\n\ncursor.execute(\"CREATE TABLE cidades (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT, populacao INTEGER)\")\ncursor.execute(\"CREATE TABLE clientes (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT, telefone TEXT, cidade_id INTEGER, FOREIGN KEY(cidade_id) REFERENCES cidades(id))\")\n\ncursor.executemany(\"INSERT INTO cidades (nome, populacao) VALUES (?, ?)\", [(\"São Paulo\", 12000000), (\"Curitiba\", 1900000)])\ncursor.executemany(\"INSERT INTO clientes (nome, telefone, cidade_id) VALUES (?, ?, ?)\", [\n    (\"Nilo Menezes\", \"9911-2233\", 1),\n    (\"Maria Silva\", \"9822-3344\", 2),\n    (\"Carlos Souza\", \"9733-4455\", 1)\n])\nconexao.commit()\n\nsql = \"\"\"\n    SELECT c.nome, c.telefone, cid.nome AS cidade\n    FROM clientes c\n    JOIN cidades cid ON c.cidade_id = cid.id\n    ORDER BY c.nome\n\"\"\"\n\nfor linha in cursor.execute(sql):\n    print(f\"{linha[0]:15} | Tel: {linha[1]:10} | Cidade: {linha[2]}\")\n\nconexao.close()"
+    },
+    {
+      "id": "ex-11-8",
+      "code": "EXERCÍCIO 11.8",
+      "reference": "Nilo Menezes, Capítulo 11, p. 312",
+      "title": "Agrupamento com GROUP BY, Contagem COUNT e Filtro HAVING",
+      "prompt": "Utilizando as tabelas `cidades` e `clientes`, escreva uma consulta SQL analítica que agrupe os clientes por cidade (`GROUP BY cid.nome`), conte o total de clientes cadastrados em cada município (`COUNT(c.id)`) e utilize a cláusula `HAVING` para exibir apenas as cidades que possuam 2 ou mais clientes cadastrados.",
+      "placeholder": "import sqlite3\n\n# Realize a agregação com GROUP BY, COUNT e HAVING\n",
+      "solution": "import sqlite3\n\nconexao = sqlite3.connect(\":memory:\")\ncursor = conexao.cursor()\ncursor.execute(\"CREATE TABLE cidades (id INTEGER PRIMARY KEY, nome TEXT)\")\ncursor.execute(\"CREATE TABLE clientes (id INTEGER PRIMARY KEY, nome TEXT, cidade_id INTEGER)\")\ncursor.executemany(\"INSERT INTO cidades VALUES (?, ?)\", [(1, \"São Paulo\"), (2, \"Curitiba\"), (3, \"Belo Horizonte\")])\ncursor.executemany(\"INSERT INTO clientes VALUES (?, ?, ?)\", [\n    (1, \"Nilo\", 1),\n    (2, \"Maria\", 1),\n    (3, \"João\", 1),\n    (4, \"Ana\", 2)\n])\nconexao.commit()\n\nsql = \"\"\"\n    SELECT cid.nome, COUNT(c.id) AS total\n    FROM cidades cid\n    JOIN clientes c ON cid.id = c.cidade_id\n    GROUP BY cid.id, cid.nome\n    HAVING COUNT(c.id) >= 2\n\"\"\"\n\nfor cidade, total in cursor.execute(sql):\n    print(f\"Cidade: {cidade} | Clientes: {total}\")\n\nconexao.close()"
+    }
+  ]
+}

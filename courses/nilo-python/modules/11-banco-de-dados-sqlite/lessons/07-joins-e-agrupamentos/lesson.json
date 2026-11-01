@@ -1,0 +1,20 @@
+{
+  "id": "07-joins-e-agrupamentos",
+  "title": "Modelagem Relacional: Chaves Estrangeiras, INNER JOIN e Agrupamentos (GROUP BY)",
+  "kind": "standard",
+  "pages": "Capítulo 11 (pp. 296–313)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}
