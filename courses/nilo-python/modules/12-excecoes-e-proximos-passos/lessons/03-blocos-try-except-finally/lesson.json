@@ -1,0 +1,20 @@
+{
+  "id": "03-blocos-try-except-finally",
+  "title": "Tratamento Defensivo: Blocos try, except, else, finally e a Instrução raise",
+  "kind": "standard",
+  "pages": "Capítulo 12 (pp. 314–317)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

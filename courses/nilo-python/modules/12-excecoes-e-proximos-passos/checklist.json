@@ -1,0 +1,45 @@
+{
+  "moduleId": "12-excecoes-e-proximos-passos",
+  "items": [
+    {
+      "id": "c01",
+      "text": "Interpretar relatórios de traceback do Python lendo a pilha de execução de baixo para cima",
+      "checked": false
+    },
+    {
+      "id": "c02",
+      "text": "Identificar e corrigir os erros gramaticais estáticos: SyntaxError e IndentationError",
+      "checked": false
+    },
+    {
+      "id": "c03",
+      "text": "Diagnosticar erros em tempo de execução: NameError, TypeError, ValueError, IndexError e KeyError",
+      "checked": false
+    },
+    {
+      "id": "c04",
+      "text": "Implementar tratamento defensivo de exceções com blocos try e cláusulas except específicas",
+      "checked": false
+    },
+    {
+      "id": "c05",
+      "text": "Utilizar a cláusula else para código que só roda no sucesso e finally para liberação incondicional de recursos",
+      "checked": false
+    },
+    {
+      "id": "c06",
+      "text": "Disparar exceções de negócio deliberadamente usando a instrução raise com mensagens descritivas",
+      "checked": false
+    },
+    {
+      "id": "c07",
+      "text": "Escrever compreensões de listas (list comprehensions) idiomáticas para mapeamento e filtragem de coleções",
+      "checked": false
+    },
+    {
+      "id": "c08",
+      "text": "Aplicar as diretrizes de formatação, nomenclatura e boas práticas da PEP 8 e Zen do Python",
+      "checked": false
+    }
+  ]
+}

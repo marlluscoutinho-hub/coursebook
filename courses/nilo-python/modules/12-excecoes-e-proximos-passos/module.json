@@ -1,0 +1,17 @@
+{
+  "id": "12-excecoes-e-proximos-passos",
+  "code": "MÓDULO 12",
+  "title": "Exceções, Depuração, Compreensão de Listas e Boas Práticas (PEP 8)",
+  "chapters": "Capítulo 12 e Apêndice A (pp. 314–322)",
+  "pages": "pp. 314–322",
+  "summary": "Depuração metódica de programas, leitura e interpretação anatômica de tracebacks do Python de baixo para cima, o catálogo canônico de erros de iniciantes do Apêndice A (SyntaxError, IndentationError, NameError, TypeError, ValueError, IndexError, KeyError, ZeroDivisionError), blocos defensivos try/except com captura seletiva, cláusula else e cláusula de garantia finally, disparo deliberado com raise, compreensão de listas (list comprehensions), expressões geradoras e as diretrizes de estilo profissional da PEP 8 e Zen do Python.",
+  "lessons": [
+    "01-anatomia-de-tracebacks",
+    "02-catalogo-de-erros-apendice-a",
+    "03-blocos-try-except-finally",
+    "04-list-comprehensions-e-pep8",
+    "05-laboratorio-depurador-de-erros"
+  ],
+  "quiz": "quiz.json",
+  "exercises": "exercises.json"
+}

@@ -1,0 +1,304 @@
+{
+  "questions": [
+    {
+      "id": "q01",
+      "question": "Ao se deparar com um relatório extenso de traceback emitido pelo interpretador Python no terminal, qual é a orientação canônica de leitura para diagnosticar o erro de forma mais rápida e precisa?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Ler sempre do meio para as bordas em ordem alfabética.",
+          "isCorrect": false,
+          "explanation": "A ordem temporal e estrutural do traceback não possui relação com ordem alfabética."
+        },
+        {
+          "letter": "B",
+          "text": "Ler de baixo para cima: a última linha informa a classe da exceção e a mensagem de erro específica, e a penúltima indica o arquivo e a linha onde ocorreu a falha.",
+          "isCorrect": true,
+          "explanation": "Correto! A última linha traz o diagnóstico conclusivo imediato (o que quebrou), permitindo entender o problema antes de inspecionar a cadeia de chamadas que o originou."
+        },
+        {
+          "letter": "C",
+          "text": "Ignorar o traceback e reiniciar o computador imediatamente.",
+          "isCorrect": false,
+          "explanation": "O traceback é o relatório detalhado que aponta a linha e a causa exata do problema."
+        },
+        {
+          "letter": "D",
+          "text": "Ler apenas a primeira linha, pois o Python sempre coloca a solução do erro no cabeçalho.",
+          "isCorrect": false,
+          "explanation": "A primeira linha traz apenas o cabeçalho 'Traceback (most recent call last):', sem nenhuma informação diagnóstica."
+        }
+      ]
+    },
+    {
+      "id": "q02",
+      "question": "Qual é a diferença fundamental entre um `SyntaxError` e uma exceção em tempo de execução (*Runtime Exception*) como `TypeError` ou `ValueError`?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "O SyntaxError é detectado na análise gramatical antes de qualquer linha do código rodar; já as exceções em tempo de execução acontecem durante o fluxo normal de processamento.",
+          "isCorrect": true,
+          "explanation": "Correto! O SyntaxError impede o interpretador de compilar o bytecode, enquanto as exceções de runtime só ocorrem quando uma linha em execução atinge um estado inconsistente."
+        },
+        {
+          "letter": "B",
+          "text": "O SyntaxError só acontece no sistema operacional Windows e as exceções só acontecem no Linux.",
+          "isCorrect": false,
+          "explanation": "A linguagem Python é independente de plataforma; a gramática e o motor de execução são idênticos em todos os sistemas operacionais."
+        },
+        {
+          "letter": "C",
+          "text": "SyntaxError pode ser tratado normalmente com blocos try/except em tempo de execução.",
+          "isCorrect": false,
+          "explanation": "Um SyntaxError no próprio módulo impede a compilação do script inteiro, não podendo ser capturado pelo try/except local."
+        },
+        {
+          "letter": "D",
+          "text": "Não há diferença; são nomes alternativos para a mesma situação no interpretador.",
+          "isCorrect": false,
+          "explanation": "Representam etapas completamente distintas do ciclo de vida da execução de programas em Python."
+        }
+      ]
+    },
+    {
+      "id": "q03",
+      "question": "Em qual das seguintes situações a linguagem Python levantará a exceção canônica `IndexError`?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Ao tentar converter o texto '123' em número inteiro usando int('123').",
+          "isCorrect": false,
+          "explanation": "Essa conversão é perfeitamente válida e retorna o número inteiro 123 sem nenhum erro."
+        },
+        {
+          "letter": "B",
+          "text": "Ao tentar acessar uma posição fora dos limites de uma sequência (ex.: acessar `lista[len(lista)]` ou `lista[5]` em uma lista com apenas 3 elementos).",
+          "isCorrect": true,
+          "explanation": "Correto! Se uma lista possui tamanho N, os índices válidos vão de 0 a N - 1. Acessar N ou superior ultrapassa a fronteira da sequência e levanta IndexError."
+        },
+        {
+          "letter": "C",
+          "text": "Ao dividir qualquer número pelo valor 0.",
+          "isCorrect": false,
+          "explanation": "Divisão por zero levanta ZeroDivisionError, não IndexError."
+        },
+        {
+          "letter": "D",
+          "text": "Ao tentar abrir um arquivo inexistente no disco.",
+          "isCorrect": false,
+          "explanation": "Arquivo inexistente levanta FileNotFoundError."
+        }
+      ]
+    },
+    {
+      "id": "q04",
+      "question": "Por que o uso de blocos `except:` desprovidos de classe de exceção específica (*bare except*) é considerado uma das piores práticas de programação em Python?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Porque o interpretador desliga o monitor do computador imediatamente.",
+          "isCorrect": false,
+          "explanation": "Não há impacto no hardware físico do computador."
+        },
+        {
+          "letter": "B",
+          "text": "Porque ele intercepta indiscriminadamente todas as exceções, inclusive sinais vitais do sistema (como `KeyboardInterrupt` no Ctrl+C) e mascara erros de digitação (como `NameError`), tornando o sistema impossível de depurar.",
+          "isCorrect": true,
+          "explanation": "Correto! O except sem tipo silencia bugs reais no código e impede que o desenvolvedor interrompa o programa pelo terminal."
+        },
+        {
+          "letter": "C",
+          "text": "Porque o Python exige que todo bloco except tenha pelo menos 50 linhas de comentários explicativos.",
+          "isCorrect": false,
+          "explanation": "Não há exigência arbitrária de quantidade de comentários no código."
+        },
+        {
+          "letter": "D",
+          "text": "Porque ele torna o código 100% imune a qualquer ataque cibernético na internet.",
+          "isCorrect": false,
+          "explanation": "Ele apenas oculta falhas lógicas e torna o código frágil e perigoso."
+        }
+      ]
+    },
+    {
+      "id": "q05",
+      "question": "Em uma estrutura defensiva completa `try ... except ... else ... finally`, sob quais circunstâncias o bloco `else` é executado?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Sempre que ocorrer pelo menos uma exceção no bloco try.",
+          "isCorrect": false,
+          "explanation": "Quando ocorre exceção, quem é acionado é o bloco `except`, nunca o `else`."
+        },
+        {
+          "letter": "B",
+          "text": "Exclusivamente quando o bloco `try` for concluído com sucesso absoluto, sem o disparo de nenhuma exceção.",
+          "isCorrect": true,
+          "explanation": "Correto! O bloco `else` isola o código que depende do sucesso da operação anterior, mantendo o bloco `try` restrito apenas às instruções arriscadas."
+        },
+        {
+          "letter": "C",
+          "text": "Apenas se o computador estiver desconectado da internet.",
+          "isCorrect": false,
+          "explanation": "O fluxo de controle de exceções independe de rede."
+        },
+        {
+          "letter": "D",
+          "text": "O bloco else só é executado após o bloco finally terminar.",
+          "isCorrect": false,
+          "explanation": "O `finally` é sempre o último a rodar; o `else` executa antes dele se não houver erros."
+        }
+      ]
+    },
+    {
+      "id": "q06",
+      "question": "Qual é a garantia fundamental oferecida pelo bloco `finally` dentro da arquitetura de exceções do Python?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Garante que o programa nunca consumirá mais de 100 MB de memória RAM.",
+          "isCorrect": false,
+          "explanation": "O bloco finally não controla o consumo de memória do sistema operacional."
+        },
+        {
+          "letter": "B",
+          "text": "Ele é executado incondicionalmente ao final da estrutura, independentemente de ter ocorrido erro capturado, erro não capturado ou instruções antecipadas de retorno (`return`), sendo ideal para liberação de arquivos e conexões.",
+          "isCorrect": true,
+          "explanation": "Correto! O `finally` é a salvaguarda de encerramento determinístico de recursos essenciais (como `arquivo.close()` ou `conexao.close()`)."
+        },
+        {
+          "letter": "C",
+          "text": "Impede que qualquer exceção aconteça dentro do bloco try.",
+          "isCorrect": false,
+          "explanation": "O `finally` não previne exceções; ele garante execução posterior de limpeza."
+        },
+        {
+          "letter": "D",
+          "text": "O bloco finally é ignorado caso a função utilize docstrings.",
+          "isCorrect": false,
+          "explanation": "Docstrings não alteram o fluxo sintático do interpretador."
+        }
+      ]
+    },
+    {
+      "id": "q07",
+      "question": "Para que serve a instrução `raise` em Python?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Para aumentar a prioridade de um processo na fila do processador da máquina.",
+          "isCorrect": false,
+          "explanation": "`raise` em Python significa levantar/disparar uma exceção, não prioridade de SO."
+        },
+        {
+          "letter": "B",
+          "text": "Para disparar deliberadamente uma exceção quando uma regra de negócio ou invariante do sistema for violada (ex.: `raise ValueError('Saldo insuficiente')`).",
+          "isCorrect": true,
+          "explanation": "Correto! O `raise` permite que o desenvolvedor interrompa operações inválidas com mensagens descritivas antes que dados inconsistentes sejam processados."
+        },
+        {
+          "letter": "C",
+          "text": "Para calcular potências matemáticas de números inteiros grandes.",
+          "isCorrect": false,
+          "explanation": "Potenciação é feita com o operador `**` ou a função `pow()`."
+        },
+        {
+          "letter": "D",
+          "text": "Para renomear arquivos no disco sem abri-los.",
+          "isCorrect": false,
+          "explanation": "Renomeação de arquivos é feita com `os.rename()`."
+        }
+      ]
+    },
+    {
+      "id": "q08",
+      "question": "Qual é a sintaxe idiomática em compreensão de lista (*list comprehension*) para obter o quadrado de cada número par contido na lista `valores = [1, 2, 3, 4, 5, 6]`?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "`[x**2 for x in valores if x % 2 == 0]`",
+          "isCorrect": true,
+          "explanation": "Correto! A sintaxe `[expressao for item in iteravel if filtro]` seleciona apenas os pares (`x % 2 == 0`) e mapeia cada um para seu quadrado (`x**2`)."
+        },
+        {
+          "letter": "B",
+          "text": "`{x: x**2 for x in valores}`",
+          "isCorrect": false,
+          "explanation": "Essa sintaxe gera um dicionário com todos os elementos, não uma lista filtrada de números pares."
+        },
+        {
+          "letter": "C",
+          "text": "`for x in valores: if x % 2 == 0: x**2`",
+          "isCorrect": false,
+          "explanation": "Essa é uma tentativa incorreta de misturar comandos com compreensão de listas e gera SyntaxError."
+        },
+        {
+          "letter": "D",
+          "text": "`[valores.append(x**2)]`",
+          "isCorrect": false,
+          "explanation": "Invocar append dentro de colchetes altera a lista original de forma confusa e retorna uma lista contendo `[None]`."
+        }
+      ]
+    },
+    {
+      "id": "q09",
+      "question": "Qual é a principal vantagem de substituir colchetes por parênteses ao criar uma expressão geradora `(x**2 for x in colecao)` em vez de uma compreensão de lista `[x**2 for x in colecao]`?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "A expressão geradora produz valores sob demanda (*lazy evaluation*) com complexidade de espaço O(1), economizando gigabytes de memória RAM em coleções gigantescas.",
+          "isCorrect": true,
+          "explanation": "Correto! Geradores não alocam a coleção inteira de uma vez; cada item é calculado e entregue sob demanda no momento da iteração."
+        },
+        {
+          "letter": "B",
+          "text": "Expressões geradoras gravam os dados automaticamente em um banco SQLite.",
+          "isCorrect": false,
+          "explanation": "Geradores são estruturas em memória Python e não realizam persistência automática em banco."
+        },
+        {
+          "letter": "C",
+          "text": "Parênteses impedem que o código rode em versões de 64 bits do Python.",
+          "isCorrect": false,
+          "explanation": "Expressões geradoras funcionam universalmente em todas as arquiteturas."
+        },
+        {
+          "letter": "D",
+          "text": "A lista com colchetes é apagada pelo coletor de lixo assim que a função termina.",
+          "isCorrect": false,
+          "explanation": "Qualquer objeto referenciado permanece na memória até que suas referências sejam descartadas."
+        }
+      ]
+    },
+    {
+      "id": "q10",
+      "question": "De acordo com o guia oficial de estilo PEP 8, quais são as convenções canônicas de nomenclatura para funções/variáveis e classes, respectivamente?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Funções/variáveis em camelCase (ex: `calculaMedia`) e classes em snake_case (ex: `conta_especial`).",
+          "isCorrect": false,
+          "explanation": "Essa convenção é típica de linguagens como Java ou JavaScript, mas não segue a PEP 8 do Python."
+        },
+        {
+          "letter": "B",
+          "text": "Funções e variáveis em `snake_case` (letras minúsculas separadas por underline, ex.: `calcula_media`) e classes em `PascalCase` / `CapWords` (iniciais maiúsculas sem separador, ex.: `ContaEspecial`).",
+          "isCorrect": true,
+          "explanation": "Correto! Essa é a regra clássica da PEP 8 adotada por toda a comunidade Python oficial."
+        },
+        {
+          "letter": "C",
+          "text": "Tudo deve ser escrito obrigatoriamente em letras MAIÚSCULAS.",
+          "isCorrect": false,
+          "explanation": "Letras maiúsculas são reservadas exclusivamente para constantes imutáveis."
+        },
+        {
+          "letter": "D",
+          "text": "A PEP 8 proíbe o uso de classes e recomenda apenas scripts procedurais sem funções.",
+          "isCorrect": false,
+          "explanation": "A PEP 8 apoia plenamente programação estruturada, funcional e orientada a objetos."
+        }
+      ]
+    }
+  ]
+}

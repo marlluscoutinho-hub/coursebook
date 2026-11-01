@@ -1,0 +1,76 @@
+{
+  "exercises": [
+    {
+      "id": "ex-12-1",
+      "code": "EXERCÍCIO 12.1",
+      "reference": "Nilo Menezes, Capítulo 12, p. 316",
+      "title": "Diagnóstico de Erro e Prevenção de ZeroDivisionError",
+      "prompt": "Escreva uma função chamada `divide(dividendo, divisor)` que retorne o resultado da divisão. Utilize um bloco defensivo `try/except ZeroDivisionError` para capturar divisões por zero, imprimindo uma mensagem de aviso e retornando `None` quando o divisor for igual a 0.",
+      "placeholder": "def divide(dividendo, divisor):\n    # Trate a divisão por zero com try/except\n    pass\n",
+      "solution": "def divide(dividendo, divisor):\n    try:\n        return dividendo / divisor\n    except ZeroDivisionError:\n        print(\"Aviso: Não é possível dividir por zero!\")\n        return None\n\nprint(divide(10, 2))  # 5.0\nprint(divide(10, 0))  # None (com mensagem de aviso)"
+    },
+    {
+      "id": "ex-12-2",
+      "code": "EXERCÍCIO 12.2",
+      "reference": "Nilo Menezes, Capítulo 12, p. 317",
+      "title": "Validador de Entrada com Loop Infinito e try/except ValueError",
+      "prompt": "Escreva uma função chamada `le_inteiro(mensagem)` que utilize um loop `while True` e um bloco `try/except ValueError` para insistir até que o usuário digite um número inteiro válido, retornando o valor convertido.",
+      "placeholder": "def le_inteiro(mensagem):\n    # Insista até o usuário digitar um inteiro válido\n    pass\n",
+      "solution": "def le_inteiro(mensagem):\n    while True:\n        try:\n            return int(input(mensagem))\n        except ValueError:\n            print(\"Entrada inválida! Digite apenas números inteiros.\")\n\n# Exemplo de uso simulado:\n# idade = le_inteiro(\"Digite sua idade: \")"
+    },
+    {
+      "id": "ex-12-3",
+      "code": "EXERCÍCIO 12.3",
+      "reference": "Nilo Menezes, Capítulo 12 e Apêndice A, p. 319",
+      "title": "Acesso Defensivo a Dicionários e Tratamento de KeyError",
+      "prompt": "Crie uma função `obter_preco(catalogo, produto)` que recebe um dicionário de preços e o nome de um produto. Trate a exceção `KeyError` para que, se o produto não estiver no catálogo, a função imprima 'Produto não cadastrado' e retorne o valor padrão de contingência `0.0`.",
+      "placeholder": "def obter_preco(catalogo, produto):\n    # Capture KeyError e retorne valor padrão\n    pass\n",
+      "solution": "def obter_preco(catalogo, produto):\n    try:\n        return catalogo[produto]\n    except KeyError:\n        print(f\"Produto '{produto}' não cadastrado no catálogo.\")\n        return 0.0\n\ntabela = {\"arroz\": 25.50, \"feijao\": 8.90, \"azeite\": 38.00}\nprint(obter_preco(tabela, \"arroz\"))    # 25.50\nprint(obter_preco(tabela, \"macarrao\")) # 0.0"
+    },
+    {
+      "id": "ex-12-4",
+      "code": "EXERCÍCIO 12.4",
+      "reference": "Nilo Menezes, Capítulo 12, p. 317",
+      "title": "Disparo Deliberado de Exceção de Negócio com raise",
+      "prompt": "Escreva uma função `valida_nota(nota)` que receba uma nota escolar. Se a nota não for um número entre `0.0` e `10.0` (inclusive), a função deve disparar deliberadamente um erro com a instrução `raise ValueError(f'Nota {nota} inválida! Deve estar entre 0 e 10.')`. Caso seja válida, retorne a nota.",
+      "placeholder": "def valida_nota(nota):\n    # Valide o intervalo da nota disparando ValueError\n    pass\n",
+      "solution": "def valida_nota(nota):\n    if nota < 0.0 or nota > 10.0:\n        raise ValueError(f\"Nota {nota} inválida! Deve estar entre 0.0 e 10.0.\")\n    return nota\n\ntry:\n    valida_nota(8.5)   # Válido\n    valida_nota(11.0)  # Lançará exceção\nexcept ValueError as erro:\n    print(f\"Validação falhou: {erro}\")"
+    },
+    {
+      "id": "ex-12-5",
+      "code": "EXERCÍCIO 12.5",
+      "reference": "Nilo Menezes, Capítulo 12, p. 318",
+      "title": "List Comprehension: Conversão e Filtragem de Temperaturas",
+      "prompt": "Dada a lista de temperaturas em graus Celsius `temperaturas = [-5, 0, 15, 22, 30, -2, 40]`, escreva uma única compreensão de lista (*list comprehension*) que filtre apenas as temperaturas estritamente positivas ($T > 0$) e as converta para Fahrenheit pela fórmula $F = \frac{9}{5}C + 32$.",
+      "placeholder": "temperaturas = [-5, 0, 15, 22, 30, -2, 40]\n# Crie a list comprehension de conversão\n",
+      "solution": "temperaturas = [-5, 0, 15, 22, 30, -2, 40]\n\nfahrenheit_positivas = [\n    round((9 / 5) * c + 32, 1)\n    for c in temperaturas\n    if c > 0\n]\n\nprint(fahrenheit_positivas)  # [59.0, 71.6, 86.0, 104.0]"
+    },
+    {
+      "id": "ex-12-6",
+      "code": "EXERCÍCIO 12.6",
+      "reference": "Nilo Menezes, Capítulo 12, p. 319",
+      "title": "List Comprehension: Normalização Textual e Filtro de Comprimento",
+      "prompt": "Dada a lista de palavras `frutas = ['uva', 'morango', 'pera', 'abacaxi', 'kiwi', 'melancia']`, crie uma compreensão de lista que selecione apenas as frutas com mais de 4 caracteres e as retorne com a primeira letra maiúscula (método `.capitalize()`).",
+      "placeholder": "frutas = ['uva', 'morango', 'pera', 'abacaxi', 'kiwi', 'melancia']\n# Crie a list comprehension filtrando por len() e usando capitalize()\n",
+      "solution": "frutas = ['uva', 'morango', 'pera', 'abacaxi', 'kiwi', 'melancia']\n\nfrutas_selecionadas = [\n    f.capitalize()\n    for f in frutas\n    if len(f) > 4\n]\n\nprint(frutas_selecionadas)  # ['Morango', 'Abacaxi', 'Melancia']"
+    },
+    {
+      "id": "ex-12-7",
+      "code": "EXERCÍCIO 12.7",
+      "reference": "Nilo Menezes, Capítulo 12, p. 320",
+      "title": "Expressão Geradora com Avaliação Preguiçosa (Lazy)",
+      "prompt": "Escreva uma expressão geradora (com parênteses `(...)`) que gere o quadrado dos números ímpares entre 1 e 100. Calcule a soma de todos esses valores usando a função embutida `sum()` diretamente sobre o gerador, sem instanciar listas na memória RAM.",
+      "placeholder": "# Crie a generator expression e passe-a para sum()\n",
+      "solution": "gerador_impares = (x ** 2 for x in range(1, 101) if x % 2 != 0)\ntotal_soma = sum(gerador_impares)\n\nprint(f\"Soma dos quadrados dos ímpares de 1 a 100: {total_soma}\")\n# Processado sob demanda em O(1) de memória!"
+    },
+    {
+      "id": "ex-12-8",
+      "code": "EXERCÍCIO 12.8",
+      "reference": "Nilo Menezes, Capítulo 12 e Apêndice A, p. 322",
+      "title": "Refatoração de Código Segundo a PEP 8",
+      "prompt": "Refatore o trecho de código abaixo para atender rigorosamente às normas de nomenclatura, espaçamento e boas práticas da PEP 8:\n\n`class contaBancaria:`\n`  def CalculaSaldo(self,saldoAtual,deposito):`\n`    return saldoAtual+deposito`",
+      "placeholder": "# Reescreva a classe e método conforme a PEP 8\n",
+      "solution": "class ContaBancaria:\n    \"\"\"Classe que modela operações de conta segundo a PEP 8.\"\"\"\n\n    def calcula_saldo(self, saldo_atual, deposito):\n        \"\"\"Calcula o novo saldo aplicando espaçamento de operadores.\"\"\"\n        return saldo_atual + deposito\n\n# Modificações PEP 8 aplicadas:\n# 1. Nome da classe em PascalCase: ContaBancaria\n# 2. Indentação com 4 espaços por nível\n# 3. Nome do método e parâmetros em snake_case: calcula_saldo, saldo_atual\n# 4. Espaço ao redor do operador binário de adição: saldo_atual + deposito"
+    }
+  ]
+}

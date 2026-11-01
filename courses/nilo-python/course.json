@@ -21,7 +21,8 @@
     "08-funcoes-e-recursao",
     "09-arquivos-e-diretorios",
     "10-classes-e-objetos",
-    "11-banco-de-dados-sqlite"
+    "11-banco-de-dados-sqlite",
+    "12-excecoes-e-proximos-passos"
   ],
-  "status": "in_development"
+  "status": "completed"
 }

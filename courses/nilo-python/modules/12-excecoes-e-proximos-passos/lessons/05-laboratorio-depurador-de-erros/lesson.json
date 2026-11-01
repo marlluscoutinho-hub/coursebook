@@ -1,0 +1,27 @@
+{
+  "id": "05-laboratorio-depurador-de-erros",
+  "title": "Laboratório Interativo: Depurador de Tracebacks, Sandbox de Exceções e List Comprehensions",
+  "kind": "lab",
+  "pages": "Prática Integrada (pp. 314–322)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "lab",
+      "id": "traceback-debugger",
+      "title": "Laboratório Interativo: Depurador de Tracebacks e Exceções",
+      "source": "catalog",
+      "mobile": "full"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

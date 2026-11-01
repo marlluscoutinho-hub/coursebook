@@ -1,0 +1,20 @@
+{
+  "id": "01-anatomia-de-tracebacks",
+  "title": "Anatomia de um Traceback: Leitura da Pilha de Chamadas e Depuração",
+  "kind": "standard",
+  "pages": "Capítulo 12 e Apêndice A (pp. 314–317)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

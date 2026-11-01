@@ -1,0 +1,20 @@
+{
+  "id": "02-catalogo-de-erros-apendice-a",
+  "title": "O Catálogo Canônico de Erros de Iniciantes (Apêndice A)",
+  "kind": "standard",
+  "pages": "Apêndice A (pp. 317–322)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

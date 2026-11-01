@@ -1,0 +1,20 @@
+{
+  "id": "04-list-comprehensions-e-pep8",
+  "title": "Idiomas Pythonicos: Compreensão de Listas, Geradores e o Guia PEP 8",
+  "kind": "standard",
+  "pages": "Capítulo 12 (pp. 317–322)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}
