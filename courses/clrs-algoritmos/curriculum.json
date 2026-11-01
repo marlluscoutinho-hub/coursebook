@@ -1,0 +1,365 @@
+{
+  "course": {
+    "id": "clrs-algoritmos",
+    "code": "CURSO #01",
+    "title": "Algoritmos: Teoria e Prática",
+    "edition": "3ª Edição Integral (Tradução da 3ª Edição Norte-Americana — MIT Press / Campus Elsevier)",
+    "authors": "Thomas H. Cormen • Charles E. Leiserson • Ronald L. Rivest • Clifford Stein",
+    "totalPages": 1042,
+    "totalModules": 16,
+    "totalChapters": "35 Capítulos + 4 Apêndices (A–D)",
+    "summary": "Edição interativa integral da obra de referência mundial em Ciência da Computação. Cada módulo preserva rigorosamente as demonstrações por invariante de laço e indução, os pseudocódigos originais dos autores, as análises de pior caso e caso esperado no modelo RAM e todos os problemas clássicos do livro."
+  },
+  "tome": {
+    "id": "clrs-algoritmos",
+    "code": "CURSO #01",
+    "isbn": "978-85-352-3699-6",
+    "title": "Algoritmos: Teoria e Prática",
+    "edition": "3ª Edição Integral (Tradução da 3ª Edição Norte-Americana — MIT Press / Campus Elsevier)",
+    "authors": "Thomas H. Cormen • Charles E. Leiserson • Ronald L. Rivest • Clifford Stein",
+    "totalPages": 1042,
+    "totalModules": 16,
+    "totalChapters": "35 Capítulos + 4 Apêndices (A–D)",
+    "summary": "Edição interativa integral da obra de referência mundial em Ciência da Computação. Cada módulo preserva rigorosamente as demonstrações por invariante de laço e indução, os pseudocódigos originais dos autores, as análises de pior caso e caso esperado no modelo RAM e todos os problemas clássicos do livro."
+  },
+  "blocks": [
+    {
+      "id": "bloco-1",
+      "code": "BLOCO I",
+      "title": "Fundamentos do Projeto e Análise de Algoritmos",
+      "subtitle": "Parte I (Capítulos 1 a 5) + Apêndices A e C"
+    },
+    {
+      "id": "bloco-2",
+      "code": "BLOCO II",
+      "title": "Ordenação e Estatísticas de Ordem",
+      "subtitle": "Parte II (Capítulos 6 a 9)"
+    },
+    {
+      "id": "bloco-3",
+      "code": "BLOCO III",
+      "title": "Estruturas de Dados Fundamentais e Balanceadas",
+      "subtitle": "Parte III (Capítulos 10 a 14)"
+    },
+    {
+      "id": "bloco-4",
+      "code": "BLOCO IV",
+      "title": "Técnicas Avançadas de Projeto e Estruturas Avançadas",
+      "subtitle": "Partes IV e V (Capítulos 15 a 21)"
+    },
+    {
+      "id": "bloco-5",
+      "code": "BLOCO V",
+      "title": "Algoritmos em Grafos e Redes de Fluxo",
+      "subtitle": "Parte VI (Capítulos 22 a 26) + Apêndice B"
+    },
+    {
+      "id": "bloco-6",
+      "code": "BLOCO VI",
+      "title": "Tópicos Selecionados, Modelos Paralelos e Intratabilidade",
+      "subtitle": "Parte VII (Capítulos 27 a 35) + Apêndice D"
+    }
+  ],
+  "modules": [
+    {
+      "id": 1,
+      "code": "MÓDULO 01",
+      "blockId": "bloco-1",
+      "chapters": "Capítulos 1 e 2 (pp. 15–46)",
+      "title": "O Papel dos Algoritmos e a Partida no Projeto e Análise",
+      "unlocked": true,
+      "estimatedTime": "3h 30min",
+      "objective": "Compreender o conceito formal de algoritmo, problema computacional e instância; reconhecer algoritmos como uma tecnologia essencial; dominar a especificação em pseudocódigo CLRS, provar a corretude usando invariantes de laço (inicialização, manutenção e término), analisar tempos de execução no modelo RAM e contrastar a abordagem incremental (INSERTION-SORT) com o paradigma de divisão e conquista (MERGE-SORT).",
+      "concepts": [
+        "Algoritmos e Instâncias",
+        "Algoritmos como Tecnologia",
+        "INSERTION-SORT",
+        "Invariantes de Laço",
+        "Modelo RAM",
+        "Análise de Pior e Melhor Caso",
+        "Ordem de Crescimento Θ",
+        "Divisão e Conquista",
+        "MERGE com Sentinelas ∞",
+        "MERGE-SORT & Árvore de Recursão"
+      ]
+    },
+    {
+      "id": 2,
+      "code": "MÓDULO 02",
+      "blockId": "bloco-1",
+      "chapters": "Capítulo 3 + Apêndice A (pp. 47–65, 920–930)",
+      "title": "Crescimento de Funções, Notação Assintótica e Somatórios",
+      "unlocked": false,
+      "estimatedTime": "4h 00min",
+      "objective": "Dominar o formalismo matemático da eficiência assintótica (Θ, O, Ω, o, ω), manipular propriedades algébricas das funções que governam a complexidade computacional e aplicar técnicas exatas e de limitação para resolver somatórios que emergem da análise de laços iterativos.",
+      "concepts": [
+        "Notações Θ, O, Ω, o, ω",
+        "Teorema 3.1",
+        "Pisos, Tetos e Logaritmos",
+        "Fatoriais (Stirling) e lg* n",
+        "Fibonacci e Proporção Áurea",
+        "Séries Aritméticas, Geométricas e Harmônicas",
+        "Somatórios Telescópicos",
+        "Limitação por Integrais"
+      ]
+    },
+    {
+      "id": 3,
+      "code": "MÓDULO 03",
+      "blockId": "bloco-1",
+      "chapters": "Capítulo 4 (pp. 66–105)",
+      "title": "Divisão e Conquista Avançada e Resolução de Recorrências",
+      "unlocked": false,
+      "estimatedTime": "4h 30min",
+      "objective": "Projetar algoritmos não triviais sob o paradigma de divisão e conquista (reduzindo a complexidade assintótica em problemas de arranjos e matrizes) e dominar os três métodos fundamentais para resolver recorrências algorítmicas, incluindo as condições técnicas e a demonstração do Teorema Mestre.",
+      "concepts": [
+        "Subarranjo Máximo Θ(n lg n)",
+        "Algoritmo de Strassen Θ(n^lg 7)",
+        "Método de Substituição",
+        "Método da Árvore de Recursão",
+        "Método Mestre (3 Casos)",
+        "Condição de Regularidade",
+        "Prova do Teorema Mestre"
+      ]
+    },
+    {
+      "id": 4,
+      "code": "MÓDULO 04",
+      "blockId": "bloco-1",
+      "chapters": "Capítulo 5 + Apêndice C (pp. 106–130, 950–977)",
+      "title": "Análise Probabilística e Algoritmos Aleatorizados",
+      "unlocked": false,
+      "estimatedTime": "4h 15min",
+      "objective": "Distinguir análise probabilística de algoritmos aleatorizados, dominar a técnica de variáveis aleatórias indicadoras (Lema 5.1) para simplificar o cálculo de valores esperados e aplicar ferramentas de contagem e probabilidade na análise rigorosa de algoritmos.",
+      "concepts": [
+        "Problema da Contratação",
+        "Variáveis Aleatórias Indicadoras",
+        "RANDOMIZE-IN-PLACE",
+        "Paradoxo do Aniversário",
+        "Bolas e Caixas & Sequências",
+        "Contratação On-line (1/e)",
+        "Distribuições Geométrica e Binomial"
+      ]
+    },
+    {
+      "id": 5,
+      "code": "MÓDULO 05",
+      "blockId": "bloco-2",
+      "chapters": "Capítulos 6 e 7 (pp. 131–165)",
+      "title": "Ordenação no Lugar e Filas de Prioridades: Heapsort e Quicksort",
+      "unlocked": false,
+      "estimatedTime": "4h 30min",
+      "objective": "Compreender a estrutura de dados heap binário tanto para ordenação ótima no lugar (HEAPSORT) quanto para implementação de filas de prioridades dinâmicas, e dominar o algoritmo Quicksort (determinístico e aleatorizado) e sua análise de caso esperado Θ(n lg n).",
+      "concepts": [
+        "MAX-HEAPIFY O(lg n)",
+        "BUILD-MAX-HEAP O(n)",
+        "HEAPSORT O(n lg n)",
+        "Filas de Prioridades",
+        "QUICKSORT & PARTITION",
+        "RANDOMIZED-QUICKSORT",
+        "Análise do Caso Esperado"
+      ]
+    },
+    {
+      "id": 6,
+      "code": "MÓDULO 06",
+      "blockId": "bloco-2",
+      "chapters": "Capítulos 8 e 9 (pp. 166–195)",
+      "title": "Limites Inferiores, Ordenação em Tempo Linear e Estatísticas de Ordem",
+      "unlocked": false,
+      "estimatedTime": "4h 00min",
+      "objective": "Demonstrar o limite inferior Ω(n lg n) no modelo de árvore de decisão, superar essa barreira usando ordenação por Contagem, Digital e Balde, e selecionar qualquer estatística de ordem (como a mediana) em tempo linear O(n) esperado e no pior caso.",
+      "concepts": [
+        "Árvores de Decisão Ω(n lg n)",
+        "COUNTING-SORT & Estabilidade",
+        "RADIX-SORT",
+        "BUCKET-SORT",
+        "Mínimo e Máximo Simultâneos",
+        "RANDOMIZED-SELECT",
+        "SELECT (Mediana das Medianas)"
+      ]
+    },
+    {
+      "id": 7,
+      "code": "MÓDULO 07",
+      "blockId": "bloco-3",
+      "chapters": "Capítulos 10 e 11 (pp. 196–243)",
+      "title": "Estruturas de Dados Elementares e Tabelas de Espalhamento",
+      "unlocked": false,
+      "estimatedTime": "4h 30min",
+      "objective": "Projetar e manipular representações de conjuntos dinâmicos (pilhas, filas, listas ligadas com sentinelas, árvores enraizadas e ponteiros em arranjos) e dominar tabelas hash (encadeamento, funções hash universais, endereçamento aberto e hashing perfeito).",
+      "concepts": [
+        "Pilhas, Filas e Listas com Sentinelas",
+        "Ponteiros em Arranjos e Lista Livre",
+        "Filho Esquerdo–Irmão Direito",
+        "Hashing com Encadeamento",
+        "Hashing Universal",
+        "Endereçamento Aberto",
+        "Hashing Perfeito O(1)"
+      ]
+    },
+    {
+      "id": 8,
+      "code": "MÓDULO 08",
+      "blockId": "bloco-3",
+      "chapters": "Capítulos 12, 13 e 14 (pp. 244–299)",
+      "title": "Árvores de Busca Binária, Árvores Vermelho-Preto e Aumento de Estruturas",
+      "unlocked": false,
+      "estimatedTime": "5h 00min",
+      "objective": "Dominar operações em Árvores de Busca Binária (ABB), garantir desempenho O(lg n) no pior caso por meio das propriedades e rotações das Árvores Vermelho-Preto, e aplicar o Teorema 14.1 para criar árvores de estatísticas de ordem e árvores de intervalos.",
+      "concepts": [
+        "Consultas, TRANSPLANT e TREE-DELETE",
+        "ABB Construída Aleatoriamente",
+        "5 Propriedades Vermelho-Preto",
+        "LEFT-ROTATE e RIGHT-ROTATE",
+        "RB-INSERT e RB-DELETE",
+        "OS-SELECT e OS-RANK",
+        "Árvores de Intervalos"
+      ]
+    },
+    {
+      "id": 9,
+      "code": "MÓDULO 09",
+      "blockId": "bloco-4",
+      "chapters": "Capítulos 15, 16 e 17 (pp. 300–397)",
+      "title": "Programação Dinâmica, Algoritmos Gulosos e Análise Amortizada",
+      "unlocked": false,
+      "estimatedTime": "5h 30min",
+      "objective": "Resolver problemas de otimização identificando subestrutura ótima e subproblemas superpostos (Programação Dinâmica), discernir quando a propriedade de escolha gulosa e matroides garantem otimalidade, e dominar os três métodos de análise amortizada.",
+      "concepts": [
+        "Corte de Hastes e Cadeias de Matrizes",
+        "LCS e Árvores de Busca Ótimas",
+        "Seleção de Atividades e Huffman",
+        "Teoria dos Matroides",
+        "Análise Agregada, Contabilidade e Potencial",
+        "Tabelas Dinâmicas (Expansão e Contração)"
+      ]
+    },
+    {
+      "id": 10,
+      "code": "MÓDULO 10",
+      "blockId": "bloco-4",
+      "chapters": "Capítulos 18, 19, 20 e 21 (pp. 398–482)",
+      "title": "Estruturas Avançadas: Árvores B, Heaps de Fibonacci, vEB e Conjuntos Disjuntos",
+      "unlocked": false,
+      "estimatedTime": "5h 30min",
+      "objective": "Projetar e analisar estruturas especializadas para memória secundária (Árvores B), filas de prioridades intercaláveis com custos amortizados constantes (Heaps de Fibonacci), buscas em O(lg lg u) (van Emde Boas) e Conjuntos Disjuntos em O(m α(n)).",
+      "concepts": [
+        "Árvores B e DISK-READ/WRITE",
+        "Heaps de Fibonacci e CASCADING-CUT",
+        "Árvores proto-vEB e vEB O(lg lg u)",
+        "Florestas de Conjuntos Disjuntos",
+        "União pelo Posto e Compressão de Caminho",
+        "Função Inversa de Ackermann α(n)"
+      ]
+    },
+    {
+      "id": 11,
+      "code": "MÓDULO 11",
+      "blockId": "bloco-5",
+      "chapters": "Capítulos 22 e 23 + Apêndice B (pp. 483–525, 931–949)",
+      "title": "Algoritmos Elementares em Grafos (BFS, DFS, SCC) e Árvores Geradoras Mínimas",
+      "unlocked": false,
+      "estimatedTime": "4h 45min",
+      "objective": "Dominar o formalismo matemático de grafos e árvores (Apêndice B), explorar grafos via Busca em Largura (BFS) e Busca em Profundidade (DFS), realizar Ordenação Topológica, decompor Componentes Fortemente Conexas e construir MSTs com Kruskal e Prim.",
+      "concepts": [
+        "Listas e Matrizes de Adjacências",
+        "Busca em Largura (BFS)",
+        "Busca em Profundidade (DFS) e Parênteses",
+        "Ordenação Topológica",
+        "Componentes Fortemente Conexas",
+        "Arestas Seguras, MST-KRUSKAL e MST-PRIM"
+      ]
+    },
+    {
+      "id": 12,
+      "code": "MÓDULO 12",
+      "blockId": "bloco-5",
+      "chapters": "Capítulos 24, 25 e 26 (pp. 526–623)",
+      "title": "Caminhos Mínimos (Fonte Única e Todos os Pares) e Redes de Fluxo Máximo",
+      "unlocked": false,
+      "estimatedTime": "5h 30min",
+      "objective": "Dominar a teoria do relaxamento de arestas (Bellman-Ford, DAGs, Dijkstra, Restrições de Diferença, Floyd-Warshall e Johnson) e resolver problemas de Fluxo Máximo e corte mínimo via Ford-Fulkerson, Edmonds-Karp e algoritmos Push-Relabel.",
+      "concepts": [
+        "Relaxamento, Bellman-Ford e Dijkstra",
+        "Restrições de Diferença",
+        "Floyd-Warshall e Fecho Transitivo",
+        "Algoritmo de Johnson",
+        "Teorema Fluxo Máximo–Corte Mínimo",
+        "Ford-Fulkerson, Push-Relabel e Relabel-to-Front"
+      ]
+    },
+    {
+      "id": 13,
+      "code": "MÓDULO 13",
+      "blockId": "bloco-6",
+      "chapters": "Capítulos 27, 28 e 29 + Apêndice D (pp. 624–725, 978–990)",
+      "title": "Algoritmos Multithread, Operações com Matrizes e Programação Linear",
+      "unlocked": false,
+      "estimatedTime": "5h 00min",
+      "objective": "Projetar algoritmos paralelos no modelo de multithread dinâmico (trabalho T₁ e duração T∞), resolver sistemas lineares (LU/LUP), inversão de matrizes e mínimos quadrados, e formular/resolver problemas de Programação Linear via Simplex e Dualidade.",
+      "concepts": [
+        "spawn, sync, parallel, Trabalho T₁ e Duração T∞",
+        "P-MERGE-SORT",
+        "Decomposição LU e LUP",
+        "Mínimos Quadrados e Matrizes Positivas Definidas",
+        "Formas Padrão e de Folgas",
+        "Algoritmo SIMPLEX e Teorema da Dualidade"
+      ]
+    },
+    {
+      "id": 14,
+      "code": "MÓDULO 14",
+      "blockId": "bloco-6",
+      "chapters": "Capítulos 30 e 31 (pp. 726–795)",
+      "title": "Polinômios, Transformada Rápida de Fourier (FFT) e Teoria dos Números",
+      "unlocked": false,
+      "estimatedTime": "5h 00min",
+      "objective": "Multiplicar polinômios em Θ(n lg n) via Transformada Rápida de Fourier (FFT recursiva e iterativa) e dominar os algoritmos de teoria dos números que sustentam o criptossistema RSA, o teste de primalidade de Miller-Rabin e a fatoração de Pollard-Rho.",
+      "concepts": [
+        "Raízes Complexas da Unidade e DFT",
+        "RECURSIVE-FFT e ITERATIVE-FFT",
+        "EUCLID e EXTENDED-EUCLID",
+        "Teorema Chinês do Resto",
+        "Potenciação Modular e Criptografia RSA",
+        "Teste MILLER-RABIN e Fatoração POLLARD-RHO"
+      ]
+    },
+    {
+      "id": 15,
+      "code": "MÓDULO 15",
+      "blockId": "bloco-6",
+      "chapters": "Capítulos 32 e 33 (pp. 796–845)",
+      "title": "Correspondência de Cadeias e Geometria Computacional",
+      "unlocked": false,
+      "estimatedTime": "4h 30min",
+      "objective": "Localizar padrões em cadeias com eficiência ótima (Rabin-Karp, Autômatos Finitos e Knuth-Morris-Pratt) e resolver problemas geométricos no plano via produtos vetoriais, varredura de linha, envoltória convexa (Graham e Jarvis) e par mais próximo.",
+      "concepts": [
+        "Algoritmo de Rabin-Karp",
+        "Autômatos Finitos para Cadeias",
+        "Algoritmo KMP e Função de Prefixo π",
+        "Produtos Vetoriais e SEGMENTS-INTERSECT",
+        "Varredura de Linha (Sweep-Line)",
+        "GRAHAM-SCAN, Marcha de Jarvis e Par Mais Próximo"
+      ]
+    },
+    {
+      "id": 16,
+      "code": "MÓDULO 16",
+      "blockId": "bloco-6",
+      "chapters": "Capítulos 34 e 35 (pp. 846–918)",
+      "title": "Intratabilidade Computacional: Problemas NP-Completos e Algoritmos de Aproximação",
+      "unlocked": false,
+      "estimatedTime": "5h 15min",
+      "objective": "Compreender as classes P, NP e co-NP, dominar reduções em tempo polinomial (≤_P) para provar NP-completude (CIRCUIT-SAT, SAT, 3-CNF-SAT, CLIQUE, VERTEX-COVER, HAM-CYCLE, TSP, SUBSET-SUM) e projetar algoritmos de aproximação com garantias provadas.",
+      "concepts": [
+        "Classes P, NP, co-NP e Certificados",
+        "Redutibilidade Polinomial ≤_P",
+        "Teorema de Cook-Levin (CIRCUIT-SAT e 3-CNF-SAT)",
+        "Cadeia de Reduções NP-Completas",
+        "2-Aproximação para Cobertura de Vértices e TSP",
+        "GREEDY-SET-COVER e FPTAS para SUBSET-SUM"
+      ]
+    }
+  ]
+}

@@ -310,7 +310,7 @@
      Carrega course.json, curriculum.json, module.json, quiz, exercises e aulas
      ======================================================================== */
   async function loadModularCourse(courseId) {
-    if (window.COURSES_REGISTRY && window.COURSES_REGISTRY[courseId] && window.COURSES_REGISTRY[courseId].modulesContent) {
+    if (window.COURSES_REGISTRY && window.COURSES_REGISTRY[courseId] && window.COURSES_REGISTRY[courseId].__isModular) {
       return window.COURSES_REGISTRY[courseId];
     }
 
@@ -327,8 +327,9 @@
         if (currRes.ok) curriculum = await currRes.json();
       } catch (_) {}
 
+      const existingRegistry = (window.COURSES_REGISTRY && window.COURSES_REGISTRY[courseId]) || {};
       const compiledCourse = {
-        course: curriculum?.course || {
+        course: curriculum?.course || existingRegistry.course || existingRegistry.tome || {
           id: courseData.id,
           code: courseData.code || "CURSO",
           title: courseData.title,
@@ -341,8 +342,8 @@
           badge: "CANÔNICO",
           summary: courseData.description
         },
-        tome: curriculum?.tome || null,
-        blocks: curriculum?.blocks || [
+        tome: curriculum?.tome || existingRegistry.tome || null,
+        blocks: curriculum?.blocks || existingRegistry.blocks || [
           {
             id: "bloco-1",
             code: "BLOCO I",
@@ -350,8 +351,8 @@
             subtitle: ""
           }
         ],
-        modules: curriculum?.modules ? JSON.parse(JSON.stringify(curriculum.modules)) : [],
-        modulesContent: {}
+        modules: curriculum?.modules ? JSON.parse(JSON.stringify(curriculum.modules)) : (existingRegistry.modules ? JSON.parse(JSON.stringify(existingRegistry.modules)) : []),
+        modulesContent: Object.assign({}, existingRegistry.modulesContent || {})
       };
       if (!compiledCourse.tome) compiledCourse.tome = compiledCourse.course;
 
@@ -476,7 +477,7 @@
             unitContent += aprofundamentoMd + "\n\n";
           }
           if (labBlock) {
-            const mountId = `workbench-mod${modNumericId}-mount`;
+            const mountId = labBlock.mountId || `workbench-mod${modNumericId}-mount`;
             if (!unitContent.includes(mountId)) {
               unitContent += `<div id="${mountId}"></div>\n`;
             }
@@ -517,7 +518,7 @@
             if (u.lab && u.lab.id) {
               const labId = u.lab.id;
               if (window.COURSEBOOK_LABS && window.COURSEBOOK_LABS[labId] && typeof window.COURSEBOOK_LABS[labId].init === "function") {
-                const mountId = `workbench-mod${modNumericId}-mount`;
+                const mountId = u.lab.mountId || `workbench-mod${modNumericId}-mount`;
                 window.COURSEBOOK_LABS[labId].init(mountId);
               }
             }
@@ -538,6 +539,7 @@
         };
       }
 
+      compiledCourse.__isModular = true;
       window.COURSES_REGISTRY = window.COURSES_REGISTRY || {};
       window.COURSES_REGISTRY[courseId] = compiledCourse;
       return compiledCourse;
@@ -552,7 +554,7 @@
   window.selectCourse = async function (courseId, optModuleId) {
     saveState();
     state.currentCourseId = courseId;
-    if (!window.COURSES_REGISTRY || !window.COURSES_REGISTRY[courseId] || !window.COURSES_REGISTRY[courseId].modulesContent) {
+    if (!window.COURSES_REGISTRY || !window.COURSES_REGISTRY[courseId] || !window.COURSES_REGISTRY[courseId].__isModular) {
       try {
         await loadModularCourse(courseId);
       } catch (err) {
@@ -751,7 +753,7 @@
 
   window.openModuleReader = async function (moduleId, stepKey) {
     const curCourseId = state.currentCourseId || "clrs-algoritmos";
-    if (!window.COURSES_REGISTRY || !window.COURSES_REGISTRY[curCourseId] || !window.COURSES_REGISTRY[curCourseId].modulesContent) {
+    if (!window.COURSES_REGISTRY || !window.COURSES_REGISTRY[curCourseId] || !window.COURSES_REGISTRY[curCourseId].__isModular) {
       try {
         await loadModularCourse(curCourseId);
       } catch (_) {}
@@ -1862,7 +1864,7 @@
      ======================================================================== */
   document.addEventListener("DOMContentLoaded", async function () {
     const activeCourseId = (typeof localStorage !== "undefined" && localStorage.getItem("coursebook_active_course_id")) || state.currentCourseId || "clrs-algoritmos";
-    if (activeCourseId && (!window.COURSES_REGISTRY || !window.COURSES_REGISTRY[activeCourseId] || !window.COURSES_REGISTRY[activeCourseId].modulesContent)) {
+    if (activeCourseId && (!window.COURSES_REGISTRY || !window.COURSES_REGISTRY[activeCourseId] || !window.COURSES_REGISTRY[activeCourseId].__isModular)) {
       try {
         await loadModularCourse(activeCourseId);
       } catch (err) {

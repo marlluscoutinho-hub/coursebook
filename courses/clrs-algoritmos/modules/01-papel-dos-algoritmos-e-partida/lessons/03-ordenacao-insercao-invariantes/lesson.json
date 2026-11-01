@@ -1,0 +1,28 @@
+{
+  "id": "03-ordenacao-insercao-invariantes",
+  "title": "Ordenação por Inserção, Convenções de Pseudocódigo e Invariantes de Laço",
+  "kind": "lab",
+  "pages": "pp. 25–30",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "lab",
+      "id": "clrs-insertion-sort",
+      "mountId": "workbench-insertion-mount",
+      "title": "Laboratório Interativo: Simulador Passo a Passo de Insertion-Sort",
+      "source": "catalog",
+      "mobile": "full"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

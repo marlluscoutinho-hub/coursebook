@@ -1,0 +1,366 @@
+{
+  "title": "Quizzes Dialéticos do Módulo 01 (Capítulos 1 e 2)",
+  "subtitle": "12 questões analíticas com gabarito comentado alternativa por alternativa",
+  "questions": [
+    {
+      "id": "q1-1",
+      "type": "multiple_choice",
+      "reference": "Cap. 1, Seção 1.1 (pp. 17–18)",
+      "question": "Sobre a definição formal de algoritmos, instâncias e corretude apresentada na Seção 1.1 do livro, assinale a alternativa CORRETA:",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Uma instância de um problema computacional é o código-fonte do programa que implementa a relação entre entrada e saída.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Uma instância de um problema consiste na entrada específica (por exemplo, a sequência ⟨31, 41, 59, 26, 41, 58⟩) que satisfaz as restrições do enunciado do problema e é necessária para calcular uma solução, não no código-fonte."
+        },
+        {
+          "letter": "B",
+          "text": "Um algoritmo que ocasionalmente produz uma resposta incorreta jamais tem utilidade prática em Ciência da Computação, pois viola a definição estrita de corretude.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Como os autores destacam explicitamente na página 17, algoritmos incorretos podem ser extremamente úteis na prática se pudermos controlar sua taxa de erros — o exemplo canônico é o teste probabilístico de primalidade para achar grandes números primos (Capítulo 31)."
+        },
+        {
+          "letter": "C",
+          "text": "Diz-se que um algoritmo é correto se, para toda instância de entrada, ele parar com a saída correta; um algoritmo incorreto pode não parar em algumas instâncias ou parar com uma resposta incorreta.",
+          "isCorrect": true,
+          "explanation": "Correta! Esta é exatamente a definição formal de corretude dada na Seção 1.1 (p. 17): para toda instância de entrada válida, o algoritmo deve terminar (parar) e produzir a saída que satisfaz a especificação do problema."
+        },
+        {
+          "letter": "D",
+          "text": "O enunciado formal do problema de ordenação exige que a saída seja uma permutação estritamente crescente a'₁ < a'₂ < ... < a'ₙ, proibindo chaves repetidas.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O problema de ordenação especifica ordem não decrescente (a'₁ ≤ a'₂ ≤ ... ≤ a'ₙ), permitindo chaves repetidas (como o número 41 na instância ⟨31, 41, 59, 26, 41, 58⟩)."
+        }
+      ]
+    },
+    {
+      "id": "q1-2",
+      "type": "multiple_choice",
+      "reference": "Cap. 1, Seção 1.1 (pp. 19–21)",
+      "question": "Por que o conjunto dos problemas NP-completos (como o Problema do Caixeiro-Viajante) é tão importante e intrigante segundo Cormen, Leiserson, Rivest e Stein?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Porque já foi demonstrado matematicamente que é impossível existir qualquer algoritmo de tempo polinomial para problemas NP-completos.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Os autores enfatizam como primeira razão na página 20 que ninguém jamais provou que não é possível existir um algoritmo eficiente para problemas NP-completos (a questão P = NP segue em aberto)."
+        },
+        {
+          "letter": "B",
+          "text": "Porque se existir um algoritmo eficiente para qualquer problema NP-completo, então existirão algoritmos eficientes para todos os problemas NP-completos, além de muitos deles serem muito parecidos com problemas que possuem algoritmos eficientes conhecidos.",
+          "isCorrect": true,
+          "explanation": "Correta! Os autores listam exatamente essas três propriedades (p. 20): (1) não se sabe se existe algoritmo eficiente, (2) se houver solução eficiente para um, haverá para todos, e (3) pequenas mudanças no enunciado de um problema tratável (como caminho mínimo) produzem um problema NP-completo (como o caixeiro-viajante)."
+        },
+        {
+          "letter": "C",
+          "text": "Porque problemas NP-completos nunca surgem em aplicações industriais ou logísticas reais, sendo estudados apenas na matemática pura.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O livro ressalta que problemas NP-completos surgem com frequência surpreendente em aplicações reais (como logística de entregas de caminhões) e reconhecê-los permite adotar algoritmos de aproximação."
+        },
+        {
+          "letter": "D",
+          "text": "Porque problemas NP-completos não admitem algoritmos de aproximação eficientes sob nenhuma premissa.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Adotando premissas razoáveis, existem algoritmos de aproximação eficientes que entregam soluções boas (próximas da ótima), tema central do Capítulo 35."
+        }
+      ]
+    },
+    {
+      "id": "q1-3",
+      "type": "multiple_choice",
+      "reference": "Cap. 1, Seção 1.2 (pp. 21–23)",
+      "question": "No experimento comparativo da Seção 1.2 para ordenar n = 10 milhões (10⁷) de números, o Computador A (10¹⁰ instruções/s) executa Ordenação por Inserção com 2n² instruções, enquanto o Computador B (10⁷ instruções/s, mil vezes mais lento) executa Ordenação por Intercalação com 50n lg n instruções. O que acontece e por quê?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "O Computador A vence com folga porque sua velocidade bruta de hardware é 1.000 vezes maior e a constante do código em linguagem de máquina (2) é 25 vezes menor que a do Computador B (50).",
+          "isCorrect": false,
+          "explanation": "Incorreta. Apesar de ser 1.000× mais rápido no hardware e ter constante 25× menor no código, o Computador A leva 20.000 segundos (> 5,5 horas) contra ~1.163 segundos (< 20 minutos) do Computador B."
+        },
+        {
+          "letter": "B",
+          "text": "O Computador B termina mais de 17 vezes mais rápido que o Computador A (cerca de 20 minutos contra 5,5 horas), porque o fator lg(10⁷) ≈ 23,25 cresce drasticamente mais devagar que o fator n = 10⁷, superando a desvantagem de hardware e compilador.",
+          "isCorrect": true,
+          "explanation": "Correta! Para n = 10⁷, 2·(10⁷)² / 10¹⁰ = 20.000 s, enquanto 50·10⁷·lg(10⁷) / 10⁷ ≈ 1.163 s. A ordem de crescimento n lg n vence n² por mais de 17 vezes em n = 10⁷ (e em n = 10⁸ vence por < 4 horas contra > 23 dias)."
+        },
+        {
+          "letter": "C",
+          "text": "Os dois computadores empatam em exatamente 1.000 segundos para n = 10⁷.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O ponto de empate entre os dois computadores ocorre muito antes (quando 2n²/10¹⁰ ≈ 50n lg n / 10⁷, isto é, em torno de n ≈ 460.000); em n = 10⁷ o Computador B já é 17 vezes mais rápido."
+        },
+        {
+          "letter": "D",
+          "text": "A ordenação por intercalação é sempre mais rápida que a ordenação por inserção para qualquer valor inteiro positivo de n ≥ 2, independentemente das constantes c₁ e c₂.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Para valores pequenos de n, como c₁ < c₂, a ordenação por inserção costuma ser mais rápida (por exemplo, no Exercício 1.2-2 com 8n² vs 64n lg n, a inserção vence para 2 ≤ n ≤ 43)."
+        }
+      ]
+    },
+    {
+      "id": "q1-4",
+      "type": "true_false",
+      "reference": "Cap. 1, Seção 1.1 (p. 20) — Paralelismo",
+      "question": "[ VERDADEIRO OU FALSO ] A transição da indústria de processadores de um único núcleo com clock cada vez mais alto para arquiteturas com múltiplos núcleos (multicore) ocorreu porque a densidade de potência cresce superlinearmente com a velocidade de relógio, trazendo o risco físico de derretimento dos chips.",
+      "options": [
+        {
+          "letter": "V",
+          "text": "Verdadeiro — Essa limitação física de dissipação térmica é exatamente a razão apontada pelos autores na Seção 1.1 para a adoção de chips multicore e algoritmos multithread.",
+          "isCorrect": true,
+          "explanation": "Correta! Na página 20 (seção 'Paralelismo'), Cormen et al. explicam que como a densidade de potência aumenta superlinearmente com a velocidade de relógio, existe o risco de derretimento dos chips acima de certo limite, motivando o projeto de chips com vários núcleos e algoritmos multithread (Cap. 27)."
+        },
+        {
+          "letter": "F",
+          "text": "Falso — A velocidade de relógio parou de crescer apenas por razões comerciais de marketing, sem qualquer barreira física ou térmica nos chips.",
+          "isCorrect": false,
+          "explanation": "Incorreta. A barreira foi estritamente física e termodinâmica (densidade de potência superlinear)."
+        }
+      ]
+    },
+    {
+      "id": "q1-5",
+      "type": "multiple_choice",
+      "reference": "Cap. 2, Seção 2.1 (pp. 26–28)",
+      "question": "Na demonstração de corretude do algoritmo INSERTION-SORT(A) por meio de seu invariante de laço, como a propriedade de Término estabelece que o arranjo inteiro A[1 .. n] está ordenado ao final?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Porque o laço for termina quando j = n, e substituindo j = n no invariante obtemos que A[1 .. n] está ordenado.",
+          "isCorrect": false,
+          "explanation": "Incorreta! Se substituíssemos j = n no invariante ('A[1 .. j - 1] está ordenado'), provaríamos apenas que A[1 .. n - 1] está ordenado, deixando A[n] de fora! O laço só termina quando j excede n, ou seja, quando j = n + 1."
+        },
+        {
+          "letter": "B",
+          "text": "Porque a condição que provoca o término do laço for é j > A.comprimento = n; logo, no término temos j = n + 1, e substituindo j = n + 1 no invariante para A[1 .. j - 1] concluímos que A[1 .. n] consiste nos elementos originais de A[1 .. n] em ordem.",
+          "isCorrect": true,
+          "explanation": "Correta! Pela convenção do pseudocódigo CLRS, o contador j retém o primeiro valor que violou o limite do laço for, que é j = n + 1. Substituindo j = n + 1 em A[1 .. j - 1], obtemos A[1 .. n] ordenado."
+        },
+        {
+          "letter": "C",
+          "text": "Porque o passo de Manutenção é aplicado infinitas vezes para todo n tendendo ao infinito, exatamente como na indução matemática clássica.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Os autores destacam na página 27 que a diferença essencial entre invariantes de laço e indução matemática clássica é que no algoritmo paramos a indução finitamente quando o laço termina."
+        },
+        {
+          "letter": "D",
+          "text": "Porque o laço while interno sempre reduz i até 0 em todas as iterações, independentemente dos valores das chaves.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O laço while para assim que encontra A[i] ≤ chave (no melhor caso, nem sequer entra no corpo do while e i permanece igual a j - 1)."
+        }
+      ]
+    },
+    {
+      "id": "q1-6",
+      "type": "multiple_choice",
+      "reference": "Cap. 2, Seção 2.1 (pp. 28–29) — Convenções de Pseudocódigo",
+      "question": "De acordo com as convenções de pseudocódigo estabelecidas na Seção 2.1, o que ocorre quando executamos a linha 5 do INSERTION-SORT (`while i > 0 e A[i] > chave`) no instante em que a variável i atinge o valor 0?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "O algoritmo acessa a posição A[0] da memória, que contém uma sentinela automática igual a -∞.",
+          "isCorrect": false,
+          "explanation": "Incorreta. No INSERTION-SORT não há sentinela em A[0]; o arranjo é indexado de 1 até n."
+        },
+        {
+          "letter": "B",
+          "text": "Ocorre um erro de execução (error) por tentativa de indexação fora dos limites do arranjo A[1 .. n].",
+          "isCorrect": false,
+          "explanation": "Incorreta. Não ocorre erro justamente porque o operador booleano 'e' possui avaliação em curto-circuito."
+        },
+        {
+          "letter": "C",
+          "text": "Como o operador booleano 'e' possui avaliação em curto-circuito (short-circuit), ao avaliar i > 0 como FALSE quando i = 0, a segunda condição A[i] > chave sequer é avaliada, encerrando o laço while com segurança.",
+          "isCorrect": true,
+          "explanation": "Correta! Na página 29, os autores explicam que os operadores 'e' e 'ou' têm curto-circuito: se o primeiro operando de 'e' for FALSE, o segundo nunca é avaliado, protegendo contra acessos inválidos como A[0] ou x.f quando x = NIL."
+        },
+        {
+          "letter": "D",
+          "text": "Ambos os lados do operador 'e' são sempre avaliados simultaneamente, mas o modelo RAM ignora índices nulos.",
+          "isCorrect": false,
+          "explanation": "Incorreta. A avaliação é estritamente sequencial da esquerda para a direita com curto-circuito."
+        }
+      ]
+    },
+    {
+      "id": "q1-7",
+      "type": "true_false",
+      "reference": "Cap. 2, Seção 2.1 (p. 29) — Objetos, Ponteiros e Parâmetros",
+      "question": "[ VERDADEIRO OU FALSO ] No pseudocódigo do livro, variáveis que representam objetos ou arranjos são tratadas como ponteiros: se fizermos `y = x` e depois `x.f = 3`, então `y.f` também passará a valer `3`. Além disso, ao passar um objeto `x` como parâmetro a um procedimento, atribuir `x = z` dentro do procedimento não afeta a variável do chamador, mas atribuir `x.f = 3` é visível para o chamador.",
+      "options": [
+        {
+          "letter": "V",
+          "text": "Verdadeiro — O ponteiro para o objeto é copiado por valor na chamada, de modo que reatribuir o parâmetro local não afeta o chamador, mas mutar um atributo `x.f` altera o objeto compartilhado.",
+          "isCorrect": true,
+          "explanation": "Correta! Esta é a descrição exata da semântica de objetos, arranjos e passagem de parâmetros explicada nas páginas 28 e 29 do livro."
+        },
+        {
+          "letter": "F",
+          "text": "Falso — Objetos e arranjos inteiros são sempre copiados profundamente (deep copy) a cada atribuição `y = x` ou chamada de procedimento.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Apenas o ponteiro é copiado, nunca o arranjo ou os atributos inteiros do objeto."
+        }
+      ]
+    },
+    {
+      "id": "q1-8",
+      "type": "multiple_choice",
+      "reference": "Cap. 2, Seção 2.2 (pp. 30–31) — Modelo RAM",
+      "question": "Ao definir o modelo de computação RAM (Random-Access Machine) na Seção 2.2, os autores impõem que, para entradas de tamanho n, o tamanho de cada palavra de dados seja limitado a c lg n bits para uma constante c ≥ 1. Qual é a justificativa técnica para essas duas exigências (c ≥ 1 e c ser uma constante)?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Exigimos c ≥ 1 para que uma única palavra possa conter o valor de n e indexar os n elementos da entrada; e exigimos que c seja constante para que o tamanho da palavra não cresça arbitrariamente (o que permitiria guardar uma quantidade imensa de dados em uma palavra e operá-la em tempo constante).",
+          "isCorrect": true,
+          "explanation": "Correta! Como explicado nas páginas 30–31, precisamos de pelo menos lg n bits (c ≥ 1) para endereçar os n elementos da entrada, e c deve ser constante para impedir o truque irrealista de empacotar toda a entrada numa única palavra de tamanho arbitrário."
+        },
+        {
+          "letter": "B",
+          "text": "Exigimos c ≥ 1 apenas para números em ponto flutuante, pois inteiros no modelo RAM têm precisão infinita sem limite de bits.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O limite de tamanho da palavra aplica-se diretamente à representação de inteiros no modelo RAM."
+        },
+        {
+          "letter": "C",
+          "text": "Essa restrição existe para modelar com precisão os diferentes níveis de memória cache L1, L2 e memória virtual em disco.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Na página 31, os autores afirmam explicitamente que o modelo RAM não modela caches nem memória virtual."
+        },
+        {
+          "letter": "D",
+          "text": "Porque no modelo RAM não existem instruções de deslocamento de bits (shift left) nem de divisão inteira.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O modelo RAM inclui divisão, resto, piso, teto e admite deslocamento à esquerda (shift left) para calcular 2ᵏ em tempo constante quando k cabe em uma palavra."
+        }
+      ]
+    },
+    {
+      "id": "q1-9",
+      "type": "multiple_choice",
+      "reference": "Cap. 2, Seção 2.2 (pp. 32–34) — Análise do INSERTION-SORT",
+      "question": "Na análise exata do INSERTION-SORT para um arranjo de n elementos, seja tⱼ o número de vezes que o teste do laço while na linha 5 é executado para um dado j ∈ {2, ..., n}. Quais são os valores de tⱼ e as ordens de crescimento resultantes para o MELHOR caso, o PIOR caso e o CASO MÉDIO (assumindo entrada aleatória), respectivamente?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Melhor caso: tⱼ = 0 e Θ(1); Pior caso: tⱼ = j - 1 e Θ(n²); Caso médio: tⱼ = lg j e Θ(n lg n).",
+          "isCorrect": false,
+          "explanation": "Incorreta em todos os itens: no melhor caso o teste do while ainda é executado 1 vez por iteração (tⱼ = 1, levando a Θ(n)); no pior caso o teste executa j vezes (j - 1 sucessos + 1 falha quando i = 0); e no caso médio tⱼ ≈ j/2, que resulta em Θ(n²), não Θ(n lg n)."
+        },
+        {
+          "letter": "B",
+          "text": "Melhor caso: tⱼ = 1 e Θ(n); Pior caso: tⱼ = j e Θ(n²); Caso médio: tⱼ ≈ j/2 e Θ(n²).",
+          "isCorrect": true,
+          "explanation": "Correta! Quando o arranjo já está ordenado, o teste falha de imediato (tⱼ = 1) e T(n) = Θ(n). Quando está em ordem inversa, compara com todos os j - 1 elementos e falha em i = 0 (tⱼ = j), somando Θ(n²). No caso médio, percorre metade de A[1 .. j-1] (tⱼ ≈ j/2), que continua sendo uma função quadrática Θ(n²)."
+        },
+        {
+          "letter": "C",
+          "text": "Melhor caso: tⱼ = 1 e Θ(n lg n); Pior caso: tⱼ = n e Θ(n³); Caso médio: tⱼ = j/2 e Θ(n²).",
+          "isCorrect": false,
+          "explanation": "Incorreta. O melhor caso é linear Θ(n) e o pior caso é quadrático Θ(n²)."
+        },
+        {
+          "letter": "D",
+          "text": "Melhor caso: tⱼ = j e Θ(n²); Pior caso: tⱼ = j e Θ(n²); Caso médio: tⱼ = j e Θ(n²).",
+          "isCorrect": false,
+          "explanation": "Incorreta. Isso ocorre na Ordenação por Seleção (Exercício 2.2-2), mas na Ordenação por Inserção o laço while para antecipadamente quando A[i] ≤ chave, tornando o melhor caso Θ(n)."
+        }
+      ]
+    },
+    {
+      "id": "q1-10",
+      "type": "multiple_choice",
+      "reference": "Cap. 2, Seção 2.3.1 (pp. 36–38) — Procedimento MERGE",
+      "question": "Qual é a finalidade exata das cartas sentinelas ∞ colocadas em L[n₁ + 1] e R[n₂ + 1] no procedimento MERGE(A, p, q, r), e o que resta em L e R quando o laço for k = p to r termina?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "As sentinelas permitem que o procedimento MERGE execute no lugar (in-place) sem alocar memória extra; no término, elas são copiadas para A[r] e A[r+1].",
+          "isCorrect": false,
+          "explanation": "Incorreta. O procedimento MERGE não funciona no lugar (aloca L e R de tamanhos n₁ + 1 e n₂ + 1), e as sentinelas jamais são copiadas para o arranjo A."
+        },
+        {
+          "letter": "B",
+          "text": "As sentinelas evitam ter de verificar em cada iteração se algum dos arranjos L ou R já se esgotou; como o laço executa exatamente r - p + 1 vezes, no término todos os r - p + 1 elementos reais foram copiados em ordem para A[p .. r], restando em L e R apenas os dois maiores elementos (as duas sentinelas ∞).",
+          "isCorrect": true,
+          "explanation": "Correta! Quando um arranjo (digamos L) esgota seus elementos reais, seu ponteiro i passa a apontar para L[n₁ + 1] = ∞, fazendo com que todos os elementos reais restantes de R sejam escolhidos naturalmente até que k alcance r."
+        },
+        {
+          "letter": "C",
+          "text": "As sentinelas reduzem a complexidade assintótica de MERGE de Θ(n²) para Θ(lg n).",
+          "isCorrect": false,
+          "explanation": "Incorreta. Tanto com sentinelas quanto sem sentinelas (Exercício 2.3-2), o procedimento MERGE executa em tempo linear Θ(n); as sentinelas apenas simplificam o código eliminando os testes de esvaziamento de pilha dentro do laço."
+        },
+        {
+          "letter": "D",
+          "text": "As sentinelas servem para interromper a recursão de MERGE-SORT quando p ≥ r.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O teste de parada da recursão p < r está na linha 1 de MERGE-SORT(A, p, r), não nas sentinelas de MERGE."
+        }
+      ]
+    },
+    {
+      "id": "q1-11",
+      "type": "multiple_choice",
+      "reference": "Cap. 2, Seção 2.3.2 (pp. 39–41) — Árvore de Recursão",
+      "question": "Na construção da árvore de recursão para resolver a recorrência T(n) = 2T(n/2) + cn da ordenação por intercalação (com n potência exata de 2), qual é o número de nós no nível i abaixo da raiz, o custo de cada nó nesse nível, a soma total do nível i e o número total de níveis da árvore?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Nível i tem 2ⁱ nós, cada nó custa c(n/2ⁱ), a soma do nível i é cn, e a árvore possui lg n + 1 níveis, totalizando cn lg n + cn = Θ(n lg n).",
+          "isCorrect": true,
+          "explanation": "Correta! No nível i (para i = 0, 1, ..., lg n), há 2ⁱ subproblemas de tamanho n/2ⁱ. O custo de dividir e combinar cada um é c(n/2ⁱ), logo a soma do nível é 2ⁱ · c(n/2ⁱ) = cn. Multiplicando pelos lg n + 1 níveis, obtemos cn(lg n + 1) = Θ(n lg n)."
+        },
+        {
+          "letter": "B",
+          "text": "Nível i tem i nós, cada nó custa cn/i, a soma do nível i é cn, e a árvore possui n níveis, totalizando Θ(n²).",
+          "isCorrect": false,
+          "explanation": "Incorreta. A cada nível o número de subproblemas dobra (2ⁱ) e o tamanho cai pela metade (n/2ⁱ), atingindo tamanho 1 em lg n passos (lg n + 1 níveis)."
+        },
+        {
+          "letter": "C",
+          "text": "Nível i tem 2ⁱ nós, cada nó custa cn, a soma do nível i é 2ⁱ cn, e a árvore possui lg n níveis.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Cada nó no nível i opera sobre um subarranjo de tamanho n/2ⁱ, portanto seu custo é c(n/2ⁱ), não cn."
+        },
+        {
+          "letter": "D",
+          "text": "Na ordenação por intercalação, a etapa de divisão D(n) custa Θ(n) e a etapa de combinação C(n) custa Θ(1).",
+          "isCorrect": false,
+          "explanation": "Incorreta! É exatamente o oposto: no MERGE-SORT, a divisão D(n) apenas calcula o ponto médio q em tempo Θ(1), enquanto a combinação C(n) executa MERGE em tempo Θ(n)."
+        }
+      ]
+    },
+    {
+      "id": "q1-12",
+      "type": "multiple_choice",
+      "reference": "Cap. 2, Exercício 2.3-6 e Problema 2-4 (pp. 42–45)",
+      "question": "Considere duas questões fundamentais de projeto do Capítulo 2: (1) Se substituirmos a varredura linear reversa do laço while do INSERTION-SORT por uma Busca Binária para achar em Θ(lg j) a posição onde inserir A[j], qual passa a ser o tempo de pior caso do INSERTION-SORT? (2) Qual é a relação entre o tempo do INSERTION-SORT padrão e o número I de inversões do arranjo de entrada?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "(1) O pior caso cai para Θ(n lg n) porque achar a posição leva Θ(lg j); (2) O tempo não tem relação com o número de inversões.",
+          "isCorrect": false,
+          "explanation": "Incorreta! Embora a busca binária encontre a posição correta de inserção com apenas Θ(lg j) comparações, ainda precisamos deslocar os elementos maiores uma posição para a direita em um arranjo contíguo, o que continua exigindo Θ(j) movimentações no pior caso!"
+        },
+        {
+          "letter": "B",
+          "text": "(1) O pior caso continua sendo Θ(n²), pois embora o número de comparações caia para Θ(n lg n), o deslocamento dos elementos em A[1 .. j - 1] para abrir espaço para A[j] ainda exige Θ(j) cópias por iteração; (2) O tempo de execução do INSERTION-SORT padrão é Θ(n + I), pois cada iteração do while corrige exatamente uma inversão.",
+          "isCorrect": true,
+          "explanation": "Correta! No Exercício 2.3-6, a busca binária reduz apenas as comparações para Θ(n lg n), mas a linha 6 (`A[i + 1] = A[i]`) ainda precisa mover até j - 1 elementos no pior caso, mantendo o tempo total em Θ(n²). E no Problema 2-4(c), como cada troca/deslocamento no while envolve um par (i, j) com i < j e A[i] > chave = A[j], o número total de iterações do corpo do while é exatamente igual ao número I de inversões da entrada!"
+        },
+        {
+          "letter": "C",
+          "text": "(1) O pior caso sobe para Θ(n³); (2) O número máximo de inversões em um arranjo de n elementos é n.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O número máximo de inversões ocorre no arranjo decrescente e vale n(n - 1)/2."
+        },
+        {
+          "letter": "D",
+          "text": "(1) O pior caso cai para Θ(n); (2) O número de inversões só pode ser contado em tempo Θ(n²).",
+          "isCorrect": false,
+          "explanation": "Incorreta. O número de inversões pode ser contado em tempo Θ(n lg n) modificando o MERGE-SORT (Problema 2-4d)."
+        }
+      ]
+    }
+  ]
+}

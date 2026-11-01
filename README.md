@@ -55,12 +55,20 @@ coursebook/
 ├── index.html                  # Shell da aplicação (Home, Catálogo, Leitor e Configurações)
 ├── styles.css                  # Design System Paper & Ink Brutalism
 ├── app.js                      # Motor interativo com carregador modular (fetch v2) e eventos
-├── labs/                       # Catálogo modular de laboratórios interativos (repl-simulator, etc.)
+├── labs/                       # Catálogo modular de laboratórios interativos (repl-simulator, clrs-module1-labs, etc.)
 ├── schema/                     # Schemas JSON canônicos oficiais (course, module, lesson, lab, quiz...)
 ├── courses/
 │   ├── clrs-algoritmos/        # Curso 01: Algoritmos: Teoria e Prática (CLRS 3ª Ed.)
-│   │   ├── course.json         # Metadados do curso
-│   │   └── data/               # Módulos legados suportados via adaptador de compatibilidade
+│   │   ├── course.json         # Metadados do curso e citação formal da obra
+│   │   ├── curriculum.json     # Trilha curricular completa dos 16 módulos e 6 blocos
+│   │   ├── modules/            # Módulos canônicos em JSON + Markdown puro
+│   │   │   └── 01-papel-dos-algoritmos-e-partida/
+│   │   │       ├── module.json
+│   │   │       ├── quiz.json
+│   │   │       ├── exercises.json
+│   │   │       ├── checklist.json
+│   │   │       └── lessons/
+│   │   └── data/               # Módulos 02 a 16 suportados em regime de coexistência sem regressões
 │   ├── forbellone-logica/      # Curso 02: Lógica de Programação (Forbellone 3ª Ed.)
 │   │   └── course.json         # Metadados e planejamento curricular
 │   └── nilo-python/            # Curso 03: Introdução à Programação com Python (Nilo Menezes 2ª Ed.)
@@ -125,6 +133,7 @@ O CourseBook é material de estudo pessoal e o projeto central do meu portfólio
 | 6-7 | Vocabulário canônico, alvos de toque mobile e piloto Nilo | Aulas, laboratórios e rascunho; 1ª validação do formato JSON+MD | [06-07-vocabulario](docs/evolucao/06-07-vocabulario-e-piloto-nilo.md) | `refactor/06-07-nilo-piloto` |
 | 8 | Limpeza de artefatos, fluxo canônico e persistência | Eliminação de colchetes e termos legados; exportação/restauração JSON de backup | [08-limpeza-artefatos](docs/evolucao/08-limpeza-de-artefatos-e-persistencia.md) | `refactor/08-limpeza-e-persistencia` |
 | 9 | Motor modular v2 e extinção de dados legados do Nilo | Carregador `loadModularCourse` nativo e catálogo `labs/repl-simulator.js` | [09-motor-modular](docs/evolucao/09-motor-modular-e-extincao-data-legado.md) | `refactor/09-motor-modular` |
+| 10 | Conversão CLRS Fase 1 (Módulo 01) e labs desacoplados | Módulo 01 em JSON+MD com KaTeX puro e laboratórios em `labs/` | [10-conversao-clrs-modulo1](docs/evolucao/10-conversao-clrs-modulo1.md) | `refactor/10-clrs-modulo1` |
 
 **Padrão de commits:** `<tipo>(<escopo>): <resumo>`, com tipos `feat`, `fix`, `refactor`, `docs`, `style`, `chore`, `test` e escopos `engine`, `lesson`, `lab`, `review`, `latex`, `schema`, `course/<id>`, `readme`.
 

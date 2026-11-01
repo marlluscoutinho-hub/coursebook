@@ -155,8 +155,9 @@ Continua sem prazos. Status atual da evolução:
 | 6 | **Vocabulário e ajustes de UI**: Aulas, Laboratórios, Rascunho, menu mobile e alvos $\ge 44\text{px}$ | Interface brutalista limpa | **Concluída** | [06-07-vocabulario.md](evolucao/06-07-vocabulario-e-piloto-nilo.md) |
 | 7 | **Piloto Nilo-Python**: módulo 01 canônico em JSON+Markdown puro e lab REPL | Validação prática do formato | **Concluída** | [06-07-vocabulario.md](evolucao/06-07-vocabulario-e-piloto-nilo.md) |
 | 8 | **Revisão e fluxo do módulo**: ordem Aulas ➔ Revisão ➔ Quizzes ➔ Exercícios | Fluxo canônico e resumos | **Concluída** | [08-limpeza-artefatos.md](evolucao/08-limpeza-de-artefatos-e-persistencia.md) |
-| 9 | **Persistência nível 2** e motor modular v2 (extinção de `courses/nilo-python/data/`) | Backup JSON e zero JS em cursos | **Concluída** | [09-motor-modular.md](evolucao/09-motor-modular-e-extincao-data-legado.md) |
-| 10 | **Planejamento da conversão do CLRS** (módulo a módulo) e catálogo de labs | Blueprint da migração do CLRS | **Concluída** | [conversao-clrs.md](conversao-clrs.md) |
+| 9 | **Motor modular v2 & Nilo 100% canônico** (extinção de `courses/nilo-python/data/`) | Zero JS em cursos e labs em `labs/` | **Concluída** | [09-motor-modular.md](evolucao/09-motor-modular-e-extincao-data-legado.md) |
+| 10 | **Conversão CLRS Fase 1 (Módulo 01)** e desacoplamento de laboratórios | Módulo 01 em JSON+MD e labs em `labs/` | **Concluída** | [10-conversao-clrs-modulo1.md](evolucao/10-conversao-clrs-modulo1.md), [conversao-clrs.md](conversao-clrs.md) |
+| 11 | **Conversão CLRS Fases 2 a 4**: Módulos 02 a 16 e extinção de `clrs/data/` | CLRS 100% puro e zero JS legado | Em andamento | [conversao-clrs.md](conversao-clrs.md) |
 
 **Por que não mover o LaTeX para depois?** Ele é independente de tudo e vale como primeiro documento de evolução no README (antes/depois). **Por que o schema antes do motor?** Motor e skill dependem dele, e é a decisão mais cara de desfazer. **Por que o piloto antes de converter o CLRS?** Você disse que converter o CLRS deve ser mais fácil por já estar planejado. Isso é verdade para o conteúdo, mas só é seguro depois que o modelo provou funcionar em escala pequena.
 

@@ -14,12 +14,12 @@
     initMergeSortWorkbench();
   }
 
-  /* ========================================================================
-     LABORATÓRIO INTERATIVO #1: DUELO COMPUTADOR A vs. B & TABELA DO PROBLEMA 1-1
-     ======================================================================== */
-  function initScaleWorkbench() {
-    const mount = document.getElementById("workbench-scale-mount");
-    if (!mount) return;
+  function initScaleWorkbench(mountElOrId) {
+    const mount = typeof mountElOrId === "string"
+      ? document.getElementById(mountElOrId) || document.getElementById("workbench-scale-mount")
+      : (mountElOrId || document.getElementById("workbench-scale-mount"));
+    if (!mount || mount.dataset.initialized === "true") return;
+    mount.dataset.initialized = "true";
 
     mount.innerHTML = `
       <div class="workbench-box lab-box">
@@ -322,9 +322,12 @@
     return steps;
   }
 
-  function initInsertionSortWorkbench() {
-    const mount = document.getElementById("workbench-insertion-mount");
-    if (!mount) return;
+  function initInsertionSortWorkbench(mountElOrId) {
+    const mount = typeof mountElOrId === "string"
+      ? document.getElementById(mountElOrId) || document.getElementById("workbench-insertion-mount")
+      : (mountElOrId || document.getElementById("workbench-insertion-mount"));
+    if (!mount || mount.dataset.initialized === "true") return;
+    mount.dataset.initialized = "true";
 
     mount.innerHTML = `
       <div class="workbench-box lab-box">
@@ -548,9 +551,12 @@
     return steps;
   }
 
-  function initMergeSortWorkbench() {
-    const mount = document.getElementById("workbench-merge-mount");
-    if (!mount) return;
+  function initMergeSortWorkbench(mountElOrId) {
+    const mount = typeof mountElOrId === "string"
+      ? document.getElementById(mountElOrId) || document.getElementById("workbench-merge-mount")
+      : (mountElOrId || document.getElementById("workbench-merge-mount"));
+    if (!mount || mount.dataset.initialized === "true") return;
+    mount.dataset.initialized = "true";
 
     mount.innerHTML = `
       <div class="workbench-box lab-box">
@@ -652,7 +658,39 @@
   }
 
 
-  // Anexa ao module1 do CLRS
+  // Registra no Catálogo Canônico de Laboratórios
+  window.COURSEBOOK_LABS = window.COURSEBOOK_LABS || {};
+
+  window.COURSEBOOK_LABS["clrs-scale-duel"] = {
+    id: "clrs-scale-duel",
+    title: "Laboratório Interativo 01 • Simulador de Escala & Problema 1-1 (Cap. 1.2)",
+    mobile: "full",
+    init: function (mountElOrId) {
+      initScaleWorkbench(mountElOrId);
+    }
+  };
+
+  window.COURSEBOOK_LABS["clrs-insertion-sort"] = {
+    id: "clrs-insertion-sort",
+    title: "Laboratório Interativo 02 • Simulador Passo a Passo de Insertion-Sort(A)",
+    mobile: "full",
+    init: function (mountElOrId) {
+      initInsertionSortWorkbench(mountElOrId);
+    }
+  };
+
+  window.COURSEBOOK_LABS["clrs-merge-sort"] = {
+    id: "clrs-merge-sort",
+    title: "Laboratório Interativo 03 • Intercalação Merge(A, p, q, r) com Sentinelas ∞",
+    mobile: "full",
+    init: function (mountElOrId) {
+      initMergeSortWorkbench(mountElOrId);
+    }
+  };
+
+  window.initModule1Workbenches = initModule1Workbenches;
+
+  // Anexa ao module1 do CLRS (compatibilidade com camada em memória)
   function attachToModule1() {
     const data = window.COURSEBOOK_DATA || window.CODEX_DATA;
     if (data && data.module1) {

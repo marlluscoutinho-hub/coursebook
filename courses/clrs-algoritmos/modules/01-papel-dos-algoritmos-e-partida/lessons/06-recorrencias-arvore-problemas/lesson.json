@@ -1,0 +1,20 @@
+{
+  "id": "06-recorrencias-arvore-problemas",
+  "title": "Equações de Recorrência, Árvore de Recursão Θ(n lg n) e Problemas Clássicos do Cap. 2",
+  "kind": "standard",
+  "pages": "pp. 38–46",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

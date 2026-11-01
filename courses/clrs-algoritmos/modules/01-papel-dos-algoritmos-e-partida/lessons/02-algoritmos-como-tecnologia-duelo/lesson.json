@@ -1,0 +1,28 @@
+{
+  "id": "02-algoritmos-como-tecnologia-duelo",
+  "title": "Algoritmos como Tecnologia e o Duelo Computador A vs. Computador B",
+  "kind": "lab",
+  "pages": "pp. 21–24",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "lab",
+      "id": "clrs-scale-duel",
+      "mountId": "workbench-scale-mount",
+      "title": "Laboratório Interativo: Duelo Computador A vs. Computador B",
+      "source": "catalog",
+      "mobile": "full"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

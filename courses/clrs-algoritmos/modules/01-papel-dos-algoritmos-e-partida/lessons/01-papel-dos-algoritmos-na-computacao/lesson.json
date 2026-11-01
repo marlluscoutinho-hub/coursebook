@@ -1,0 +1,20 @@
+{
+  "id": "01-papel-dos-algoritmos-na-computacao",
+  "title": "O Papel dos Algoritmos na Computação: Definição, Domínios e Fronteiras",
+  "kind": "standard",
+  "pages": "pp. 17–21",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

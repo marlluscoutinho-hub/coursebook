@@ -1,0 +1,28 @@
+{
+  "id": "05-divisao-conquista-merge-sort",
+  "title": "Projeto por Divisão e Conquista: O Procedimento MERGE com Sentinelas e MERGE-SORT",
+  "kind": "lab",
+  "pages": "pp. 35–38",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "lab",
+      "id": "clrs-merge-sort",
+      "mountId": "workbench-merge-mount",
+      "title": "Laboratório Interativo: Intercalação Merge com Sentinelas de Infinito",
+      "source": "catalog",
+      "mobile": "full"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+[
+  "Compreendo que no pseudocódigo do livro um arranjo A[1 .. n] começa no índice 1 e que o subarranjo A[1 .. j - 1] possui apenas o elemento A[1] quando j = 2.",
+  "Sei que lg n significa log₂ n e que lg(10⁷) ≈ 23,25 enquanto n = 10.000.000.",
+  "Entendo por que um cabeçalho de laço que termina normalmente executa seu teste 1 vez a mais que o corpo interno do laço.",
+  "Compreendo as duas igualdades de somatório: ∑_{j=2..n} j = n(n+1)/2 − 1 e ∑_{j=2..n} (j−1) = n(n−1)/2."
+]

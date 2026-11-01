@@ -1,0 +1,18 @@
+{
+  "id": "01-papel-dos-algoritmos-e-partida",
+  "code": "MÓDULO 01",
+  "title": "O Papel dos Algoritmos e a Partida no Projeto e Análise",
+  "chapters": "Capítulos 1 e 2 (pp. 15–46)",
+  "pages": "pp. 15–46",
+  "summary": "Compreender o conceito formal de algoritmo, problema computacional e instância; reconhecer algoritmos como uma tecnologia essencial; dominar a especificação em pseudocódigo CLRS, provar a corretude usando invariantes de laço (inicialização, manutenção e término), analisar tempos de execução no modelo RAM e contrastar a abordagem incremental (INSERTION-SORT) com o paradigma de divisão e conquista (MERGE-SORT).",
+  "lessons": [
+    "01-papel-dos-algoritmos-na-computacao",
+    "02-algoritmos-como-tecnologia-duelo",
+    "03-ordenacao-insercao-invariantes",
+    "04-analise-algoritmos-modelo-ram-e-theta",
+    "05-divisao-conquista-merge-sort",
+    "06-recorrencias-arvore-problemas"
+  ],
+  "quiz": "quiz.json",
+  "exercises": "exercises.json"
+}

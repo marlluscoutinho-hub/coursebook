@@ -1,0 +1,4 @@
+# Resumo da Aula: Análise de Algoritmos: Modelo RAM, Custos Exatos, Pior Caso e Ordem de Crescimento Θ
+
+<p>Na matemática, para provar que uma proposição $P(k)$ vale para todos os inteiros $k \ge k_0$, demonstramos um <strong>Caso Base</strong> ($P(k_0)$ é verdadeira) e um <strong>Passo Indutivo</strong> (se $P(k)$ vale, então $P(k+1)$ também vale).</p>
+            <p>Em Ciência da Computação, os autores adaptam a indução matemática para demonstrar formalmente que um laço produz a resposta correta por meio de um <strong>Invariante de Laço</strong> — uma afirmação sobre o estado das variáveis antes de cada iteração. A diferença crucial está na 3ª etapa (<strong>Término</strong>): enquanto na indução matemática o passo indutivo se estende ao infinito, num algoritmo a indução <em>para</em> quando a condição do laço deixa de valer, e combinamos o invariante com a negação da condição do laço para provar a corretude final.</p>

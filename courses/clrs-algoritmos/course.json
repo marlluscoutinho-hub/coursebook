@@ -1,14 +1,17 @@
 {
   "id": "clrs-algoritmos",
-  "title": "Algoritmos: Teoria e Prática",
-  "edition": "3ª Edição",
-  "authors": "Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest e Clifford Stein",
-  "tag": "ALGORITMOS & ESTRUTURAS DE DADOS",
-  "badge": "CANÔNICO",
-  "pagesCount": 1042,
-  "chaptersCount": 35,
-  "appendicesCount": 4,
-  "modulesCount": 16,
-  "dataDir": "courses/clrs-algoritmos/data/",
-  "description": "Curso interativo completo baseado na obra clássica do MIT / McGraw-Hill, cobrindo fundamentos, análise assintótica, divisão e conquista, ordenação, estruturas avançadas, programação dinâmica, algoritmos gulosos, grafos e teoria da complexidade NP."
+  "title": "Algoritmos: Teoria e Prática (3ª Edição)",
+  "description": "Edição interativa canônica baseada na obra de referência mundial de Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest e Clifford Stein (MIT Press / McGraw-Hill). Cobre de forma profunda e rigorosa os fundamentos de algoritmos, invariantes de laço, análise assintótica, divisão e conquista, ordenação, estruturas de dados elementares e avançadas, programação dinâmica, algoritmos gulosos, grafos e teoria da complexidade NP.",
+  "book": {
+    "title": "Algoritmos: Teoria e Prática",
+    "authors": "Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest e Clifford Stein",
+    "edition": "3ª Edição",
+    "year": 2012
+  },
+  "contentPolicy": "paraphrase",
+  "profile": "padrao",
+  "modules": [
+    "01-papel-dos-algoritmos-e-partida"
+  ],
+  "status": "in_development"
 }

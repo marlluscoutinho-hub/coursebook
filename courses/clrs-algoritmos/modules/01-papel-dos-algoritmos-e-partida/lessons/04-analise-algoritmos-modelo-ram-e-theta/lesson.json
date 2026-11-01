@@ -1,0 +1,20 @@
+{
+  "id": "04-analise-algoritmos-modelo-ram-e-theta",
+  "title": "Análise de Algoritmos: Modelo RAM, Custos Exatos, Pior Caso e Ordem de Crescimento Θ",
+  "kind": "standard",
+  "pages": "pp. 30–35",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}
