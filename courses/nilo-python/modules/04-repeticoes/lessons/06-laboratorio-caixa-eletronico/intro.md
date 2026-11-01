@@ -1,0 +1,1 @@
+Chegou a hora de vivenciar na prática a dinâmica de repetição do Módulo 04! Neste laboratório interativo, você poderá simular cada ciclo de dispensação de cédulas do caixa eletrônico passo a passo, acompanhando as subtrações sucessivas e a alternância entre notas. No segundo painel, você explorará a simulação patrimonial da poupança ao longo de 24 meses.

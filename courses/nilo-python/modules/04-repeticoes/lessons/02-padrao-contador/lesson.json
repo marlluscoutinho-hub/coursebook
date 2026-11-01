@@ -1,0 +1,20 @@
+{
+  "id": "02-padrao-contador",
+  "title": "O Padrão Contador, Contagens Regressivas e Tabuadas",
+  "kind": "standard",
+  "pages": "Capítulo 5 (pp. 87–89)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

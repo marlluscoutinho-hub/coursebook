@@ -13,7 +13,8 @@
   "modules": [
     "01-computador-e-interpretador",
     "02-variaveis-e-tipos",
-    "03-condicoes"
+    "03-condicoes",
+    "04-repeticoes"
   ],
   "status": "in_development"
 }

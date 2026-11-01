@@ -1,0 +1,20 @@
+{
+  "id": "04-interrupcao-break",
+  "title": "A Instrução break e Laços com Valor Sentinela",
+  "kind": "standard",
+  "pages": "Capítulo 5 (pp. 92–93)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

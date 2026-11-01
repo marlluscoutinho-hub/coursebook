@@ -1,0 +1,20 @@
+{
+  "id": "03-padrao-acumulador",
+  "title": "O Padrão Acumulador, Somatórios, Médias e Juros Compostos",
+  "kind": "standard",
+  "pages": "Capítulo 5 (pp. 89–91)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

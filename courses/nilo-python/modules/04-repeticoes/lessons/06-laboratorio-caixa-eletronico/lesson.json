@@ -1,0 +1,27 @@
+{
+  "id": "06-laboratorio-caixa-eletronico",
+  "title": "Laboratório Interativo: Simulador de Caixa Eletrônico & Laços while",
+  "kind": "lab",
+  "pages": "Prática Integrada (pp. 85–97)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "lab",
+      "id": "atm-simulator",
+      "title": "Laboratório Interativo: Simulador de Caixa Eletrônico & Laços while",
+      "source": "catalog",
+      "mobile": "full"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

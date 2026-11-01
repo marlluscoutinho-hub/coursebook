@@ -1,0 +1,20 @@
+{
+  "id": "05-lacos-aninhados-e-caixa-eletronico",
+  "title": "Laços Aninhados e o Algoritmo Guloso do Caixa Eletrônico",
+  "kind": "standard",
+  "pages": "Capítulo 5 (pp. 94–97)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

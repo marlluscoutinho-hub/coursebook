@@ -1,0 +1,78 @@
+{
+  "title": "Exercícios e Problemas Canônicos do Módulo 04",
+  "subtitle": "8 atividades clássicas com solução passo a passo e rascunho integrado",
+  "exercises": [
+    {
+      "id": "ex4-1",
+      "code": "EXERCÍCIO 1",
+      "reference": "Capítulo 5 (p. 86)",
+      "title": "Exercício 5.2: Contagem Regressiva para o Lançamento do Foguete",
+      "prompt": "Escreva um programa para exibir uma contagem regressiva para o lançamento de um foguete espacial. O programa deve imprimir na tela: 10, 9, 8, ..., 1, 0 e em seguida a exclamação 'Fogo!'.",
+      "placeholder": "Modele o contador decrescente no rascunho...",
+      "solution": "\n        <p><strong>Resolução Analítica Passo a Passo:</strong></p>\n        <ol>\n          <li>Inicializamos a variável de controle no valor inicial máximo: <code>x = 10</code>.</li>\n          <li>A condição de parada deve incluir o zero: <code>while x >= 0:</code>.</li>\n          <li>Dentro do laço, imprimimos <code>x</code> e aplicamos o decremento monótono: <code>x -= 1</code>.</li>\n          <li>Fora do laço, imprimimos a mensagem de ignição: <code>print(\"Fogo!\")</code>.</li>\n        </ol>\n        <pre><code>x = 10\nwhile x >= 0:\n    print(x)\n    x -= 1\nprint(\"Fogo!\")</code></pre>\n        <p>Observe que o laço itera exatamente 11 vezes (de 10 até 0). $\\blacksquare$</p>\n      "
+    },
+    {
+      "id": "ex4-2",
+      "code": "EXERCÍCIO 2",
+      "reference": "Capítulo 5 (p. 88)",
+      "title": "Exercícios 5.4 & 5.5: Gerador de Números Ímpares e Múltiplos de Três",
+      "prompt": "Desenvolva dois programas em Python:\n1. Ler um número inteiro informado pelo usuário e imprimir todos os números ímpares no intervalo de 1 até o valor informado.\n2. Imprimir os 10 primeiros múltiplos do número 3 utilizando uma variável contadora.",
+      "placeholder": "Construa os laços com passos controlados no rascunho...",
+      "solution": "\n        <p><strong>Programa 1 (Ímpares até N):</strong></p>\n        <pre><code>fim = int(input(\"Digite o valor teto: \"))\nx = 1\nwhile x <= fim:\n    print(x)\n    x += 2   # Salta de 2 em 2 garantindo apenas ímpares</code></pre>\n        <p><strong>Programa 2 (10 Primeiros Múltiplos de 3):</strong></p>\n        <pre><code>contador = 1\nwhile contador <= 10:\n    print(f\"3 x {contador:2d} = {contador * 3:2d}\")\n    contador += 1</code></pre>\n      "
+    },
+    {
+      "id": "ex4-3",
+      "code": "EXERCÍCIO 3",
+      "reference": "Capítulo 5 (p. 88)",
+      "title": "Exercício 5.7: Tabuada Customizada com Limites Parametrizáveis",
+      "prompt": "Escreva um programa que solicite ao usuário qual número ele deseja consultar na tabuada, bem como o valor inicial e o valor final da sequência (ex.: calcular a tabuada do 5 iniciando em 4 e terminando em 12).",
+      "placeholder": "Defina as variáveis de início e fim no rascunho...",
+      "solution": "\n        <p><strong>Código e Análise Passo a Passo:</strong></p>\n        <pre><code>tabuada = int(input(\"Tabuada do número: \"))\ninicio = int(input(\"Início da tabuada: \"))\nfim = int(input(\"Fim da tabuada: \"))\n\nx = inicio\nwhile x <= fim:\n    print(f\"{tabuada} x {x:2d} = {tabuada * x:3d}\")\n    x += 1</code></pre>\n        <p>Se o usuário digitar número 7, início 5 e fim 8, o programa iterará 4 vezes imprimindo: $7 \\times 5 = 35$, $7 \\times 6 = 42$, $7 \\times 7 = 49$, $7 \\times 8 = 56$. $\\blacksquare$</p>\n      "
+    },
+    {
+      "id": "ex4-4",
+      "code": "EXERCÍCIO 4",
+      "reference": "Capítulo 5 (p. 88)",
+      "title": "Exercício 5.8: Multiplicação Algébrica por Somas Sucessivas",
+      "prompt": "Escreva um programa que leia dois números inteiros positivos ($A$ e $B$) e calcule o produto $A \\times B$ utilizando **exclusivamente** os operadores aritméticos de soma (`+`) e subtração (`-`). Não é permitido utilizar o operador de multiplicação (`*`).",
+      "placeholder": "Modele o acumulador somando A por B vezes no rascunho...",
+      "solution": "\n        <p><strong>Dedução Matemática e Implementação:</strong></p>\n        <p>A multiplicação de dois números inteiros é a formalização de somas sucessivas: $A \\times B = \\sum_{i=1}^{B} A$.</p>\n        <pre><code>fator1 = int(input(\"Primeiro número (A): \"))\nfator2 = int(input(\"Segundo número (B): \"))\n\nresultado = 0\ncontador = 1\n\nwhile contador <= fator2:\n    resultado += fator1\n    contador += 1\n\nprint(f\"{fator1} x {fator2} = {resultado}\")</code></pre>\n        <p>Para $4 \\times 5$, o laço executa 5 iterações somando $4 + 4 + 4 + 4 + 4 = 20$. $\\blacksquare$</p>\n      "
+    },
+    {
+      "id": "ex4-5",
+      "code": "EXERCÍCIO 5",
+      "reference": "Capítulo 5 (pp. 88–89)",
+      "title": "Exercício 5.9: Divisão Inteira e Resto por Subtrações Sucessivas",
+      "prompt": "Escreva um programa que leia dois números inteiros (dividendo e divisor). Imprima a divisão inteira (quociente) e o resto da divisão utilizando unicamente operadores de soma e subtração. Lembre-se de que o quociente corresponde à quantidade de vezes que o divisor cabe no dividendo.",
+      "placeholder": "Construa o laço de subtrações no rascunho...",
+      "solution": "\n        <p><strong>Resolução Analítica Passo a Passo:</strong></p>\n        <pre><code>dividendo = int(input(\"Dividendo: \"))\ndivisor = int(input(\"Divisor: \"))\n\nquociente = 0\nresto = dividendo\n\nwhile resto >= divisor:\n    resto -= divisor\n    quociente += 1\n\nprint(f\"Divisão inteira: {quociente}\")\nprint(f\"Resto da divisão: {resto}\")</code></pre>\n        <p>Rastreamento para 14 dividido por 3:\n        1ª rodada: $14 - 3 = 11$, quociente = 1.\n        2ª rodada: $11 - 3 = 8$, quociente = 2.\n        3ª rodada: $8 - 3 = 5$, quociente = 3.\n        4ª rodada: $5 - 3 = 2$, quociente = 4.\n        Condição $2 \\ge 3$ é falsa. Encerra com quociente 4 e resto 2 ($4 \\times 3 + 2 = 14$). $\\blacksquare$</p>\n      "
+    },
+    {
+      "id": "ex4-6",
+      "code": "EXERCÍCIO 6",
+      "reference": "Capítulo 5 (pp. 90–91)",
+      "title": "Exercício 5.11: Simulação Financeira de Poupança Mês a Mês",
+      "prompt": "Escreva um programa que pergunte o depósito inicial em uma conta poupança e a taxa de juros mensal. Exiba os saldos acumulados mês a mês ao longo dos 24 primeiros meses (2 anos). No encerramento, exiba o total acumulado ganho exclusivamente com juros.",
+      "placeholder": "Equacione a evolução dos juros no rascunho...",
+      "solution": "\n        <p><strong>Código e Modelagem Financeira:</strong></p>\n        <pre><code>deposito = float(input(\"Depósito inicial (R$): \"))\ntaxa = float(input(\"Taxa de juros mensal (%): \")) / 100\n\nsaldo = deposito\nmes = 1\ntotal_juros = 0\n\nwhile mes <= 24:\n    juros_mes = saldo * taxa\n    saldo += juros_mes\n    total_juros += juros_mes\n    print(f\"Mês {mes:2d}: Saldo = R$ {saldo:8.2f} (Juros: R$ {juros_mes:6.2f})\")\n    mes += 1\n\nprint(f\"\\nTotal ganho em juros em 24 meses: R$ {total_juros:.2f}\")\nprint(f\"Saldo total final: R$ {saldo:.2f}\")</code></pre>\n      "
+    },
+    {
+      "id": "ex4-7",
+      "code": "EXERCÍCIO 7",
+      "reference": "Capítulo 5 (p. 93)",
+      "title": "Exercício 5.14: Somador e Média com Parada por Valor Sentinela",
+      "prompt": "Escreva um programa que leia sucessivos números inteiros do teclado. O programa deve continuar lendo números até que o usuário digite o número 0 (zero) como sentinela de parada. No final da execução, exiba a quantidade total de números digitados (sem contar o zero), a soma total acumulada e a média aritmética.",
+      "placeholder": "Estruture o laço while True com break no rascunho...",
+      "solution": "\n        <p><strong>Implementação com while True e break:</strong></p>\n        <pre><code>soma = 0\nquantidade = 0\n\nwhile True:\n    numero = int(input(\"Digite um inteiro (ou 0 para terminar): \"))\n    if numero == 0:\n        break   # A sentinela não entra nas estatísticas\n    soma += numero\n    quantidade += 1\n\nif quantidade > 0:\n    media = soma / quantidade\n    print(f\"\\nQuantidade de números digitados: {quantidade}\")\n    print(f\"Soma total acumulada: {soma}\")\n    print(f\"Média aritmética: {media:.2f}\")\nelse:\n    print(\"Nenhum número válido foi digitado.\")</code></pre>\n      "
+    },
+    {
+      "id": "ex4-8",
+      "code": "EXERCÍCIO 8",
+      "reference": "Capítulo 5 (pp. 96–97)",
+      "title": "Exercício 5.16 & 5.18: Algoritmo Completo do Dispensador do Caixa Eletrônico",
+      "prompt": "Implemente o algoritmo do caixa eletrônico para dispensar a menor quantidade de cédulas para um saque em dinheiro. O programa deve solicitar o valor a pagar e dispensar notas de R$ 100, R$ 50, R$ 20, R$ 10, R$ 5 e R$ 1.",
+      "placeholder": "Escreva o algoritmo guloso no rascunho...",
+      "solution": "\n        <p><strong>Código Canônico Guloso (Listagem 5.14 Expandida):</strong></p>\n        <pre><code>valor = int(input(\"Digite o valor a sacar (R$): \"))\napagar = valor\ncedula_atual = 100\ntotal_cedulas = 0\n\nwhile True:\n    if cedula_atual <= apagar:\n        apagar -= cedula_atual\n        total_cedulas += 1\n    else:\n        if total_cedulas > 0:\n            print(f\"{total_cedulas} cédula(s) de R$ {cedula_atual}\")\n        if apagar == 0:\n            break\n        if cedula_atual == 100:\n            cedula_atual = 50\n        elif cedula_atual == 50:\n            cedula_atual = 20\n        elif cedula_atual == 20:\n            cedula_atual = 10\n        elif cedula_atual == 10:\n            cedula_atual = 5\n        elif cedula_atual == 5:\n            cedula_atual = 1\n        total_cedulas = 0</code></pre>\n        <p>Para um saque de R$ 384: o algoritmo entrega 3 notas de R$ 100, 1 nota de R$ 50, 1 nota de R$ 20, 1 nota de R$ 10 e 4 notas de R$ 1 ($300 + 50 + 20 + 10 + 4 = 384$). $\\blacksquare$</p>\n      "
+    }
+  ]
+}

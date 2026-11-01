@@ -1,0 +1,8 @@
+[
+  "Compreendo a semântica do laço while como repetição subordinada à verdade de uma condição booleana.",
+  "Sei inicializar, atualizar e verificar variáveis contadoras para evitar o temido laço infinito.",
+  "Domino o padrão acumulador (soma = soma + n) para calcular somatórios, médias aritméticas e juros compostos.",
+  "Utilizo a instrução break para interrupção imediata do laço baseada em valores sentinela.",
+  "Compreendo a dinâmica de laços aninhados (while dentro de while) e o controle independente de cada índice.",
+  "Consigo rastrear e explicar o algoritmo guloso de contagem de cédulas do caixa eletrônico."
+]

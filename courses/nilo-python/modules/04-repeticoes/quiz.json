@@ -1,0 +1,326 @@
+{
+  "title": "Quizzes Dialéticos do Módulo 04 (Capítulo 5)",
+  "subtitle": "10 questões analíticas comentadas alternativa por alternativa",
+  "questions": [
+    {
+      "id": "q4-1",
+      "type": "multiple_choice",
+      "reference": "Capítulo 5 (pp. 85–87)",
+      "question": "Qual é a sequência estrita de eventos executada pelo interpretador Python ao encontrar uma instrução `while condição:`?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Executa o bloco uma vez antes de avaliar a condição, e depois só repete se a condição for falsa.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Essa é a semântica de estruturas 'do-while' ou 'repeat-until' de outras linguagens, que não existem no Python; o while testa a condição antes de qualquer execução."
+        },
+        {
+          "letter": "B",
+          "text": "Avalia a condição; se verdadeira, executa o bloco indentado e retorna ao cabeçalho para reavaliar; se falsa, salta o bloco e prossegue o programa.",
+          "isCorrect": true,
+          "explanation": "Correta! O while é um laço pré-testado: o predicado é avaliado antes de cada ciclo de execução; se for False logo na primeira verificação, o corpo do laço nunca chega a rodar."
+        },
+        {
+          "letter": "C",
+          "text": "Compila o laço em um arquivo temporário no disco rígido para execução paralela.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O interpretador executa o laço sequencialmente na mesma thread do fluxo principal na memória RAM."
+        },
+        {
+          "letter": "D",
+          "text": "Executa o bloco exatamente 10 vezes por padrão e depois interrompe.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O laço while é condicional e não possui contagem prefixada, repetindo-se enquanto a condição booleana permanecer True."
+        }
+      ]
+    },
+    {
+      "id": "q4-2",
+      "type": "multiple_choice",
+      "reference": "Capítulo 5 (pp. 86–88)",
+      "question": "Quantas vezes a instrução `print(x)` será executada no seguinte trecho de código: `x = 1; while x < 5: print(x); x += 1`?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "5 vezes, com valores de 1 a 5.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Este é o clássico erro 'off-by-one'. O operador relacional utilizado foi o estritamente menor (<), e não o menor ou igual (<=)."
+        },
+        {
+          "letter": "B",
+          "text": "4 vezes, imprimindo os números 1, 2, 3 e 4.",
+          "isCorrect": true,
+          "explanation": "Correta! Para x = 1, 2, 3 e 4 a condição 'x < 5' é verdadeira. Ao atingir x = 5, a condição 5 < 5 resulta em False e o laço encerra imediatamente sem imprimir o 5."
+        },
+        {
+          "letter": "C",
+          "text": "Infinitas vezes, pois o contador não atinge o valor de parada.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O contador é incrementado monotonicamente de 1 em 1 e atinge 5 após 4 iterações."
+        },
+        {
+          "letter": "D",
+          "text": "Nenhuma vez, pois 1 é menor que 5.",
+          "isCorrect": false,
+          "explanation": "Incorreta. 1 < 5 é True, logo o laço executa na primeira iteração."
+        }
+      ]
+    },
+    {
+      "id": "q4-3",
+      "type": "multiple_choice",
+      "reference": "Capítulo 5 (pp. 86–87)",
+      "question": "O que ocorre tecnicamente quando um programador esquece a linha de atualização do contador dentro de um laço `while x <= 10:`?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "O interpretador Python detecta a omissão e adiciona `x += 1` automaticamente.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O interpretador não infere intenções; ele executa exatamente o que foi programado."
+        },
+        {
+          "letter": "B",
+          "text": "O programa entra em laço infinito, consumindo 100% de um núcleo da CPU e exigindo parada forçada com Ctrl + C.",
+          "isCorrect": true,
+          "explanation": "Correta! Sem o incremento, a variável de controle mantém eternamente seu valor inicial, fazendo com que a condição de continuação permaneça perpetuamente True."
+        },
+        {
+          "letter": "C",
+          "text": "O programa gera a exceção `InfiniteLoopError` e fecha em 5 segundos.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Não existe a exceção InfiniteLoopError em Python; o problema da parada é indecidível em tempo de execução."
+        },
+        {
+          "letter": "D",
+          "text": "O computador desliga a tela para economizar energia.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O computador continua rodando o script em loop ininterrupto."
+        }
+      ]
+    },
+    {
+      "id": "q4-4",
+      "type": "multiple_choice",
+      "reference": "Capítulo 5 (pp. 88–90)",
+      "question": "Qual é a distinção conceitual e prática entre uma variável 'contadora' e uma variável 'acumuladora'?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "O contador é sempre um float, enquanto o acumulador é obrigatoriamente um int.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Contadores são quase invariavelmente inteiros, e acumuladores podem ser inteiros ou floats dependendo da grandeza somada."
+        },
+        {
+          "letter": "B",
+          "text": "O contador é incrementado por um valor constante fixo (+ 1), ao passo que o acumulador recebe grandezas numéricas variáveis a cada iteração.",
+          "isCorrect": true,
+          "explanation": "Correta! O contador quantifica 'quantas vezes' algo aconteceu (passo constante), enquanto o acumulador totaliza 'quanto' foi reunido somando os valores lidos ou computados a cada ciclo."
+        },
+        {
+          "letter": "C",
+          "text": "Contadores só funcionam com laços for, e acumuladores só com laços while.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Ambos os padrões operam livremente em qualquer estrutura de repetição."
+        },
+        {
+          "letter": "D",
+          "text": "Não há qualquer diferença; são sinônimos idênticos em ciência da computação.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Trata-se de dois padrões com propósitos algorítmicos distintos."
+        }
+      ]
+    },
+    {
+      "id": "q4-5",
+      "type": "multiple_choice",
+      "reference": "Capítulo 5 (pp. 89–91)",
+      "question": "Por que um acumulador de somatório deve ser inicializado com 0, enquanto um acumulador de produto (ou cálculo de fatorial) deve ser inicializado com 1?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Porque o Python não aceita a inicialização de variáveis com números ímpares para somas.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O interpretador aceita qualquer valor numérico."
+        },
+        {
+          "letter": "B",
+          "text": "Porque 0 é o elemento neutro da adição (x + 0 = x) e 1 é o elemento neutro da multiplicação (x * 1 = x); inicializar um produto com 0 anularia todo o cálculo.",
+          "isCorrect": true,
+          "explanation": "Correta! Se iniciarmos uma multiplicação com 0, qualquer multiplicação subsequente resultará em zero (0 * v = 0). Da mesma forma, se iniciarmos uma soma com 1, o resultado final carregará um excesso errôneo de 1 unidade."
+        },
+        {
+          "letter": "C",
+          "text": "Porque a memória RAM zera automaticamente variáveis multiplicadas por 1.",
+          "isCorrect": false,
+          "explanation": "Incorreta. A RAM é puramente um meio de armazenamento físico sem regras algébricas mágicas."
+        },
+        {
+          "letter": "D",
+          "text": "Trata-se de mera superstição de programadores sem fundamento matemático.",
+          "isCorrect": false,
+          "explanation": "Incorreta. É uma aplicação direta da teoria dos grupos e dos elementos neutros da álgebra fundamental."
+        }
+      ]
+    },
+    {
+      "id": "q4-6",
+      "type": "multiple_choice",
+      "reference": "Capítulo 5 (pp. 92–93)",
+      "question": "O que acontece exatamente no instante em que a instrução break é executada dentro de um laço de repetição?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "O computador congela por 1 segundo antes de reiniciar o laço do início.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O break não pausa a máquina nem reinicia o laço."
+        },
+        {
+          "letter": "B",
+          "text": "A execução do laço corrente é imediatamente encerrada e o controle salta para a primeira instrução após o bloco do laço.",
+          "isCorrect": true,
+          "explanation": "Correta! O break aborta o laço de forma definitiva, ignorando todas as linhas restantes daquela iteração e transferindo a execução para fora do escopo do while."
+        },
+        {
+          "letter": "C",
+          "text": "O programa fecha completamente o terminal do sistema operacional.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O break encerra apenas o laço, permitindo que as instruções subsequentes do script continuem normalmente."
+        },
+        {
+          "letter": "D",
+          "text": "O break só pode ser chamado dentro de blocos if-else, nunca em repetições.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O break é uma instrução projetada especificamente para laços (while e for)."
+        }
+      ]
+    },
+    {
+      "id": "q4-7",
+      "type": "multiple_choice",
+      "reference": "Capítulo 5 (pp. 92–93)",
+      "question": "Se uma instrução `break` for executada dentro de um laço `while` interno que está aninhado dentro de um laço `while` externo, quais laços são encerrados?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Ambos os laços são encerrados simultaneamente.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Em Python, o break encerra estritamente o laço mais interno em cujo escopo léxico ele se encontra."
+        },
+        {
+          "letter": "B",
+          "text": "Apenas o laço mais interno é encerrado; o laço externo continua sua execução normalmente.",
+          "isCorrect": true,
+          "explanation": "Correta! A instrução break atua com precisão local no laço mais próximo. O laço externo continua seu fluxo, podendo inclusive reentrar no laço interno na próxima iteração."
+        },
+        {
+          "letter": "C",
+          "text": "O laço externo é encerrado e o laço interno continua rodando.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O laço interno não pode rodar desacoplado de seu laço pai."
+        },
+        {
+          "letter": "D",
+          "text": "Gera um erro de compilação, pois Python proíbe break dentro de laços aninhados.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O uso de break em laços aninhados é perfeitamente válido e comum em algoritmos de busca e matriciais."
+        }
+      ]
+    },
+    {
+      "id": "q4-8",
+      "type": "multiple_choice",
+      "reference": "Capítulo 5 (pp. 92–94)",
+      "question": "Qual é o objetivo da técnica de 'valor sentinela' frequentemente combinada com `while True`?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Criptografar os dados do usuário com uma senha de segurança militar.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O termo sentinela refere-se a uma convenção de controle de fluxo de dados, não a criptografia."
+        },
+        {
+          "letter": "B",
+          "text": "Permitir a leitura indefinida de dados até que um valor especial predeterminado (como 0 ou texto vazio) seja digitado, sinalizando o fim da entrada sem contaminar os cálculos.",
+          "isCorrect": true,
+          "explanation": "Correta! O valor sentinela marca o ponto de parada para o usuário (ex.: 'digite 0 para encerrar'). O break é disparado imediatamente antes que a sentinela seja somada ao acumulador."
+        },
+        {
+          "letter": "C",
+          "text": "Impedir que usuários não autorizados façam login no sistema.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Não se trata de autenticação de credenciais."
+        },
+        {
+          "letter": "D",
+          "text": "Forçar o programa a rodar 24 horas por dia sem desligar.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O laço encerra assim que a sentinela for informada."
+        }
+      ]
+    },
+    {
+      "id": "q4-9",
+      "type": "multiple_choice",
+      "reference": "Capítulo 5 (pp. 94–96)",
+      "question": "Na impressão de tabuadas com laços aninhados (Listagem 5.13), por que a instrução `numero = 1` deve ser colocada dentro do laço externo da tabuada?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Porque, se estivesse fora, a variável numero manteria o valor 11 após a primeira tabuada e o laço interno nunca mais executaria.",
+          "isCorrect": true,
+          "explanation": "Correta! A cada mudança do multiplicador da tabuada externa, o multiplicando interno precisa ser reiniciado em 1. Se não for reinicializado, o predicado `numero <= 10` será falso em todas as rodadas seguintes."
+        },
+        {
+          "letter": "B",
+          "text": "Para evitar que a variável numero seja excluída pelo coletor de lixo do Python.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Variáveis no escopo local não são descartadas pelo garbage collector enquanto o escopo estiver ativo."
+        },
+        {
+          "letter": "C",
+          "text": "Para que o resultado seja impresso em cores diferentes no terminal.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Cores dependem de códigos ANSI de escape, não da posição de variáveis inteiras."
+        },
+        {
+          "letter": "D",
+          "text": "A instrução pode ficar fora do laço sem qualquer alteração no comportamento do programa.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Deixá-la fora gera o bug clássico de imprimir apenas a primeira tabuada."
+        }
+      ]
+    },
+    {
+      "id": "q4-10",
+      "type": "multiple_choice",
+      "reference": "Capítulo 5 (pp. 96–97)",
+      "question": "Por que o algoritmo do caixa eletrônico (Listagem 5.14) começa tentando dispensar cédulas de R$ 50 (ou R$ 100) em vez de notas de R$ 1 ou R$ 5?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Porque os caixas eletrônicos não possuem espaço físico para armazenar cédulas de R$ 1.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O algoritmo suporta cédulas de R$ 1 perfeitamente para completar trocos unitários."
+        },
+        {
+          "letter": "B",
+          "text": "Porque é uma estratégia gulosa (greedy) que visa minimizar a quantidade física total de cédulas entregues ao usuário, esgotando primeiro as denominações de maior valor.",
+          "isCorrect": true,
+          "explanation": "Correta! Ao subtrair a maior cédula possível repetidas vezes até que o saldo restante seja menor que seu valor facial, o algoritmo atinge a quantidade mínima de notas para compor o saque solicitado."
+        },
+        {
+          "letter": "C",
+          "text": "Porque números maiores que 50 são processados com maior velocidade pela CPU.",
+          "isCorrect": false,
+          "explanation": "Incorreta. A velocidade de subtração na ULA é uniforme para qualquer inteiro de 64 bits."
+        },
+        {
+          "letter": "D",
+          "text": "Porque o Banco Central proíbe a entrega de notas pequenas em saques bancários.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O critério é puramente de otimização combinatória algorítmica."
+        }
+      ]
+    }
+  ]
+}

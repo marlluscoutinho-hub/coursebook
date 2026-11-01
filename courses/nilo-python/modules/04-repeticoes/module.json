@@ -1,0 +1,18 @@
+{
+  "id": "04-repeticoes",
+  "code": "MÓDULO 04",
+  "title": "Estruturas de Repetição, Acumuladores e Laços",
+  "chapters": "Capítulo 5",
+  "pages": "pp. 85–97",
+  "summary": "O laço while e o predicado de continuação, técnicas fundamentais de contadores e acumuladores, controle de fluxo por sentinela e interrupção com break, repetições aninhadas e a implementação completa do dispensador de cédulas do caixa eletrônico.",
+  "lessons": [
+    "01-laco-while",
+    "02-padrao-contador",
+    "03-padrao-acumulador",
+    "04-interrupcao-break",
+    "05-lacos-aninhados-e-caixa-eletronico",
+    "06-laboratorio-caixa-eletronico"
+  ],
+  "quiz": "quiz.json",
+  "exercises": "exercises.json"
+}

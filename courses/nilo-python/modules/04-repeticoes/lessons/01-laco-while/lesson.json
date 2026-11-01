@@ -1,0 +1,20 @@
+{
+  "id": "01-laco-while",
+  "title": "A Estrutura de Repetição while e o Controle de Laço",
+  "kind": "standard",
+  "pages": "Capítulo 5 (pp. 85–87)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}
