@@ -1,0 +1,8 @@
+[
+  "Compreendo a definição formal de algoritmo como sequência finita e não ambígua de operações.",
+  "Diferencio a dinâmica imediata do interpretador (modo interativo/REPL) da persistência de código em arquivos .py.",
+  "Consigo aplicar a sintaxe da função print() respeitando a sensibilidade a maiúsculas (case sensitivity) e o pareamento de delimitadores.",
+  "Domino a hierarquia algébrica dos operadores aritméticos (+, -, *, /, //, %, **) e a associatividade à esquerda/direita.",
+  "Compreendo o modelo mental de variáveis em Python como etiquetas associadas a objetos na memória (operador de atribuição =).",
+  "Sei identificar e diagnosticar mensagens de erro sintático (SyntaxError) e de identificador indefinido (NameError)."
+]

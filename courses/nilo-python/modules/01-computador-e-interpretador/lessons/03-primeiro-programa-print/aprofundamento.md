@@ -1,7 +1,7 @@
 <h3>1. Decomposição Estrutural de print("Oi")</h3>
-        <p>O primeiro programa formal apresentado no livro é a instrução clássica de exibição em tela. Conforme detalhado na Figura 2.21 da obra, essa linha elementar é constituída por quatro blocos anatômicos que devem ser compreendidos isoladamente:</p>
+<p>O primeiro programa formal apresentado no livro é a instrução clássica de exibição em tela. Conforme detalhado na Figura 2.21 da obra, essa linha elementar é constituída por quatro blocos anatômicos que devem ser compreendidos isoladamente:</p>
 
-        <div class="clrs-pseudocode-box">
+<div class="clrs-pseudocode-box">
           <div class="pseudocode-header">
             <span class="proc-name">ANATOMIA DA CHAMADA DE FUNÇÃO</span>
             <span>[ FIGURA 2.21 DO LIVRO • ELEMENTOS DA LINGUAGEM ]</span>
@@ -11,17 +11,17 @@
             <div class="code-line"><span class="line-num">2</span><span class="line-content"><span class="cmt">// ↑      ↑  ↑   ↑  ↑</span></span></div>
             <div class="code-line"><span class="line-num">3</span><span class="line-content"><span class="cmt">// Função (  Aspas Msg Aspas )</span></span></div>
           </div>
-        </div>
+</div>
 
-        <ol>
+<ol>
           <li><strong>Nome da Função (<code>print</code>):</strong> É o identificador que invoca a rotina nativa do Python responsável por escrever dados no fluxo de saída padrão (geralmente o console do terminal).</li>
           <li><strong>Parênteses Delimitadores (<code>( )</code>):</strong> Em Python 3, <code>print</code> é estritamente uma função, e seus argumentos devem ser envoltos por parênteses. Omitir os parênteses resulta em <code>SyntaxError: Missing parentheses in call to 'print'</code>.</li>
           <li><strong>Aspas Delimitadoras (<code>" "</code> ou <code>' '</code>):</strong> Indicam ao interpretador o início e o término de um dado do tipo texto (string literal), separando os comandos do programa das mensagens enviadas ao usuário final.</li>
           <li><strong>Mensagem (<code>Oi</code>):</strong> É o conteúdo factual que será transmitido aos olhos do usuário, exatamente na sequência de caracteres especificada.</li>
-        </ol>
+</ol>
 
-        <h3>2. As Quatro Regras Gramaticais de Ouro</h3>
-        <p>Nilo Coutinho Menezes cataloga os quatro erros mais recorrentes cometidos por iniciantes:</p>
+<h3>2. As Quatro Regras Gramaticais de Ouro</h3>
+<p>Nilo Coutinho Menezes cataloga os quatro erros mais recorrentes cometidos por iniciantes:</p>
 
         :::theorem [Princípio Canônico]
 <span class="callout-tag">[ REGRAS CRÍTICAS DE DIGITAÇÃO • SEÇÃO 2.4 DO LIVRO ]</span>

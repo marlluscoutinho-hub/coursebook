@@ -266,15 +266,19 @@
 
   function getCurrentModuleMeta() {
     const data = window.COURSEBOOK_DATA || window.CODEX_DATA;
+    if (!data || !data.modules || data.modules.length === 0) {
+      return { id: 1, code: "MÓDULO 01", title: "", chapters: "", unlocked: true, concepts: [] };
+    }
     const modId = state.currentModuleId || 1;
     return data.modules.find((m) => m.id === modId) || data.modules[0];
   }
 
   function getCurrentModuleContent() {
     const data = window.COURSEBOOK_DATA || window.CODEX_DATA;
+    if (!data) return {};
     const modId = state.currentModuleId || 1;
     const map = data.modulesContent || { 1: data.module1 };
-    return map[modId] || data.module1;
+    return map[modId] || data.module1 || {};
   }
 
   function updateCourseHeroUI() {
@@ -287,7 +291,7 @@
     const heroMetaRow = document.getElementById("course-hero-meta-row") || document.getElementById("tome-hero-meta-row");
     const heroDesc = document.getElementById("course-hero-desc") || document.getElementById("tome-hero-desc");
 
-    if (heroTitle) heroTitle.textContent = `${courseMeta.title} (${courseMeta.edition})`;
+    if (heroTitle) heroTitle.textContent = `${courseMeta.title}${courseMeta.edition ? " (" + courseMeta.edition + ")" : ""}`;
     if (heroAuthors) heroAuthors.textContent = (courseMeta.authors || "").toUpperCase();
     if (heroDesc) heroDesc.textContent = courseMeta.summary || courseMeta.description || "";
     if (heroMetaRow) {
@@ -301,9 +305,260 @@
 
   const updateTomeHeroUI = updateCourseHeroUI;
 
-  window.selectCourse = function (courseId, optModuleId) {
+  /* ========================================================================
+     CARREGADOR MODULAR NATIVO DE CURSOS (JSON + MARKDOWN v2)
+     Carrega course.json, curriculum.json, module.json, quiz, exercises e aulas
+     ======================================================================== */
+  async function loadModularCourse(courseId) {
+    if (window.COURSES_REGISTRY && window.COURSES_REGISTRY[courseId] && window.COURSES_REGISTRY[courseId].modulesContent) {
+      return window.COURSES_REGISTRY[courseId];
+    }
+
+    try {
+      // 1. Carrega course.json
+      const courseRes = await fetch(`courses/${courseId}/course.json`);
+      if (!courseRes.ok) throw new Error(`Falha ao obter course.json (${courseRes.status})`);
+      const courseData = await courseRes.json();
+
+      // 2. Carrega curriculum.json se disponível
+      let curriculum = null;
+      try {
+        const currRes = await fetch(`courses/${courseId}/curriculum.json`);
+        if (currRes.ok) curriculum = await currRes.json();
+      } catch (_) {}
+
+      const compiledCourse = {
+        course: curriculum?.course || {
+          id: courseData.id,
+          code: courseData.code || "CURSO",
+          title: courseData.title,
+          edition: courseData.book?.edition || "",
+          authors: courseData.book?.authors || "",
+          totalPages: courseData.book?.totalPages || 0,
+          totalModules: (courseData.modules || []).length,
+          totalChapters: courseData.chapters || "",
+          tag: courseData.tag || "CURSO MODULAR",
+          badge: "CANÔNICO",
+          summary: courseData.description
+        },
+        tome: curriculum?.tome || null,
+        blocks: curriculum?.blocks || [
+          {
+            id: "bloco-1",
+            code: "BLOCO I",
+            title: "Módulos do Curso",
+            subtitle: ""
+          }
+        ],
+        modules: curriculum?.modules ? JSON.parse(JSON.stringify(curriculum.modules)) : [],
+        modulesContent: {}
+      };
+      if (!compiledCourse.tome) compiledCourse.tome = compiledCourse.course;
+
+      if (compiledCourse.modules.length === 0) {
+        (courseData.modules || []).forEach((modFolder, idx) => {
+          compiledCourse.modules.push({
+            id: idx + 1,
+            code: `MÓDULO ${String(idx + 1).padStart(2, "0")}`,
+            blockId: "bloco-1",
+            title: modFolder,
+            unlocked: idx === 0,
+            folder: modFolder
+          });
+        });
+      }
+
+      // 3. Itera sobre cada módulo em courseData.modules
+      const modFolders = courseData.modules || [];
+      for (let i = 0; i < modFolders.length; i++) {
+        const modFolder = modFolders[i];
+        const modNumericId = parseInt(modFolder.split("-")[0], 10) || (i + 1);
+
+        let modMeta = null;
+        try {
+          const modRes = await fetch(`courses/${courseId}/modules/${modFolder}/module.json`);
+          if (modRes.ok) modMeta = await modRes.json();
+        } catch (e) {
+          console.warn(`Falha ao ler module.json de ${modFolder}:`, e);
+        }
+        if (!modMeta) continue;
+
+        const modItem = compiledCourse.modules.find((m) => m.id === modNumericId);
+        if (modItem) {
+          modItem.title = modMeta.title || modItem.title;
+          modItem.chapters = modMeta.chapters || modItem.chapters;
+          modItem.pages = modMeta.pages || modItem.pages;
+          modItem.summary = modMeta.summary || modItem.summary;
+          modItem.unlocked = true;
+        }
+
+        // 3.1 Quizzes
+        let quizzes = [];
+        try {
+          const qFile = modMeta.quiz || "quiz.json";
+          const qRes = await fetch(`courses/${courseId}/modules/${modFolder}/${qFile}`);
+          if (qRes.ok) {
+            const qJson = await qRes.json();
+            quizzes = qJson.questions || [];
+          }
+        } catch (err) {
+          console.warn(`Erro nos quizzes de ${modFolder}:`, err);
+        }
+
+        // 3.2 Exercícios
+        let exercicios = [];
+        try {
+          const exFile = modMeta.exercises || "exercises.json";
+          const exRes = await fetch(`courses/${courseId}/modules/${modFolder}/${exFile}`);
+          if (exRes.ok) {
+            const exJson = await exRes.json();
+            exercicios = exJson.exercises || [];
+          }
+        } catch (err) {
+          console.warn(`Erro nos exercícios de ${modFolder}:`, err);
+        }
+
+        // 3.3 Checklist
+        let checklist = [];
+        try {
+          const chkRes = await fetch(`courses/${courseId}/modules/${modFolder}/checklist.json`);
+          if (chkRes.ok) {
+            checklist = await chkRes.json();
+          }
+        } catch (_) {}
+
+        // 3.4 Aulas (lessons)
+        const unidades = [];
+        const reviewPillars = [];
+
+        const lessonFolders = modMeta.lessons || [];
+        for (let lIdx = 0; lIdx < lessonFolders.length; lIdx++) {
+          const lessonFolder = lessonFolders[lIdx];
+          let lessonMeta = null;
+          try {
+            const lessonRes = await fetch(`courses/${courseId}/modules/${modFolder}/lessons/${lessonFolder}/lesson.json`);
+            if (lessonRes.ok) lessonMeta = await lessonRes.json();
+          } catch (_) {}
+          if (!lessonMeta) continue;
+
+          let introMd = "";
+          let aprofundamentoMd = "";
+          let resumoMd = "";
+          let labBlock = null;
+
+          for (const block of (lessonMeta.blocks || [])) {
+            if (block.type === "intro" && block.file) {
+              try {
+                const res = await fetch(`courses/${courseId}/modules/${modFolder}/lessons/${lessonFolder}/${block.file}`);
+                if (res.ok) introMd = await res.text();
+              } catch (_) {}
+            } else if (block.type === "text" && block.file) {
+              try {
+                const res = await fetch(`courses/${courseId}/modules/${modFolder}/lessons/${lessonFolder}/${block.file}`);
+                if (res.ok) aprofundamentoMd = await res.text();
+              } catch (_) {}
+            } else if (block.type === "summary" && block.file) {
+              try {
+                const res = await fetch(`courses/${courseId}/modules/${modFolder}/lessons/${lessonFolder}/${block.file}`);
+                if (res.ok) resumoMd = await res.text();
+              } catch (_) {}
+            } else if (block.type === "lab") {
+              labBlock = block;
+            }
+          }
+
+          let unitContent = "";
+          if (introMd) {
+            const introClean = introMd.replace(/^#\s+[^\n\r]+\n+/, "").trim();
+            unitContent += `:::note [INTRODUÇÃO CONTEXTUAL • AULA ${modNumericId}.${lIdx + 1}]\n${introClean}\n:::\n\n`;
+          }
+          if (aprofundamentoMd) {
+            unitContent += aprofundamentoMd + "\n\n";
+          }
+          if (labBlock) {
+            const mountId = `workbench-mod${modNumericId}-mount`;
+            if (!unitContent.includes(mountId)) {
+              unitContent += `<div id="${mountId}"></div>\n`;
+            }
+          }
+
+          unidades.push({
+            id: `u${modNumericId}-${lIdx + 1}`,
+            slug: lessonFolder,
+            code: `${modNumericId}.${lIdx + 1}`,
+            title: lessonMeta.title,
+            pages: lessonMeta.pages || "",
+            reading: lessonMeta.pages || "",
+            content: unitContent,
+            lab: labBlock
+          });
+
+          if (resumoMd) {
+            let pTitle = lessonMeta.title;
+            const titleMatch = resumoMd.match(/^#\s+([^\n\r]+)/);
+            if (titleMatch) {
+              pTitle = titleMatch[1].replace(/^Resumo\s*(?:da\s*Aula)?:\s*/i, "");
+            }
+            const pBody = resumoMd.replace(/^#\s+[^\n\r]+\n+/, "").trim();
+            reviewPillars.push({
+              tag: `[ REVISÃO UNIDADE ${modNumericId}.${lIdx + 1} • ${lessonMeta.title.toUpperCase()} ]`,
+              title: pTitle,
+              body: pBody
+            });
+          }
+
+          if (checklist.length <= lIdx) {
+            checklist.push(`Compreendo e dominei os conceitos essenciais da Aula ${modNumericId}.${lIdx + 1}: ${lessonMeta.title}.`);
+          }
+        }
+
+        const initWorkbenches = function () {
+          unidades.forEach((u) => {
+            if (u.lab && u.lab.id) {
+              const labId = u.lab.id;
+              if (window.COURSEBOOK_LABS && window.COURSEBOOK_LABS[labId] && typeof window.COURSEBOOK_LABS[labId].init === "function") {
+                const mountId = `workbench-mod${modNumericId}-mount`;
+                window.COURSEBOOK_LABS[labId].init(mountId);
+              }
+            }
+          });
+        };
+
+        compiledCourse.modulesContent[modNumericId] = {
+          unidades: unidades,
+          revisao: {
+            subtitle: `Síntese e Fixação dos Fundamentos — ${modMeta.code || ("MÓDULO " + modNumericId)}`,
+            intro: `Esta seção consolida os alicerces teóricos e práticos de ${modMeta.chapters || ""}. Cada bloco abaixo sintetiza individualmente uma das unidades temáticas do módulo para fixação rápida antes dos Quizzes.`,
+            pillars: reviewPillars,
+            checklist: checklist
+          },
+          quizzes: quizzes,
+          exercicios: exercicios,
+          initWorkbenches: initWorkbenches
+        };
+      }
+
+      window.COURSES_REGISTRY = window.COURSES_REGISTRY || {};
+      window.COURSES_REGISTRY[courseId] = compiledCourse;
+      return compiledCourse;
+    } catch (err) {
+      console.error(`Erro ao carregar curso modular "${courseId}":`, err);
+      throw err;
+    }
+  }
+
+  window.loadModularCourse = loadModularCourse;
+
+  window.selectCourse = async function (courseId, optModuleId) {
     saveState();
     state.currentCourseId = courseId;
+    if (!window.COURSES_REGISTRY || !window.COURSES_REGISTRY[courseId] || !window.COURSES_REGISTRY[courseId].modulesContent) {
+      try {
+        await loadModularCourse(courseId);
+      } catch (err) {
+        console.warn(`Não foi possível carregar o curso modular "${courseId}":`, err);
+      }
+    }
     if (window.COURSES_REGISTRY && window.COURSES_REGISTRY[courseId]) {
       window.COURSEBOOK_DATA = window.COURSES_REGISTRY[courseId];
       window.CODEX_DATA = window.COURSEBOOK_DATA;
@@ -339,7 +594,7 @@
     updateAllProgressIndicators();
 
     if (optModuleId) {
-      window.openModuleReader(optModuleId, "aprendizado");
+      await window.openModuleReader(optModuleId, "aprendizado");
     } else {
       window.switchView("catalog");
     }
@@ -494,8 +749,15 @@
 
   window.switchCodexView = window.switchView;
 
-  window.openModuleReader = function (moduleId, stepKey) {
+  window.openModuleReader = async function (moduleId, stepKey) {
+    const curCourseId = state.currentCourseId || "clrs-algoritmos";
+    if (!window.COURSES_REGISTRY || !window.COURSES_REGISTRY[curCourseId] || !window.COURSES_REGISTRY[curCourseId].modulesContent) {
+      try {
+        await loadModularCourse(curCourseId);
+      } catch (_) {}
+    }
     const curCourseData = window.COURSEBOOK_DATA || window.CODEX_DATA;
+    if (!curCourseData || !curCourseData.modules) return;
     const mod = curCourseData.modules.find((m) => m.id === moduleId);
     if (!mod) return;
     if (!mod.unlocked) {
@@ -1598,7 +1860,19 @@
   /* ========================================================================
      INICIALIZAÇÃO GERAL AO CARREGAR O DOM
      ======================================================================== */
-  document.addEventListener("DOMContentLoaded", function () {
+  document.addEventListener("DOMContentLoaded", async function () {
+    const activeCourseId = (typeof localStorage !== "undefined" && localStorage.getItem("coursebook_active_course_id")) || state.currentCourseId || "clrs-algoritmos";
+    if (activeCourseId && (!window.COURSES_REGISTRY || !window.COURSES_REGISTRY[activeCourseId] || !window.COURSES_REGISTRY[activeCourseId].modulesContent)) {
+      try {
+        await loadModularCourse(activeCourseId);
+      } catch (err) {
+        console.warn(`Carregamento inicial modular para "${activeCourseId}":`, err);
+      }
+    }
+    if (window.COURSES_REGISTRY && window.COURSES_REGISTRY[activeCourseId]) {
+      window.COURSEBOOK_DATA = window.COURSES_REGISTRY[activeCourseId];
+      window.CODEX_DATA = window.COURSEBOOK_DATA;
+    }
     updateCourseHeroUI();
     renderCatalogModules();
     renderReaderView();

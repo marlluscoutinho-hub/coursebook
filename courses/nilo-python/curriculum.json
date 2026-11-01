@@ -1,0 +1,295 @@
+{
+  "course": {
+    "id": "nilo-python",
+    "code": "CURSO #03",
+    "isbn": "978-85-7522-408-3",
+    "title": "Introdução à Programação com Python",
+    "edition": "2ª Edição Integral (Novatec Editora)",
+    "authors": "Nilo Ney Coutinho Menezes",
+    "totalPages": 325,
+    "totalModules": 12,
+    "totalChapters": "12 Capítulos + Apêndice A",
+    "tag": "PROGRAMAÇÃO & ALGORITMOS EM PYTHON",
+    "badge": "CANÔNICO",
+    "summary": "Edição interativa canônica baseada na obra de referência de Nilo Ney Coutinho Menezes. Abrange a formação integral do programador iniciante: do modelo mental do interpretador REPL, variáveis e rastreamento de memória por teste de mesa, estruturas de controle e repetição, estruturas de dados clássicas (filas FIFO, pilhas LIFO, dicionários hash, matrizes), fatiamento de texto com o Jogo da Forca, engenharia de funções e recursão, persistência em arquivos, programação orientada a objetos (sistema bancário e agenda) e bancos de dados relacionais com SQLite e SQL padrão."
+  },
+  "tome": {
+    "id": "nilo-python",
+    "code": "CURSO #03",
+    "isbn": "978-85-7522-408-3",
+    "title": "Introdução à Programação com Python",
+    "edition": "2ª Edição Integral (Novatec Editora)",
+    "authors": "Nilo Ney Coutinho Menezes",
+    "totalPages": 325,
+    "totalModules": 12,
+    "totalChapters": "12 Capítulos + Apêndice A",
+    "tag": "PROGRAMAÇÃO & ALGORITMOS EM PYTHON",
+    "badge": "CANÔNICO",
+    "summary": "Edição interativa canônica baseada na obra de referência de Nilo Ney Coutinho Menezes. Abrange a formação integral do programador iniciante: do modelo mental do interpretador REPL, variáveis e rastreamento de memória por teste de mesa, estruturas de controle e repetição, estruturas de dados clássicas (filas FIFO, pilhas LIFO, dicionários hash, matrizes), fatiamento de texto com o Jogo da Forca, engenharia de funções e recursão, persistência em arquivos, programação orientada a objetos (sistema bancário e agenda) e bancos de dados relacionais com SQLite e SQL padrão."
+  },
+  "blocks": [
+    {
+      "id": "bloco-1",
+      "code": "BLOCO I",
+      "title": "Fundamentos, Variáveis e Fluxo de Execução",
+      "subtitle": "Capítulos 1 a 5 (pp. 19–97)"
+    },
+    {
+      "id": "bloco-2",
+      "code": "BLOCO II",
+      "title": "Estruturas de Dados e Manipulação de Texto",
+      "subtitle": "Capítulos 6 e 7 (pp. 98–160)"
+    },
+    {
+      "id": "bloco-3",
+      "code": "BLOCO III",
+      "title": "Modularização, Arquivos e Persistência Relacional",
+      "subtitle": "Capítulos 8 a 11 (pp. 161–313)"
+    },
+    {
+      "id": "bloco-4",
+      "code": "BLOCO IV",
+      "title": "Robustez, Diagnóstico e Engenharia de Software",
+      "subtitle": "Capítulo 12 e Apêndice A (pp. 314–322)"
+    }
+  ],
+  "modules": [
+    {
+      "id": 1,
+      "code": "MÓDULO 01",
+      "blockId": "bloco-1",
+      "chapters": "Capítulos 1 e 2 (pp. 19–48)",
+      "title": "O Computador, o Interpretador e os Primeiros Programas",
+      "unlocked": true,
+      "estimatedTime": "2h 30min",
+      "objective": "Compreender a natureza dos algoritmos no mundo real, a filosofia de legibilidade do Python, a dinâmica interativa do interpretador REPL em contraposição à escrita de scripts .py em UTF-8, o funcionamento da função print(), as regras de precedência aritmética algébrica e o modelo mental de variáveis e atribuição de memória.",
+      "concepts": [
+        "Algoritmos e Instruções",
+        "Filosofia Python",
+        "Interpretador REPL vs. Script",
+        "Função print()",
+        "Case Sensitivity",
+        "Precedência Algébrica",
+        "Operador de Atribuição =",
+        "Modelo Mental de Memória"
+      ]
+    },
+    {
+      "id": 2,
+      "code": "MÓDULO 02",
+      "blockId": "bloco-1",
+      "chapters": "Capítulo 3 (pp. 49–74)",
+      "title": "Tipos de Dados, Operadores Lógicos e Teste de Mesa",
+      "unlocked": false,
+      "estimatedTime": "3h 00min",
+      "objective": "Dominar os tipos numéricos inteiros e de ponto flutuante, o tipo booleano, operadores relacionais e lógicos com tabelas-verdade, concatenação e fatiamento inicial de strings, entrada de dados com input(), conversão explícita de tipos e a técnica de rastreamento com tabelas de teste de mesa.",
+      "concepts": [
+        "Tipos int e float",
+        "Tipo Booleano",
+        "Operadores Relacionais",
+        "Operadores not, and, or",
+        "Tabelas-Verdade",
+        "Fatiamento de Strings",
+        "Função input() e Cast",
+        "Teste de Mesa (Rastreamento)"
+      ]
+    },
+    {
+      "id": 3,
+      "code": "MÓDULO 03",
+      "blockId": "bloco-1",
+      "chapters": "Capítulo 4 (pp. 75–84)",
+      "title": "Estruturas Condicionais e Tomada de Decisão",
+      "unlocked": false,
+      "estimatedTime": "2h 30min",
+      "objective": "Dominar o controle de fluxo condicional em Python através das estruturas if, else e da cadeia de alternativas elif, projetando testes de contorno rigorosos para cálculos tarifários escalonados, validação de categorias e regras de negócio com desvios aninhados.",
+      "concepts": [
+        "Desvio Condicional if",
+        "Ramo Alternativo else",
+        "Estruturas Aninhadas",
+        "Cascata elif",
+        "Condições de Contorno",
+        "Tarifação Escalonada",
+        "Validação de Entrada"
+      ]
+    },
+    {
+      "id": 4,
+      "code": "MÓDULO 04",
+      "blockId": "bloco-1",
+      "chapters": "Capítulo 5 (pp. 85–97)",
+      "title": "Estruturas de Repetição, Acumuladores e Laços",
+      "unlocked": false,
+      "estimatedTime": "3h 00min",
+      "objective": "Compreender a semântica do laço while, projetar variáveis contadoras para controle de iterações, aplicar o padrão acumulador para somas e médias, implementar saídas antecipadas com a instrução break e coordenar laços aninhados para problemas complexos como o simulador de cédulas de caixa eletrônico.",
+      "concepts": [
+        "Laço while",
+        "Variáveis Contadoras",
+        "Padrão Acumulador",
+        "Instrução break",
+        "Laços Aninhados",
+        "Simulador de Caixa Eletrônico",
+        "Invariantes de Repetição"
+      ]
+    },
+    {
+      "id": 5,
+      "code": "MÓDULO 05",
+      "blockId": "bloco-2",
+      "chapters": "Capítulo 6 — Parte 1 (pp. 98–126)",
+      "title": "Listas Sequenciais, Filas (FIFO), Pilhas (LIFO) e Ordenação",
+      "unlocked": false,
+      "estimatedTime": "3h 30min",
+      "objective": "Dominar listas dinâmicas em Python: indexação direta e negativa, fatiamento, mutabilidade, métodos de adição e remoção, implementação das estruturas de dados abstratas de Fila (FIFO) e Pilha (LIFO), busca sequencial, iteração com for/range/enumerate e o algoritmo clássico de Ordenação por Bolha (Bubble Sort).",
+      "concepts": [
+        "Listas e Mutabilidade",
+        "Indexação e Slices",
+        "Métodos append/pop/del",
+        "Filas (FIFO)",
+        "Pilhas (LIFO)",
+        "Laço for e range()",
+        "Enumerate",
+        "Bubble Sort"
+      ]
+    },
+    {
+      "id": 6,
+      "code": "MÓDULO 06",
+      "blockId": "bloco-2",
+      "chapters": "Capítulo 6 — Parte 2 (pp. 127–136)",
+      "title": "Mapeamentos Hash: Dicionários, Tuplas e Matrizes",
+      "unlocked": false,
+      "estimatedTime": "3h 00min",
+      "objective": "Explorar estruturas associativas em Python através de dicionários baseados em tabelas hash, chaves imutáveis, métodos keys/values/items, tuplas como sequências imutáveis protegidas, desempacotamento de registros e composição de matrizes e tabelas relacionais de estoque.",
+      "concepts": [
+        "Dicionários (Hash Maps)",
+        "Pares Chave-Valor",
+        "Métodos de Dicionário",
+        "Tuplas Imutáveis",
+        "Desempacotamento de Sequências",
+        "Listas de Dicionários",
+        "Matrizes Bidimensionais"
+      ]
+    },
+    {
+      "id": 7,
+      "code": "MÓDULO 07",
+      "blockId": "bloco-2",
+      "chapters": "Capítulo 7 (pp. 137–160)",
+      "title": "Manipulação Avançada de Strings e o Jogo da Forca",
+      "unlocked": false,
+      "estimatedTime": "3h 00min",
+      "objective": "Aprofundar o domínio de strings como sequências imutáveis de caracteres: fatiamento com passo [start:stop:step], métodos de busca e contagem (find, rfind, count), alinhamento e limpeza (strip, center), quebra e concatenação (split, join), máscaras numéricas e o desenvolvimento do projeto completo do Jogo da Forca em ASCII.",
+      "concepts": [
+        "Imutabilidade de Strings",
+        "Fatiamento com Passo",
+        "Busca com find e count",
+        "Divisão com split e join",
+        "Substituição com replace",
+        "Validação isalpha/isdigit",
+        "Formatação de Máscaras",
+        "Projeto Jogo da Forca"
+      ]
+    },
+    {
+      "id": 8,
+      "code": "MÓDULO 08",
+      "blockId": "bloco-3",
+      "chapters": "Capítulo 8 (pp. 161–187)",
+      "title": "Funções, Escopo, Parâmetros e Recursão",
+      "unlocked": false,
+      "estimatedTime": "3h 30min",
+      "objective": "Modularizar código com a diretiva def, compreender a pilha de execução (call stack), diferenciar variáveis locais e escopo global, projetar funções recursivas com casos-base rigorosos (fatorial, Fibonacci), utilizar parâmetros opcionais e nomeados, empacotar e desempacotar argumentos (*args, **kwargs) e expressar funções anônimas lambda.",
+      "concepts": [
+        "Definição com def e return",
+        "Pilha de Execução (Call Stack)",
+        "Escopo Local vs. Global",
+        "Recursão e Casos-Base",
+        "Parâmetros Opcionais e Nomeados",
+        "Empacotamento *args e **kwargs",
+        "Funções Anônimas Lambda",
+        "Modularização com import"
+      ]
+    },
+    {
+      "id": 9,
+      "code": "MÓDULO 09",
+      "blockId": "bloco-3",
+      "chapters": "Capítulo 9 (pp. 188–215)",
+      "title": "Arquivos, Diretórios e Processamento de Dados",
+      "unlocked": false,
+      "estimatedTime": "3h 00min",
+      "objective": "Manipular o sistema de arquivos persistente: modos de abertura (r, w, a), gerenciamento seguro com o context manager with open(), ponteiros de leitura (seek, tell), leitura linha a linha de relatórios e bases CSV, argumentos de linha de comando (sys.argv), geração automatizada de relatórios em HTML e navegação recursiva de diretórios com o módulo os.",
+      "concepts": [
+        "Modos de Arquivo (r, w, a)",
+        "Context Manager with open()",
+        "Buffer e Leitura Linha a Linha",
+        "Ponteiro de Arquivo seek()",
+        "Argumentos sys.argv",
+        "Geração de Relatórios HTML",
+        "Módulo os e os.path",
+        "Varredura Recursiva de Pastas"
+      ]
+    },
+    {
+      "id": 10,
+      "code": "MÓDULO 10",
+      "blockId": "bloco-3",
+      "chapters": "Capítulo 10 (pp. 216–259)",
+      "title": "Programação Orientada a Objetos: Classes, Encapsulamento e Herança",
+      "unlocked": false,
+      "estimatedTime": "4h 00min",
+      "objective": "Compreender a modelagem computacional orientada a objetos: definição de classes, instâncias, métodos e o papel da referência explícita self e do construtor __init__. Implementar encapsulamento de estado, herança simples, polimorfismo de métodos e desenvolver sistemas práticos completos (Simulador de Banco com Contas Especiais e Agenda Telefônica).",
+      "concepts": [
+        "Paradigma Orientado a Objetos",
+        "Classes e Instâncias",
+        "Método Construtor __init__",
+        "Referência self",
+        "Encapsulamento e Atributos",
+        "Herança e super()",
+        "Sobrescrita de Métodos",
+        "Projeto Sistema Bancário"
+      ]
+    },
+    {
+      "id": 11,
+      "code": "MÓDULO 11",
+      "blockId": "bloco-3",
+      "chapters": "Capítulo 11 (pp. 260–313)",
+      "title": "Bancos de Dados Relacionais e Persistência com SQLite",
+      "unlocked": false,
+      "estimatedTime": "4h 00min",
+      "objective": "Integrar programas Python ao banco de dados relacional embarcado SQLite via módulo sqlite3: comandos DDL (CREATE TABLE), comandos DML (INSERT, SELECT, UPDATE, DELETE), manipulação de cursores e transações com commit/rollback, chaves primárias autoincrementais, junções e agrupamentos com GROUP BY/HAVING e a migração completa da Agenda de Contatos.",
+      "concepts": [
+        "Bancos Relacionais vs. Arquivos",
+        "Módulo sqlite3",
+        "Cursores e Navegação de Registros",
+        "DDL: CREATE TABLE e Tipos",
+        "DML: INSERT, UPDATE, DELETE",
+        "Filtros WHERE e Operadores SQL",
+        "Agrupamentos GROUP BY e Agregações",
+        "Migração da Agenda para SQL"
+      ]
+    },
+    {
+      "id": 12,
+      "code": "MÓDULO 12",
+      "blockId": "bloco-4",
+      "chapters": "Capítulo 12 e Apêndice A (pp. 314–322)",
+      "title": "Diagnóstico de Exceções, Tratamento de Erros e Próximos Passos",
+      "unlocked": false,
+      "estimatedTime": "2h 30min",
+      "objective": "Desenvolver maturidade na engenharia de software em Python: analisar o catálogo de exceções canônicas do interpretador (SyntaxError, IndentationError, KeyError, NameError, ValueError, TypeError, IndexError), projetar blocos defensivos com try, except, else e finally, aplicar compreensões de listas e explorar os caminhos avançados no ecossistema (web, ciência de dados e automação).",
+      "concepts": [
+        "Anatomia de Tracebacks",
+        "Catálogo de Erros do Apêndice A",
+        "Tratamento com try/except/finally",
+        "Captura de Múltiplas Exceções",
+        "List Comprehensions",
+        "Funções map e filter",
+        "Boas Práticas e PEP 8",
+        "Trilhas do Ecossistema Python"
+      ]
+    }
+  ]
+}
