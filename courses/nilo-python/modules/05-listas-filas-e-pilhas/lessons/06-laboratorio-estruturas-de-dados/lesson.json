@@ -1,0 +1,27 @@
+{
+  "id": "06-laboratorio-estruturas-de-dados",
+  "title": "Laboratório Interativo: Estruturas de Dados (Filas FIFO & Pilhas LIFO)",
+  "kind": "lab",
+  "pages": "Prática Integrada (pp. 108–114)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "lab",
+      "id": "data-structures-lab",
+      "title": "Laboratório Interativo: Estruturas de Dados (Filas FIFO & Pilhas LIFO)",
+      "source": "catalog",
+      "mobile": "full"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

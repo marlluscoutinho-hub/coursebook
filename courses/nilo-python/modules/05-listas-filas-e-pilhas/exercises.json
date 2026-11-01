@@ -1,0 +1,78 @@
+{
+  "title": "Exercícios e Problemas Canônicos do Módulo 05",
+  "subtitle": "8 atividades clássicas com solução passo a passo e rascunho integrado",
+  "exercises": [
+    {
+      "id": "ex5-1",
+      "code": "EXERCÍCIO 1",
+      "reference": "Capítulo 6 (p. 105)",
+      "title": "Exercício 6.2: Fusão Sequencial de Duas Listas em uma Terceira",
+      "prompt": "Faça um programa que leia e preencha duas listas independentes a partir de entradas do usuário. Em seguida, gere e imprima uma terceira lista contendo todos os elementos da primeira seguidos de todos os elementos da segunda lista.",
+      "placeholder": "Construa o algoritmo de concatenação no rascunho...",
+      "solution": "\n        <p><strong>Resolução Analítica Passo a Passo:</strong></p>\n        <ol>\n          <li>Podemos concatenar diretamente utilizando o operador de sobrecarga <code>+</code> ou o método <code>extend()</code>.</li>\n          <li>O operador <code>+</code> cria uma nova lista independente sem modificar as originais.</li>\n        </ol>\n        <pre><code># Exemplo com valores preenchidos\nlista1 = [1, 2, 3]\nlista2 = [4, 5, 6]\n\n# Geração da terceira lista por concatenação\nlista3 = lista1 + lista2\n\nprint(f\"Primeira lista: {lista1}\")\nprint(f\"Segunda lista: {lista2}\")\nprint(f\"Terceira lista combinada: {lista3}\")</code></pre>\n        <p>Resultado: <code>lista3 = [1, 2, 3, 4, 5, 6]</code>. $\\blacksquare$</p>\n      "
+    },
+    {
+      "id": "ex5-2",
+      "code": "EXERCÍCIO 2",
+      "reference": "Capítulo 6 (p. 105)",
+      "title": "Exercício 6.3: União Conjuntista sem Elementos Repetidos",
+      "prompt": "Faça um programa que percorra duas listas de elementos e gere uma terceira lista resultante contendo a união dos elementos de ambas, mas **sem qualquer valor duplicado** (cada valor deve figurar no máximo uma única vez na terceira lista).",
+      "placeholder": "Esboce a verificação de pertencimento no rascunho...",
+      "solution": "\n        <p><strong>Algoritmo e Implementação:</strong></p>\n        <pre><code>L1 = [1, 2, 3, 4, 5]\nL2 = [3, 4, 5, 6, 7]\n\nL3 = []\n\n# Copia elementos de L1 que não estejam em L3\nfor item in L1:\n    if item not in L3:\n        L3.append(item)\n\n# Copia elementos de L2 que ainda não estejam em L3\nfor item in L2:\n    if item not in L3:\n        L3.append(item)\n\nprint(f\"L1: {L1}\")\nprint(f\"L2: {L2}\")\nprint(f\"L3 (União sem duplicatas): {L3}\")</code></pre>\n        <p>Os números 3, 4 e 5, presentes em ambas, são adicionados apenas na primeira passagem. Resultado: <code>[1, 2, 3, 4, 5, 6, 7]</code>. $\\blacksquare$</p>\n      "
+    },
+    {
+      "id": "ex5-3",
+      "code": "EXERCÍCIO 3",
+      "reference": "Capítulo 6 (p. 108)",
+      "title": "Exercício 6.4: Análise de Limite de pop() em Lista Vazia",
+      "prompt": "Responda analiticamente: o que acontece quando não verificamos se a lista está vazia antes de chamarmos o método `pop()` ou `pop(0)`? Demonstre como estruturar uma cláusula de guarda defensiva em Python.",
+      "placeholder": "Descreva o comportamento e a proteção no rascunho...",
+      "solution": "\n        <p><strong>Diagnóstico e Código Defensivo:</strong></p>\n        <ol>\n          <li><strong>Diagnóstico:</strong> Invocar <code>L.pop()</code> em uma lista de comprimento zero dispara a exceção <code>IndexError: pop from empty list</code>, interrompendo a execução do programa se não houver tratamento.</li>\n          <li><strong>Padrão de Guarda Defensiva:</strong>\n            <pre><code>if len(fila) > 0:\n    atendido = fila.pop(0)\n    print(f\"Atendendo cliente {atendido}\")\nelse:\n    print(\"Aviso: Não há elementos na fila para remover.\")</code></pre>\n          </li>\n        </ol>\n      "
+    },
+    {
+      "id": "ex5-4",
+      "code": "EXERCÍCIO 4",
+      "reference": "Capítulo 6 (p. 110)",
+      "title": "Exercício 6.5: Simulador de Fila Bancária com Comandos em Lote",
+      "prompt": "Altere o programa de fila de banco (Listagem 6.21) de forma que o operador possa inserir múltiplos comandos de uma só vez em uma única string de texto (ex.: a string 'FFFAAAS' deve significar três chegadas de clientes, três atendimentos consecutivos e em seguida a saída do programa).",
+      "placeholder": "Construa o laço for sobre a string de comandos no rascunho...",
+      "solution": "\n        <p><strong>Implementação do Processador em Lote:</strong></p>\n        <pre><code>ultimo = 10\nfila = list(range(1, ultimo + 1))\n\noperacoes = input(\"Digite a sequência de comandos (F, A, S): \").strip().upper()\n\nfor comando in operacoes:\n    if comando == \"A\":\n        if len(fila) > 0:\n            atendido = fila.pop(0)\n            print(f\"Cliente {atendido} atendido.\")\n        else:\n            print(\"Fila vazia! Nenhum cliente a atender.\")\n    elif comando == \"F\":\n        ultimo += 1\n        fila.append(ultimo)\n        print(f\"Cliente {ultimo} entrou na fila.\")\n    elif comando == \"S\":\n        print(\"Comando S detectado: Encerrando expediente bancário.\")\n        break\n    else:\n        print(f\"Comando inválido '{comando}' ignorado.\")\n\nprint(f\"Estado final da fila: {fila}\")</code></pre>\n      "
+    },
+    {
+      "id": "ex5-5",
+      "code": "EXERCÍCIO 5",
+      "reference": "Capítulo 6 (p. 114)",
+      "title": "Exercício 6.7: Validador de Expressões com Parênteses Usando Pilha",
+      "prompt": "Faça um programa que leia uma expressão algébrica contendo parênteses. Utilizando a estrutura de dados abstrata de Pilha (LIFO), verifique se os parênteses foram abertos e fechados na ordem cronológica correta. Exiba 'OK' para expressões balanceadas e 'ERRO' para expressões mal formadas.",
+      "placeholder": "Modele o empilhamento e desempilhamento no rascunho...",
+      "solution": "\n        <p><strong>Algoritmo e Código com Pilha:</strong></p>\n        <pre><code>expressao = input(\"Digite a expressão: \")\npilha = []\nerro = False\n\nfor char in expressao:\n    if char == \"(\":\n        pilha.append(\"(\")\n    elif char == \")\":\n        if len(pilha) > 0:\n            pilha.pop()\n        else:\n            erro = True\n            break\n\nif not erro and len(pilha) == 0:\n    print(\"OK (Expressão perfeitamente balanceada)\")\nelse:\n    print(\"ERRO (Parênteses desbalanceados ou fora de ordem)\")</code></pre>\n        <p>Exemplo 1: <code>((2+3)*4)</code> $\\to$ OK.<br>\n           Exemplo 2: <code>())</code> $\\to$ ERRO (fecha sem abrir).<br>\n           Exemplo 3: <code>(()</code> $\\to$ ERRO (termina com elemento sobrando na pilha). $\\blacksquare$</p>\n      "
+    },
+    {
+      "id": "ex5-6",
+      "code": "EXERCÍCIO 6",
+      "reference": "Capítulo 6 (pp. 116–117)",
+      "title": "Exercício 6.9 & 6.10: Busca Sequencial de Múltiplos Elementos com Posição",
+      "prompt": "Escreva um programa que leia uma lista de números e solicite dois valores a procurar ($p$ e $v$). Pesquise a ocorrência de ambos os valores na lista e informe ao usuário: qual deles foi encontrado primeiro cronologicamente e as respectivas posições (índices) onde foram localizados.",
+      "placeholder": "Estruture a busca linear registrando as posições no rascunho...",
+      "solution": "\n        <p><strong>Código de Busca Sequencial Dupla:</strong></p>\n        <pre><code>L = [15, 7, 27, 39, 42, 8, 99, 12]\np = int(input(\"Primeiro valor a buscar (p): \"))\nv = int(input(\"Segundo valor a buscar (v): \"))\n\npos_p = -1\npos_v = -1\n\nfor idx, item in enumerate(L):\n    if item == p and pos_p == -1:\n        pos_p = idx\n    if item == v and pos_v == -1:\n        pos_v = idx\n\nif pos_p != -1:\n    print(f\"Valor {p} encontrado na posição {pos_p}.\")\nelse:\n    print(f\"Valor {p} não foi encontrado.\")\n\nif pos_v != -1:\n    print(f\"Valor {v} encontrado na posição {pos_v}.\")\nelse:\n    print(f\"Valor {v} não foi encontrado.\")\n\nif pos_p != -1 and pos_v != -1:\n    if pos_p < pos_v:\n        print(f\"O valor {p} foi encontrado primeiro na lista!\")\n    elif pos_v < pos_p:\n        print(f\"O valor {v} foi encontrado primeiro na lista!\")\n    else:\n        print(\"p e v estão na mesma posição (valores iguais).\")</code></pre>\n      "
+    },
+    {
+      "id": "ex5-7",
+      "code": "EXERCÍCIO 7",
+      "reference": "Capítulo 6 (p. 118)",
+      "title": "Exercício 6.11: Transformação de while em for e Limites de Expressividade",
+      "prompt": "Reescreva a impressão dos elementos de uma lista utilizando a instrução `for`. Em seguida, responda analiticamente: por que **nem todo laço `while` pode ser substituído por um laço `for`**?",
+      "placeholder": "Compare os modelos computacionais no rascunho...",
+      "solution": "\n        <p><strong>Análise Teórica e Prática:</strong></p>\n        <pre><code># Travessia com for:\nL = [5, 9, 13, 21]\nfor elemento in L:\n    print(elemento)</code></pre>\n        <p><strong>Por que nem todo while vira for?</strong></p>\n        <p>O laço <code>for</code> é projetado para iterar sobre conjuntos finitos conhecidos ou sequências iteráveis predeterminadas (como listas ou geradores <code>range</code>). Por outro lado, o laço <code>while</code> é governado por predicados lógicos gerais arbitrários de tempo indeterminado — como aguardar a digitação de um valor sentinela, convergir um método numérico até que o erro seja inferior a $\\epsilon$, ou reagir a eventos de hardware/rede. Quando o número de iterações não decorre do tamanho de uma coleção finita, o laço <code>while</code> é indispensável e insubstituível. $\\blacksquare$</p>\n      "
+    },
+    {
+      "id": "ex5-8",
+      "code": "EXERCÍCIO 8",
+      "reference": "Capítulo 6 (pp. 120–121)",
+      "title": "Exercício 6.13: Análise Estatística de Temperaturas de Mons",
+      "prompt": "A lista de temperaturas diárias registradas na cidade de Mons, na Bélgica, foi armazenada na seguinte estrutura: `T = [-10, -8, 0, 1, 2, 5, -2, -4]`. Desenvolva um programa que percorra essa lista e imprima a menor temperatura, a maior temperatura e a temperatura média com duas casas decimais.",
+      "placeholder": "Escreva o algoritmo de varredura no rascunho...",
+      "solution": "\n        <p><strong>Resolução Analítica Passo a Passo:</strong></p>\n        <pre><code>T = [-10, -8, 0, 1, 2, 5, -2, -4]\n\n# Inicializa extremos com o primeiro elemento da lista\nminima = T[0]\nmaxima = T[0]\nsoma = 0\n\nfor temp in T:\n    if temp < minima:\n        minima = temp\n    if temp > maxima:\n        maxima = temp\n    soma += temp\n\nmedia = soma / len(T)\n\nprint(f\"Temperaturas observadas: {T}\")\nprint(f\"Menor temperatura registrada: {minima} °C\")\nprint(f\"Maior temperatura registrada: {maxima} °C\")\nprint(f\"Temperatura média do período: {media:.2f} °C\")</code></pre>\n        <p>Para a lista dada: soma = $-16$, tamanho = $8$, resultando em média de $-2{,}00$ °C, com mínima de $-10$ °C e máxima de $5$ °C. $\\blacksquare$</p>\n      "
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+Hora de colocar a mão na massa com as estruturas de dados abstratas do Módulo 05! Neste laboratório visual e interativo, você poderá simular a chegada e atendimento de clientes em uma fila de banco FIFO (com suporte a processamento em lote) e testar a resolução do problema de parênteses balanceados utilizando uma pilha LIFO.

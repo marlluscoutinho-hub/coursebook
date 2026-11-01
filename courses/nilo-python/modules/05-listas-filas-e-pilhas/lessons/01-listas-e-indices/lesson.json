@@ -1,0 +1,20 @@
+{
+  "id": "01-listas-e-indices",
+  "title": "Listas Dinâmicas, Mutabilidade, Referências e Fatiamento",
+  "kind": "standard",
+  "pages": "Capítulo 6 (pp. 98–103)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

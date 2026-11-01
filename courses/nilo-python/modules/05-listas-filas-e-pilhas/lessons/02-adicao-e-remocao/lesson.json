@@ -1,0 +1,20 @@
+{
+  "id": "02-adicao-e-remocao",
+  "title": "Adição, Remoção e Extensão de Elementos em Listas",
+  "kind": "standard",
+  "pages": "Capítulo 6 (pp. 103–108)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

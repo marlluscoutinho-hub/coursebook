@@ -1,0 +1,326 @@
+{
+  "title": "Quizzes Dialéticos do Módulo 05 (Capítulo 6 — Parte 1)",
+  "subtitle": "10 questões analíticas comentadas alternativa por alternativa",
+  "questions": [
+    {
+      "id": "q5-1",
+      "type": "multiple_choice",
+      "reference": "Capítulo 6 (pp. 98–101)",
+      "question": "Seja o seguinte trecho de código: `A = [10, 20, 30]; B = A; B[0] = 999; print(A)`. Qual será o valor exibido na tela?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "[10, 20, 30], pois alterar a lista B não afeta a lista original A.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Este é o erro clássico de quem confunde atribuição de variáveis com clonagem de objetos. Como as listas são mutáveis, a atribuição B = A apenas cria uma nova referência para o mesmo endereço de memória."
+        },
+        {
+          "letter": "B",
+          "text": "[999, 20, 30], porque B e A apontam exatamente para a mesma lista na memória heap.",
+          "isCorrect": true,
+          "explanation": "Correta! Em Python, atribuir `B = A` copia a referência do objeto, e não seus elementos. Como ambas as variáveis compartilham o mesmo objeto, modificar `B[0]` altera o estado visível através de `A`."
+        },
+        {
+          "letter": "C",
+          "text": "O programa gera a exceção TypeError: 'list' object is immutable.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Ao contrário de strings e tuplas, listas são completamente mutáveis em Python."
+        },
+        {
+          "letter": "D",
+          "text": "[999, 999, 999], pois a atribuição propaga o novo valor para todos os índices.",
+          "isCorrect": false,
+          "explanation": "Incorreta. A modificação por índice `B[0]` atinge estritamente a primeira posição da lista compartilhada."
+        }
+      ]
+    },
+    {
+      "id": "q5-2",
+      "type": "multiple_choice",
+      "reference": "Capítulo 6 (pp. 101–103)",
+      "question": "Como um programador deve duplicar uma lista `A` para a variável `B` de modo que alterações posteriores em `B` não modifiquem `A`?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Utilizando fatiamento integral `B = A[:]` ou o método `B = A.copy()`.",
+          "isCorrect": true,
+          "explanation": "Correta! A notação de fatia completa `A[:]` gera um novo objeto de lista independente na memória contendo cópias rasas dos elementos originais, isolando `B` de `A`."
+        },
+        {
+          "letter": "B",
+          "text": "Fazendo a atribuição simples `B = A`.",
+          "isCorrect": false,
+          "explanation": "Incorreta. `B = A` cria um pseudônimo de referência para o mesmo objeto."
+        },
+        {
+          "letter": "C",
+          "text": "Convertendo a lista para número inteiro antes da atribuição.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Listas não podem ser convertidas diretamente para inteiros via `int(A)`."
+        },
+        {
+          "letter": "D",
+          "text": "Em Python é matematicamente impossível criar cópias independentes de listas.",
+          "isCorrect": false,
+          "explanation": "Incorreta. A clonagem de listas é uma operação basilar da linguagem."
+        }
+      ]
+    },
+    {
+      "id": "q5-3",
+      "type": "multiple_choice",
+      "reference": "Capítulo 6 (pp. 103–105)",
+      "question": "Seja `L = [1, 2]`. Qual é a diferença no estado de `L` entre executar `L.append([3, 4])` e executar `L.extend([3, 4])`?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Ambos os métodos produzem exatamente o mesmo resultado: `[1, 2, 3, 4]`.",
+          "isCorrect": false,
+          "explanation": "Incorreta. `append` e `extend` possuem comportamentos estruturais completamente distintos ao receber sequências."
+        },
+        {
+          "letter": "B",
+          "text": "`L.append([3, 4])` insere a sublista como um único elemento aninhado `[1, 2, [3, 4]]`, enquanto `L.extend([3, 4])` adiciona os elementos individualmente, resultando em `[1, 2, 3, 4]`.",
+          "isCorrect": true,
+          "explanation": "Correta! O `append` insere o argumento recebido como um objeto único intacto na cauda da lista (tamanho aumenta em 1); o `extend` itera sobre o argumento e adiciona cada item sucessivamente (tamanho aumenta pelo comprimento da sequência)."
+        },
+        {
+          "letter": "C",
+          "text": "`extend` remove elementos da lista em vez de adicionar.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O método `extend` serve estritamente para expansão e acréscimo."
+        },
+        {
+          "letter": "D",
+          "text": "`append` só aceita números inteiros, disparando erro ao receber listas.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Listas aceitam qualquer tipo de objeto, incluindo outras listas como elementos aninhados."
+        }
+      ]
+    },
+    {
+      "id": "q5-4",
+      "type": "multiple_choice",
+      "reference": "Capítulo 6 (pp. 105–107)",
+      "question": "Qual é a distinção primordial entre a instrução `del L[0]` e o método `item = L.pop(0)`?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "O `del` apaga o elemento sem retornar nada; o `pop(0)` apaga o elemento da lista e o devolve como retorno da expressão para atribuição ou uso imediato.",
+          "isCorrect": true,
+          "explanation": "Correta! Enquanto `del` é uma instrução que apenas destrói o vínculo no índice, `pop()` devolve o valor removido, tornando-o perfeito para filas e pilhas onde o elemento retirado precisa ser processado imediatamente."
+        },
+        {
+          "letter": "B",
+          "text": "O `pop(0)` não remove o elemento, apenas imprime na tela.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O método `pop` remove fisicamente o item da lista."
+        },
+        {
+          "letter": "C",
+          "text": "`del` só funciona para números negativos.",
+          "isCorrect": false,
+          "explanation": "Incorreta. `del` funciona com qualquer índice válido (positivo ou negativo) ou fatia."
+        },
+        {
+          "letter": "D",
+          "text": "São estritamente sinônimos idênticos na gramática do interpretador.",
+          "isCorrect": false,
+          "explanation": "Incorreta. `del` é uma palavra-chave de instrução gramatical e `pop` é um método de objeto que retorna valor."
+        }
+      ]
+    },
+    {
+      "id": "q5-5",
+      "type": "multiple_choice",
+      "reference": "Capítulo 6 (p. 108)",
+      "question": "Segundo o Exercício 6.4 do livro de Nilo Menezes, o que acontece se o método `pop()` for chamado sobre uma lista vazia `[]`?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "O método retorna o valor especial `None` sem disparar erro.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Métodos de dicionário podem retornar None, mas em listas o pop dispara exceção se a lista estiver vazia."
+        },
+        {
+          "letter": "B",
+          "text": "O interpretador dispara imediatamente a exceção `IndexError: pop from empty list`.",
+          "isCorrect": true,
+          "explanation": "Correta! Chamar pop em uma lista vazia viola a pré-condição de existência de elementos, gerando IndexError. Por isso, a boa prática exige testar `if len(lista) > 0:` antes da remoção."
+        },
+        {
+          "letter": "C",
+          "text": "A lista cria um elemento com o valor 0.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O pop não insere valores em coleções vazias."
+        },
+        {
+          "letter": "D",
+          "text": "O programa fecha sem apresentar nenhuma mensagem de erro.",
+          "isCorrect": false,
+          "explanation": "Incorreta. A exceção não tratada interrompe o script exibindo o traceback de erro no console."
+        }
+      ]
+    },
+    {
+      "id": "q5-6",
+      "type": "multiple_choice",
+      "reference": "Capítulo 6 (pp. 108–110)",
+      "question": "Como uma estrutura de dados de Fila (FIFO: First In, First Out) é implementada sobre listas em Python?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Novos elementos entram na cabeça com `insert(0, item)` e saem no fim com `pop()`.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Embora seja possível inverter a orientação, a convenção canônica apresentada por Nilo Menezes é adicionar no fim com append() e retirar no início com pop(0)."
+        },
+        {
+          "letter": "B",
+          "text": "Novos elementos entram no final com `append(item)` e saem no início com `pop(0)`.",
+          "isCorrect": true,
+          "explanation": "Correta! Conforme a Listagem 6.21, a cauda da fila cresce com `fila.append(novo_cliente)`, e o atendimento ao primeiro que chegou ocorre removendo o índice zero com `fila.pop(0)`."
+        },
+        {
+          "letter": "C",
+          "text": "Elementos entram e saem exclusivamente pelo índice central da lista.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Filas operam estritamente em extremidades opostas (entrada na cauda, saída na cabeça)."
+        },
+        {
+          "letter": "D",
+          "text": "Filas exigem obrigatoriamente ordenação por bolha antes de cada atendimento.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Filas preservam estritamente a ordem cronológica de chegada, sem reordenação por valor."
+        }
+      ]
+    },
+    {
+      "id": "q5-7",
+      "type": "multiple_choice",
+      "reference": "Capítulo 6 (pp. 111–114)",
+      "question": "Por que a estrutura de Pilha (LIFO: Last In, First Out) com `append()` e `pop()` é computacionalmente mais eficiente do que uma Fila (FIFO) com `pop(0)` em listas nativas de Python?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Porque tanto `append()` quanto `pop()` operam no topo final da lista em tempo constante $O(1)$, enquanto `pop(0)` precisa deslocar todos os $N$ elementos subsequentes na memória ($O(N)$).",
+          "isCorrect": true,
+          "explanation": "Correta! Listas em Python são vetores contíguos na memória. Retirar do início via `pop(0)` exige empurrar todos os outros elementos uma posição para trás, ao passo que adicionar e retirar da cauda final é uma operação de tempo constante $O(1)$ sem deslocamentos em bloco."
+        },
+        {
+          "letter": "B",
+          "text": "Porque pilhas utilizam circuitos quânticos do processador.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Trata-se puramente da arquitetura de arranjos contíguos de memória clássica."
+        },
+        {
+          "letter": "C",
+          "text": "Porque a fila não permite armazenar strings, apenas inteiros.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Ambas as estruturas aceitam qualquer tipo de objeto heterogêneo."
+        },
+        {
+          "letter": "D",
+          "text": "Não há nenhuma diferença de desempenho entre pop() e pop(0).",
+          "isCorrect": false,
+          "explanation": "Incorreta. Para listas com 100.000 elementos, `pop(0)` é milhares de vezes mais lento do que `pop()`."
+        }
+      ]
+    },
+    {
+      "id": "q5-8",
+      "type": "multiple_choice",
+      "reference": "Capítulo 6 (pp. 112–114)",
+      "question": "No algoritmo de validação de parênteses com pilha (Exercício 6.7), o que significa o fato de a pilha NÃO estar vazia ao término da leitura de uma expressão como `'(()'`?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Significa que a expressão está correta e que sobraram créditos de abertura.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Uma expressão balanceada deve terminar com a pilha rigorosamente vazia."
+        },
+        {
+          "letter": "B",
+          "text": "Significa que existem parênteses abertos '(' que nunca foram fechados por um ')' correspondente, caracterizando erro de sintaxe.",
+          "isCorrect": true,
+          "explanation": "Correta! Cada '(' abre um compromisso de fechamento empilhado. Se ao final da cadeia ainda houver elementos na pilha, algum delimitador aberto ficou sem seu respectivo fechamento."
+        },
+        {
+          "letter": "C",
+          "text": "Significa que o programa deve inverter a ordem da expressão e reler de trás para frente.",
+          "isCorrect": false,
+          "explanation": "Incorreta. A pilha já processou a expressão na ordem cronológica correta."
+        },
+        {
+          "letter": "D",
+          "text": "Significa que o Python executará a multiplicação antes da adição.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Trata-se de uma falha léxica/sintática que impede a própria avaliação matemática."
+        }
+      ]
+    },
+    {
+      "id": "q5-9",
+      "type": "multiple_choice",
+      "reference": "Capítulo 6 (pp. 118–120)",
+      "question": "Quais elementos inteiros são gerados pela chamada `list(range(2, 10, 3))`?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "[2, 5, 8, 11]",
+          "isCorrect": false,
+          "explanation": "Incorreta. O valor 11 ultrapassa o limite final 10 e não pode ser incluído."
+        },
+        {
+          "letter": "B",
+          "text": "[2, 5, 8]",
+          "isCorrect": true,
+          "explanation": "Correta! A sequência inicia em 2, avança de 3 em 3 ($2, 5, 8$) e para antes de atingir ou ultrapassar o teto estritamente exclusivo de 10."
+        },
+        {
+          "letter": "C",
+          "text": "[2, 3, 4, 5, 6, 7, 8, 9, 10]",
+          "isCorrect": false,
+          "explanation": "Incorreta. O terceiro parâmetro 3 define o passo de salto entre números, não passo unitário."
+        },
+        {
+          "letter": "D",
+          "text": "[3, 6, 9]",
+          "isCorrect": false,
+          "explanation": "Incorreta. O valor inicial especificado foi 2, e não 3."
+        }
+      ]
+    },
+    {
+      "id": "q5-10",
+      "type": "multiple_choice",
+      "reference": "Capítulo 6 (pp. 120–121)",
+      "question": "Qual é a principal vantagem de utilizar `for indice, valor in enumerate(lista):` em vez de criar e incrementar manualmente uma variável contadora?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "O enumerate() transforma o código em linguagem binária pura de alto desempenho.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O enumerate() é um gerador de pares chave-valor perfeitamente integrado ao runtime padrão do Python."
+        },
+        {
+          "letter": "B",
+          "text": "Ele produz o código idiomático de Python (Pythonic), eliminando o risco de esquecimento do incremento de índice, erros off-by-one e declarações redundantes de contadores externos.",
+          "isCorrect": true,
+          "explanation": "Correta! A função embutida enumerate() extrai simultaneamente o índice numérico (0, 1, 2...) e o objeto contido na posição a cada iteração, tornando o laço limpo, legível e seguro contra falhas de controle."
+        },
+        {
+          "letter": "C",
+          "text": "Ele faz com que a lista seja ordenada automaticamente em ordem alfabética.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O enumerate() preserva rigorosamente a ordem original de inserção dos elementos na lista."
+        },
+        {
+          "letter": "D",
+          "text": "Ele só pode ser usado se a lista tiver mais de 1.000 elementos.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O enumerate() opera com coleções de qualquer tamanho, de 0 a milhões de itens."
+        }
+      ]
+    }
+  ]
+}

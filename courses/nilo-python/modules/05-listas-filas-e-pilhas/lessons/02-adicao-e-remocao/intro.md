@@ -1,0 +1,1 @@
+Diferente de matrizes e vetores rígidos em linguagens como C ou Java (onde o tamanho é fixado na compilação), as listas em Python crescem e encolhem dinamicamente em tempo de execução. Nesta aula, exploramos os métodos fundamentais para injetar elementos (`append()`, `extend()` e operador `+`) e as técnicas de remoção (`del` e `pop()`), compreendendo seus impactos na memória.

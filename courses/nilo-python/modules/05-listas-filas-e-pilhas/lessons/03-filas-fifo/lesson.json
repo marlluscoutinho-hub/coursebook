@@ -1,0 +1,20 @@
+{
+  "id": "03-filas-fifo",
+  "title": "A Estrutura de Dados Fila (FIFO: First In, First Out)",
+  "kind": "standard",
+  "pages": "Capítulo 6 (pp. 108–111)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "05-pesquisa-e-iteracao-for",
+  "title": "Busca Sequencial Linear e a Instrução for com range() e enumerate()",
+  "kind": "standard",
+  "pages": "Capítulo 6 (pp. 114–121)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

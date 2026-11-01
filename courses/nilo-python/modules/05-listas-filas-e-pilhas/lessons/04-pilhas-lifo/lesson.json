@@ -1,0 +1,20 @@
+{
+  "id": "04-pilhas-lifo",
+  "title": "A Estrutura de Dados Pilha (LIFO) e Validação de Parênteses",
+  "kind": "standard",
+  "pages": "Capítulo 6 (pp. 111–114)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

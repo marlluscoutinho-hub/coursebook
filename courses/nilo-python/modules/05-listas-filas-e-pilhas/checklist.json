@@ -1,0 +1,9 @@
+[
+  "Compreendo a natureza mutável das listas em Python e diferencio atribuição de referência (B = A) de cópia rasa independente (B = A[:]).",
+  "Domino a indexação com base zero, o acesso a índices negativos e o fatiamento de listas [início:fim].",
+  "Sei manipular listas com append(), pop(), del, extend() e concatenação com +.",
+  "Implemento uma Fila (FIFO) com inserção no final via append() e remoção do início via pop(0).",
+  "Implemento uma Pilha (LIFO) com inserção no topo via append() e remoção do topo via pop().",
+  "Consigo aplicar pilhas para resolver problemas práticos como a validação de parênteses balanceados em expressões.",
+  "Utilizo a instrução for para iterar sobre sequências, combinando com range() e enumerate()."
+]

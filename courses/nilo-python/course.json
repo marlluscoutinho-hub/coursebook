@@ -14,7 +14,8 @@
     "01-computador-e-interpretador",
     "02-variaveis-e-tipos",
     "03-condicoes",
-    "04-repeticoes"
+    "04-repeticoes",
+    "05-listas-filas-e-pilhas"
   ],
   "status": "in_development"
 }

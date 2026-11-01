@@ -1,0 +1,18 @@
+{
+  "id": "05-listas-filas-e-pilhas",
+  "code": "MÓDULO 05",
+  "title": "Listas Sequenciais, Filas (FIFO), Pilhas (LIFO) e Busca Sequencial",
+  "chapters": "Capítulo 6 (pp. 98–117)",
+  "pages": "pp. 98–117",
+  "summary": "Estruturas sequenciais dinâmicas em Python: indexação direta e reversa, mutabilidade, métodos de adição e remoção, implementação das estruturas de dados abstratas Fila (FIFO) e Pilha (LIFO), busca linear sequencial e a instrução for com range() e enumerate().",
+  "lessons": [
+    "01-listas-e-indices",
+    "02-adicao-e-remocao",
+    "03-filas-fifo",
+    "04-pilhas-lifo",
+    "05-pesquisa-e-iteracao-for",
+    "06-laboratorio-estruturas-de-dados"
+  ],
+  "quiz": "quiz.json",
+  "exercises": "exercises.json"
+}
