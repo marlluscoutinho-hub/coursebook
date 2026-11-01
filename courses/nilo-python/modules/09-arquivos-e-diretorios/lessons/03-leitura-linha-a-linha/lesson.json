@@ -1,0 +1,20 @@
+{
+  "id": "03-leitura-linha-a-linha",
+  "title": "Estratégias de Leitura: Read, Readlines e Iteradores em Memória",
+  "kind": "standard",
+  "pages": "Capítulo 9 (pp. 190–194)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

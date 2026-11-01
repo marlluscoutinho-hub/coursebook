@@ -1,0 +1,20 @@
+{
+  "id": "05-modulo-os-e-pastas",
+  "title": "Manipulação de Diretórios, Caminhos Portáveis e os.walk",
+  "kind": "standard",
+  "pages": "Capítulo 9 (pp. 204–215)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

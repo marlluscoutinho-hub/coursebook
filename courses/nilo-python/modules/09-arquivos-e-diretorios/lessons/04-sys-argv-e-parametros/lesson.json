@@ -1,0 +1,20 @@
+{
+  "id": "04-sys-argv-e-parametros",
+  "title": "Scripts de Linha de Comando e o Módulo sys.argv",
+  "kind": "standard",
+  "pages": "Capítulo 9 (pp. 197–200)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

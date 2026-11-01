@@ -1,0 +1,20 @@
+{
+  "id": "02-ponteiro-seek-tell",
+  "title": "O Cursor de Arquivo: Posicionamento Físico com Seek e Tell",
+  "kind": "standard",
+  "pages": "Capítulo 9 (pp. 194–197)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

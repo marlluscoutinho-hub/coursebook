@@ -1,0 +1,45 @@
+{
+  "moduleId": "09-arquivos-e-diretorios",
+  "items": [
+    {
+      "id": "c01",
+      "text": "Diferenciar os modos de abertura de arquivos (r, w, a, b e combinações +)",
+      "checked": false
+    },
+    {
+      "id": "c02",
+      "text": "Utilizar codificação UTF-8 explícita e o gerenciador de contexto with open(...) as f:",
+      "checked": false
+    },
+    {
+      "id": "c03",
+      "text": "Controlar o cursor físico do arquivo com seek() e inspecionar a posição com tell()",
+      "checked": false
+    },
+    {
+      "id": "c04",
+      "text": "Processar arquivos linha a linha de forma eficiente em memória com laço for",
+      "checked": false
+    },
+    {
+      "id": "c05",
+      "text": "Receber argumentos de linha de comando no terminal através de sys.argv",
+      "checked": false
+    },
+    {
+      "id": "c06",
+      "text": "Manipular diretórios e caminhos portáveis com os e os.path (join, abspath, exists)",
+      "checked": false
+    },
+    {
+      "id": "c07",
+      "text": "Navegar árvores de pastas recursivamente com os.walk e gerar páginas HTML",
+      "checked": false
+    },
+    {
+      "id": "c08",
+      "text": "Simular leitura, gravação e árvore de diretórios no laboratório interativo",
+      "checked": false
+    }
+  ]
+}

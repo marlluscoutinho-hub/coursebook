@@ -1,0 +1,304 @@
+{
+  "questions": [
+    {
+      "id": "q01",
+      "question": "O que acontece fisicamente com um arquivo existente no disco rígido contendo 500 páginas de texto quando um script Python executa a instrução `f = open('documento.txt', 'w')`?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "O arquivo é aberto preservando as 500 páginas e novos dados serão adicionados ao final.",
+          "isCorrect": false,
+          "explanation": "Esse é o comportamento do modo de anexação `\"a\"` (*append*), não do modo de escrita `\"w\"`."
+        },
+        {
+          "letter": "B",
+          "text": "O conteúdo existente é imediatamente truncado a zero bytes (apagado) no instante da abertura, mesmo antes de qualquer chamada a `.write()`.",
+          "isCorrect": true,
+          "explanation": "Correto! O modo `\"w\"` abre o arquivo para escrita destrutiva. Se o arquivo já existir, o sistema operacional zera seu conteúdo imediatamente. Se o objetivo for preservar os dados anteriores, deve-se usar o modo `\"a\"`."
+        },
+        {
+          "letter": "C",
+          "text": "Dispara uma exceção `FileExistsError`, impedindo a destruição acidental dos dados.",
+          "isCorrect": false,
+          "explanation": "O modo `\"w\"` sobrescreve sem aviso. O modo que lançaria erro caso o arquivo já existisse seria o modo exclusivo `\"x\"`."
+        },
+        {
+          "letter": "D",
+          "text": "O arquivo é renomeado automaticamente para `documento.txt.bak`.",
+          "isCorrect": false,
+          "explanation": "O Python não cria cópias de backup automáticas; a substituição é imediata."
+        }
+      ]
+    },
+    {
+      "id": "q02",
+      "question": "Qual é a principal vantagem de utilizar o gerenciador de contexto `with open('dados.txt', 'r') as f:` em comparação com a abertura clássica seguida de `f.close()`?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "O bloco `with` duplica a velocidade de leitura do disco utilizando aceleração por hardware da placa de vídeo.",
+          "isCorrect": false,
+          "explanation": "A instrução `with` não altera os limites físicos de I/O do hardware nem utiliza GPU."
+        },
+        {
+          "letter": "B",
+          "text": "Garante o fechamento automático e determinístico do arquivo ao sair do bloco indentado, mesmo que ocorram exceções ou erros não tratados durante a execução.",
+          "isCorrect": true,
+          "explanation": "Correto! O protocolo de gerenciador de contexto garante que o método `__exit__()` do arquivo seja executado em qualquer circunstância (saída normal, retorno antecipado ou exceção), liberando o descritor de arquivo e descarregando os buffers de gravação."
+        },
+        {
+          "letter": "C",
+          "text": "Permite abrir arquivos sem ter permissão de leitura no sistema operacional.",
+          "isCorrect": false,
+          "explanation": "Permissões de segurança do sistema de arquivos continuam sendo estritamente exigidas."
+        },
+        {
+          "letter": "D",
+          "text": "Converte automaticamente o arquivo texto em uma tabela de banco de dados SQLite.",
+          "isCorrect": false,
+          "explanation": "A conversão para banco de dados exige bibliotecas e operações relacionais explícitas."
+        }
+      ]
+    },
+    {
+      "id": "q03",
+      "question": "Por que é considerado obrigatório especificar explicitamente `encoding='utf-8'` na função `open()` ao trabalhar com textos em português?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Sem isso, o Python se recusa a iniciar e emite um erro de compilação imediato.",
+          "isCorrect": false,
+          "explanation": "`open()` possui uma codificação padrão implícita (`locale.getpreferredencoding()`), mas ela varia conforme o sistema operacional."
+        },
+        {
+          "letter": "B",
+          "text": "Evitar corrupção de caracteres acentuados (*mojibake*) e incompatibilidade entre sistemas operacionais, já que o Windows frequentemente usa páginas legadas como `cp1252` enquanto Linux e macOS usam UTF-8.",
+          "isCorrect": true,
+          "explanation": "Correto! Se o encoding for omitido, um arquivo gravado no Linux (UTF-8) com palavras como 'maçã' causará erros de decodificação ou exibirá símbolos ilegíveis quando lido no Windows em `cp1252`."
+        },
+        {
+          "letter": "C",
+          "text": "O formato UTF-8 reduz o tamanho de arquivos de áudio e vídeo pela metade.",
+          "isCorrect": false,
+          "explanation": "UTF-8 é uma codificação de texto Unicode, não um compressor de mídia."
+        },
+        {
+          "letter": "D",
+          "text": "Garantir que o arquivo seja criptografado com chave pública RSA de 2048 bits.",
+          "isCorrect": false,
+          "explanation": "UTF-8 é codificação de caracteres, não algoritmo de criptografia."
+        }
+      ]
+    },
+    {
+      "id": "q04",
+      "question": "Considere o seguinte trecho de código:\n```python\nwith open('livro.txt', 'r', encoding='utf-8') as f:\n    conteudo1 = f.read()\n    conteudo2 = f.read()\n```\nO que estará armazenado na variável `conteudo2` e por quê?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "O mesmo texto completo presente em `conteudo1`, pois a função `read()` sempre lê do início.",
+          "isCorrect": false,
+          "explanation": "`f.read()` consome dados a partir da posição atual do cursor; ele não reinicia automaticamente."
+        },
+        {
+          "letter": "B",
+          "text": "Uma string vazia `''`, pois a primeira chamada a `f.read()` avançou o cursor até o final do arquivo (*EOF*).",
+          "isCorrect": true,
+          "explanation": "Correto! As operações de leitura avançam o cursor físico do arquivo. Quando `conteudo1 = f.read()` termina, o cursor está no fim do arquivo. A segunda chamada a `f.read()` encontra o cursor no EOF e retorna string vazia. Para reler, seria necessário executar `f.seek(0)`."
+        },
+        {
+          "letter": "C",
+          "text": "Dispara um erro `IOError: file already read`.",
+          "isCorrect": false,
+          "explanation": "Ler no final de um arquivo não gera exceção; apenas retorna string vazia para sinalizar término de dados."
+        },
+        {
+          "letter": "D",
+          "text": "O texto em ordem reversa (de trás para frente).",
+          "isCorrect": false,
+          "explanation": "A leitura reversa exige passos negativos com fatiamento ou bibliotecas dedicadas."
+        }
+      ]
+    },
+    {
+      "id": "q05",
+      "question": "Qual é a função do método `f.seek(0)` executado sobre um descritor de arquivo aberto para leitura?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Apagar todos os dados do arquivo em disco.",
+          "isCorrect": false,
+          "explanation": "Mover o cursor não altera os dados armazenados."
+        },
+        {
+          "letter": "B",
+          "text": "Reposicionar o cursor de leitura/escrita de volta no byte inicial (offset 0), permitindo reler o arquivo desde o começo.",
+          "isCorrect": true,
+          "explanation": "Correto! O método `seek(offset)` altera a posição corrente do ponteiro de arquivo. Passar o offset 0 rebobina o cursor para o primeiro byte."
+        },
+        {
+          "letter": "C",
+          "text": "Fechar o arquivo e liberar a conexão com o sistema operacional.",
+          "isCorrect": false,
+          "explanation": "Quem fecha o arquivo é o método `.close()` ou o fechamento do bloco `with`."
+        },
+        {
+          "letter": "D",
+          "text": "Contar o número total de linhas do arquivo.",
+          "isCorrect": false,
+          "explanation": "`seek()` apenas altera a posição do ponteiro em bytes."
+        }
+      ]
+    },
+    {
+      "id": "q06",
+      "question": "Ao processar um arquivo de log corporativo de 20 GB em um servidor com 4 GB de memória RAM, qual padrão de leitura deve ser estritamente utilizado para evitar o travamento do processo por `MemoryError`?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "`linhas = f.readlines()`, pois as listas de Python usam compressão LZ4 na memória RAM.",
+          "isCorrect": false,
+          "explanation": "Listas de Python não comprimem strings; `readlines()` carregaria os 20 GB inteiros na RAM, estourando imediatamente a memória."
+        },
+        {
+          "letter": "B",
+          "text": "`texto = f.read()`, processando depois com fatiamento de strings.",
+          "isCorrect": false,
+          "explanation": "Carregar 20 GB em uma única string na RAM causará falha de alocação de memória imediata."
+        },
+        {
+          "letter": "C",
+          "text": "`for linha in f:`, pois o objeto de arquivo atua como um gerador iterável sob demanda, mantendo apenas uma linha na memória RAM por vez com consumo $O(1)$.",
+          "isCorrect": true,
+          "explanation": "Correto! O protocolo iterador `for linha in f:` faz streaming dos dados através de buffers controlados, consumindo apenas alguns kilobytes de memória independentemente de o arquivo ter 20 GB ou 20 TB."
+        },
+        {
+          "letter": "D",
+          "text": "`f.read(20_000_000_000)`",
+          "isCorrect": false,
+          "explanation": "Solicitar a leitura de 20 bilhões de bytes de uma vez causará o mesmo esgotamento de memória."
+        }
+      ]
+    },
+    {
+      "id": "q07",
+      "question": "Se um script for invocado no terminal com o comando `python3 analisa.py vendas.csv 2026`, o que estará armazenado em `sys.argv[0]` e `sys.argv[1]`?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "`sys.argv[0]` será `'vendas.csv'` e `sys.argv[1]` será o número inteiro `2026`.",
+          "isCorrect": false,
+          "explanation": "O primeiro elemento `sys.argv[0]` é sempre o nome do script e todos os argumentos são strings."
+        },
+        {
+          "letter": "B",
+          "text": "`sys.argv[0]` será `'analisa.py'` e `sys.argv[1]` será a string `'vendas.csv'`.",
+          "isCorrect": true,
+          "explanation": "Correto! Por convenção padrão do Python e dos sistemas operacionais POSIX, `sys.argv[0]` armazena o nome do programa invocado. Os argumentos passados pelo usuário começam no índice 1."
+        },
+        {
+          "letter": "C",
+          "text": "`sys.argv[0]` será `'python3'` e `sys.argv[1]` será `'analisa.py'`.",
+          "isCorrect": false,
+          "explanation": "O binário do interpretador `python3` não entra na lista `sys.argv`; a lista começa com o arquivo de script."
+        },
+        {
+          "letter": "D",
+          "text": "`sys.argv[0]` conterá uma lista com todos os arquivos do diretório atual.",
+          "isCorrect": false,
+          "explanation": "Quem lista arquivos do diretório é `os.listdir()` ou `os.walk()`, não `sys.argv`."
+        }
+      ]
+    },
+    {
+      "id": "q08",
+      "question": "Por que a boa prática de engenharia de software prescreve o uso de `os.path.join('pasta', 'arquivo.txt')` em vez de concatenar caminhos com a barra `'pasta/' + 'arquivo.txt'`?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Porque no Windows o separador de caminhos padrão é a barra invertida `\\`, enquanto no Linux e macOS é a barra `/`. `os.path.join` adapta automaticamente o separador ao sistema operacional corrente.",
+          "isCorrect": true,
+          "explanation": "Correto! A concatenação manual com barras rígidas quebra a portabilidade do software. `os.path.join()` utiliza a constante `os.sep` apropriada para a plataforma em que o código está rodando."
+        },
+        {
+          "letter": "B",
+          "text": "Porque a barra comum `/` é reservada para operações de divisão matemática e não pode ser usada em strings.",
+          "isCorrect": false,
+          "explanation": "Dentro de strings literais, qualquer caractere é permitido; a restrição decorre da convenção do sistema de arquivos host."
+        },
+        {
+          "letter": "C",
+          "text": "`os.path.join` cria as pastas no disco automaticamente antes de juntar os nomes.",
+          "isCorrect": false,
+          "explanation": "`os.path.join()` apenas manipula strings de caminhos; a criação física exige `os.mkdir()` ou `os.makedirs()`."
+        },
+        {
+          "letter": "D",
+          "text": "`os.path.join` criptografa o nome do arquivo para impedir acesso por terceiros.",
+          "isCorrect": false,
+          "explanation": "Não há criptografia na manipulação de caminhos."
+        }
+      ]
+    },
+    {
+      "id": "q09",
+      "question": "Ao iterar com o laço `for raiz, diretorios, arquivos in os.walk(caminho):`, o que cada uma das três variáveis representa a cada passo da navegação?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "`raiz` é o tamanho em bytes; `diretorios` é a data de criação; `arquivos` é o tipo do arquivo.",
+          "isCorrect": false,
+          "explanation": "`os.walk()` não retorna metadados de data ou tamanho diretamente; ele navega a topologia da árvore de pastas."
+        },
+        {
+          "letter": "B",
+          "text": "`raiz` é uma string com o caminho do diretório atual; `diretorios` é uma lista de nomes das subpastas contidas na raiz; `arquivos` é uma lista de nomes dos arquivos contidos na raiz.",
+          "isCorrect": true,
+          "explanation": "Correto! `os.walk` percorre a árvore hierárquica devolvendo essa tupla de três elementos a cada nó visitado, viabilizando varreduras completas sem necessidade de escrever algoritmos recursivos manuais."
+        },
+        {
+          "letter": "C",
+          "text": "`raiz` é o arquivo principal; `diretorios` é o caminho absoluto; `arquivos` é um contador numérico.",
+          "isCorrect": false,
+          "explanation": "A assinatura padrão desempacota a tríade `(caminho_corrente, lista_pastas, lista_arquivos)`."
+        },
+        {
+          "letter": "D",
+          "text": "`raiz` é a raiz do disco rígido (`C:\\` ou `/`); `diretorios` e `arquivos` são dicionários vazios.",
+          "isCorrect": false,
+          "explanation": "`raiz` muda dinamicamente a cada nível visitado na navegação."
+        }
+      ]
+    },
+    {
+      "id": "q10",
+      "question": "Para verificar se um caminho indicado por uma variável de texto realmente existe no disco e se ele corresponde a um arquivo regular (e não a uma pasta), quais funções do módulo `os.path` devem ser utilizadas?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "`os.path.exists(caminho)` e `os.path.isfile(caminho)`",
+          "isCorrect": true,
+          "explanation": "Correto! `os.path.exists()` valida a existência física no sistema de arquivos e `os.path.isfile()` assegura que a entrada é um arquivo regular e não um diretório ou link quebrado."
+        },
+        {
+          "letter": "B",
+          "text": "`os.path.check()` e `os.path.type()`",
+          "isCorrect": false,
+          "explanation": "Essas funções não existem no módulo `os.path`."
+        },
+        {
+          "letter": "C",
+          "text": "`os.mkdir(caminho)` e `os.rmdir(caminho)`",
+          "isCorrect": false,
+          "explanation": "`mkdir` e `rmdir` são comandos de mutação para criar e remover pastas, não de inspeção booleana."
+        },
+        {
+          "letter": "D",
+          "text": "`os.path.open(caminho)`",
+          "isCorrect": false,
+          "explanation": "Abertura de arquivos é realizada pela função embutida `open()`, não por `os.path`."
+        }
+      ]
+    }
+  ]
+}

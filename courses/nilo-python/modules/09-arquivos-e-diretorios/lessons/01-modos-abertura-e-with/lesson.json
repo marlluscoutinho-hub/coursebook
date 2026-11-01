@@ -1,0 +1,20 @@
+{
+  "id": "01-modos-abertura-e-with",
+  "title": "Modos de Abertura, UTF-8 e o Gerenciador de Contexto With",
+  "kind": "standard",
+  "pages": "Capítulo 9 (pp. 188–193)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

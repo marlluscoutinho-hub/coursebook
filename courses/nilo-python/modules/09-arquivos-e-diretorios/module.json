@@ -1,0 +1,18 @@
+{
+  "id": "09-arquivos-e-diretorios",
+  "code": "MÓDULO 09",
+  "title": "Persistência em Disco: Arquivos, Diretórios e os.walk",
+  "chapters": "Capítulo 9 (pp. 188–215)",
+  "pages": "pp. 188–215",
+  "summary": "Manipulação de arquivos em disco, modos de abertura (r, w, a, b, +), codificação UTF-8, gerenciamento de contexto com with open, posicionamento do cursor de leitura com seek e tell, argumentos de linha de comando com sys.argv, manipulação de caminhos com os e os.path, geração programática de páginas HTML e varredura recursiva de diretórios com os.walk.",
+  "lessons": [
+    "01-modos-abertura-e-with",
+    "02-ponteiro-seek-tell",
+    "03-leitura-linha-a-linha",
+    "04-sys-argv-e-parametros",
+    "05-modulo-os-e-pastas",
+    "06-laboratorio-sistema-de-arquivos"
+  ],
+  "quiz": "quiz.json",
+  "exercises": "exercises.json"
+}

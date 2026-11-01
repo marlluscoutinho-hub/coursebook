@@ -1,0 +1,76 @@
+{
+  "exercises": [
+    {
+      "id": "ex-9-1",
+      "code": "EXERCÍCIO 9.1",
+      "reference": "Nilo Menezes, Capítulo 9, p. 191",
+      "title": "Exibição de Arquivo por Linha de Comando (Emulador Cat)",
+      "prompt": "Escreva um programa que receba o nome de um arquivo pela linha de comando (`sys.argv[1]`), abra-o com codificação UTF-8 e imprima todas as suas linhas na tela. Trate o caso de o arquivo não existir com uma mensagem amigável sem quebrar o programa.",
+      "placeholder": "import sys\n\n# Verifique sys.argv, abra o arquivo e imprima cada linha\n",
+      "solution": "import sys\n\nif len(sys.argv) < 2:\n    print(f\"Uso: python {sys.argv[0]} <nome_do_arquivo>\")\n    sys.exit(1)\n\nnome_arquivo = sys.argv[1]\ntry:\n    with open(nome_arquivo, \"r\", encoding=\"utf-8\") as f:\n        for linha in f:\n            print(linha, end=\"\")\nexcept FileNotFoundError:\n    print(f\"Erro: Arquivo '{nome_arquivo}' não foi encontrado.\")"
+    },
+    {
+      "id": "ex-9-2",
+      "code": "EXERCÍCIO 9.2",
+      "reference": "Nilo Menezes, Capítulo 9, p. 191",
+      "title": "Impressão de Intervalo de Linhas de um Arquivo",
+      "prompt": "Modifique o programa anterior para também receber a linha de início e a linha de fim para impressão como parâmetros de linha de comando (`sys.argv[2]` e `sys.argv[3]`). Imprima apenas as linhas que estiverem dentro desse intervalo (1-indexado).",
+      "placeholder": "import sys\n\n# Leia nome_arquivo, inicio e fim de sys.argv e filtre as linhas\n",
+      "solution": "import sys\n\nif len(sys.argv) < 4:\n    print(f\"Uso: python {sys.argv[0]} <arquivo> <linha_inicio> <linha_fim>\")\n    sys.exit(1)\n\nnome_arquivo = sys.argv[1]\ninicio = int(sys.argv[2])\nfim = int(sys.argv[3])\n\ntry:\n    with open(nome_arquivo, \"r\", encoding=\"utf-8\") as f:\n        for num_linha, linha in enumerate(f, start=1):\n            if inicio <= num_linha <= fim:\n                print(f\"{num_linha:3d}: {linha}\", end=\"\")\n            elif num_linha > fim:\n                break\nexcept FileNotFoundError:\n    print(f\"Arquivo '{nome_arquivo}' inexistente.\")"
+    },
+    {
+      "id": "ex-9-3",
+      "code": "EXERCÍCIO 9.3",
+      "reference": "Nilo Menezes, Capítulo 9, p. 191",
+      "title": "Fusão Alternada de Dois Arquivos (Interleaving Merge)",
+      "prompt": "Crie um programa que leia dois arquivos texto existentes e gere um terceiro arquivo combinando as linhas de ambos de forma alternada (uma linha do primeiro, uma linha do segundo). Se um dos arquivos for maior que o outro, anexe as linhas restantes do arquivo maior ao final.",
+      "placeholder": "arq1 = \"dados1.txt\"\narq2 = \"dados2.txt\"\nsaida = \"fusao.txt\"\n# Abra os arquivos e gere o arquivo combinado\n",
+      "solution": "def fundir_arquivos(caminho1, caminho2, caminho_saida):\n    with open(caminho1, \"r\", encoding=\"utf-8\") as f1, \\\n         open(caminho2, \"r\", encoding=\"utf-8\") as f2, \\\n         open(caminho_saida, \"w\", encoding=\"utf-8\") as f_out:\n        \n        linhas1 = f1.readlines()\n        linhas2 = f2.readlines()\n        \n        max_linhas = max(len(linhas1), len(linhas2))\n        for i in range(max_linhas):\n            if i < len(linhas1):\n                f_out.write(linhas1[i])\n            if i < len(linhas2):\n                f_out.write(linhas2[i])\n\nprint(\"Fusão alternada concluída com sucesso!\")"
+    },
+    {
+      "id": "ex-9-4",
+      "code": "EXERCÍCIO 9.4",
+      "reference": "Nilo Menezes, Capítulo 9, p. 191",
+      "title": "Inversão da Ordem das Linhas de um Arquivo",
+      "prompt": "Crie um programa que leia um arquivo de texto e gere um novo arquivo contendo todas as linhas do arquivo original em ordem rigorosamente inversa (a última linha vira a primeira, a penúltima vira a segunda, e assim por diante).",
+      "placeholder": "origem = \"entrada.txt\"\ndestino = \"invertido.txt\"\n# Leia as linhas e grave em ordem invertida\n",
+      "solution": "origem = \"entrada.txt\"\ndestino = \"invertido.txt\"\n\ntry:\n    with open(origem, \"r\", encoding=\"utf-8\") as f_in:\n        linhas = f_in.readlines()\n        \n    with open(destino, \"w\", encoding=\"utf-8\") as f_out:\n        for linha in reversed(linhas):\n            f_out.write(linha if linha.endswith(\"\\n\") else linha + \"\\n\")\n            \n    print(f\"Arquivo invertido com sucesso em '{destino}'.\")\nexcept FileNotFoundError:\n    print(f\"Arquivo '{origem}' não encontrado.\")"
+    },
+    {
+      "id": "ex-9-5",
+      "code": "EXERCÍCIO 9.5",
+      "reference": "Nilo Menezes, Capítulo 9, p. 191",
+      "title": "Inversão de Palavras Linha a Linha",
+      "prompt": "Escreva um programa que leia um arquivo de texto e gere outro arquivo onde a ordem das palavras de cada linha esteja invertida. Exemplo: 'O rato roeu' deve virar 'roeu rato O'.",
+      "placeholder": "entrada = \"texto.txt\"\nsaida = \"palavras_invertidas.txt\"\n# Inverta as palavras de cada linha com split e join\n",
+      "solution": "entrada = \"texto.txt\"\nsaida = \"palavras_invertidas.txt\"\n\ntry:\n    with open(entrada, \"r\", encoding=\"utf-8\") as f_in, \\\n         open(saida, \"w\", encoding=\"utf-8\") as f_out:\n        \n        for linha in f_in:\n            palavras = linha.strip().split()\n            palavras_invertidas = \" \".join(reversed(palavras))\n            f_out.write(palavras_invertidas + \"\\n\")\n            \n    print(f\"Arquivo com palavras invertidas gravado em '{saida}'.\")\nexcept FileNotFoundError:\n    print(\"Arquivo de entrada não localizado.\")"
+    },
+    {
+      "id": "ex-9-8",
+      "code": "EXERCÍCIO 9.8",
+      "reference": "Nilo Menezes, Capítulo 9, p. 197",
+      "title": "Paginador de Arquivos com Rodapé e Quebra de Página",
+      "prompt": "Crie um programa que faça a paginação de um arquivo de texto. O programa deve exibir o conteúdo com no máximo 60 linhas por página e, ao final de cada página, imprimir uma linha em branco seguida pelo rodapé: `= Página X =`, aguardando que o usuário pressione ENTER para continuar a visualização da página seguinte.",
+      "placeholder": "def paginar_arquivo(caminho, linhas_por_pagina=60):\n    # Implemente a paginação com contador e input de pausa\n    pass\n",
+      "solution": "def paginar_arquivo(caminho, linhas_por_pagina=60):\n    try:\n        with open(caminho, \"r\", encoding=\"utf-8\") as f:\n            pagina = 1\n            contador = 0\n            for linha in f:\n                print(linha, end=\"\")\n                contador += 1\n                if contador == linhas_por_pagina:\n                    print(f\"\\n{'=' * 20} Página {pagina} {'=' * 20}\")\n                    input(\"Pressione ENTER para a próxima página...\")\n                    contador = 0\n                    pagina += 1\n            if contador > 0:\n                print(f\"\\n{'=' * 20} Página {pagina} (Fim) {'=' * 20}\")\n    except FileNotFoundError:\n        print(\"Arquivo não encontrado.\")"
+    },
+    {
+      "id": "ex-9-35",
+      "code": "EXERCÍCIO 9.35",
+      "reference": "Nilo Menezes, Capítulo 9, p. 215",
+      "title": "Gerador de Catálogo de Arquivos em HTML com `os.walk`",
+      "prompt": "Utilizando a função `os.walk()`, crie um programa que receba o caminho de um diretório e gere um arquivo `catalogo.html` bem formatado (com codificação UTF-8, tags semânticas e tabela) contendo o caminho relativo, nome e tamanho em bytes de cada arquivo encontrado na árvore.",
+      "placeholder": "import os\n\ndef gerar_catalogo_html(diretorio_base, arquivo_saida=\"catalogo.html\"):\n    # Use os.walk e crie a página HTML\n    pass\n",
+      "solution": "import os\n\ndef gerar_catalogo_html(diretorio_base, arquivo_saida=\"catalogo.html\"):\n    with open(arquivo_saida, \"w\", encoding=\"utf-8\") as f:\n        f.write(\"<!DOCTYPE html>\\n<html lang='pt-BR'>\\n<head>\\n\")\n        f.write(\"<meta charset='utf-8'><title>Catálogo de Arquivos</title>\\n\")\n        f.write(\"<style>table{border-collapse:collapse;width:100%}th,td{border:1px solid #ccc;padding:6px}</style>\\n\")\n        f.write(\"</head>\\n<body>\\n\")\n        f.write(f\"<h1>Catálogo de Arquivos: {diretorio_base}</h1>\\n\")\n        f.write(\"<table>\\n<thead><tr><th>Caminho</th><th>Arquivo</th><th>Tamanho (Bytes)</th></tr></thead>\\n<tbody>\\n\")\n        \n        for raiz, _, arquivos in os.walk(diretorio_base):\n            for arq in arquivos:\n                caminho_completo = os.path.join(raiz, arq)\n                try:\n                    tam = os.path.getsize(caminho_completo)\n                except OSError:\n                    tam = 0\n                f.write(f\"<tr><td>{raiz}</td><td>{arq}</td><td>{tam}</td></tr>\\n\")\n                \n        f.write(\"</tbody>\\n</table>\\n</body>\\n</html>\\n\")\n    print(f\"Relatório HTML gravado em '{arquivo_saida}'.\")"
+    },
+    {
+      "id": "ex-9-36",
+      "code": "EXERCÍCIO 9.36",
+      "reference": "Nilo Menezes, Capítulo 9, p. 215",
+      "title": "Auditor de Espaço em Disco por Diretório com `os.walk`",
+      "prompt": "Utilizando a função `os.walk()`, crie um programa que calcule o espaço total em disco ocupado por cada diretório e seus subdiretórios individualmente, imprimindo na tela o total em bytes e em Megabytes (MB).",
+      "placeholder": "import os\n\ndef auditoria_espaco(caminho_inicial):\n    # Itere com os.walk e calcule o total ocupado\n    pass\n",
+      "solution": "import os\n\ndef auditoria_espaco(caminho_inicial):\n    print(f\"{'Diretório':<50} {'Tamanho (MB)':>12}\")\n    print(\"-\" * 64)\n    \n    for raiz, _, arquivos in os.walk(caminho_inicial):\n        soma_dir = 0\n        for arq in arquivos:\n            caminho_completo = os.path.join(raiz, arq)\n            try:\n                if os.path.isfile(caminho_completo):\n                    soma_dir += os.path.getsize(caminho_completo)\n            except OSError:\n                pass\n        mb = soma_dir / (1024 * 1024)\n        print(f\"{raiz:<50} {mb:>12.3f} MB\")\n\nauditoria_espaco(\".\")"
+    }
+  ]
+}
