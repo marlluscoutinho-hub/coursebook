@@ -95,8 +95,10 @@
       id: "u1-1",
       code: "1.1",
       title: "O Desafio da Programação, Algoritmos Cotidianos e a Filosofia do Python",
+      pages: "Capítulo 1 (pp. 19–26)",
       reading: "Capítulo 1 (pp. 19–26)",
       content: `
+
         <h3>1. A Essência do Raciocínio Algorítmico</h3>
         <p>Aprender a programar computadores é muito mais do que decorar vocabulários ou sintaxes de comandos: é desenvolver uma disciplina de raciocínio lógico e estruturado. Nilo Ney Coutinho Menezes inicia sua obra com um alerta fundamental para todo estudante: a programação exige paciência, observação atenta a detalhes e a humildade de entender que o computador não toma iniciativas próprias — ele executa rigorosamente, e de forma literal, aquilo que lhe foi ordenado.</p>
 
@@ -131,8 +133,10 @@
       id: "u1-2",
       code: "1.2",
       title: "A Arquitetura do Interpretador: Modo Direto (REPL) vs. Modo Script",
+      pages: "Capítulo 2 (pp. 27–40)",
       reading: "Capítulo 2 (pp. 27–40)",
       content: `
+
         <h3>1. O Interpretador Python e o Ciclo REPL</h3>
         <p>Ao contrário de compiladores tradicionais que traduzem todo o código-fonte de uma só vez para linguagem de máquina gerando um arquivo executável binário (<code>.exe</code> no Windows ou ELF no Linux), Python utiliza um <strong>interpretador</strong>. O interpretador analisa o código, converte-o internamente em <em>bytecode</em> e o executa em uma máquina virtual (Python Virtual Machine — PVM).</p>
 
@@ -166,8 +170,10 @@
       id: "u1-3",
       code: "1.3",
       title: "Anatomia do Primeiro Programa e Cuidados Críticos de Digitação",
+      pages: "Capítulo 2 (pp. 40–44)",
       reading: "Capítulo 2 (pp. 40–44)",
       content: `
+
         <h3>1. Decomposição Estrutural de print("Oi")</h3>
         <p>O primeiro programa formal apresentado no livro é a instrução clássica de exibição em tela. Conforme detalhado na Figura 2.21 da obra, essa linha elementar é constituída por quatro blocos anatômicos que devem ser compreendidos isoladamente:</p>
 
@@ -217,8 +223,10 @@
       id: "u1-4",
       code: "1.4",
       title: "Operações Aritméticas e Ordem de Precedência Algébrica",
+      pages: "Capítulo 2 (pp. 42–44)",
       reading: "Capítulo 2 (pp. 42–44)",
       content: `
+
         <h3>1. O Catálogo de Operadores Aritméticos</h3>
         <p>No modo interativo, o interpretador pode ser utilizado como uma sofisticada calculadora algébrica. O livro introduz os seguintes operadores aritméticos fundamentais:</p>
 
@@ -282,8 +290,10 @@
       id: "u1-5",
       code: "1.5",
       title: "Conceito de Variáveis, Atribuição e Modelo Mental de Memória",
+      pages: "Capítulo 2 (pp. 44–48)",
       reading: "Capítulo 2 (pp. 44–48)",
       content: `
+
         <h3>1. O Modelo Mental da Memória como Estante de Caixas</h3>
         <p>Para desmistificar o funcionamento interno do computador, Nilo Menezes propõe uma analogia clássica: imagine a memória de acesso aleatório (RAM) do computador como uma gigantesca estante repleta de compartimentos etiquetados. Cada compartimento possui um nome e pode armazenar temporariamente um dado.</p>
 
@@ -334,8 +344,10 @@
       id: "u1-6",
       code: "1.6",
       title: "Laboratório Interativo: Simulador do Ciclo REPL & Tabela de Símbolos",
+      pages: "Prática Integrada (pp. 34–48)",
       reading: "Prática Integrada (pp. 34–48)",
       content: `
+
         <h3>1. Experimentação Tátil do Ambiente de Execução</h3>
         <p>Para consolidar os modelos mentais do Módulo 01, utilize o laboratório interativo abaixo. Nela você poderá experimentar o comportamento do interpretador Python em tempo real: carregar programas canônicos do livro de Nilo Menezes, inspecionar o processo de avaliação das expressões, visualizar a tabela de variáveis alocadas na memória e acompanhar a saída gerada no terminal virtual.</p>
 

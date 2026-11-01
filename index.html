@@ -32,7 +32,13 @@
       <a class="brand coursebook-brand" onclick="switchView('home')" title="Ir para a página inicial do coursebook">
         <span class="brand-badge">coursebook</span>
       </a>
+      <nav class="desktop-top-nav" aria-label="Navegação Principal">
+        <button class="top-nav-link active" onclick="switchView('home')" id="top-nav-home">Início</button>
+        <button class="top-nav-link" onclick="switchView('catalog')" id="top-nav-catalog">Trilha do Curso</button>
+        <button class="top-nav-link" onclick="switchView('settings')" id="top-nav-settings">⚙️ Configurações</button>
+      </nav>
     </div>
+
 
     <div class="topbar-right" style="display:flex;align-items:center;gap:0.75rem;">
       <div class="global-progress-pill" id="topbar-global-progress" title="Progresso Geral do Curso" style="display:none;">

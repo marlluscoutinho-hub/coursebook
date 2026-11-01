@@ -47,6 +47,7 @@
         exercicios: false
       }
     },
+    completedUnits: {},
     checklistState: {},
     quizAnswers: {},
     exerciseNotes: {},
@@ -88,6 +89,7 @@
           ...defaultState.completedSteps,
           ...(parsed.completedSteps || {})
         },
+        completedUnits: courseProgress.completedUnits || parsed.completedUnits || {},
         checklistState: courseProgress.checklistState || parsed.checklistState || {},
         quizAnswers: courseProgress.quizAnswers || parsed.quizAnswers || {},
         exerciseNotes: courseProgress.exerciseNotes || parsed.exerciseNotes || {},
@@ -107,6 +109,7 @@
         currentStep: state.currentStep,
         activeUnitId: state.activeUnitId,
         completedSteps: state.completedSteps,
+        completedUnits: state.completedUnits,
         checklistState: state.checklistState,
         quizAnswers: state.quizAnswers,
         exerciseNotes: state.exerciseNotes,
@@ -310,9 +313,10 @@
     if (state.courses && state.courses[courseId]) {
       const c = state.courses[courseId];
       state.currentModuleId = optModuleId || c.currentModuleId || 1;
-      state.currentStep = c.currentStep || "revisao";
+      state.currentStep = c.currentStep || "aprendizado";
       state.activeUnitId = c.activeUnitId || "u1-1";
       state.completedSteps = c.completedSteps || { 1: { revisao: false, aprendizado: false, quizzes: false, exercicios: false } };
+      state.completedUnits = c.completedUnits || {};
       state.checklistState = c.checklistState || {};
       state.quizAnswers = c.quizAnswers || {};
       state.exerciseNotes = c.exerciseNotes || {};
@@ -322,6 +326,7 @@
       state.currentStep = "aprendizado";
       state.activeUnitId = "u1-1";
       state.completedSteps = { 1: { revisao: false, aprendizado: false, quizzes: false, exercicios: false } };
+      state.completedUnits = {};
       state.checklistState = {};
       state.quizAnswers = {};
       state.exerciseNotes = {};
@@ -466,6 +471,11 @@
     }
 
 
+    // Sincroniza estado ativo dos links de navegação do topo (Desktop)
+    document.querySelectorAll(".top-nav-link").forEach((btn) => {
+      btn.classList.toggle("active", btn.id === `top-nav-${viewName}`);
+    });
+
     if (viewName === "catalog") {
       updateCourseHeroUI();
       renderCatalogModules();
@@ -474,6 +484,8 @@
     } else if (viewName === "settings") {
       updateSettingsUI();
     }
+
+    updateAllProgressIndicators();
     if (typeof window !== "undefined" && window.scrollTo) {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
@@ -698,15 +710,18 @@
     }
     if (sbTocList && curContent.unidades) {
       sbTocList.innerHTML = curContent.unidades
-        .map(
-          (u) => `
+        .map((u) => {
+          const unitKey = `mod${curMod.id}_unit_${u.id}`;
+          const isUnitDone = !!(state.completedUnits && state.completedUnits[unitKey]);
+          return `
           <li>
-            <a href="javascript:void(0)" class="sidebar-toc-link" onclick="selectModuleStep('aprendizado'); setTimeout(()=>scrollToStudyUnit('${u.id}'), 60);">
-              ${u.title}
+            <a href="javascript:void(0)" class="sidebar-toc-link ${isUnitDone ? "unit-done" : ""}" onclick="selectModuleStep('aprendizado'); setTimeout(()=>scrollToStudyUnit('${u.id}'), 60);" style="display:flex;align-items:flex-start;gap:0.45rem;">
+              <span class="step-check" id="toc-unit-check-${u.id}" style="font-size:0.85rem;font-weight:700;color:${isUnitDone ? "var(--accent-emerald)" : "var(--ink-secondary)"};">${isUnitDone ? "✓" : "○"}</span>
+              <span>${u.code ? u.code + " — " : ""}${u.title}</span>
             </a>
           </li>
-        `
-        )
+        `;
+        })
         .join("");
     }
 
@@ -851,11 +866,65 @@
     const unidades = curContent.unidades || [];
     const isCompleted = !!(state.completedSteps[curMod.id] && state.completedSteps[curMod.id].aprendizado);
 
+    const completedUnitsCount = unidades.filter((u) => {
+      const unitKey = `mod${curMod.id}_unit_${u.id}`;
+      return !!(state.completedUnits && state.completedUnits[unitKey]);
+    }).length;
+    const allUnitsDone = unidades.length > 0 && completedUnitsCount === unidades.length;
+
     pane.innerHTML = `
       <div class="reading-intro-banner">
         <span class="bracket-tag amber">${curMod.code} • Etapa 01 de 04: Aulas &amp; Laboratórios Interativos</span>
         <h2>Estudo Aprofundado — ${curMod.title}</h2>
         <p>Cobertura integral e rigorosa de <strong>${curMod.chapters}</strong>${authorsText}, preservando todas as definições formais, teoremas, demonstrações, pseudocódigos e laboratórios interativos.</p>
+      </div>
+
+      <!-- Checklist de Aulas do Módulo -->
+      <div class="canonical-callout idea" style="margin-bottom:2rem;">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.75rem;">
+          <span class="callout-tag">Checklist de Aulas • ${curMod.code}</span>
+          <span class="bracket-tag ${allUnitsDone ? "emerald" : "amber"}" id="unit-checklist-summary">
+            ${completedUnitsCount} de ${unidades.length} Aulas Concluídas (${Math.round((completedUnitsCount / (unidades.length || 1)) * 100)}%)
+          </span>
+        </div>
+        <p style="margin-bottom:0.85rem;color:var(--ink-secondary);">
+          Acompanhe seu progresso aula a aula. Marque cada aula concluída após estudar a teoria e praticar com os laboratórios:
+        </p>
+        <div class="unit-checklist-items" style="display:flex;flex-direction:column;gap:0.55rem;">
+          ${unidades
+            .map((u) => {
+              const unitKey = `mod${curMod.id}_unit_${u.id}`;
+              const isUnitDone = !!(state.completedUnits && state.completedUnits[unitKey]);
+              const pageRef = u.pages || u.reading || "";
+              const refBadgeText = pageRef ? `Livro: ${pageRef}` : "";
+              return `
+                <label class="unit-checklist-label" style="display:flex;align-items:flex-start;gap:0.75rem;cursor:pointer;background:var(--bg-card);padding:0.75rem 1rem;border:var(--border-thin);">
+                  <input
+                    type="checkbox"
+                    data-unit-key="${unitKey}"
+                    ${isUnitDone ? "checked" : ""}
+                    onchange="toggleUnitCompleted(${curMod.id}, '${u.id}', this.checked)"
+                    style="margin-top:0.25rem;transform:scale(1.2);accent-color:var(--accent-emerald);"
+                  />
+                  <div style="flex:1;">
+                    <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;">
+                      <strong style="font-size:0.92rem;color:var(--ink-primary);">${u.code ? u.code + " — " : ""}${u.title}</strong>
+                      ${refBadgeText ? `<span class="bracket-tag dark" style="font-size:0.72rem;">${refBadgeText}</span>` : ""}
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    class="btn-secondary-brutal"
+                    style="padding:0.2rem 0.5rem;font-size:0.72rem;"
+                    onclick="event.preventDefault(); scrollToStudyUnit('${u.id}')"
+                  >
+                    Ir para Aula ↓
+                  </button>
+                </label>
+              `;
+            })
+            .join("")}
+        </div>
       </div>
 
       ${unidades
@@ -869,8 +938,11 @@
               </div>
             ` : "";
 
-            const refText = u.reading || u.pages || "";
-            const refBadge = refText ? `<span class="bracket-tag amber">${refText}</span>` : "";
+            const pageRef = u.pages || u.reading || "";
+            const refBadge = pageRef ? `<span class="bracket-tag amber">Livro: ${pageRef}</span>` : "";
+
+            const unitKey = `mod${curMod.id}_unit_${u.id}`;
+            const isUnitDone = !!(state.completedUnits && state.completedUnits[unitKey]);
 
             return `
         <article class="study-unit-card" id="unit-card-${u.id}">
@@ -878,12 +950,30 @@
             <div class="unit-meta">
               <span class="bracket-tag dark">${u.code}</span>
               ${refBadge}
+              <span class="bracket-tag ${isUnitDone ? "emerald" : "dark"}" id="unit-status-badge-${u.id}">
+                ${isUnitDone ? "✓ Aula Concluída" : "○ Aula Pendente"}
+              </span>
             </div>
             <h2 class="unit-title">${u.title}</h2>
           </div>
 
           ${resumoSnippet}
           <div class="prose-block" style="margin-top:1.5rem;">${renderMarkdown(u.content)}</div>
+
+          <div class="unit-card-footer" style="margin-top:1.75rem;padding-top:1rem;border-top:var(--border-thin);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;">
+            <span style="font-family:var(--font-mono);font-size:0.78rem;color:var(--ink-secondary);" id="unit-status-desc-${u.id}">
+              ${isUnitDone ? "✓ Aula marcada como concluída no checklist do módulo." : "○ Esta aula ainda não foi marcada como concluída."}
+            </span>
+            <button
+              type="button"
+              class="${isUnitDone ? "btn-secondary-brutal" : "btn-primary-brutal"}"
+              id="unit-status-btn-${u.id}"
+              style="font-size:0.8rem;padding:0.4rem 0.85rem;"
+              onclick="toggleUnitCompleted(${curMod.id}, '${u.id}')"
+            >
+              ${isUnitDone ? "Desmarcar Aula" : "✓ Marcar Aula como Concluída"}
+            </button>
+          </div>
         </article>
       `;
           }
@@ -918,6 +1008,68 @@
 
     renderMathInContainer(pane);
   }
+
+  window.toggleUnitCompleted = function (modId, unitId, optChecked) {
+    const curModId = modId || state.currentModuleId || 1;
+    const unitKey = `mod${curModId}_unit_${unitId}`;
+    if (!state.completedUnits) state.completedUnits = {};
+
+    const nextState = typeof optChecked === "boolean" ? optChecked : !state.completedUnits[unitKey];
+    state.completedUnits[unitKey] = nextState;
+    saveState();
+    recordMetricEvent("unit_complete", {
+      unitId: unitId,
+      moduleId: curModId,
+      isDone: nextState
+    });
+
+    const badge = document.getElementById(`unit-status-badge-${unitId}`);
+    if (badge) {
+      badge.className = `bracket-tag ${nextState ? "emerald" : "dark"}`;
+      badge.textContent = nextState ? "✓ Aula Concluída" : "○ Aula Pendente";
+    }
+
+    const desc = document.getElementById(`unit-status-desc-${unitId}`);
+    if (desc) {
+      desc.textContent = nextState
+        ? "✓ Aula marcada como concluída no checklist do módulo."
+        : "○ Esta aula ainda não foi marcada como concluída.";
+    }
+
+    const btn = document.getElementById(`unit-status-btn-${unitId}`);
+    if (btn) {
+      btn.className = nextState ? "btn-secondary-brutal" : "btn-primary-brutal";
+      btn.textContent = nextState ? "Desmarcar Aula" : "✓ Marcar Aula como Concluída";
+    }
+
+    document.querySelectorAll(`input[data-unit-key="${unitKey}"]`).forEach((input) => {
+      input.checked = nextState;
+    });
+
+    const curContent = getCurrentModuleContent();
+    const unidades = (curContent && curContent.unidades) || [];
+    const completedUnitsCount = unidades.filter((u) => {
+      const k = `mod${curModId}_unit_${u.id}`;
+      return !!(state.completedUnits && state.completedUnits[k]);
+    }).length;
+    const allDone = unidades.length > 0 && completedUnitsCount === unidades.length;
+
+    const summary = document.getElementById("unit-checklist-summary");
+    if (summary) {
+      summary.className = `bracket-tag ${allDone ? "emerald" : "amber"}`;
+      summary.textContent = `${completedUnitsCount} de ${unidades.length} Aulas Concluídas (${Math.round((completedUnitsCount / (unidades.length || 1)) * 100)}%)`;
+    }
+
+    const tocCheck = document.getElementById(`toc-unit-check-${unitId}`);
+    if (tocCheck) {
+      tocCheck.textContent = nextState ? "✓" : "○";
+      tocCheck.style.color = nextState ? "var(--accent-emerald)" : "var(--ink-secondary)";
+    }
+    const tocLink = tocCheck ? tocCheck.closest(".sidebar-toc-link") : null;
+    if (tocLink) {
+      tocLink.classList.toggle("unit-done", nextState);
+    }
+  };
 
   window.scrollToStudyUnit = function (unitId) {
     window.toggleMobileSidebar(true);

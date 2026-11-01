@@ -127,16 +127,52 @@ body {
   background: var(--bg-paper);
 }
 
-/* Ocultar botão em páginas sem menu lateral e no desktop quando no leitor com sidebar já visível */
-body.view-settings-active .mobile-menu-btn {
-  display: none !important;
+/* Links de Navegação Direta no Cabeçalho (Desktop) */
+.desktop-top-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: 1rem;
 }
 
+.top-nav-link {
+  background: transparent;
+  border: var(--border-thin);
+  padding: 0.35rem 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ink-secondary);
+  cursor: pointer;
+  box-shadow: 1px 1px 0 var(--border-dark);
+  transition: all 0.15s ease;
+}
+
+.top-nav-link:hover,
+.top-nav-link.active {
+  background: var(--bg-paper);
+  color: var(--ink-primary);
+  border-color: var(--ink-primary);
+  box-shadow: 2px 2px 0 var(--border-dark);
+}
+
+/* No desktop, o botão hambúrguer NUNCA aparece (navegação direta no topo ou sidebar já aberta) */
 @media (min-width: 901px) {
-  body.view-reader-active .mobile-menu-btn {
+  .mobile-menu-btn {
     display: none !important;
   }
 }
+
+/* No mobile, oculta a barra desktop e exibe o botão hambúrguer como gatilho da barra lateral */
+@media (max-width: 900px) {
+  .desktop-top-nav {
+    display: none !important;
+  }
+  body.view-settings-active .mobile-menu-btn {
+    display: none !important;
+  }
+}
+
 
 
 .brand,
@@ -245,6 +281,12 @@ body.view-settings-active .mobile-menu-btn {
   color: var(--accent-emerald-dark);
   min-width: 36px;
   text-align: right;
+}
+
+@media (max-width: 600px) {
+  .global-progress-label {
+    display: none;
+  }
 }
 
 /* ==========================================================================
@@ -972,6 +1014,14 @@ body.view-settings-active .mobile-menu-btn {
   border-left-color: var(--accent-amber);
 }
 
+.sidebar-toc-link.unit-done {
+  color: var(--ink-primary);
+}
+
+.sidebar-toc-link.unit-done .step-check {
+  color: var(--accent-emerald-dark);
+}
+
 .sidebar-modules-compact {
   list-style: none;
   display: flex;
@@ -1180,6 +1230,34 @@ body.view-settings-active .mobile-menu-btn {
   box-shadow: var(--shadow-brutal-sm);
   padding: 2rem 2.25rem;
   margin-bottom: 2.25rem;
+}
+
+.unit-checklist-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  cursor: pointer;
+  background: var(--bg-card);
+  padding: 0.75rem 1rem;
+  border: var(--border-thin);
+  box-shadow: 1px 1px 0 var(--border-dark);
+  transition: all 0.15s ease;
+}
+
+.unit-checklist-label:hover {
+  border-color: var(--ink-primary);
+  box-shadow: 2px 2px 0 var(--border-dark);
+}
+
+.unit-card-footer {
+  margin-top: 1.75rem;
+  padding-top: 1rem;
+  border-top: var(--border-thin);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
 }
 
 .unit-header {
