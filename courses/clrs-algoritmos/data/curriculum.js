@@ -1726,3 +1726,7 @@ window.registerCourseModule = function (moduleId, content) {
 window.CODEX_DATA = window.COURSEBOOK_DATA;
 window.registerCodexModule = window.registerCourseModule;
 
+// Registro global explícito no registro multi-curso CourseBook
+window.COURSES_REGISTRY = window.COURSES_REGISTRY || {};
+window.COURSES_REGISTRY["clrs-algoritmos"] = window.COURSEBOOK_DATA;
+

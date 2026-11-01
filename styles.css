@@ -106,16 +106,38 @@ body {
 }
 
 .mobile-menu-btn {
-  display: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background: var(--bg-card);
   border: var(--border-thin);
-  padding: 0.4rem 0.65rem;
+  padding: 0.35rem 0.65rem;
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 1.15rem;
+  line-height: 1;
   font-weight: 700;
   cursor: pointer;
   box-shadow: var(--shadow-brutal-sm);
+  min-height: 40px;
+  min-width: 40px;
+  transition: background-color 0.15s ease;
 }
+
+.mobile-menu-btn:hover {
+  background: var(--bg-paper);
+}
+
+/* Ocultar botão em páginas sem menu lateral e no desktop quando no leitor com sidebar já visível */
+body.view-settings-active .mobile-menu-btn {
+  display: none !important;
+}
+
+@media (min-width: 901px) {
+  body.view-reader-active .mobile-menu-btn {
+    display: none !important;
+  }
+}
+
 
 .brand,
 .coursebook-brand,
@@ -2052,3 +2074,115 @@ li .katex {
   align-items: center;
   justify-content: center;
 }
+
+/* ==========================================================================
+   MENU LATERAL DA PLATAFORMA (HOME & CATÁLOGO)
+   ========================================================================== */
+.platform-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 290px;
+  max-width: 85vw;
+  height: 100vh;
+  background-color: var(--bg-card);
+  border-right: var(--border-strong);
+  box-shadow: 6px 0 24px rgba(0, 0, 0, 0.25);
+  z-index: 250;
+  transform: translateX(-100%);
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.platform-sidebar.open {
+  transform: translateX(0);
+}
+
+.platform-sidebar-header {
+  padding: 1rem 1.25rem;
+  border-bottom: var(--border-strong);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-paper-alt);
+}
+
+.platform-sidebar-nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.platform-nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.platform-nav-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1.25rem;
+  background: transparent;
+  border: none;
+  border-bottom: var(--border-thin);
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--ink-primary);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.platform-nav-item:hover,
+.platform-nav-item:focus-visible {
+  background-color: var(--bg-paper);
+  color: var(--ink-primary);
+  font-weight: 700;
+}
+
+.platform-nav-item .nav-icon {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.platform-sidebar-footer {
+  padding: 1.25rem;
+  border-top: var(--border-thin);
+  background: var(--bg-paper-alt);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--ink-secondary);
+  line-height: 1.5;
+}
+
+.platform-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(17, 17, 17, 0.65);
+  z-index: 240;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.platform-backdrop.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ==========================================================================
+   TELA DE CONFIGURAÇÕES (VIEW-SETTINGS)
+   ========================================================================== */
+.settings-card {
+  background-color: var(--bg-card);
+  border: var(--border-strong);
+  box-shadow: var(--shadow-brutal);
+  padding: 1.5rem;
+}
+

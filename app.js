@@ -13,8 +13,14 @@
   } else if (window.CODEX_DATA && !window.COURSES_REGISTRY["clrs-algoritmos"]) {
     window.COURSES_REGISTRY["clrs-algoritmos"] = window.CODEX_DATA;
   }
-  window.COURSEBOOK_DATA = window.COURSEBOOK_DATA || window.CODEX_DATA;
+  const initialActiveCourseId = (typeof localStorage !== "undefined" && localStorage.getItem("coursebook_active_course_id")) || "clrs-algoritmos";
+  if (window.COURSES_REGISTRY && window.COURSES_REGISTRY[initialActiveCourseId]) {
+    window.COURSEBOOK_DATA = window.COURSES_REGISTRY[initialActiveCourseId];
+  } else if (window.COURSES_REGISTRY && window.COURSES_REGISTRY["clrs-algoritmos"]) {
+    window.COURSEBOOK_DATA = window.COURSES_REGISTRY["clrs-algoritmos"];
+  }
   window.CODEX_DATA = window.COURSEBOOK_DATA;
+
 
   const STEP_KEYS = ["aprendizado", "revisao", "quizzes", "exercicios"];
   const STEP_LABELS = {
@@ -285,10 +291,11 @@
       heroMetaRow.innerHTML = `
         <span class="bracket-tag dark">Visão Geral do Curso</span>
         <span class="bracket-tag amber">${data.modules ? data.modules.length : 0} Módulos Estruturados</span>
-        <span class="bracket-tag emerald">${courseMeta.totalChapters || ""} • ${courseMeta.totalPages || ""} Páginas</span>
+        <span class="bracket-tag emerald">${courseMeta.totalChapters || "Conteúdo Estruturado"}</span>
       `;
     }
   }
+
   const updateTomeHeroUI = updateCourseHeroUI;
 
   window.selectCourse = function (courseId, optModuleId) {
@@ -427,9 +434,10 @@
   }
 
   /* ========================================================================
-     NAVEGAÇÃO ENTRE TELAS (INÍCIO / CATÁLOGO / LEITOR DO MÓDULO)
+     NAVEGAÇÃO ENTRE TELAS (INÍCIO / CATÁLOGO / LEITOR DO MÓDULO / CONFIGURAÇÕES)
      ======================================================================== */
   window.switchView = function (viewName) {
+    if (window.toggleAppMenu) window.toggleAppMenu(true);
     state.currentView = viewName;
     saveState();
 
@@ -437,15 +445,41 @@
       el.classList.toggle("active", el.id === `view-${viewName}`);
     });
 
+    // Atualiza classes do body para controle declarativo via CSS
+    document.body.className = document.body.className.replace(/\bview-[a-z0-9_-]+-active\b/g, "").trim();
+    document.body.classList.add(`view-${viewName}-active`);
+
+    // Controle do botão de menu: em páginas sem menu lateral (como settings), ocultar
+    const menuBtn = document.getElementById("mobile-sidebar-btn");
+    if (menuBtn) {
+      if (viewName === "settings") {
+        menuBtn.style.display = "none";
+      } else {
+        menuBtn.style.display = "";
+      }
+    }
+
+    // Progresso de etapas no cabeçalho aparece apenas DENTRO do curso (view-reader)
+    const globalProgPill = document.getElementById("topbar-global-progress") || (document.querySelector ? document.querySelector(".global-progress-pill") : null);
+    if (globalProgPill) {
+      globalProgPill.style.display = (viewName === "reader") ? "flex" : "none";
+    }
+
+
     if (viewName === "catalog") {
       updateCourseHeroUI();
       renderCatalogModules();
     } else if (viewName === "reader") {
       renderReaderView();
+    } else if (viewName === "settings") {
+      updateSettingsUI();
     }
-    updateAllProgressIndicators();
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    if (typeof window !== "undefined" && window.scrollTo) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   };
+
+
   window.switchCodexView = window.switchView;
 
   window.openModuleReader = function (moduleId, stepKey) {
@@ -835,15 +869,19 @@
               </div>
             ` : "";
 
+            const refText = u.reading || u.pages || "";
+            const refBadge = refText ? `<span class="bracket-tag amber">${refText}</span>` : "";
+
             return `
         <article class="study-unit-card" id="unit-card-${u.id}">
           <div class="unit-header">
             <div class="unit-meta">
               <span class="bracket-tag dark">${u.code}</span>
-              <span class="bracket-tag amber">Livro: ${u.pages}</span>
+              ${refBadge}
             </div>
             <h2 class="unit-title">${u.title}</h2>
           </div>
+
           ${resumoSnippet}
           <div class="prose-block" style="margin-top:1.5rem;">${renderMarkdown(u.content)}</div>
         </article>
@@ -1215,26 +1253,89 @@
     }
   };
 
-  window.toggleMobileSidebar = function (forceClose) {
-    const sb = document.getElementById("reader-sidebar");
-    const backdrop = document.getElementById("sidebar-backdrop");
-    if (!sb) return;
+  /* ========================================================================
+     CONTROLE DO MENU DA APLICAÇÃO (LATERAL E LEITOR)
+     ======================================================================== */
+  window.toggleAppMenu = function (forceClose) {
+    if (state.currentView === "reader") {
+      const sb = document.getElementById("reader-sidebar");
+      const backdrop = document.getElementById("sidebar-backdrop");
+      if (!sb) return;
 
-    const shouldOpen = forceClose ? false : !sb.classList.contains("open");
-    if (shouldOpen) {
-      sb.classList.add("open");
-      if (backdrop) backdrop.classList.add("active");
-      document.body.style.overflow = "hidden";
-    } else {
-      sb.classList.remove("open");
-      if (backdrop) backdrop.classList.remove("active");
-      document.body.style.overflow = "";
+      const shouldOpen = forceClose ? false : !sb.classList.contains("open");
+      if (shouldOpen) {
+        sb.classList.add("open");
+        if (backdrop) backdrop.classList.add("active");
+        document.body.style.overflow = "hidden";
+      } else {
+        sb.classList.remove("open");
+        if (backdrop) backdrop.classList.remove("active");
+        document.body.style.overflow = "";
+      }
+    } else if (state.currentView === "home" || state.currentView === "catalog") {
+      const ps = document.getElementById("platform-sidebar");
+      const backdrop = document.getElementById("platform-backdrop");
+      if (!ps) return;
+
+      const shouldOpen = forceClose ? false : !ps.classList.contains("open");
+      if (shouldOpen) {
+        ps.classList.add("open");
+        if (backdrop) backdrop.classList.add("active");
+        document.body.style.overflow = "hidden";
+      } else {
+        ps.classList.remove("open");
+        if (backdrop) backdrop.classList.remove("active");
+        document.body.style.overflow = "";
+      }
     }
   };
+  window.toggleMobileSidebar = window.toggleAppMenu;
 
   /* ========================================================================
-     SISTEMA DE BACKUP & RESTAURAÇÃO DE DADOS (coursebook)
+     SISTEMA DE CONFIGURAÇÕES, BACKUP & RESTAURAÇÃO (coursebook)
      ======================================================================== */
+  function updateSettingsUI() {
+    const curCourseData = window.COURSEBOOK_DATA || window.CODEX_DATA;
+    const courseTitleEl = document.getElementById("settings-active-course");
+    const stepsCountEl = document.getElementById("settings-completed-steps");
+    const storageSizeEl = document.getElementById("settings-storage-size");
+
+    if (courseTitleEl && curCourseData && (curCourseData.course || curCourseData.tome)) {
+      const meta = curCourseData.course || curCourseData.tome;
+      courseTitleEl.textContent = meta.title || "Curso Interativo";
+    }
+
+    if (stepsCountEl) {
+      let count = 0;
+      if (state.completedSteps) {
+        Object.values(state.completedSteps).forEach((mod) => {
+          if (mod) {
+            if (mod.aprendizado) count++;
+            if (mod.revisao) count++;
+            if (mod.quizzes) count++;
+            if (mod.exercicios) count++;
+          }
+        });
+      }
+      stepsCountEl.textContent = `${count} etapas`;
+    }
+
+    if (storageSizeEl) {
+      try {
+        let totalBytes = 0;
+        for (let i = 0; i < localStorage.length; i++) {
+          const key = localStorage.key(i);
+          if (key && (key.startsWith("coursebook") || key.startsWith("codex"))) {
+            totalBytes += (key.length + (localStorage.getItem(key) || "").length) * 2;
+          }
+        }
+        storageSizeEl.textContent = `~${(totalBytes / 1024).toFixed(1)} KB`;
+      } catch (e) {
+        storageSizeEl.textContent = "~2 KB";
+      }
+    }
+  }
+
   window.openBackupModal = function () {
     const modal = document.getElementById("backup-modal-overlay");
     if (modal) modal.style.display = "flex";
@@ -1269,8 +1370,12 @@
     }
   };
 
-  window.triggerRestoreFromFile = function () {
-    const input = document.getElementById("backup-file-input");
+  window.triggerRestoreFromFile = function (optInputId) {
+    const inputId = optInputId || "backup-file-input";
+    let input = document.getElementById(inputId);
+    if (!input || !input.files || !input.files[0]) {
+      input = document.getElementById("settings-backup-file-input") || document.getElementById("backup-file-input");
+    }
     if (!input || !input.files || !input.files[0]) {
       alert("Por favor, selecione um arquivo JSON de backup antes de restaurar.");
       return;
@@ -1301,6 +1406,7 @@
         renderCatalogModules();
         renderReaderView();
         updateAllProgressIndicators();
+        updateSettingsUI();
         alert("Progresso e histórico de estudo restaurados com sucesso!");
       } catch (err) {
         alert("Falha na restauração do backup: " + err.message);
@@ -1308,6 +1414,34 @@
     };
     reader.readAsText(file);
   };
+
+  window.triggerRestoreFromSettings = function () {
+    window.triggerRestoreFromFile("settings-backup-file-input");
+  };
+
+  window.resetCoursebookProgress = function () {
+    const confirmed = confirm(
+      "Tem certeza que deseja zerar todo o progresso de estudo salvo neste navegador?\n\nEsta ação apagará respostas de quizzes, notas de exercícios e etapas concluídas. Backups exportados em arquivo JSON não serão afetados."
+    );
+    if (!confirmed) return;
+
+    try {
+      localStorage.removeItem(STORAGE_KEY);
+      localStorage.removeItem(EVENTS_STORAGE_KEY);
+      state = JSON.parse(JSON.stringify(defaultState));
+      saveState();
+      updateCourseHeroUI();
+      renderCatalogModules();
+      renderReaderView();
+      updateAllProgressIndicators();
+      updateSettingsUI();
+      alert("Progresso de estudo zerado com sucesso!");
+      window.switchView("home");
+    } catch (e) {
+      alert("Erro ao zerar progresso: " + e.message);
+    }
+  };
+
 
   /* ========================================================================
      INICIALIZAÇÃO GERAL AO CARREGAR O DOM

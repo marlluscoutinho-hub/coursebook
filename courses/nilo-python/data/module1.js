@@ -1143,16 +1143,11 @@
     exercicios
   };
 
-  // Registra no ecossistema CourseBook
+  // Registra no ecossistema CourseBook exclusivamente no curso Nilo Python
   if (typeof window !== "undefined") {
-    if (typeof window.registerCourseModule === "function") {
-      window.registerCourseModule(MODULE_ID, moduleContent);
-    }
     if (typeof window.registerNiloModule === "function") {
       window.registerNiloModule(MODULE_ID, moduleContent);
     }
-    if (typeof window.registerCodexModule === "function") {
-      window.registerCodexModule(MODULE_ID, moduleContent);
-    }
   }
 })();
+

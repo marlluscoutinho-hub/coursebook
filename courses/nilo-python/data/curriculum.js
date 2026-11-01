@@ -7,21 +7,26 @@
 (function () {
   "use strict";
 
+  const NILO_METADATA = {
+    id: "nilo-python",
+    code: "CURSO #03",
+    isbn: "978-85-7522-408-3",
+    title: "Introdução à Programação com Python",
+    edition: "2ª Edição Integral (Novatec Editora)",
+    authors: "Nilo Ney Coutinho Menezes",
+    totalPages: 325,
+    totalModules: 12,
+    totalChapters: "12 Capítulos + Apêndice A",
+    tag: "PROGRAMAÇÃO & ALGORITMOS EM PYTHON",
+    badge: "CANÔNICO",
+    summary:
+      "Edição interativa canônica baseada na obra de referência de Nilo Ney Coutinho Menezes. Abrange a formação integral do programador iniciante: do modelo mental do interpretador REPL, variáveis e rastreamento de memória por teste de mesa, estruturas de controle e repetição, estruturas de dados clássicas (filas FIFO, pilhas LIFO, dicionários hash, matrizes), fatiamento de texto com o Jogo da Forca, engenharia de funções e recursão, persistência em arquivos, programação orientada a objetos (sistema bancário e agenda) e bancos de dados relacionais com SQLite e SQL padrão."
+  };
+
   const NILO_CURRICULUM = {
-    tome: {
-      id: "nilo-python",
-      isbn: "978-85-7522-408-3",
-      title: "Introdução à Programação com Python",
-      edition: "2ª Edição Integral (Novatec Editora)",
-      authors: "Nilo Ney Coutinho Menezes",
-      totalPages: 325,
-      totalModules: 12,
-      totalChapters: "12 Capítulos + Apêndice A",
-      tag: "PROGRAMAÇÃO & ALGORITMOS EM PYTHON",
-      badge: "CANÔNICO",
-      summary:
-        "Edição interativa canônica baseada na obra de referência de Nilo Ney Coutinho Menezes. Abrange a formação integral do programador iniciante: do modelo mental do interpretador REPL, variáveis e rastreamento de memória por teste de mesa, estruturas de controle e repetição, estruturas de dados clássicas (filas FIFO, pilhas LIFO, dicionários hash, matrizes), fatiamento de texto com o Jogo da Forca, engenharia de funções e recursão, persistência em arquivos, programação orientada a objetos (sistema bancário e agenda) e bancos de dados relacionais com SQLite e SQL padrão."
-    },
+    course: NILO_METADATA,
+    tome: NILO_METADATA,
+
 
     blocks: [
       {
@@ -317,18 +322,5 @@
       modMeta.unlocked = true;
     }
   };
-
-  // Se o curso ativo for 'nilo-python', sincronizar com window.COURSEBOOK_DATA
-  if (typeof window !== "undefined") {
-    const activeCourseId =
-      typeof window.localStorage !== "undefined" && window.localStorage.getItem
-        ? window.localStorage.getItem("coursebook_active_course_id")
-        : null;
-    if (activeCourseId === "nilo-python" || !window.COURSEBOOK_DATA) {
-      window.COURSEBOOK_DATA = NILO_CURRICULUM;
-      window.CODEX_DATA = window.COURSEBOOK_DATA;
-      window.registerCourseModule = window.registerNiloModule;
-      window.registerCodexModule = window.registerNiloModule;
-    }
-  }
 })();
+
