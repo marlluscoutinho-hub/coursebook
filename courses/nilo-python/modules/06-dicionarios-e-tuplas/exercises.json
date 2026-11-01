@@ -1,0 +1,76 @@
+{
+  "exercises": [
+    {
+      "id": "ex-6-14",
+      "code": "EXERCÍCIO 6.14",
+      "reference": "Nilo Menezes, Capítulo 6, p. 126",
+      "title": "Rastreamento do Bubble Sort com Lista Já Ordenada",
+      "prompt": "O que acontece quando executamos o algoritmo Bubble Sort otimizado (Listagem 6.44) com a lista `L = [1, 2, 3, 4, 5]`? Escreva um programa com o algoritmo de Bubble Sort completo que imprima o número total de comparações e de trocas realizadas ao ordenar uma lista já ordenada.",
+      "placeholder": "L = [1, 2, 3, 4, 5]\nfim = len(L)\ncomparacoes = 0\ntrocas = 0\n# Implemente o algoritmo rastreando comparacoes e trocas\n",
+      "solution": "L = [1, 2, 3, 4, 5]\nfim = len(L)\ncomparacoes = 0\ntrocas = 0\n\nwhile fim > 1:\n    trocou = False\n    x = 0\n    while x < (fim - 1):\n        comparacoes += 1\n        if L[x] > L[x + 1]:\n            trocou = True\n            temp = L[x]\n            L[x] = L[x + 1]\n            L[x + 1] = temp\n            trocas += 1\n        x += 1\n    if not trocou:\n        break\n    fim -= 1\n\nprint(f\"Lista resultante: {L}\")\nprint(f\"Comparações realizadas: {comparacoes}\")\nprint(f\"Trocas realizadas: {trocas}\")\n# Quando a lista já está ordenada, o laço interno compara todos os 4 pares adjacentes.\n# Como nenhuma troca ocorre, trocou permanece False e o break encerra o programa na 1ª passagem."
+    },
+    {
+      "id": "ex-6-15",
+      "code": "EXERCÍCIO 6.15",
+      "reference": "Nilo Menezes, Capítulo 6, p. 126",
+      "title": "Rastreamento do Bubble Sort com Elementos Iguais Repetidos",
+      "prompt": "O que acontece quando dois valores são iguais durante a ordenação com Bubble Sort? Escreva um programa que ordene a lista `L = [3, 3, 1, 5, 4]` utilizando a Listagem 6.44 e imprima a lista final ordenada, demonstrando se a condição de troca `L[x] > L[x + 1]` altera ou preserva a ordem relativa de valores idênticos.",
+      "placeholder": "L = [3, 3, 1, 5, 4]\n# Implemente a ordenação e observe o comportamento em valores iguais\n",
+      "solution": "L = [3, 3, 1, 5, 4]\nfim = len(L)\n\nwhile fim > 1:\n    trocou = False\n    x = 0\n    while x < (fim - 1):\n        if L[x] > L[x + 1]:\n            trocou = True\n            temp = L[x]\n            L[x] = L[x + 1]\n            L[x + 1] = temp\n        x += 1\n    if not trocou:\n        break\n    fim -= 1\n\nprint(f\"Lista ordenada: {L}\")\n# Como o teste é estritamente de maior (>), quando L[x] == L[x+1] a condição é falsa.\n# Nenhuma troca é efetuada entre valores iguais, garantindo a estabilidade da ordenação."
+    },
+    {
+      "id": "ex-6-16",
+      "code": "EXERCÍCIO 6.16",
+      "reference": "Nilo Menezes, Capítulo 6, p. 126",
+      "title": "Ordenação Decrescente com Bubble Sort",
+      "prompt": "Modifique o programa da Listagem 6.44 para ordenar a lista em ordem decrescente. Por exemplo, a lista `L = [1, 2, 3, 4, 5]` deve ser reordenada para `[5, 4, 3, 2, 1]`. Teste seu programa com a lista `[7, 4, 3, 12, 8]`.",
+      "placeholder": "L = [7, 4, 3, 12, 8]\nfim = len(L)\n# Ajuste o operador de comparação para ordem decrescente\n",
+      "solution": "L = [7, 4, 3, 12, 8]\nfim = len(L)\n\nwhile fim > 1:\n    trocou = False\n    x = 0\n    while x < (fim - 1):\n        # Para ordem decrescente, o elemento anterior deve ser menor que o próximo (<)\n        if L[x] < L[x + 1]:\n            trocou = True\n            temp = L[x]\n            L[x] = L[x + 1]\n            L[x + 1] = temp\n        x += 1\n    if not trocou:\n        break\n    fim -= 1\n\nprint(f\"Lista em ordem decrescente: {L}\")"
+    },
+    {
+      "id": "ex-6-17",
+      "code": "EXERCÍCIO 6.17",
+      "reference": "Nilo Menezes, Capítulo 6, p. 133",
+      "title": "Controle Interativo de Estoque com Validação de Chaves",
+      "prompt": "Altere o programa da Listagem 6.53 de forma a solicitar interativamente ao usuário o nome do produto e a quantidade vendida. Verifique se o nome do produto digitado existe no dicionário usando o operador `in`. Se existir e houver saldo suficiente, efetue a baixa no estoque e compute o total; caso contrário, exiba uma mensagem informativa. O laço encerra quando o usuário digitar 'fim'.",
+      "placeholder": "estoque = {\n    \"tomate\": [1000, 2.30],\n    \"alface\": [500, 0.45],\n    \"batata\": [2001, 1.20],\n    \"feijao\": [100, 1.50]\n}\ntotal = 0.0\n# Implemente o laço de leitura e baixa com validação\n",
+      "solution": "estoque = {\n    \"tomate\": [1000, 2.30],\n    \"alface\": [500, 0.45],\n    \"batata\": [2001, 1.20],\n    \"feijao\": [100, 1.50]\n}\ntotal = 0.0\n\nwhile True:\n    produto = input(\"Digite o nome do produto (ou 'fim' para encerrar): \").strip().lower()\n    if produto == \"fim\":\n        break\n    if produto in estoque:\n        quantidade = int(input(f\"Quantidade vendida de {produto}: \"))\n        if quantidade <= estoque[produto][0]:\n            preco = estoque[produto][1]\n            custo = preco * quantidade\n            estoque[produto][0] -= quantidade\n            total += custo\n            print(f\"{produto}: {quantidade} x R$ {preco:.2f} = R$ {custo:.2f}\")\n        else:\n            print(f\"Quantidade insuficiente em estoque! Saldo atual: {estoque[produto][0]}\")\n    else:\n        print(\"Produto não encontrado no cadastro!\")\n\nprint(f\"\\nCusto total das vendas: R$ {total:.2f}\")"
+    },
+    {
+      "id": "ex-6-18",
+      "code": "EXERCÍCIO 6.18",
+      "reference": "Nilo Menezes, Capítulo 6, p. 133",
+      "title": "Contador de Frequência de Caracteres com Dicionário",
+      "prompt": "Escreva um programa que gere um dicionário onde cada chave seja um caractere e seu valor associado seja o número de vezes que esse caractere foi encontrado em uma frase lida. Exemplo: Para a entrada `\"O rato\"`, o programa deve gerar `{'O': 1, ' ': 1, 'r': 1, 'a': 1, 't': 1, 'o': 1}`.",
+      "placeholder": "frase = input(\"Digite uma frase: \")\ncontagem = {}\n# Itere sobre os caracteres da frase e construa o dicionário de frequências\n",
+      "solution": "frase = input(\"Digite uma frase: \")\ncontagem = {}\n\nfor letra in frase:\n    if letra in contagem:\n        contagem[letra] += 1\n    else:\n        contagem[letra] = 1\n\nprint(f\"Dicionário de frequências: {contagem}\")\nfor caractere, qtd in contagem.items():\n    print(f\"Caractere '{caractere}': {qtd} ocorrência(s)\")"
+    },
+    {
+      "id": "ex-6-19",
+      "code": "EXERCÍCIO 6.19",
+      "reference": "Nilo Menezes, Capítulo 6, p. 117",
+      "title": "Matriz Bidimensional e Traço (Diagonal Principal)",
+      "prompt": "Crie uma matriz $3 \\times 3$ representada como uma lista de listas contendo números inteiros. Em seguida, utilize dois laços `for` aninhados para exibir a matriz formatada em linhas e colunas, e calcule a soma dos elementos da diagonal principal (onde o índice da linha é igual ao índice da coluna).",
+      "placeholder": "matriz = [\n    [1, 2, 3],\n    [4, 5, 6],\n    [7, 8, 9]\n]\nsoma_diagonal = 0\n# Imprima a matriz e some os elementos M[i][i]\n",
+      "solution": "matriz = [\n    [1, 2, 3],\n    [4, 5, 6],\n    [7, 8, 9]\n]\nsoma_diagonal = 0\n\nprint(\"Matriz 3x3:\")\nfor i in range(len(matriz)):\n    linha_str = \"\"\n    for j in range(len(matriz[i])):\n        linha_str += f\"{matriz[i][j]:4d}\"\n        if i == j:\n            soma_diagonal += matriz[i][j]\n    print(linha_str)\n\nprint(f\"\\nSoma da diagonal principal (traço): {soma_diagonal}\")"
+    },
+    {
+      "id": "ex-6-20",
+      "code": "EXERCÍCIO 6.20",
+      "reference": "Nilo Menezes, Capítulo 6, pp. 134–136",
+      "title": "Tuplas, Desempacotamento e Rotação de Variáveis",
+      "prompt": "Escreva um programa que inicialize três variáveis `a = 1`, `b = 2`, `c = 3`. Utilizando apenas o desempacotamento de tuplas em uma única instrução (sem variáveis auxiliares temporárias), rotacione os valores de modo que `a` receba o valor de `b`, `b` receba o valor de `c`, e `c` receba o valor original de `a`.",
+      "placeholder": "a = 1\nb = 2\nc = 3\n# Rotacione os valores em uma única linha com tupla de desempacotamento\n",
+      "solution": "a = 1\nb = 2\nc = 3\n\nprint(f\"Antes: a={a}, b={b}, c={c}\")\n# Rotação circular simultânea via empacotamento/desempacotamento de tupla:\na, b, c = b, c, a\n\nprint(f\"Depois: a={a}, b={b}, c={c}\")\n# a passa a ser 2, b passa a ser 3 e c passa a ser 1"
+    },
+    {
+      "id": "ex-6-21",
+      "code": "EXERCÍCIO 6.21",
+      "reference": "Nilo Menezes, Capítulo 6, pp. 131–133",
+      "title": "Agregação de Médias com Dicionário de Notas",
+      "prompt": "Crie um dicionário onde a chave é o nome de um aluno e o valor é uma lista de três notas bimestrais. Escreva um programa que percorra o dicionário utilizando `.items()`, desempacote o nome e a lista de notas, calcule a média aritmética de cada aluno e exiba o boletim indicando se o aluno foi Aprovado (média $\\ge 7.0$) ou Reprovado.",
+      "placeholder": "alunos = {\n    \"Carlos\": [8.0, 7.5, 9.0],\n    \"Mariana\": [6.0, 5.5, 6.5],\n    \"Beatriz\": [9.5, 10.0, 9.0]\n}\n# Itere com .items() e calcule as médias\n",
+      "solution": "alunos = {\n    \"Carlos\": [8.0, 7.5, 9.0],\n    \"Mariana\": [6.0, 5.5, 6.5],\n    \"Beatriz\": [9.5, 10.0, 9.0]\n}\n\nprint(f\"{'Aluno':<12} {'Média':>7}   {'Situação'}\")\nprint(\"-\" * 32)\n\nfor nome, notas in alunos.items():\n    media = sum(notas) / len(notas)\n    situacao = \"Aprovado\" if media >= 7.0 else \"Reprovado\"\n    print(f\"{nome:<12} {media:7.2f}   {situacao}\")"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "06-dicionarios-e-tuplas",
+  "code": "MÓDULO 06",
+  "title": "Mapeamentos Hash: Dicionários, Tuplas e Matrizes",
+  "chapters": "Capítulo 6 (pp. 117–136)",
+  "pages": "pp. 117–136",
+  "summary": "Listas multidimensionais e matrizes, ordenação clássica com Bubble Sort e análise de complexidade, tabelas hash associativas com dicionários em Python, métodos de introspecção keys/values/items, tipos imutáveis protegidos com tuplas e desempacotamento de registros.",
+  "lessons": [
+    "01-matrizes-e-listas-aninhadas",
+    "02-ordenacao-bubble-sort",
+    "03-dicionarios-hash",
+    "04-dicionarios-com-listas",
+    "05-tuplas-e-desempacotamento",
+    "06-laboratorio-bubble-sort-e-dicionarios"
+  ],
+  "quiz": "quiz.json",
+  "exercises": "exercises.json"
+}

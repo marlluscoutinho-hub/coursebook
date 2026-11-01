@@ -15,7 +15,8 @@
     "02-variaveis-e-tipos",
     "03-condicoes",
     "04-repeticoes",
-    "05-listas-filas-e-pilhas"
+    "05-listas-filas-e-pilhas",
+    "06-dicionarios-e-tuplas"
   ],
   "status": "in_development"
 }

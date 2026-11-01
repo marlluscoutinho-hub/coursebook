@@ -1,0 +1,20 @@
+{
+  "id": "03-dicionarios-hash",
+  "title": "Dicionários em Python: Tabelas Hash e Pares Chave-Valor",
+  "kind": "standard",
+  "pages": "Capítulo 6 (pp. 126–130)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

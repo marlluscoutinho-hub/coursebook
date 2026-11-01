@@ -1,0 +1,20 @@
+{
+  "id": "01-matrizes-e-listas-aninhadas",
+  "title": "Matrizes Bidimensionais e Listas Aninhadas",
+  "kind": "standard",
+  "pages": "Capítulo 6 (pp. 117–121)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

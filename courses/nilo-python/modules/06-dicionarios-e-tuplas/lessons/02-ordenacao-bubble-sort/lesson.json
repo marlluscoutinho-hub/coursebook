@@ -1,0 +1,20 @@
+{
+  "id": "02-ordenacao-bubble-sort",
+  "title": "O Algoritmo de Ordenação por Bolha (Bubble Sort)",
+  "kind": "standard",
+  "pages": "Capítulo 6 (pp. 121–126)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

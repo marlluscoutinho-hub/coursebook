@@ -1,0 +1,304 @@
+{
+  "questions": [
+    {
+      "id": "q01",
+      "question": "Dada a matriz bidimensional definida como `M = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]`, qual é a instrução correta para acessar o elemento de valor 6 e como Python interpreta essa sintaxe?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "`M[1, 2]`, pois matrizes em Python utilizam indexação com vírgula como em C e Fortran nativo.",
+          "isCorrect": false,
+          "explanation": "Listas padrão de Python não aceitam tuplas como índice único direto (isso geraria `TypeError: list indices must be integers or slices, not tuple`). A sintaxe `M[linha, coluna]` só existe em bibliotecas externas como NumPy."
+        },
+        {
+          "letter": "B",
+          "text": "`M[1][2]`, onde o primeiro colchete seleciona a lista `[4, 5, 6]` e o segundo colchete seleciona o elemento de índice 2 dessa sublista.",
+          "isCorrect": true,
+          "explanation": "Correto! Matrizes em Python são listas de listas. A expressão `M[1]` é avaliada primeiro, retornando a referência da sublista da linha de índice 1 `[4, 5, 6]`. Em seguida, o índice `[2]` busca o terceiro elemento dessa sublista, que é o número 6."
+        },
+        {
+          "letter": "C",
+          "text": "`M[2][1]`, pois em computação o primeiro índice sempre representa a coluna e o segundo a linha.",
+          "isCorrect": false,
+          "explanation": "Na convenção padrão (row-major order), o primeiro índice indica a linha e o segundo a coluna. `M[2][1]` acessaria a terceira linha `[7, 8, 9]` na segunda coluna, resultando no valor 8."
+        },
+        {
+          "letter": "D",
+          "text": "`M[6]`, pois o Python aplaina automaticamente matrizes aninhadas em uma lista unidimensional contígua.",
+          "isCorrect": false,
+          "explanation": "Python não achata automaticamente listas aninhadas. `M` contém apenas 3 elementos (as 3 listas internas). Tentar acessar `M[6]` disparará `IndexError: list index out of range`."
+        }
+      ]
+    },
+    {
+      "id": "q02",
+      "question": "No algoritmo Bubble Sort apresentado por Nilo Menezes (Listagem 6.44), qual é o papel crucial desempenhado pela variável booleana `trocou`?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Controlar a direção da ordenação, alternando entre ordem crescente e decrescente a cada iteração do laço.",
+          "isCorrect": false,
+          "explanation": "A direção da ordenação é definida exclusivamente pelo operador relacional de comparação (`>` para crescente e `<` para decrescente), não pela variável `trocou`."
+        },
+        {
+          "letter": "B",
+          "text": "Servir como variável temporária auxiliar para armazenar o valor de `L[x]` durante a troca física de elementos.",
+          "isCorrect": false,
+          "explanation": "A variável temporária auxiliar de troca no livro é chamada `temp` ou `aux`. A variável `trocou` armazena apenas um valor booleano (`True` ou `False`)."
+        },
+        {
+          "letter": "C",
+          "text": "Identificar se ao menos uma inversão de posições ocorreu na passagem atual, permitindo encerrar antecipadamente (`break`) se a lista já estiver totalmente ordenada.",
+          "isCorrect": true,
+          "explanation": "Correto! Se uma passagem completa for executada pelo array e nenhuma troca for necessária, `trocou` permanece `False`. O teste `if not trocou: break` detecta que a lista já atingiu o estado ordenado, evitando iterações redundantes."
+        },
+        {
+          "letter": "D",
+          "text": "Garantir que números duplicados com o mesmo valor sejam eliminados da lista durante a passagem.",
+          "isCorrect": false,
+          "explanation": "O Bubble Sort é um algoritmo estável de ordenação e não remove elementos da lista."
+        }
+      ]
+    },
+    {
+      "id": "q03",
+      "question": "Qual é o comportamento assintótico e o número de comparações do algoritmo Bubble Sort quando fornecemos uma lista já previamente ordenada de tamanho N contendo a otimização com flag `trocou`?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Complexidade $O(N)$, realizando exatamente $N - 1$ comparações e 0 trocas antes de encerrar.",
+          "isCorrect": true,
+          "explanation": "Correto! Com a lista ordenada, a primeira passagem realiza $N - 1$ comparações entre elementos adjacentes, nenhuma troca é disparada, `trocou` permanece `False` e o laço encerra imediatamente no `break`, caracterizando o melhor caso linear $O(N)$."
+        },
+        {
+          "letter": "B",
+          "text": "Complexidade $O(1)$, pois o interpretador detecta instantaneamente o estado da memória sem precisar comparar os elementos.",
+          "isCorrect": false,
+          "explanation": "O algoritmo não tem clarividência: ele precisa inspecionar obrigatoriamente os pares adjacentes para verificar se algum está fora de ordem."
+        },
+        {
+          "letter": "C",
+          "text": "Complexidade $O(N^2)$, pois o algoritmo executa rigorosamente todas as $N(N-1)/2$ comparações independente do conteúdo da lista.",
+          "isCorrect": false,
+          "explanation": "Essa seria a complexidade caso o algoritmo não tivesse a flag de verificação `trocou`. Com o mecanismo de encerramento antecipado, ele encerra na primeira passagem."
+        },
+        {
+          "letter": "D",
+          "text": "Complexidade $O(N \\log N)$, dividindo a lista recursivamente em metades ordenadas.",
+          "isCorrect": false,
+          "explanation": "$O(N \\log N)$ é a complexidade de algoritmos de divisão e conquista (como Merge Sort e Quick Sort), não do Bubble Sort elementar."
+        }
+      ]
+    },
+    {
+      "id": "q04",
+      "question": "Em Python, o que ocorre quando executamos a instrução `tabela['Tomate'] = 2.50` considerando uma variável `tabela = {'Alface': 0.45, 'Tomate': 2.30}`?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Gera um erro `KeyError`, pois chaves em dicionários são imutáveis e seus valores associados não podem ser sobrescritos.",
+          "isCorrect": false,
+          "explanation": "Dicionários são estruturas de dados mutáveis. Chaves existentes podem ter seus valores atualizados livremente por meio da sintaxe de atribuição `d[k] = v`."
+        },
+        {
+          "letter": "B",
+          "text": "O valor associado à chave existente `'Tomate'` é atualizado para `2.50`, substituindo o valor anterior `2.30` sem duplicar a chave.",
+          "isCorrect": true,
+          "explanation": "Correto! Em um dicionário, as chaves são estritamente únicas. Atribuir um valor a uma chave que já existe substitui o valor anterior em tempo médio constante $O(1)$."
+        },
+        {
+          "letter": "C",
+          "text": "Uma segunda chave `'Tomate'` é adicionada ao dicionário, criando uma lista de valores `[2.30, 2.50]` automaticamente.",
+          "isCorrect": false,
+          "explanation": "Dicionários não admitem chaves duplicadas. O valor anterior é simplesmente sobrescrito, a menos que tenhamos explicitamente criado uma lista como valor daquela chave."
+        },
+        {
+          "letter": "D",
+          "text": "A instrução é ignorada silenciosamente para preservar a integridade dos dados primitivos da tabela de dispersão.",
+          "isCorrect": false,
+          "explanation": "O Python executa a mutação no dicionário sem qualquer bloqueio ou advertência silenciosa."
+        }
+      ]
+    },
+    {
+      "id": "q05",
+      "question": "Se tentarmos acessar diretamente uma chave que não existe em um dicionário, como em `print(tabela['Manga'])`, qual é o resultado no interpretador Python e qual é a melhor prática recomendada por Nilo Menezes?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Retorna `None` silenciosamente; a melhor prática é checar com `if tabela['Manga'] is None:`.",
+          "isCorrect": false,
+          "explanation": "O acesso direto `d[k]` não retorna `None` quando a chave inexiste; ele interrompe o fluxo com erro fatal."
+        },
+        {
+          "letter": "B",
+          "text": "Retorna `0` ou string vazia; a melhor prática é inicializar todas as chaves possíveis previamente.",
+          "isCorrect": false,
+          "explanation": "Dicionários não retornam valores default em acessos por colchetes comuns."
+        },
+        {
+          "letter": "C",
+          "text": "Dispara uma exceção do tipo `KeyError`; a prática canônica recomendada é verificar previamente a pertinência da chave utilizando o operador `in` (ex: `if 'Manga' in tabela:`).",
+          "isCorrect": true,
+          "explanation": "Correto! O acesso a chaves inexistentes aciona a exceção `KeyError`. Nilo Menezes enfatiza a verificação prévia com `if chave in dicionario:` antes da leitura ou baixa de estoque."
+        },
+        {
+          "letter": "D",
+          "text": "Cria automaticamente a chave `'Manga'` associada a uma lista vazia no dicionário.",
+          "isCorrect": false,
+          "explanation": "Apenas tipos especializados como `collections.defaultdict` possuem esse comportamento; o `dict` padrão dispara `KeyError`."
+        }
+      ]
+    },
+    {
+      "id": "q06",
+      "question": "Considere o laço `for chave, dados in estoque.items():`. O que o método `.items()` produz e como as variáveis `chave` e `dados` são populadas a cada passo?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Produz duas listas separadas em paralelo, requerendo a função `zip()` para que o desempacotamento funcione.",
+          "isCorrect": false,
+          "explanation": "`.items()` retorna uma visualização (*view*) iterável direta de tuplas de 2 elementos, sem depender de `zip()`."
+        },
+        {
+          "letter": "B",
+          "text": "Gera pares no formato de tuplas `(chave, valor)`, as quais são desempacotadas diretamente nas variáveis `chave` e `dados` simultaneamente.",
+          "isCorrect": true,
+          "explanation": "Correto! Cada iteração de `.items()` produz uma tupla com 2 elementos `(chave, valor)`. A sintaxe `chave, dados = (k, v)` desempacota o primeiro elemento na variável `chave` e o segundo na variável `dados`."
+        },
+        {
+          "letter": "C",
+          "text": "Retorna apenas os valores do dicionário, enquanto as chaves são inferidas pelo contador do laço `for`.",
+          "isCorrect": false,
+          "explanation": "Quem retorna apenas os valores é o método `.values()`. O método `.items()` retorna explicitamente pares formados por chave e valor."
+        },
+        {
+          "letter": "D",
+          "text": "Retorna uma tupla contendo todas as chaves como primeiro elemento e todos os valores como segundo elemento.",
+          "isCorrect": false,
+          "explanation": "O método não retorna duas listas agregadas em uma única tupla, mas sim um iterador onde cada item individual é uma tupla par `(k, v)`."
+        }
+      ]
+    },
+    {
+      "id": "q07",
+      "question": "No exemplo de controle de estoque do livro (Listagem 6.53), a estrutura é `estoque = {'tomate': [1000, 2.30]}`. Para dar baixa na venda de 5 unidades de tomate e calcular o custo, qual linha realiza a atualização correta do saldo físico em estoque?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "`estoque['tomate'][0] -= 5`",
+          "isCorrect": true,
+          "explanation": "Correto! `estoque['tomate']` acessa a lista associada `[1000, 2.30]`. O índice `[0]` representa a quantidade física em estoque. Subtrair 5 desse índice altera diretamente a lista dentro do dicionário."
+        },
+        {
+          "letter": "B",
+          "text": "`estoque['tomate'][1] -= 5`",
+          "isCorrect": false,
+          "explanation": "O índice `[1]` guarda o preço unitário da mercadoria (`2.30`), não a quantidade física. Essa instrução corromperia o preço do produto."
+        },
+        {
+          "letter": "C",
+          "text": "`estoque['tomate'] -= 5`",
+          "isCorrect": false,
+          "explanation": "O valor associado à chave `'tomate'` é uma lista `[1000, 2.30]`. Subtrair um inteiro diretamente de uma lista dispara `TypeError: unsupported operand type(s) for -=: 'list' and 'int'`."
+        },
+        {
+          "letter": "D",
+          "text": "`estoque[0]['tomate'] -= 5`",
+          "isCorrect": false,
+          "explanation": "`estoque` é um dicionário cujas chaves são strings de produtos. Indexar `estoque[0]` disparará `KeyError: 0`."
+        }
+      ]
+    },
+    {
+      "id": "q08",
+      "question": "Qual das seguintes instruções em Python cria rigorosamente uma tupla de um único elemento contendo o número inteiro 10?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "`t = (10)`",
+          "isCorrect": false,
+          "explanation": "Expressões entre parênteses como `(10)` são interpretadas como inteiros agrupados para avaliação aritmética. O tipo resultante de `type((10))` é `<class 'int'>`."
+        },
+        {
+          "letter": "B",
+          "text": "`t = (10,)`",
+          "isCorrect": true,
+          "explanation": "Correto! Na gramática de Python, a vírgula é o operador sintático que define a tupla. Para tuplas de elemento único (*singleton tuples*), a vírgula antes do fechamento é indispensável."
+        },
+        {
+          "letter": "C",
+          "text": "`t = tuple[10]`",
+          "isCorrect": false,
+          "explanation": "Em versões modernas de Python, `tuple[10]` representa uma anotação de tipo genérico (type hint) inválida e gerará erro em tempo de execução."
+        },
+        {
+          "letter": "D",
+          "text": "`t = [10,]`",
+          "isCorrect": false,
+          "explanation": "Colchetes `[...]` constroem listas mutáveis (`<class 'list'>`), não tuplas."
+        }
+      ]
+    },
+    {
+      "id": "q09",
+      "question": "Como a troca de valores entre duas variáveis `a = 10` e `b = 20` pode ser efetuada em Python em uma única linha sem declarar variáveis auxiliares como `temp`?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "`a = b; b = a`",
+          "isCorrect": false,
+          "explanation": "Instruções sequenciais executam em passos distintos: primeiro `a` recebe o valor de `b` (ficando `a = 20`), e em seguida `b` recebe `a` (que agora vale 20), resultando na perda irreversível do valor original de `a`."
+        },
+        {
+          "letter": "B",
+          "text": "`a, b = b, a`",
+          "isCorrect": true,
+          "explanation": "Correto! O lado direito `b, a` avalia os valores atuais e empacota uma tupla temporária na pilha (`(20, 10)`). Em seguida, o lado esquerdo desempacota esses valores atômica e simultaneamente nas variáveis `a` e `b`."
+        },
+        {
+          "letter": "C",
+          "text": "`swap(a, b)`",
+          "isCorrect": false,
+          "explanation": "Não existe função embutida (*built-in*) chamada `swap` na biblioteca padrão do Python."
+        },
+        {
+          "letter": "D",
+          "text": "`[a, b] = [a, b]`",
+          "isCorrect": false,
+          "explanation": "Essa instrução atribui cada variável a ela mesma, mantendo seus valores inalterados."
+        }
+      ]
+    },
+    {
+      "id": "q10",
+      "question": "Por que o código `posicoes = {[0, 1]: 'Início'} ` causa erro em tempo de execução enquanto `posicoes = {(0, 1): 'Início'}` é perfeitamente válido?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Listas não podem conter números inteiros quando usadas como índices de estruturas associativas.",
+          "isCorrect": false,
+          "explanation": "Listas aceitam inteiros perfeitamente; o problema não reside nos elementos internos, mas no tipo da lista em si."
+        },
+        {
+          "letter": "B",
+          "text": "Listas são objetos mutáveis e portanto não são hasháveis (`unhashable type: 'list'`), enquanto tuplas compostas por elementos imutáveis possuem hash fixo e podem ser chaves de tabelas de dispersão.",
+          "isCorrect": true,
+          "explanation": "Correto! O algoritmo interno de tabelas hash do Python exige que as chaves implementem `__hash__()` e que seu valor nunca sofra mutações. Como listas podem ser alteradas a qualquer momento via `.append()` ou reatribuição, elas não são hasháveis. Já as tuplas imutáveis mantêm integridade referencial e hash estável."
+        },
+        {
+          "letter": "C",
+          "text": "Dicionários exigem que chaves sejam exclusivamente strings alfanuméricas.",
+          "isCorrect": false,
+          "explanation": "Dicionários aceitam quaisquer objetos hasháveis como chaves, incluindo inteiros, floats, booleanos e tuplas imutáveis."
+        },
+        {
+          "letter": "D",
+          "text": "O parêntese é o único caractere permitido pelo analisador léxico dentro de chaves de dicionários.",
+          "isCorrect": false,
+          "explanation": "Essa alegação é falsa; a regra de chaves de dicionários depende unicamente do protocolo de hashabilidade (`__hash__`)."
+        }
+      ]
+    }
+  ]
+}

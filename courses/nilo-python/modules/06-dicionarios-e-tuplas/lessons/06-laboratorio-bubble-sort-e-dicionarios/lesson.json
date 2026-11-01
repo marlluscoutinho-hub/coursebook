@@ -1,0 +1,27 @@
+{
+  "id": "06-laboratorio-bubble-sort-e-dicionarios",
+  "title": "Laboratório Interativo: Visualizador Bubble Sort & Gerenciador Hash",
+  "kind": "lab",
+  "pages": "Prática Integrada (pp. 120–136)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "lab",
+      "id": "bubble-and-dict-lab",
+      "title": "Laboratório Interativo: Bubble Sort & Mapeamentos Hash",
+      "source": "catalog",
+      "mobile": "full"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

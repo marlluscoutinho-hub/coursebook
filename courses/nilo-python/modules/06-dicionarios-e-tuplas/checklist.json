@@ -1,0 +1,8 @@
+[
+  "Compreendo a indexação bidimensional em matrizes representadas por listas de listas (M[linha][coluna]).",
+  "Consigo rastrear e explicar o algoritmo Bubble Sort e a otimização de parada antecipada com flag.",
+  "Domino a semântica de pares chave-valor em dicionários (dict) e o acesso em tempo constante O(1).",
+  "Sei que chaves de dicionário devem ser obrigatoriamente objetos imutáveis e hasháveis.",
+  "Utilizo com fluência os métodos keys(), values(), items() e o operador in para verificar existência de chaves.",
+  "Diferencio tuplas de listas em termos de mutabilidade e uso a notação de desempacotamento múltiplo."
+]

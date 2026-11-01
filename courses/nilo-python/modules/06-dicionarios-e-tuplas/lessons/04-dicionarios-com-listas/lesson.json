@@ -1,0 +1,20 @@
+{
+  "id": "04-dicionarios-com-listas",
+  "title": "Dicionários Complexos, Estoques e Bancos de Dados em Memória",
+  "kind": "standard",
+  "pages": "Capítulo 6 (pp. 130–133)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}
