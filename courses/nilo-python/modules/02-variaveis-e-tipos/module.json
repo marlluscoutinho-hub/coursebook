@@ -1,0 +1,18 @@
+{
+  "id": "02-variaveis-e-tipos",
+  "code": "MÓDULO 02",
+  "title": "Tipos de Dados, Operadores Lógicos e Teste de Mesa",
+  "chapters": "Capítulo 3",
+  "pages": "pp. 49–74",
+  "summary": "Tipos primitivos em Python (int com precisão arbitrária, float e representação binária IEEE 754), operadores relacionais e lógicos com curto-circuito, manipulação elementar de strings, metodologia formal de teste de mesa para rastreamento de memória e entrada de dados interativa com conversão explícita de tipos via input().",
+  "lessons": [
+    "01-nomes-e-tipos-numericos",
+    "02-operadores-relacionais-e-logica",
+    "03-strings-e-operacoes",
+    "04-rastreamento-teste-de-mesa",
+    "05-entrada-e-conversao",
+    "06-laboratorio-teste-de-mesa"
+  ],
+  "quiz": "quiz.json",
+  "exercises": "exercises.json"
+}

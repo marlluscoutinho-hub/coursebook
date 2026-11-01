@@ -1,0 +1,1 @@
+Chegou o momento de consolidar na prática os fundamentos do Módulo 02! Neste laboratório tátil, você poderá executar scripts passo a passo para visualizar a montagem dinâmica da tabela de teste de mesa, inspecionando cada atribuição de memória. Além disso, no segundo painel, você experimentará a álgebra booleana e a avaliação de curto-circuito em tempo real.

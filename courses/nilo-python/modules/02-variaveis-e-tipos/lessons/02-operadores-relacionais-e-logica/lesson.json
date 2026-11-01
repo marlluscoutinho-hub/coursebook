@@ -1,0 +1,20 @@
+{
+  "id": "02-operadores-relacionais-e-logica",
+  "title": "Álgebra Booleana, Operadores Relacionais e Curto-Circuito",
+  "kind": "standard",
+  "pages": "Capítulo 3 (pp. 54–60)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

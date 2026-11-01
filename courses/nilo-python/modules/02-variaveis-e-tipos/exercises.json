@@ -1,0 +1,78 @@
+{
+  "title": "Exercícios e Problemas Canônicos do Módulo 02",
+  "subtitle": "8 atividades clássicas com solução passo a passo e rascunho integrado",
+  "exercises": [
+    {
+      "id": "ex2-1",
+      "code": "EXERCÍCIO 1",
+      "reference": "Capítulo 3 (p. 55)",
+      "title": "Exercício 3.2: Avaliação Analítica de Operadores Relacionais",
+      "prompt": "Considere as seguintes variáveis atribuídas na memória: `a = 4`, `b = 10`, `c = 5.0`, `d = 1` e `f = 5`. Determine o resultado booleano (`True` ou `False`) das seguintes expressões relacionais:\n1. `a == c`\n2. `a < b`\n3. `d > b`\n4. `c != f`\n5. `a == b`\n6. `c < d`\n7. `b > a`\n8. `c >= f`\n9. `f >= c`\n10. `c <= c`",
+      "placeholder": "Anote suas deduções e a tabela de valores no rascunho...",
+      "solution": "\n        <p><strong>Resolução Analítica Passo a Passo:</strong></p>\n        <ol>\n          <li><code>a == c</code>: 4 é igual a 5.0? Falso. <strong>False</strong>.</li>\n          <li><code>a < b</code>: 4 é menor que 10? Verdadeiro. <strong>True</strong>.</li>\n          <li><code>d > b</code>: 1 é maior que 10? Falso. <strong>False</strong>.</li>\n          <li><code>c != f</code>: 5.0 é diferente de 5? Em Python, o valor numérico é comparado; como 5.0 e 5 têm a mesma grandeza, eles são iguais. Logo, a afirmação de diferença é falsa. <strong>False</strong>.</li>\n          <li><code>a == b</code>: 4 é igual a 10? Falso. <strong>False</strong>.</li>\n          <li><code>c < d</code>: 5.0 é menor que 1? Falso. <strong>False</strong>.</li>\n          <li><code>b > a</code>: 10 é maior que 4? Verdadeiro. <strong>True</strong>.</li>\n          <li><code>c >= f</code>: 5.0 é maior ou igual a 5? Como são iguais, a condição >= é satisfeita. <strong>True</strong>.</li>\n          <li><code>f >= c</code>: 5 é maior ou igual a 5.0? Verdadeiro. <strong>True</strong>.</li>\n          <li><code>c <= c</code>: Qualquer número é menor ou igual a si mesmo. <strong>True</strong>. $\\blacksquare$</li>\n        </ol>\n      "
+    },
+    {
+      "id": "ex2-2",
+      "code": "EXERCÍCIO 2",
+      "reference": "Capítulo 3 (p. 57)",
+      "title": "Exercício 3.3: Tabela-Verdade de Expressões Lógicas Compostas",
+      "prompt": "Utilizando as variáveis `a = True`, `b = False` e `c = True`, determine analiticamente o resultado booleano de:\n1. `a and a`\n2. `b and b`\n3. `not c`\n4. `not b`\n5. `not a`\n6. `a and b`\n7. `b and c`\n8. `a or c`\n9. `b or c`\n10. `c or a`",
+      "placeholder": "Desenvolva as tabelas-verdade no rascunho...",
+      "solution": "\n        <p><strong>Resolução Analítica Passo a Passo:</strong></p>\n        <ol>\n          <li><code>a and a</code>: True and True $\\to$ <strong>True</strong>.</li>\n          <li><code>b and b</code>: False and False $\\to$ <strong>False</strong>.</li>\n          <li><code>not c</code>: not True $\\to$ <strong>False</strong>.</li>\n          <li><code>not b</code>: not False $\\to$ <strong>True</strong>.</li>\n          <li><code>not a</code>: not True $\\to$ <strong>False</strong>.</li>\n          <li><code>a and b</code>: True and False $\\to$ <strong>False</strong>.</li>\n          <li><code>b and c</code>: False and True $\\to$ <strong>False</strong>.</li>\n          <li><code>a or c</code>: True or True $\\to$ <strong>True</strong>.</li>\n          <li><code>b or c</code>: False or True $\\to$ <strong>True</strong>.</li>\n          <li><code>c or a</code>: True or True $\\to$ <strong>True</strong>. $\\blacksquare$</li>\n        </ol>\n      "
+    },
+    {
+      "id": "ex2-3",
+      "code": "EXERCÍCIO 3",
+      "reference": "Capítulo 3 (pp. 57–58)",
+      "title": "Exercícios 3.4 & 3.6: Expressões Lógicas Condicionais e Critérios de Aprovação",
+      "prompt": "Escreva as expressões booleanas em Python para os dois problemas a seguir:\n1. Determinar se um cidadão deve pagar imposto, sabendo que pagam imposto pessoas com salário estritamente superior a R$ 1.200,00 (variável `salario`).\n2. Decidir se um aluno foi aprovado, considerando que o aluno cursa 3 matérias (`materia1`, `materia2`, `materia3`) e precisa obter nota estritamente maior que 7 em **todas** elas.",
+      "placeholder": "Escreva as expressões booleanas no rascunho...",
+      "solution": "\n        <p><strong>Resolução Analítica Passo a Passo:</strong></p>\n        <ol>\n          <li><strong>Problema 1 (Imposto):</strong> A condição exige salário estritamente maior que 1200. Portanto, a expressão é:\n            <pre><code>deve_pagar = salario > 1200</code></pre>\n            Note que se o salário for exatamente 1200, a expressão devolve <code>False</code>.\n          </li>\n          <li><strong>Problema 2 (Aprovação):</strong> Todas as três condições devem ser satisfeitas simultaneamente, exigindo o conectivo lógico <code>and</code>:\n            <pre><code>aprovado = materia1 > 7 and materia2 > 7 and materia3 > 7</code></pre>\n            Pelo princípio do curto-circuito, se a nota da primeira matéria for menor ou igual a 7, as demais nem precisam ser avaliadas para definir a reprovação. $\\blacksquare$\n          </li>\n        </ol>\n      "
+    },
+    {
+      "id": "ex2-4",
+      "code": "EXERCÍCIO 4",
+      "reference": "Capítulo 3 (p. 71)",
+      "title": "Exercício 3.7: Leitura e Adição de Dois Números Inteiros",
+      "prompt": "Desenvolva um programa completo em Python que solicite ao usuário dois números inteiros via teclado, calcule a soma algébrica desses dois valores e exiba o resultado na tela com mensagem explicativa.",
+      "placeholder": "Escreva o programa completo no rascunho...",
+      "solution": "\n        <p><strong>Código e Análise Passo a Passo:</strong></p>\n        <pre><code># Leitura com conversão explícita para int\nnum1 = int(input(\"Digite o primeiro número inteiro: \"))\nnum2 = int(input(\"Digite o segundo número inteiro: \"))\n\n# Cálculo da soma\nsoma = num1 + num2\n\n# Exibição do resultado\nprint(f\"A soma de {num1} + {num2} é igual a {soma}.\")</code></pre>\n        <p><strong>Pontos Críticos:</strong> Se a conversão <code>int()</code> não fosse aplicada, o operador <code>+</code> apenas concatenaria os textos (ex.: se o usuário digitasse 4 e 5, o resultado seria '45' em vez de 9).</p>\n      "
+    },
+    {
+      "id": "ex2-5",
+      "code": "EXERCÍCIO 5",
+      "reference": "Capítulo 3 (p. 71)",
+      "title": "Exercício 3.8: Conversor Métrico de Metros para Milímetros",
+      "prompt": "Escreva um programa que leia um valor em metros (número real ou inteiro) e exiba o valor convertido na unidade de milímetros ($1\\text{ m} = 1000\\text{ mm}$).",
+      "placeholder": "Escreva o script de conversão no rascunho...",
+      "solution": "\n        <p><strong>Código e Análise Passo a Passo:</strong></p>\n        <pre><code># Leitura do valor em metros como float\nmetros = float(input(\"Digite o comprimento em metros: \"))\n\n# 1 metro = 1000 milímetros\nmilimetros = metros * 1000\n\n# Exibição\nprint(f\"{metros} metros equivalem a {milimetros:.0f} milímetros.\")</code></pre>\n        <p><strong>Observação de Precisão:</strong> O uso de <code>float()</code> permite receber valores fracionários, como <code>1.75</code> metros, convertendo com exatidão para <code>1750</code> mm.</p>\n      "
+    },
+    {
+      "id": "ex2-6",
+      "code": "EXERCÍCIO 6",
+      "reference": "Capítulo 3 (p. 71)",
+      "title": "Exercício 3.9: Conversão de Tempo Composto em Segundos Totais",
+      "prompt": "Escreva um programa que solicite ao usuário a quantidade de dias, horas, minutos e segundos. Calcule e exiba o total acumulado unicamente em segundos.",
+      "placeholder": "Escreva a fórmula e o código no rascunho...",
+      "solution": "\n        <p><strong>Dedução Matemática e Código:</strong></p>\n        <ol>\n          <li>1 dia tem 24 horas, e cada hora tem 3600 segundos $\\to 24 \\times 3600 = 86.400\\text{ s}$.</li>\n          <li>1 hora tem 60 minutos, e cada minuto tem 60 segundos $\\to 60 \\times 60 = 3.600\\text{ s}$.</li>\n          <li>1 minuto tem 60 segundos $\\to 60\\text{ s}$.</li>\n        </ol>\n        <pre><code>dias = int(input(\"Dias: \"))\nhoras = int(input(\"Horas: \"))\nminutos = int(input(\"Minutos: \"))\nsegundos = int(input(\"Segundos: \"))\n\ntotal = (dias * 86400) + (horas * 3600) + (minutos * 60) + segundos\nprint(f\"Tempo total em segundos: {total:,} s\")</code></pre>\n      "
+    },
+    {
+      "id": "ex2-7",
+      "code": "EXERCÍCIO 7",
+      "reference": "Capítulo 3 (p. 72)",
+      "title": "Exercício 3.10: Cálculo de Aumento Salarial Percentual",
+      "prompt": "Faça um programa que calcule o aumento de um salário. Ele deve solicitar o valor atual do salário e a porcentagem de aumento. Em seguida, exiba o valor monetário do aumento e o novo salário reajustado.",
+      "placeholder": "Estruture as etapas de cálculo no rascunho...",
+      "solution": "\n        <p><strong>Resolução Analítica Passo a Passo:</strong></p>\n        <pre><code>salario = float(input(\"Digite o salário atual (R$): \"))\nporcentagem = float(input(\"Digite a porcentagem de aumento (%): \"))\n\nvalor_aumento = salario * (porcentagem / 100)\nnovo_salario = salario + valor_aumento\n\nprint(f\"Valor do aumento: R$ {valor_aumento:.2f}\")\nprint(f\"Novo salário reajustado: R$ {novo_salario:.2f}\")</code></pre>\n        <p>Exemplo de rastreamento: salário de R$ 1.500 com 5% de aumento resulta em R$ 75,00 de aumento e novo salário de R$ 1.575,00. $\\blacksquare$</p>\n      "
+    },
+    {
+      "id": "ex2-8",
+      "code": "EXERCÍCIO 8",
+      "reference": "Capítulo 3 (pp. 72–73)",
+      "title": "Exercício 3.14 & 3.15: Locação de Veículos e Previsão de Vida de Fumante",
+      "prompt": "Desenvolva o programa para calcular o preço a pagar por um carro alugado. Pergunte a quantidade de dias alugados e a quantidade de quilômetros percorridos. Calcule o preço total sabendo que o carro custa R$ 60,00 por dia e R$ 0,15 por km rodado.",
+      "placeholder": "Escreva o programa e teste os valores no rascunho...",
+      "solution": "\n        <p><strong>Resolução Analítica Passo a Passo:</strong></p>\n        <pre><code>dias = int(input(\"Quantidade de dias de locação: \"))\nkm_rodados = float(input(\"Quilômetros percorridos (km): \"))\n\ncusto_diarias = dias * 60.0\ncusto_km = km_rodados * 0.15\ntotal_pagar = custo_diarias + custo_km\n\nprint(f\"Custo das diárias ({dias} dias x R$ 60,00): R$ {custo_diarias:.2f}\")\nprint(f\"Custo por quilometragem ({km_rodados:.1f} km x R$ 0,15): R$ {custo_km:.2f}\")\nprint(f\"Total a pagar: R$ {total_pagar:.2f}\")</code></pre>\n        <p>Se o carro foi alugado por 10 dias e rodou 1.000 km: $10 \\times 60 = 600$ e $1000 \\times 0.15 = 150$, totalizando R$ 750,00. $\\blacksquare$</p>\n      "
+    }
+  ]
+}

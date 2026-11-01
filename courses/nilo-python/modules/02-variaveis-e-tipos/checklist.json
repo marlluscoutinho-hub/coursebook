@@ -1,0 +1,9 @@
+[
+  "Domino as regras léxicas para identificadores e variáveis em Python (início com letra ou sublinhado, proibição de caracteres especiais e palavras reservadas).",
+  "Compreendo a precisão arbitrária dos números inteiros (int) e as particularidades da representação IEEE 754 para números decimais (float) e dízimas em base binária.",
+  "Sei construir e avaliar expressões com operadores relacionais (==, !=, <, >, <=, >=) e lógicos (not, and, or).",
+  "Entendo o princípio da avaliação de curto-circuito em expressões lógicas compostas em Python.",
+  "Manipulo strings elementares: concatenação com +, repetição com *, indexação por colchetes e cálculo de comprimento com len().",
+  "Sei construir e preencher uma tabela de teste de mesa para rastrear manualmente variáveis e fluxos antes de rodar o código.",
+  "Utilizo a função input() corretamente, convertendo a cadeia de caracteres recebida via int() ou float()."
+]

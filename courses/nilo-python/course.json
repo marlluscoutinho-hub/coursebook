@@ -11,7 +11,8 @@
   "contentPolicy": "paraphrase",
   "profile": "pratico",
   "modules": [
-    "01-computador-e-interpretador"
+    "01-computador-e-interpretador",
+    "02-variaveis-e-tipos"
   ],
   "status": "in_development"
 }

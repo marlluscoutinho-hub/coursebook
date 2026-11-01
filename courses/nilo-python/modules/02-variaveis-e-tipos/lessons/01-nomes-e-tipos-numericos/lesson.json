@@ -1,0 +1,20 @@
+{
+  "id": "01-nomes-e-tipos-numericos",
+  "title": "Nomes de Variáveis, Inteiros de Precisão Infinita e Ponto Flutuante IEEE 754",
+  "kind": "standard",
+  "pages": "Capítulo 3 (pp. 49–54)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

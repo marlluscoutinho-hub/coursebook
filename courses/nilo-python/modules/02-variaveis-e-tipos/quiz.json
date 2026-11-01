@@ -1,0 +1,326 @@
+{
+  "title": "Quizzes Dialéticos do Módulo 02 (Capítulo 3)",
+  "subtitle": "10 questões analíticas comentadas alternativa por alternativa",
+  "questions": [
+    {
+      "id": "q2-1",
+      "type": "multiple_choice",
+      "reference": "Capítulo 3 (pp. 49–51)",
+      "question": "Qual das seguintes alternativas apresenta exclusivamente nomes de variáveis que são válidos de acordo com a gramática léxica do Python?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "2salario, taxa-juros, _contador",
+          "isCorrect": false,
+          "explanation": "Incorreta. '2salario' é inválido porque variáveis não podem começar com números; 'taxa-juros' é inválido porque o caractere '-' é interpretado pelo compilador como o operador aritmético de subtração."
+        },
+        {
+          "letter": "B",
+          "text": "_total, media_anual, preco2026",
+          "isCorrect": true,
+          "explanation": "Correta! Identificadores em Python podem iniciar com letra ou sublinhado (_), e caracteres subsequentes podem incluir letras, números e sublinhados, sem espaços nem caracteres especiais."
+        },
+        {
+          "letter": "C",
+          "text": "salario liquido, def, valor$",
+          "isCorrect": false,
+          "explanation": "Incorreta. 'salario liquido' contém espaço em branco, 'def' é palavra reservada da linguagem e '$' não é caractere permitido para identificadores em Python."
+        },
+        {
+          "letter": "D",
+          "text": "nota@final, while, _123",
+          "isCorrect": false,
+          "explanation": "Incorreta. '@' não é permitido e 'while' é palavra-chave reservada para laços de repetição."
+        }
+      ]
+    },
+    {
+      "id": "q2-2",
+      "type": "multiple_choice",
+      "reference": "Capítulo 3 (pp. 51–53)",
+      "question": "Como o Python 3 trata o limite de representação para números inteiros (int) em comparação com linguagens de baixo nível como C?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "O Python 3 limita inteiros a 32 bits, gerando número negativo se o valor ultrapassar 2.147.483.647.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Essa é a limitação de tipos primitivos int32 em linguagens como C ou Java, mas não do Python 3."
+        },
+        {
+          "letter": "B",
+          "text": "O Python 3 adota precisão arbitrária (bignum), alocando memória dinamicamente para acomodar números com qualquer quantidade de dígitos.",
+          "isCorrect": true,
+          "explanation": "Correta! Como explicado por Nilo Menezes, inteiros em Python possuem precisão ilimitada, permitindo calcular valores gigantescos como 2**1000 com precisão matemática exata."
+        },
+        {
+          "letter": "C",
+          "text": "Qualquer inteiro maior que 1 milhão é automaticamente convertido para string para evitar travamento da CPU.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O interpretador mantém inteiros como tipos numéricos puros na memória, sem conversão para string."
+        },
+        {
+          "letter": "D",
+          "text": "O Python 3 gera um erro de hardware (Stack Overflow) sempre que um número inteiro requer mais de 8 bytes de RAM.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O Python aloca dinamicamente mais memória até o limite físico de RAM disponível no sistema operacional."
+        }
+      ]
+    },
+    {
+      "id": "q2-3",
+      "type": "multiple_choice",
+      "reference": "Capítulo 3 (pp. 52–54)",
+      "question": "Ao executar `0.1 + 0.2 == 0.3` no interpretador Python, a saída observada é `False`. Qual é o fundamento técnico desse fenômeno?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "O operador de igualdade == está quebrado em versões modernas do Python.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O operador == funciona com precisão estrita; o fenômeno é puramente aritmético de representação."
+        },
+        {
+          "letter": "B",
+          "text": "Frações decimais como 0.1 e 0.2 tornam-se dízimas periódicas infinitas quando convertidas para a base binária, sofrendo truncamento no padrão IEEE 754 de 64 bits.",
+          "isCorrect": true,
+          "explanation": "Correta! No sistema binário (base 2), 0.1 e 0.2 não possuem representação finita exata. A soma binária acumula um resíduo microscópico, gerando 0.30000000000000004, que não é estritamente igual a 0.3."
+        },
+        {
+          "letter": "C",
+          "text": "O interpretador arredonda todo número de ponto flutuante para baixo antes de realizar adições.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O Python não faz arredondamento arbitrário prévio; ele segue a norma de arredondamento ao par mais próximo definida pelo padrão IEEE 754."
+        },
+        {
+          "letter": "D",
+          "text": "O Python só realiza somas fracionárias exatas se o usuário importar obrigatoriamente a biblioteca math.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O tipo float nativo opera sob a norma IEEE 754 em todo o ecossistema. Para aritmética decimal exata, utiliza-se o módulo decimal, não o math."
+        }
+      ]
+    },
+    {
+      "id": "q2-4",
+      "type": "multiple_choice",
+      "reference": "Capítulo 3 (pp. 54–56)",
+      "question": "Qual é o erro semântico contido na instrução `if x = 10:` escrita por um programador iniciante?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "O símbolo = é o operador de atribuição, enquanto a comparação de igualdade exige o operador relacional ==.",
+          "isCorrect": true,
+          "explanation": "Correta! Em Python, um único sinal de igual (=) ordena a gravação de um valor na variável. Para testar se dois valores são iguais, a gramática exige estritamente o operador de comparação dupla (==)."
+        },
+        {
+          "letter": "B",
+          "text": "O número 10 deveria estar entre aspas duplas, pois o Python não compara números com a estrutura if.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O número 10 é um literal inteiro perfeitamente válido para comparações numéricas."
+        },
+        {
+          "letter": "C",
+          "text": "O comando if não aceita comparações de igualdade, apenas de maior (>) ou menor (<).",
+          "isCorrect": false,
+          "explanation": "Incorreta. O comando if opera sobre qualquer expressão booleana, incluindo comparações de igualdade com ==."
+        },
+        {
+          "letter": "D",
+          "text": "A instrução é válida e executa sem erros em qualquer versão do Python 3.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Essa linha dispara erro sintático imediato (SyntaxError: invalid syntax) no interpretador."
+        }
+      ]
+    },
+    {
+      "id": "q2-5",
+      "type": "multiple_choice",
+      "reference": "Capítulo 3 (pp. 56–58)",
+      "question": "Considerando as variáveis booleanas A = True, B = False e C = True, qual é o valor resultante da expressão `not A or B and C`?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "True, porque a disjunção or sempre vence qualquer outra operação lógica.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O operador or tem a menor precedência entre os operadores lógicos, sendo avaliado por último."
+        },
+        {
+          "letter": "B",
+          "text": "False, porque not A resulta em False, B and C resulta em False, e False or False resulta em False.",
+          "isCorrect": true,
+          "explanation": "Correta! Pela ordem de precedência: 1º 'not A' avalia para not True = False; 2º 'B and C' avalia para False and True = False; 3º 'False or False' avalia para False."
+        },
+        {
+          "letter": "C",
+          "text": "True, porque a presença de C = True no final torna qualquer expressão verdadeira.",
+          "isCorrect": false,
+          "explanation": "Incorreta. C está vinculado por conjunção (and) a B, que é False; portanto, o termo B and C é falso."
+        },
+        {
+          "letter": "D",
+          "text": "Erro de Sintaxe, pois expressões booleanas exigem parênteses obrigatórios.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Parênteses são recomendados para clareza, mas não obrigatórios pela gramática da linguagem."
+        }
+      ]
+    },
+    {
+      "id": "q2-6",
+      "type": "multiple_choice",
+      "reference": "Capítulo 3 (pp. 58–60)",
+      "question": "O que caracteriza a avaliação de 'curto-circuito' (short-circuit) realizada pelo Python em expressões lógicas?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "O computador interrompe o fornecimento de energia para economizar bateria quando encontra um operador not.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Trata-se de um conceito de lógica de computação e otimização de execução, sem relação com corte elétrico físico."
+        },
+        {
+          "letter": "B",
+          "text": "A avaliação é interrompida assim que o resultado lógico definitivo é garantido pelo primeiro operando (ex.: False em um 'and', ou True em um 'or').",
+          "isCorrect": true,
+          "explanation": "Correta! Se o primeiro operando de um 'and' for False, a expressão inteira será impreterivelmente falsa; similarmente, se o primeiro operando de um 'or' for True, o resultado é garantidamente verdadeiro. O Python não gasta ciclos avaliando o segundo operando."
+        },
+        {
+          "letter": "C",
+          "text": "O interpretador avalia obrigatoriamente todos os operandos da direita para a esquerda antes de emitir o veredito.",
+          "isCorrect": false,
+          "explanation": "Incorreta. A avaliação ocorre estritamente da esquerda para a direita, parando assim que a conclusão for inevitável."
+        },
+        {
+          "letter": "D",
+          "text": "É uma falha de projeto do interpretador que impede a execução de scripts com mais de duas condições.",
+          "isCorrect": false,
+          "explanation": "Incorreta. É um recurso intencional presente em praticamente todas as linguagens modernas (C, Java, Python, JS)."
+        }
+      ]
+    },
+    {
+      "id": "q2-7",
+      "type": "multiple_choice",
+      "reference": "Capítulo 3 (pp. 60–63)",
+      "question": "Ao tentar executar `print(\"Total: R$ \" + 250)`, o programador se depara com um `TypeError`. Qual é a razão dessa exceção e como corrigi-la?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "O Python não permite concatenação com o operador +; deve-se usar exclusivamente o comando print_str().",
+          "isCorrect": false,
+          "explanation": "Incorreta. O operador + concatena strings perfeitamente, mas ambos os operandos devem ser do tipo str; a função print_str não existe."
+        },
+        {
+          "letter": "B",
+          "text": "Strings não podem ser somadas a inteiros; deve-se converter o número explicitamente com str(250) ou usar f-string.",
+          "isCorrect": true,
+          "explanation": "Correta! Em Python, a tipagem é fortemente mantida. O operador + não realiza coerção implícita de tipos heterogêneos. A solução é `\"Total: R$ \" + str(250)` ou `f\"Total: R$ {250}\"`."
+        },
+        {
+          "letter": "C",
+          "text": "O número 250 é excessivamente grande para a função print().",
+          "isCorrect": false,
+          "explanation": "Incorreta. O valor 250 é um número trivial e a função print aceita qualquer magnitude."
+        },
+        {
+          "letter": "D",
+          "text": "Faltou colocar uma vírgula antes do sinal de adição.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Colocar vírgula antes do + geraria um erro de sintaxe."
+        }
+      ]
+    },
+    {
+      "id": "q2-8",
+      "type": "multiple_choice",
+      "reference": "Capítulo 3 (pp. 63–65)",
+      "question": "Seja a cadeia de caracteres `s = \"PROGRAMADOR\"`. Quais serão os valores retornados respectivamente por `s[0]`, `s[-1]` e `s[0:4]`?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "'P', 'R' e 'PROG'",
+          "isCorrect": true,
+          "explanation": "Correta! 's[0]' acessa o primeiro caractere ('P'); 's[-1]' acessa o último caractere ('R'); e a fatia 's[0:4]' extrai os caracteres dos índices 0, 1, 2 e 3 ('PROG'), sendo o limite final 4 estritamente exclusivo."
+        },
+        {
+          "letter": "B",
+          "text": "'1', '11' e 'PROGRAM'",
+          "isCorrect": false,
+          "explanation": "Incorreta. A indexação em Python é base zero e retorna o caractere contido na posição, não o seu índice numérico."
+        },
+        {
+          "letter": "C",
+          "text": "'P', 'O' e 'PROGR'",
+          "isCorrect": false,
+          "explanation": "Incorreta. O último caractere é 'R' (e não 'O'), e a fatia de 0 a 4 não inclui o índice 4 ('R')."
+        },
+        {
+          "letter": "D",
+          "text": "'P', 'R' e 'PROGRAMADOR'",
+          "isCorrect": false,
+          "explanation": "Incorreta. 's[0:4]' extrai apenas 4 caracteres, não a string inteira."
+        }
+      ]
+    },
+    {
+      "id": "q2-9",
+      "type": "multiple_choice",
+      "reference": "Capítulo 3 (pp. 65–68)",
+      "question": "Durante a execução de um teste de mesa para a sequência `a = 10; b = 20; a = b; b = a`, qual será o estado final da memória?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "a = 20 e b = 10 (troca concluída com sucesso)",
+          "isCorrect": false,
+          "explanation": "Incorreta. Esta é a clássica ilusão do iniciante. A atribuição `a = b` destrói o valor 10 antes que ele possa ser transferido para b."
+        },
+        {
+          "letter": "B",
+          "text": "a = 20 e b = 20, pois o valor original de a foi sobrescrito na linha 3 antes de ser passado a b.",
+          "isCorrect": true,
+          "explanation": "Correta! Na linha 3, `a` recebe 20 (destruindo o 10 original da memória). Na linha 4, `b` recebe o valor atual de `a` (que agora é 20). Ambas as variáveis terminam valendo 20."
+        },
+        {
+          "letter": "C",
+          "text": "a = 10 e b = 20, porque o interpretador desfaz comandos redundantes.",
+          "isCorrect": false,
+          "explanation": "Incorreta. O computador não desfaz instruções; ele executa sequencialmente cada atribuição."
+        },
+        {
+          "letter": "D",
+          "text": "O programa trava em laço infinito.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Não há qualquer estrutura de repetição na sequência."
+        }
+      ]
+    },
+    {
+      "id": "q2-10",
+      "type": "multiple_choice",
+      "reference": "Capítulo 3 (pp. 68–72)",
+      "question": "Qual é a propriedade fundamental da função `input()` em Python e qual é a prática obrigatória para utilizá-la em cálculos aritméticos?",
+      "options": [
+        {
+          "letter": "A",
+          "text": "Ela detecta automaticamente se o valor é número ou texto e converte sozinha sem intervenção.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Ao contrário de funções legadas do Python 2, o `input()` no Python 3 sempre devolve `str`, sem adivinhação mágica de tipos."
+        },
+        {
+          "letter": "B",
+          "text": "Ela retorna invariavelmente uma cadeia de caracteres (str); para cálculos, é obrigatório aplicar funções de conversão explícita como int() ou float().",
+          "isCorrect": true,
+          "explanation": "Correta! Todo dado recebido de `input()` é uma sequência textual de dígitos. Se não for convertido com `int()` ou `float()`, o operador `+` fará concatenação textual (ex.: '5' + '3' = '53') em vez de cálculo aritmético."
+        },
+        {
+          "letter": "C",
+          "text": "Ela só aceita números inteiros; digitar texto dispara erro de compilação imediato.",
+          "isCorrect": false,
+          "explanation": "Incorreta. A função `input()` aceita qualquer sequência alfanumérica digitada pelo usuário."
+        },
+        {
+          "letter": "D",
+          "text": "Ela grava os dados diretamente no disco rígido sem passar pela memória RAM.",
+          "isCorrect": false,
+          "explanation": "Incorreta. Os dados digitados são lidos do buffer de entrada do teclado e alocados na memória volátil (RAM)."
+        }
+      ]
+    }
+  ]
+}

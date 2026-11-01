@@ -1,0 +1,27 @@
+{
+  "id": "06-laboratorio-teste-de-mesa",
+  "title": "Laboratório Interativo: Simulador de Teste de Mesa & Avaliador Booleano",
+  "kind": "lab",
+  "pages": "Prática Integrada (pp. 54–74)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "lab",
+      "id": "trace-simulator",
+      "title": "Laboratório Interativo: Simulador de Teste de Mesa & Avaliador Booleano",
+      "source": "catalog",
+      "mobile": "full"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

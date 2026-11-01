@@ -1,0 +1,20 @@
+{
+  "id": "03-strings-e-operacoes",
+  "title": "Cadeias de Caracteres, Concatenação, Fatiamento e Comprimento",
+  "kind": "standard",
+  "pages": "Capítulo 3 (pp. 60–65)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "05-entrada-e-conversao",
+  "title": "Entrada de Dados com input(), Conversão de Tipos e Formatação",
+  "kind": "standard",
+  "pages": "Capítulo 3 (pp. 68–74)",
+  "blocks": [
+    {
+      "type": "intro",
+      "file": "intro.md"
+    },
+    {
+      "type": "text",
+      "file": "aprofundamento.md"
+    },
+    {
+      "type": "summary",
+      "file": "resumo.md"
+    }
+  ]
+}
