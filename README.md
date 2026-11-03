@@ -55,12 +55,12 @@ coursebook/
 ├── index.html                  # Shell da aplicação (Home, Catálogo, Leitor e Configurações)
 ├── styles.css                  # Design System Paper & Ink Brutalism
 ├── app.js                      # Motor interativo com carregador modular (fetch v2) e eventos
-├── labs/                       # Catálogo modular de laboratórios interativos (repl-simulator, clrs-module1-labs, etc.)
 ├── schema/                     # Schemas JSON canônicos oficiais (course, module, lesson, lab, quiz...)
 ├── courses/
 │   ├── clrs-algoritmos/        # Curso 01: Algoritmos: Teoria e Prática (CLRS 3ª Ed.)
 │   │   ├── course.json         # Metadados do curso e citação formal da obra
 │   │   ├── curriculum.json     # Trilha curricular completa dos 16 módulos e 6 blocos
+│   │   ├── labs/               # Laboratórios interativos isolados do curso CLRS (clrs-module1-labs.js)
 │   │   ├── modules/            # Módulos canônicos em JSON + Markdown puro
 │   │   │   └── 01-papel-dos-algoritmos-e-partida/
 │   │   │       ├── module.json
@@ -74,6 +74,7 @@ coursebook/
 │   └── nilo-python/            # Curso 03: Introdução à Programação com Python (Nilo Menezes 2ª Ed.)
 │       ├── course.json         # Metadados do curso e citação formal do livro
 │       ├── curriculum.json     # Trilha curricular completa dos 12 módulos
+│       ├── labs/               # Laboratórios interativos isolados do curso Nilo (repl, trace, vfs, sqlite, etc.)
 │       └── modules/            # Módulos 100% em JSON + Markdown (zero JS de conteúdo)
 │           └── 01-computador-e-interpretador/
 │               ├── module.json

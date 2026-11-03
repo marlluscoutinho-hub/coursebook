@@ -303,19 +303,13 @@
       <!-- Controles de Filtro por Bloco e Busca na Trilha -->
       <section class="curriculum-controls">
         <div>
-          <h2 class="curriculum-section-heading">
-            Trilha de Módulos (1 a 16)
+          <h2 class="curriculum-section-heading" id="curriculum-section-heading">
+            Trilha de Módulos
           </h2>
         </div>
 
         <div class="curriculum-filter-group">
-          <button class="filter-chip active" data-block="all" onclick="setBlockFilter('all')">Todos (16)</button>
-          <button class="filter-chip" data-block="bloco-1" onclick="setBlockFilter('bloco-1')">Bloco I: Fundamentos</button>
-          <button class="filter-chip" data-block="bloco-2" onclick="setBlockFilter('bloco-2')">Bloco II: Ordenação</button>
-          <button class="filter-chip" data-block="bloco-3" onclick="setBlockFilter('bloco-3')">Bloco III: Estruturas</button>
-          <button class="filter-chip" data-block="bloco-4" onclick="setBlockFilter('bloco-4')">Bloco IV: Avançados</button>
-          <button class="filter-chip" data-block="bloco-5" onclick="setBlockFilter('bloco-5')">Bloco V: Grafos</button>
-          <button class="filter-chip" data-block="bloco-6" onclick="setBlockFilter('bloco-6')">Bloco VI: Tópicos &amp; NP</button>
+          <div id="curriculum-filter-chips" style="display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center;"></div>
           <input
             type="search"
             class="search-input-brutal"
@@ -598,20 +592,20 @@
   <script src="courses/clrs-algoritmos/data/module15.js"></script>
   <script src="courses/clrs-algoritmos/data/module16.js"></script>
 
-  <!-- Catálogo Modular de Laboratórios Interativos -->
-  <script src="labs/repl-simulator.js"></script>
-  <script src="labs/trace-simulator.js"></script>
-  <script src="labs/decision-flow.js"></script>
-  <script src="labs/atm-simulator.js"></script>
-  <script src="labs/data-structures-lab.js"></script>
-  <script src="labs/bubble-and-dict-lab.js"></script>
-  <script src="labs/hangman-lab.js"></script>
-  <script src="labs/call-stack-lab.js"></script>
-  <script src="labs/vfs-lab.js"></script>
-  <script src="labs/oop-bank-lab.js"></script>
-  <script src="labs/sqlite-virtual-lab.js"></script>
-  <script src="labs/traceback-debugger.js"></script>
-  <script src="labs/clrs-module1-labs.js"></script>
+  <!-- Catálogo Modular de Laboratórios Interativos por Curso -->
+  <script src="courses/clrs-algoritmos/labs/clrs-module1-labs.js"></script>
+  <script src="courses/nilo-python/labs/repl-simulator.js"></script>
+  <script src="courses/nilo-python/labs/trace-simulator.js"></script>
+  <script src="courses/nilo-python/labs/decision-flow.js"></script>
+  <script src="courses/nilo-python/labs/atm-simulator.js"></script>
+  <script src="courses/nilo-python/labs/data-structures-lab.js"></script>
+  <script src="courses/nilo-python/labs/bubble-and-dict-lab.js"></script>
+  <script src="courses/nilo-python/labs/hangman-lab.js"></script>
+  <script src="courses/nilo-python/labs/call-stack-lab.js"></script>
+  <script src="courses/nilo-python/labs/vfs-lab.js"></script>
+  <script src="courses/nilo-python/labs/oop-bank-lab.js"></script>
+  <script src="courses/nilo-python/labs/sqlite-virtual-lab.js"></script>
+  <script src="courses/nilo-python/labs/traceback-debugger.js"></script>
 
   <script src="app.js"></script>
 </body>

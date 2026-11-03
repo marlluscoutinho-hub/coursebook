@@ -32,24 +32,28 @@
       "id": "bloco-1",
       "code": "BLOCO I",
       "title": "Fundamentos, Variáveis e Fluxo de Execução",
+      "shortTitle": "Fundamentos",
       "subtitle": "Capítulos 1 a 5 (pp. 19–97)"
     },
     {
       "id": "bloco-2",
       "code": "BLOCO II",
       "title": "Estruturas de Dados e Manipulação de Texto",
+      "shortTitle": "Estruturas",
       "subtitle": "Capítulos 6 e 7 (pp. 98–160)"
     },
     {
       "id": "bloco-3",
       "code": "BLOCO III",
       "title": "Modularização, Arquivos e Persistência Relacional",
+      "shortTitle": "Modularização & Arquivos",
       "subtitle": "Capítulos 8 a 11 (pp. 161–313)"
     },
     {
       "id": "bloco-4",
       "code": "BLOCO IV",
       "title": "Robustez, Diagnóstico e Engenharia de Software",
+      "shortTitle": "Robustez & Diagnóstico",
       "subtitle": "Capítulo 12 e Apêndice A (pp. 314–322)"
     }
   ],

@@ -287,6 +287,23 @@ body {
   .global-progress-label {
     display: none;
   }
+  .global-progress-track {
+    width: 65px;
+  }
+  .global-progress-pill {
+    padding: 0.25rem 0.5rem;
+    gap: 0.45rem;
+  }
+  .catalog-wrapper {
+    padding: 1.5rem 1rem 3rem;
+  }
+  .modules-grid {
+    grid-template-columns: 1fr;
+  }
+  .search-input-brutal {
+    width: 100%;
+    min-width: 0;
+  }
 }
 
 /* ==========================================================================
@@ -737,7 +754,7 @@ body {
 
 .modules-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
   gap: 1.25rem;
 }
 
@@ -1517,6 +1534,17 @@ body {
   padding: 0;
 }
 
+pre {
+  max-width: 100%;
+  overflow-x: auto;
+  box-sizing: border-box;
+}
+
+pre code {
+  white-space: pre;
+  word-break: normal;
+}
+
 /* Normalização de Compatibilidade para Laboratórios Interativos */
 .lab-box,
 .coursebook-lab,
@@ -1935,9 +1963,11 @@ body {
   .courses-home-grid {
     grid-template-columns: 1fr;
   }
+  .course-hero-card,
   .tome-hero-card {
     grid-template-columns: 1fr;
   }
+  .course-hero-main,
   .tome-hero-main {
     border-right: none;
     border-bottom: var(--border-strong);
@@ -1991,6 +2021,14 @@ body {
 .canonical-callout {
   min-width: 0;
   max-width: 100%;
+}
+
+.study-unit-card pre,
+.canonical-callout pre,
+.learning-step-content pre {
+  max-width: 100%;
+  overflow-x: auto;
+  box-sizing: border-box;
 }
 
 /* Fórmulas em display: rolam na horizontal dentro do próprio bloco */

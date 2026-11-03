@@ -27,36 +27,42 @@ window.COURSEBOOK_DATA = {
       id: "bloco-1",
       code: "BLOCO I",
       title: "Fundamentos do Projeto e Análise de Algoritmos",
+      shortTitle: "Fundamentos",
       subtitle: "Parte I (Capítulos 1 a 5) + Apêndices A e C"
     },
     {
       id: "bloco-2",
       code: "BLOCO II",
       title: "Ordenação e Estatísticas de Ordem",
+      shortTitle: "Ordenação",
       subtitle: "Parte II (Capítulos 6 a 9)"
     },
     {
       id: "bloco-3",
       code: "BLOCO III",
       title: "Estruturas de Dados Fundamentais e Balanceadas",
+      shortTitle: "Estruturas",
       subtitle: "Parte III (Capítulos 10 a 14)"
     },
     {
       id: "bloco-4",
       code: "BLOCO IV",
       title: "Técnicas Avançadas de Projeto e Estruturas Avançadas",
+      shortTitle: "Avançados",
       subtitle: "Partes IV e V (Capítulos 15 a 21)"
     },
     {
       id: "bloco-5",
       code: "BLOCO V",
       title: "Algoritmos em Grafos e Redes de Fluxo",
+      shortTitle: "Grafos",
       subtitle: "Parte VI (Capítulos 22 a 26) + Apêndice B"
     },
     {
       id: "bloco-6",
       code: "BLOCO VI",
       title: "Tópicos Selecionados, Modelos Paralelos e Intratabilidade",
+      shortTitle: "Tópicos & NP",
       subtitle: "Parte VII (Capítulos 27 a 35) + Apêndice D"
     }
   ],

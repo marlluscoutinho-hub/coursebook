@@ -309,6 +309,26 @@
      CARREGADOR MODULAR NATIVO DE CURSOS (JSON + MARKDOWN v2)
      Carrega course.json, curriculum.json, module.json, quiz, exercises e aulas
      ======================================================================== */
+  function loadCourseLabScript(courseId, labId) {
+    return new Promise((resolve) => {
+      const knownFileMap = {
+        "clrs-insertion-sort": "clrs-module1-labs.js",
+        "clrs-complexity-duel": "clrs-module1-labs.js",
+        "clrs-merge-sort-tree": "clrs-module1-labs.js"
+      };
+      const fileName = knownFileMap[labId] || `${labId}.js`;
+      const scriptUrl = `courses/${courseId}/labs/${fileName}`;
+      if (document.querySelector(`script[src="${scriptUrl}"]`)) {
+        return resolve();
+      }
+      const s = document.createElement("script");
+      s.src = scriptUrl;
+      s.onload = () => resolve();
+      s.onerror = () => resolve();
+      document.body.appendChild(s);
+    });
+  }
+
   async function loadModularCourse(courseId) {
     if (window.COURSES_REGISTRY && window.COURSES_REGISTRY[courseId] && window.COURSES_REGISTRY[courseId].__isModular) {
       return window.COURSES_REGISTRY[courseId];
@@ -513,16 +533,21 @@
           }
         }
 
-        const initWorkbenches = function () {
-          unidades.forEach((u) => {
+        const initWorkbenches = async function () {
+          for (const u of unidades) {
             if (u.lab && u.lab.id) {
               const labId = u.lab.id;
+              if (!window.COURSEBOOK_LABS || !window.COURSEBOOK_LABS[labId]) {
+                try {
+                  await loadCourseLabScript(courseId, labId);
+                } catch (_) {}
+              }
               if (window.COURSEBOOK_LABS && window.COURSEBOOK_LABS[labId] && typeof window.COURSEBOOK_LABS[labId].init === "function") {
                 const mountId = u.lab.mountId || `workbench-mod${modNumericId}-mount`;
                 window.COURSEBOOK_LABS[labId].init(mountId);
               }
             }
-          });
+          }
         };
 
         compiledCourse.modulesContent[modNumericId] = {
@@ -554,6 +579,9 @@
   window.selectCourse = async function (courseId, optModuleId) {
     saveState();
     state.currentCourseId = courseId;
+    state.blockFilter = "all";
+    state.searchQuery = "";
+
     if (!window.COURSES_REGISTRY || !window.COURSES_REGISTRY[courseId] || !window.COURSES_REGISTRY[courseId].__isModular) {
       try {
         await loadModularCourse(courseId);
@@ -591,6 +619,7 @@
     }
 
     saveState();
+    renderCatalogFilterControls();
     updateCourseHeroUI();
     renderCatalogModules();
     updateAllProgressIndicators();
@@ -734,6 +763,7 @@
     });
 
     if (viewName === "catalog") {
+      renderCatalogFilterControls();
       updateCourseHeroUI();
       renderCatalogModules();
     } else if (viewName === "reader") {
@@ -757,6 +787,10 @@
       try {
         await loadModularCourse(curCourseId);
       } catch (_) {}
+    }
+    if (window.COURSES_REGISTRY && window.COURSES_REGISTRY[curCourseId]) {
+      window.COURSEBOOK_DATA = window.COURSES_REGISTRY[curCourseId];
+      window.CODEX_DATA = window.COURSEBOOK_DATA;
     }
     const curCourseData = window.COURSEBOOK_DATA || window.CODEX_DATA;
     if (!curCourseData || !curCourseData.modules) return;
@@ -793,8 +827,57 @@
   window.closeCodexModal = window.closeModal;
 
   /* ========================================================================
-     RENDERIZAÇÃO DA TELA DE VISÃO GERAL (TRILHA DOS 16 MÓDULOS E FILTROS)
+     RENDERIZAÇÃO DA TELA DE VISÃO GERAL (TRILHA DOS MÓDULOS E FILTROS DINÂMICOS)
      ======================================================================== */
+  function getBlockChipLabel(block) {
+    if (block.shortTitle) return `${block.code}: ${block.shortTitle}`;
+    const t = block.title || "";
+    if (t.toLowerCase().includes("fundamento")) return `${block.code}: Fundamentos`;
+    if (t.toLowerCase().includes("ordena")) return `${block.code}: Ordenação`;
+    if (t.toLowerCase().includes("estrutura")) return `${block.code}: Estruturas`;
+    if (t.toLowerCase().includes("avan")) return `${block.code}: Avançados`;
+    if (t.toLowerCase().includes("grafo")) return `${block.code}: Grafos`;
+    if (t.toLowerCase().includes("tópico") || t.toLowerCase().includes("np")) return `${block.code}: Tópicos & NP`;
+    if (t.toLowerCase().includes("modular")) return `${block.code}: Modularização`;
+    if (t.toLowerCase().includes("robust")) return `${block.code}: Robustez`;
+    const clean = t.split(/[,:]|\se\s/)[0].trim();
+    return `${block.code}: ${clean.length > 20 ? clean.substring(0, 18) + "..." : clean}`;
+  }
+
+  function renderCatalogFilterControls() {
+    const curCourseData = window.COURSEBOOK_DATA || window.CODEX_DATA;
+    if (!curCourseData) return;
+
+    const heading = document.getElementById("curriculum-section-heading") || document.querySelector(".curriculum-section-heading");
+    const totalMods = (curCourseData.modules || []).length;
+    if (heading) {
+      heading.textContent = `Trilha de Módulos (1 a ${totalMods})`;
+    }
+
+    const chipsContainer = document.getElementById("curriculum-filter-chips");
+    if (!chipsContainer) return;
+
+    const activeBlock = state.blockFilter || "all";
+    const blocks = curCourseData.blocks || [];
+
+    let chipsHTML = `<button class="filter-chip ${activeBlock === "all" ? "active" : ""}" data-block="all" onclick="setBlockFilter('all')">Todos (${totalMods})</button>`;
+
+    blocks.forEach((block) => {
+      const isActive = activeBlock === block.id;
+      const label = getBlockChipLabel(block);
+      chipsHTML += `\n          <button class="filter-chip ${isActive ? "active" : ""}" data-block="${block.id}" onclick="setBlockFilter('${block.id}')">${label}</button>`;
+    });
+
+    chipsContainer.innerHTML = chipsHTML;
+
+    const searchInput = document.querySelector(".search-input-brutal");
+    if (searchInput) {
+      searchInput.value = state.searchQuery || "";
+    }
+  }
+
+  window.renderCatalogFilterControls = renderCatalogFilterControls;
+
   function renderCatalogModules() {
     const mount = document.getElementById("curriculum-blocks-mount");
     if (!mount) return;
@@ -804,6 +887,7 @@
 
     let html = "";
     const curCourseData = window.COURSEBOOK_DATA || window.CODEX_DATA;
+    if (!curCourseData || !curCourseData.blocks) return;
 
     curCourseData.blocks.forEach((block) => {
       if (activeBlock !== "all" && activeBlock !== block.id) return;
@@ -1876,6 +1960,7 @@
       window.CODEX_DATA = window.COURSEBOOK_DATA;
     }
     updateCourseHeroUI();
+    renderCatalogFilterControls();
     renderCatalogModules();
     renderReaderView();
     window.switchView(state.currentView || "home");

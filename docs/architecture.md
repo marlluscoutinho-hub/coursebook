@@ -26,9 +26,9 @@ courses/<id>/
           resumo.md           # resumo para revisitar
       quiz.json               # questões (quiz.schema.json)
       exercises.json          # exercícios com resolução
-  labs/                       # laboratórios interativos (JS, só quando necessário)
+    labs/                     # laboratórios interativos específicos do curso (JS)
 ```
-O CLRS **não** segue esta estrutura ainda. Ele é lido por um adaptador (etapa 5) que entrega o mesmo modelo em memória.
+O CLRS possui o Módulo 01 já migrado para este modelo canônico e seus laboratórios dedicados em `courses/clrs-algoritmos/labs/`. Os módulos subsequentes coexistem via adaptador modular.
 
 ## 3. Modelo da aula
 ```mermaid
